@@ -15,6 +15,40 @@ if [ -z "$DB_URL" ]; then
   echo "usage: $0 <DATABASE_URL>" >&2; exit 1
 fi
 
+# Catch a placeholder pasted verbatim from the docs before psql fails with an
+# opaque DNS error.
+case "$DB_URL" in
+  *"…"*|*"..."*|*"<"*|*"your-"*|*"external"*|*"HOST"*|*"xxxx"*|*"XXXX"*)
+    cat >&2 <<'HELP'
+That connection string still contains a placeholder.
+
+Get the real one from Render:
+  Dashboard -> your Postgres instance (securities-db) -> Connections
+  -> copy "External Database URL"
+
+It looks like:
+  postgresql://calcapp:<generated>@dpg-xxxxxxxx-a.singapore-postgres.render.com/legal_rules
+
+Use the EXTERNAL url from your laptop. The internal one resolves only from
+inside Render. If psql reports an SSL error, append ?sslmode=require
+HELP
+    exit 1;;
+esac
+
+if ! printf '%s' "$DB_URL" | grep -qE '^postgres(ql)?://[^[:space:]]+@[^[:space:]]+/[^[:space:]]+$'; then
+  echo "error: '$DB_URL' does not look like a PostgreSQL connection string." >&2
+  echo "       expected: postgresql://user:password@host/database" >&2
+  exit 1
+fi
+
+echo "→ checking the database is reachable"
+if ! psql -d "$DB_URL" -c 'SELECT 1' >/dev/null 2>&1; then
+  echo "error: cannot connect to that database." >&2
+  echo "       - use the EXTERNAL url from Render, not the internal one" >&2
+  echo "       - if it is an SSL error, append ?sslmode=require" >&2
+  exit 1
+fi
+
 echo "→ restoring snapshot"
 gunzip -c legal_rules.sql.gz | psql -v ON_ERROR_STOP=1 -d "$DB_URL" >/dev/null
 
