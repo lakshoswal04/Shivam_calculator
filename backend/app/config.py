@@ -13,10 +13,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
-def _csv(name: str, default: str) -> list[str]:
-    return [v.strip() for v in os.getenv(name, default).split(",") if v.strip()]
-
-
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="", extra="ignore")
 
@@ -32,13 +28,20 @@ class Settings(BaseSettings):
     refresh_token_days: int = int(os.getenv("REFRESH_TOKEN_DAYS", "14"))
     engine_version: str = "1.0.0"
 
-    # Comma-separated in the environment, e.g.
-    #   CORS_ORIGINS=https://your-site.netlify.app,http://localhost:3000
-    cors_origins: list[str] = _csv("CORS_ORIGINS", "http://localhost:3000")
+    # Held as a plain string, not list[str]. pydantic-settings treats a list
+    # field as "complex" and JSON-decodes the environment value before any
+    # validator runs, so a comma-separated CORS_ORIGINS would crash the
+    # process at startup. Parsing happens in the property below instead.
+    cors_origins_raw: str = os.getenv("CORS_ORIGINS", "http://localhost:3000")
 
     pool_min: int = int(os.getenv("POOL_MIN", "1"))
     pool_max: int = int(os.getenv("POOL_MAX", "10"))
     environment: str = os.getenv("ENVIRONMENT", "development")
+
+    @property
+    def cors_origins(self) -> list[str]:
+        """Allowed browser origins, comma-separated in the environment."""
+        return [o.strip() for o in self.cors_origins_raw.split(",") if o.strip()]
 
     @property
     def is_production(self) -> bool:
@@ -52,7 +55,13 @@ def settings() -> Settings:
     # secret or a superuser database connection.
     if s.is_production:
         if "dev-only-secret" in s.jwt_secret:
-            raise RuntimeError("JWT_SECRET must be set in production.")
-        if "calcapp_dev_pw" in s.database_url or "localhost" in s.database_url:
-            raise RuntimeError("DATABASE_URL must point at the production database.")
+            raise RuntimeError(
+                "JWT_SECRET is still the development default. Set a real secret.")
+        # The check is for the development *credential*, not the hostname: a
+        # production database may legitimately be on localhost, a unix socket
+        # or a private network address.
+        if "calcapp_dev_pw" in s.database_url:
+            raise RuntimeError(
+                "DATABASE_URL still carries the development password. "
+                "Point it at the production database.")
     return s
