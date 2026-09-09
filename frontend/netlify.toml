@@ -1,16 +1,24 @@
 # Netlify configuration for the Next.js frontend.
 #
-# Netlify builds Next.js through its OpenNext adapter, which is applied
-# automatically and sets the publish directory itself. Do NOT set `publish`
-# here: pointing it at ".next" makes Netlify serve the build directory as
-# plain static files, and since there is no index.html at its root every
-# route returns "Not Found" even though the build succeeded.
-#
 # Requires "Base directory" = frontend in the Netlify site settings, which is
 # where Netlify looks for this file.
+#
+# IMPORTANT: leave "Publish directory" BLANK in the Netlify UI. The Next.js
+# runtime declared below sets it itself. If it is pinned to ".next", Netlify
+# serves the raw build folder as static files instead: there is no index.html
+# at its root, so every route 404s, and internal build manifests
+# (/BUILD_ID, /build-manifest.json) get exposed at the site root.
 
 [build]
   command = "npm run build"
+
+# Declared explicitly rather than relying on auto-detection. When the runtime
+# does not run, no server handler is deployed and the build output is served
+# as a plain static directory -- which is exactly the 404-on-every-route
+# failure this project hit. The version is intentionally not pinned so
+# Netlify keeps it current with each Next.js release.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [build.environment]
   NODE_VERSION = "22"
@@ -18,10 +26,9 @@
 
 # NEXT_PUBLIC_API_URL is compiled into the browser bundle at build time, so it
 # must be set in Netlify's environment variables BEFORE the build - not at
-# runtime, and not in .env.local (which is gitignored and never reaches
-# Netlify). Set it to:
+# runtime, and not in .env.local (gitignored, never reaches Netlify):
 #   https://securities-api.onrender.com/api/v1
-# Changing it later requires a redeploy, not just a restart.
+# Changing it later needs a redeploy, not a restart.
 
 [[headers]]
   for = "/*"
