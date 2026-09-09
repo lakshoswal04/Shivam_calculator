@@ -35,9 +35,12 @@ HELP
     exit 1;;
 esac
 
-if ! printf '%s' "$DB_URL" | grep -qE '^postgres(ql)?://[^[:space:]]+@[^[:space:]]+/[^[:space:]]+$'; then
+# Only the scheme is checked here. Userinfo, port and query parameters are all
+# optional in a valid URL (postgresql://localhost/db is fine), so the real
+# verdict comes from the connectivity probe below rather than from a regex.
+if ! printf '%s' "$DB_URL" | grep -qE '^postgres(ql)?://[^[:space:]]+'; then
   echo "error: '$DB_URL' does not look like a PostgreSQL connection string." >&2
-  echo "       expected: postgresql://user:password@host/database" >&2
+  echo "       expected: postgresql://[user[:password]@]host[:port]/database" >&2
   exit 1
 fi
 
