@@ -75,6 +75,26 @@ for r in (auth_router.router, companies_router.router, assessments_router.router
     app.include_router(r, prefix="/api/v1")
 
 
+@app.get("/", tags=["meta"])
+def root():
+    """Service index.
+
+    The API lives under /api/v1; the bare root previously returned a naked
+    404, which reads as a broken deployment to anyone who opens the base URL
+    in a browser.
+    """
+    return {
+        "service": "Corporate Securities Issue Assessment, Compliance & Calculation Platform",
+        "status": "running",
+        "version": settings().engine_version,
+        "api_base": "/api/v1",
+        "docs": "/docs",
+        "health": "/api/v1/health",
+        "note": ("This is the backend API. The web interface is deployed separately. "
+                 "Results are not legal advice and require professional review."),
+    }
+
+
 @app.get("/api/v1/health", tags=["meta"])
 def health():
     """Liveness plus a database sub-status.
