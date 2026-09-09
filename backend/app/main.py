@@ -39,9 +39,18 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+_origins = settings().cors_origins
+if not _origins:
+    # An empty CORS_ORIGINS blocks every browser request while the API keeps
+    # answering non-browser calls normally, so the service looks healthy and
+    # the frontend looks broken. Say so loudly at startup.
+    log.warning(
+        "CORS_ORIGINS is empty - every browser request will be blocked. "
+        "Set it to the exact frontend origin, e.g. https://your-site.netlify.app")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings().cors_origins,
+    allow_origins=_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -107,7 +116,15 @@ def health():
     """
     info = {"status": "ok", "engine_version": settings().engine_version,
             "environment": settings().environment, "database": "ok",
+            # Reported so a blocked frontend can be diagnosed without shell
+            # access. These are not secrets; the browser sees them anyway in
+            # the access-control-allow-origin response header.
+            "cors_origins": settings().cors_origins,
             "active_rules": None, "note": None}
+    if not settings().cors_origins:
+        info["status"] = "degraded"
+        info["note"] = ("CORS_ORIGINS is empty, so every browser request will be "
+                        "blocked. Set it to the frontend origin.")
     try:
         with pool().connection() as conn:
             row = conn.execute(

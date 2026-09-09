@@ -151,7 +151,8 @@ can bypass RLS. **Do not ignore that warning.**
 
 | Symptom | Cause |
 |---|---|
-| Frontend loads, every request fails | `CORS_ORIGINS` does not match the Netlify origin exactly (scheme and host, no trailing slash) |
+| `blocked by CORS policy: No 'Access-Control-Allow-Origin' header` | `CORS_ORIGINS` is empty or does not match the Netlify origin exactly. Check `/api/v1/health` — it reports `cors_origins` |
+| Frontend loads, every request fails | Same as above: scheme and host must match exactly, no trailing slash, no path |
 | `"database": "not_initialised"` | The snapshot has not been restored. Run `db/snapshot/restore.sh` with the **external** database URL |
 | `"database": "unreachable"` | `DATABASE_URL` is wrong, or you used the external URL from inside Render (use the internal one for the service) |
 | `"database": "permission_denied"` | The connecting role lacks grants; re-run migration `008` against the database |
