@@ -1,18 +1,27 @@
 # Netlify configuration for the Next.js frontend.
-# Netlify's Next.js runtime handles the App Router, server components and
-# route handlers; no adapter or export step is needed.
+#
+# Netlify builds Next.js through its OpenNext adapter, which is applied
+# automatically and sets the publish directory itself. Do NOT set `publish`
+# here: pointing it at ".next" makes Netlify serve the build directory as
+# plain static files, and since there is no index.html at its root every
+# route returns "Not Found" even though the build succeeded.
+#
+# Requires "Base directory" = frontend in the Netlify site settings, which is
+# where Netlify looks for this file.
 
 [build]
   command = "npm run build"
-  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# NEXT_PUBLIC_API_URL is read at build time by the browser bundle, so it must
-# be set in Netlify's environment variables before the build, not at runtime.
-# Set it to:  https://<your-render-service>.onrender.com/api/v1
+# NEXT_PUBLIC_API_URL is compiled into the browser bundle at build time, so it
+# must be set in Netlify's environment variables BEFORE the build - not at
+# runtime, and not in .env.local (which is gitignored and never reaches
+# Netlify). Set it to:
+#   https://securities-api.onrender.com/api/v1
+# Changing it later requires a redeploy, not just a restart.
 
 [[headers]]
   for = "/*"

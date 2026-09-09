@@ -61,8 +61,14 @@ curl https://<your-service>.onrender.com/api/v1/health
 ## 2. Frontend on Netlify
 
 1. Netlify → **Add new site → Import an existing project** → this repository.
-2. Set **Base directory** to `frontend`. [`frontend/netlify.toml`](frontend/netlify.toml)
-   supplies the build command and Node version.
+2. Set **Base directory** to `frontend` — that is where Netlify looks for
+   [`frontend/netlify.toml`](frontend/netlify.toml), which supplies the build command and
+   Node version.
+
+   Leave the **Publish directory** blank. Netlify builds Next.js through its OpenNext
+   adapter and sets the publish directory itself; forcing it to `.next` makes Netlify
+   serve the build folder as static files, and because there is no `index.html` at its
+   root **every route returns "Not Found"** even though the build succeeded.
 3. Add the environment variable, then deploy:
 
    | Key | Value |
@@ -154,3 +160,5 @@ can bypass RLS. **Do not ignore that warning.**
 | First request takes 30 s | Free Render service waking from sleep |
 | API will not start | The production guard rejected a dev `JWT_SECRET` or localhost `DATABASE_URL` |
 | Login works, then 401 everywhere | `NEXT_PUBLIC_API_URL` points somewhere else; it is baked in at build time |
+| Netlify build succeeds but every page is "Not Found" | A publish directory is set. Clear it in Site settings → Build & deploy, and remove any `publish` from `netlify.toml` |
+| Netlify requests 404 against the API | `NEXT_PUBLIC_API_URL` is missing the `/api/v1` suffix |
