@@ -21,9 +21,19 @@ the web service.
    `DATABASE_URL` between them and generates a real `JWT_SECRET`.
 3. Wait for the first deploy. It will start but have an empty database.
 
-### Load the legal knowledge base
+### Load the legal knowledge base — do not skip this
 
-Copy the **External Database URL** from the `securities-db` page, then locally:
+**A fresh Render deploy comes up against an empty database.** The service starts and
+answers requests, but every endpoint that touches the schema fails until you load it.
+Health will tell you so plainly:
+
+```json
+{ "status": "degraded", "database": "not_initialised",
+  "note": "The database is reachable but the schema has not been loaded. Run: ..." }
+```
+
+Copy the **External Database URL** from the `securities-db` page in Render (the *external*
+one — the internal URL is only reachable from inside Render), then run locally:
 
 ```bash
 ./db/snapshot/restore.sh "postgresql://…external…/legal_rules"
@@ -33,11 +43,14 @@ This restores the schema, 7,369 provisions, the authored rules and the demo orga
 in seconds, and verifies the result. Re-running the extraction pipeline on Render instead
 would need PyMuPDF and several minutes of CPU for no benefit.
 
-Confirm the service is healthy:
+Render requires TLS for external connections; if `psql` complains, append `?sslmode=require`
+to the URL.
+
+Then confirm:
 
 ```bash
 curl https://<your-service>.onrender.com/api/v1/health
-# {"status":"ok","engine_version":"1.0.0","active_rules":13,...}
+# {"status":"ok","database":"ok","active_rules":13,...}
 ```
 
 > **Free plan:** the service sleeps after 15 minutes idle, so the first request afterwards
@@ -133,7 +146,11 @@ can bypass RLS. **Do not ignore that warning.**
 | Symptom | Cause |
 |---|---|
 | Frontend loads, every request fails | `CORS_ORIGINS` does not match the Netlify origin exactly (scheme and host, no trailing slash) |
-| `active_rules: 0` | Snapshot not restored, or rules are `PENDING` — that is correct until a reviewer approves them |
+| `"database": "not_initialised"` | The snapshot has not been restored. Run `db/snapshot/restore.sh` with the **external** database URL |
+| `"database": "unreachable"` | `DATABASE_URL` is wrong, or you used the external URL from inside Render (use the internal one for the service) |
+| `"database": "permission_denied"` | The connecting role lacks grants; re-run migration `008` against the database |
+| `relation "legal.v_active_rule_versions" does not exist` | Same as `not_initialised` — the schema was never loaded |
+| `active_rules: 0` with `"database": "ok"` | Rules are `PENDING` — correct until a reviewer approves them |
 | First request takes 30 s | Free Render service waking from sleep |
 | API will not start | The production guard rejected a dev `JWT_SECRET` or localhost `DATABASE_URL` |
 | Login works, then 401 everywhere | `NEXT_PUBLIC_API_URL` points somewhere else; it is baked in at build time |

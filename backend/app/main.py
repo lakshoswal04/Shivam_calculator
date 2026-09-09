@@ -6,6 +6,8 @@ and transaction date always give the same output.
 """
 import logging
 import uuid
+
+import psycopg
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, status
@@ -75,9 +77,35 @@ for r in (auth_router.router, companies_router.router, assessments_router.router
 
 @app.get("/api/v1/health", tags=["meta"])
 def health():
-    with pool().connection() as conn:
-        row = conn.execute("SELECT count(*) AS n FROM legal.v_active_rule_versions").fetchone()
-    return {"status": "ok", "engine_version": settings().engine_version,
-            "active_rules": row["n"],
-            "note": ("active_rules is 0 until a reviewer approves rules; the API still "
-                     "serves calculations." if row["n"] == 0 else None)}
+    """Liveness plus a database sub-status.
+
+    Deliberately returns 200 whenever the *process* is healthy, even if the
+    database is unreachable or not yet initialised. This path is Render's
+    health check: failing it on an empty database would kill the very service
+    you need running while you load the schema, and would loop the deploy.
+    The real state is reported in `database`, never hidden behind an "ok".
+    """
+    info = {"status": "ok", "engine_version": settings().engine_version,
+            "environment": settings().environment, "database": "ok",
+            "active_rules": None, "note": None}
+    try:
+        with pool().connection() as conn:
+            row = conn.execute(
+                "SELECT count(*) AS n FROM legal.v_active_rule_versions").fetchone()
+        info["active_rules"] = row["n"]
+        if row["n"] == 0:
+            info["note"] = ("No rules are approved yet, so no legal conclusions are "
+                            "produced. Calculations still work.")
+    except psycopg.errors.UndefinedTable:
+        info.update(
+            status="degraded", database="not_initialised", active_rules=0,
+            note=("The database is reachable but the schema has not been loaded. "
+                  "Run: ./db/snapshot/restore.sh \"$DATABASE_URL\" using the "
+                  "external connection string."))
+    except psycopg.errors.InsufficientPrivilege as exc:
+        info.update(status="degraded", database="permission_denied",
+                    note=f"Connected, but the role lacks privileges: {exc}")
+    except psycopg.Error as exc:
+        info.update(status="degraded", database="unreachable",
+                    note=f"{type(exc).__name__}: {str(exc)[:200]}")
+    return info
