@@ -1,0 +1,76 @@
+# Private placement — Companies (Prospectus and Allotment of Securities)
+# Rules, 2014, rule 14.
+#
+# The governing provision is section 42 of the Companies Act, 2013, which is
+# NOT in the corpus. Rule 14 is procedural machinery under that section, so
+# only what rule 14's own text supports is authored here. Every private
+# placement assessment additionally reports the Act as a source gap.
+meta:
+  route: PRIVATE_PLACEMENT
+  authority: MCA
+  instrument: "Companies (Prospectus and Allotment of Securities) Rules, 2014"
+  default_effective_from: "2014-04-01"
+
+rules:
+  - rule_code: PP-001
+    title: Private placement offer to identified persons
+    issue_type: PRIVATE_PLACEMENT
+    applicability: { company_type: ANY, listed_status: UNKNOWN, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies (Prospectus and Allotment of Securities) Rules, 2014 r.14"
+      reference: "Companies (Prospectus and Allotment of Securities) Rules, 2014, rule 14"
+    requirement: >-
+      A private placement offer is made to identified persons. The number of identified
+      persons and the record of the offer are governed by section 42 of the Companies Act,
+      2013 read with rule 14, which prescribes the form and manner of the private placement
+      offer cum application letter and the records to be maintained.
+    trigger:
+      text: "private placement route"
+      ast: { op: eq, field: issue.type, value: PRIVATE_PLACEMENT }
+    conditions:
+      # Deliberately requires the count rather than asserting a limit: the
+      # numerical ceiling lives in section 42, which is not yet a source.
+      - text: "the number of identified persons in this offer has been stated"
+        ast: { op: exists, field: issue.identified_persons_count }
+    result_if_pass: REVIEW_REQUIRED
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      Private placement is governed by section 42 of the Companies Act, 2013, which is not
+      present in the source corpus. The number-of-persons ceiling and the offer mechanics
+      cannot be evaluated until it is supplied.
+    documents:
+      - requirement_code: PP-DOC-PAS4
+        name: "Private placement offer cum application letter (Form PAS-4)"
+        stage: PRE_ALLOTMENT
+        necessity: MANDATORY
+        authority: MCA
+      - requirement_code: PP-DOC-PAS5
+        name: "Record of the private placement offer (Form PAS-5)"
+        stage: PRE_ALLOTMENT
+        necessity: MANDATORY
+        authority: MCA
+
+  - rule_code: PP-002
+    title: Subscription money to be held in a separate bank account
+    issue_type: PRIVATE_PLACEMENT
+    applicability: { company_type: ANY, listed_status: UNKNOWN, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies (Prospectus and Allotment of Securities) Rules, 2014 r.14"
+      reference: "Companies (Prospectus and Allotment of Securities) Rules, 2014, rule 14"
+    requirement: >-
+      Money payable on subscription pursuant to a private placement is to be kept in a
+      separate bank account and applied only for the purposes permitted by section 42 of the
+      Companies Act, 2013.
+    trigger:
+      text: "private placement route"
+      ast: { op: eq, field: issue.type, value: PRIVATE_PLACEMENT }
+    conditions:
+      - text: "subscription money is held in a separate bank account"
+        ast: { op: eq, field: issue.separate_bank_account, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Subscription money received under a private placement must be held in a separate
+      bank account.

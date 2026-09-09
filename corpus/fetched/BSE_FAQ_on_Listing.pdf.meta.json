@@ -1,0 +1,17 @@
+{
+  "url": "https://www.bseindia.com/downloads1/FAQ_on_Listing.pdf",
+  "save_as": "BSE_FAQ_on_Listing.pdf",
+  "authority": "BSE",
+  "document_type": "FAQ",
+  "priority": "P1",
+  "note": "BSE listing FAQs, includes further-issue procedure.",
+  "fetched_at": "2026-09-06T21:38:45+00:00",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "bytes": 550972,
+  "verified_tls": true,
+  "outcome": "ACQUIRED",
+  "sha256": "facc680463cca862f41352683b241496404297b4a0e639bee29d8a8b916fbd30",
+  "container_format": "pdf",
+  "local_file_path": "fetched/BSE_FAQ_on_Listing.pdf"
+}

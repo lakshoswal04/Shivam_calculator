@@ -1,0 +1,48 @@
+# Sources V1 needs but does not have. Surfaced in every affected assessment
+# so a gap is visible rather than silently producing a thin answer.
+gaps:
+  - code: COMPANIES_ACT_2013
+    severity: BLOCKER
+    title: "Companies Act, 2013 (as amended) is not in the source corpus"
+    detail: >-
+      The Companies Act, 2013 is not present in the source corpus. Every official channel
+      refuses automated access: mca.gov.in returns HTTP 403 to scripted clients, and
+      indiacode.gov.in presents a certificate that does not match its hostname and then serves
+      a JavaScript shell instead of the PDF. Conclusions that depend on sections 23, 39, 42,
+      55, 62, 63, 117 and 179(3)(c) cannot be produced.
+    action_required: >-
+      Supply the Companies Act, 2013 as amended to date into corpus/originals/ and re-run the
+      ingestion pipeline. As-enacted text is not sufficient: section 42 was wholly substituted
+      by the Companies (Amendment) Act, 2017 with effect from 07-08-2018.
+    blocks_issue_types: [PRIVATE_PLACEMENT, RIGHTS]
+    provisions_required: ["23", "39", "42", "55", "62(1)(a)", "62(1)(c)", "63", "117", "179(3)(c)"]
+
+  - code: MCA_FORM_INSTRUCTION_KITS
+    severity: GAP
+    title: "MCA form instruction kits (PAS-3, MGT-14, SH-7) are absent"
+    detail: >-
+      Field-level filing requirements for PAS-3, MGT-14 and SH-7 cannot be stated without the
+      instruction kits.
+    action_required: "Supply the MCA instruction kits for PAS-3, MGT-14 and SH-7."
+    blocks_issue_types: []
+    provisions_required: []
+
+  - code: SEBI_CIRCULARS
+    severity: GAP
+    title: "SEBI circulars and master circulars are absent"
+    detail: >-
+      Operational clarifications issued under the ICDR and LODR Regulations are not in the
+      corpus, so requirements that rest on them cannot be authored.
+    action_required: "Supply the relevant SEBI circulars and master circulars."
+    blocks_issue_types: []
+    provisions_required: []
+
+  - code: NSE_CML_2023_51
+    severity: GAP
+    title: "NSE circular NSE/CML/2023/51 is absent"
+    detail: >-
+      Cited by the NSE 'Points to remember' guidance as gating the issue-summary requirement
+      for preferential issues above Rs 100 crore, but the circular itself was not supplied.
+    action_required: "Supply NSE circular NSE/CML/2023/51 dated 05 July 2023."
+    blocks_issue_types: []
+    provisions_required: []

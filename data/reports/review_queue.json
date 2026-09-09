@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-09-06T21:38:46+00:00",
+  "items": [
+    {
+      "item": "COMPANIES_ACT_2013",
+      "severity": "BLOCKER",
+      "blocks": [
+        "PRIVATE_PLACEMENT",
+        "RIGHTS"
+      ],
+      "sections_required": [
+        "23",
+        "39",
+        "42",
+        "55",
+        "62",
+        "63",
+        "117",
+        "179(3)(c)"
+      ],
+      "why": "Primary law (P0) for the V1 routes. Every official channel tried refused automated access: mca.gov.in returns HTTP 403 to scripted clients, and indiacode.gov.in presents a certificate that does not match its hostname and serves a JavaScript shell instead of the PDF.",
+      "action_required": "Download the Companies Act, 2013 **as amended to date** manually and place it in corpus/originals/, then re-run p00_inventory.py. As-enacted text is not sufficient: section 42 was wholly substituted by the Companies (Amendment) Act, 2017 w.e.f. 07-08-2018.",
+      "attempts": [
+        {
+          "url": "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html",
+          "outcome": "FAILED",
+          "reason": "URLError: <urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)>"
+        },
+        {
+          "url": "https://www.indiacode.nic.in/bitstream/123456789/2114/3/a2013-18.pdf",
+          "outcome": "FAILED",
+          "reason": "HTTPError: 404"
+        }
+      ]
+    },
+    {
+      "item": "MCA_FORM_INSTRUCTION_KITS",
+      "severity": "GAP",
+      "why": "PAS-3, MGT-14, SH-7 instruction kits absent; needed for filing field-level rules.",
+      "action_required": "Supply the document, or leave dependent rules unauthored."
+    },
+    {
+      "item": "SEBI_CIRCULARS_AND_MASTER_CIRCULARS",
+      "severity": "GAP",
+      "why": "Absent; ICDR/LODR operational clarifications rest on these.",
+      "action_required": "Supply the document, or leave dependent rules unauthored."
+    },
+    {
+      "item": "NSE_CIRCULAR_NSE_CML_2023_51",
+      "severity": "GAP",
+      "why": "Cited by 'Points to remember_28(1)' as gating the >Rs.100cr preferential issue-summary requirement, but not supplied.",
+      "action_required": "Supply the document, or leave dependent rules unauthored."
+    }
+  ]
+}

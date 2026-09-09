@@ -1,0 +1,1384 @@
+[
+  {
+    "document_id": "bse-checklist-direct-listing-3157e150",
+    "file_name": "BSE_Checklist_Direct_Listing.doc",
+    "authority": "BSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "PREFERENTIAL",
+    "issue_types": [
+      "PREFERENTIAL"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "BSE",
+        "mentions": 17
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "bse-faq-on-listing-facc6804",
+    "file_name": "BSE_FAQ_on_Listing.pdf",
+    "authority": "BSE",
+    "document_type": "FAQ",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "QIP",
+      "PREFERENTIAL",
+      "RIGHTS"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 5
+      },
+      {
+        "value": "UNLISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [],
+    "exchanges": [
+      {
+        "value": "BSE",
+        "mentions": 3
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
+    "file_name": "BSE_InPrinciple_PrivatePlacement_DebtInstruments.doc",
+    "authority": "BSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "PRIVATE_PLACEMENT",
+    "issue_types": [
+      "PRIVATE_PLACEMENT"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "DEBENTURES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "bse-post-issue-checklist-1d331cda",
+    "file_name": "BSE_Post_Issue_Checklist.doc",
+    "authority": "BSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 9
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "BSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "checklist-recommencement-of-trading-e30818a4",
+    "file_name": "Checklist_Recommencement_of_Trading.xlsx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 3
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "form-of-listing-aplication-487b76f1",
+    "file_name": "Form of Listing Aplication.docx",
+    "authority": "NSE",
+    "document_type": "LISTING_REQUIREMENT",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 3
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 3
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 9
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
+    "file_name": "Companies (Prospectus and Allotment of Securities) Rules.pdf",
+    "authority": "MCA",
+    "document_type": "RULE",
+    "primary_issue_type": "PRIVATE_PLACEMENT",
+    "issue_types": [
+      "PRIVATE_PLACEMENT",
+      "PUBLIC_ISSUE",
+      "BONUS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "DEBENTURES",
+        "mentions": 11
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 5
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 2
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 2
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "companies-share-capital-and-debentures-rules-64039399",
+    "file_name": "Companies (Share Capital and Debentures) Rules.pdf",
+    "authority": "MCA",
+    "document_type": "RULE",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "SWEAT_EQUITY",
+      "PREFERENTIAL",
+      "RIGHTS",
+      "BONUS",
+      "ESOP",
+      "PUBLIC_ISSUE",
+      "PRIVATE_PLACEMENT",
+      "WARRANTS"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 8
+      },
+      {
+        "value": "UNLISTED",
+        "mentions": 5
+      },
+      {
+        "value": "PRIVATE",
+        "mentions": 3
+      },
+      {
+        "value": "PUBLIC",
+        "mentions": 3
+      }
+    ],
+    "security_types": [
+      {
+        "value": "DEBENTURES",
+        "mentions": 135
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 68
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 39
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 19
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 10
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 4
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 2
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "download-post-allotment-a57e1202",
+    "file_name": "Download Post-Allotment.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "PRIVATE_PLACEMENT",
+    "issue_types": [
+      "PRIVATE_PLACEMENT",
+      "PREFERENTIAL",
+      "BONUS",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 21
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 14
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 9
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 3
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 2
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 2
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 5
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "points-to-remember-post-allotment-f6a19833",
+    "file_name": "Points to remember_post allotment.docx",
+    "authority": "UNKNOWN",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "PREFERENTIAL",
+    "issue_types": [
+      "PREFERENTIAL",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 8
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 4
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "download-pre-allotment-ace085af",
+    "file_name": "Download_Pre-Allotment_.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "QIP",
+    "issue_types": [
+      "QIP",
+      "PREFERENTIAL"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 6
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "part-i-d6ff87e8",
+    "file_name": "Part I.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 4
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "part-ii-e68713a9",
+    "file_name": "Part II.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "PUBLIC_ISSUE",
+    "issue_types": [
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 3
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "t-2-fpo-abe9b620",
+    "file_name": "T+2 FPO.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
+    "file_name": "T+3 FPO if NSE is not Designated Stock Exchange.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 3
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "t-3-fpo-cccb7af1",
+    "file_name": "T+3 FPO.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 4
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 4
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "t-4-fpo-c058fc65",
+    "file_name": "T+4 FPO.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO",
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 3
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 4
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "t-5-fpo-636f879e",
+    "file_name": "T+5 FPO.pdf",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
+    "file_name": "FPO_Inprinciple_Checklist_Revised.pdf",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "FPO",
+    "issue_types": [
+      "FPO",
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 7
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 5
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "final-listing-preferential-14b337d2",
+    "file_name": "Final_Listing_Preferential.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PREFERENTIAL",
+      "PRIVATE_PLACEMENT"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
+    "file_name": "Post Allotment ( Sweat Equity )_0_0.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "SWEAT_EQUITY",
+    "issue_types": [
+      "SWEAT_EQUITY"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 14
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 12
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "post-allotment-rights-0-dd3e7518",
+    "file_name": "Post_allotment_Rights_0.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "RIGHTS",
+    "issue_types": [
+      "RIGHTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 3
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 3
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "pre-allotment-sweat-equity-4226094c",
+    "file_name": "Pre-allotment_(Sweat Equity).docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "SWEAT_EQUITY",
+    "issue_types": [
+      "SWEAT_EQUITY"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 21
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 18
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "checklist-preferential-issue-pre-ffe507ab",
+    "file_name": "Checklist_Preferential_issue_Pre.docx",
+    "authority": "UNKNOWN",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "PREFERENTIAL",
+    "issue_types": [
+      "PREFERENTIAL",
+      "ESOP",
+      "QIP",
+      "WARRANTS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 3
+      },
+      {
+        "value": "SME",
+        "mentions": 2
+      },
+      {
+        "value": "MAIN_BOARD",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 21
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 4
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 2
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 6
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "extract-of-icdr-189995d8",
+    "file_name": "Extract of ICDR.pdf",
+    "authority": "UNKNOWN",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PREFERENTIAL",
+      "QIP",
+      "PUBLIC_ISSUE",
+      "RIGHTS",
+      "WARRANTS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 73
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 27
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 17
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "points-to-remember-28-1-6be45481",
+    "file_name": "Points to remember_28(1).docx",
+    "authority": "UNKNOWN",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "PREFERENTIAL",
+    "issue_types": [
+      "PREFERENTIAL"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 4
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "preferential-issue-faqs-0d8e781e",
+    "file_name": "Preferential Issue_FAQs.docx",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "PREFERENTIAL",
+    "issue_types": [
+      "PREFERENTIAL",
+      "QIP",
+      "CONVERSION",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "WARRANTS",
+        "mentions": 26
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 20
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 17
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 10
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "qip-post-allotment-0-0-d035add2",
+    "file_name": "QIP_Post_Allotment_0_0.docx",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "QIP",
+    "issue_types": [
+      "QIP",
+      "PRIVATE_PLACEMENT",
+      "BONUS",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 5
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 5
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 4
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 4
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 3
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 2
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 2
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "rights-entitlement-checklist-e0bcaa00",
+    "file_name": "Rights_Entitlement_Checklist.pdf",
+    "authority": "NSE",
+    "document_type": "CHECKLIST",
+    "primary_issue_type": "RIGHTS",
+    "issue_types": [
+      "RIGHTS",
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 5
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "sebi-depositories-participants-regulations-fb150ec0",
+    "file_name": "SEBI Depositories & Participants Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "CONVERSION",
+    "issue_types": [
+      "CONVERSION"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 18
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 4
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:51+00:00"
+  },
+  {
+    "document_id": "sebi-icdr-regulations-db196f1f",
+    "file_name": "SEBI ICDR Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PUBLIC_ISSUE",
+      "RIGHTS",
+      "ESOP",
+      "SWEAT_EQUITY",
+      "QIP",
+      "FPO",
+      "PREFERENTIAL",
+      "BONUS",
+      "PRIVATE_PLACEMENT",
+      "CONVERSION",
+      "WARRANTS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "SME",
+        "mentions": 56
+      },
+      {
+        "value": "LISTED",
+        "mentions": 33
+      },
+      {
+        "value": "MAIN_BOARD",
+        "mentions": 31
+      },
+      {
+        "value": "GOVERNMENT",
+        "mentions": 6
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 483
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 101
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 97
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 50
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 39
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 26
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 10
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "sebi-lodr-regulations-62626bd8",
+    "file_name": "SEBI LODR Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PUBLIC_ISSUE",
+      "QIP",
+      "RIGHTS",
+      "PREFERENTIAL",
+      "BONUS",
+      "PRIVATE_PLACEMENT",
+      "ESOP",
+      "FPO",
+      "SWEAT_EQUITY",
+      "CONVERSION",
+      "WARRANTS"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 1136
+      },
+      {
+        "value": "SME",
+        "mentions": 22
+      },
+      {
+        "value": "MAIN_BOARD",
+        "mentions": 4
+      },
+      {
+        "value": "GOVERNMENT",
+        "mentions": 4
+      },
+      {
+        "value": "UNLISTED",
+        "mentions": 3
+      },
+      {
+        "value": "PRIVATE",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 206
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 93
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 80
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 55
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 34
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 32
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 7
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "sebi-pit-regulations-3e146320",
+    "file_name": "SEBI PIT Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "RIGHTS",
+      "PREFERENTIAL",
+      "BONUS",
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 33
+      },
+      {
+        "value": "UNLISTED",
+        "mentions": 3
+      }
+    ],
+    "security_types": [],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "sebi-sast-regulations-f3486698",
+    "file_name": "SEBI SAST Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "RIGHTS",
+      "PREFERENTIAL",
+      "BONUS",
+      "PUBLIC_ISSUE"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 5
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 28
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 4
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 3
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
+    "file_name": "SEBI SBEB & Sweat Equity Regulations.pdf",
+    "authority": "SEBI",
+    "document_type": "REGULATION",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "SWEAT_EQUITY",
+      "PUBLIC_ISSUE",
+      "ESOP",
+      "PREFERENTIAL",
+      "RIGHTS",
+      "BONUS",
+      "QIP",
+      "WARRANTS"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "UNLISTED",
+        "mentions": 4
+      },
+      {
+        "value": "LISTED",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 60
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 50
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 5
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 4
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 3
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "trading-approval-557b966e",
+    "file_name": "Trading_Approval.docx",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "RIGHTS",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "WARRANTS",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "trading-approval-fast-track-a025d50d",
+    "file_name": "Trading_Approval_Fast_Track.docx",
+    "authority": "NSE",
+    "document_type": "UNKNOWN",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "RIGHTS",
+      "WARRANTS"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [],
+    "security_types": [
+      {
+        "value": "WARRANTS",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "the-companies-management-and-administration-rule-55296434",
+    "file_name": "the-companies-management-and-administration-rules-2014-.pdf",
+    "authority": "MCA",
+    "document_type": "RULE",
+    "primary_issue_type": "SWEAT_EQUITY",
+    "issue_types": [
+      "SWEAT_EQUITY"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 9
+      },
+      {
+        "value": "PRIVATE",
+        "mentions": 3
+      },
+      {
+        "value": "NIDHI",
+        "mentions": 3
+      }
+    ],
+    "security_types": [
+      {
+        "value": "DEBENTURES",
+        "mentions": 28
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": false,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  },
+  {
+    "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
+    "file_name": "the-companies-registration-offices-and-fees-rules-2014.pdf",
+    "authority": "MCA",
+    "document_type": "RULE",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "UNKNOWN",
+    "company_types": [
+      {
+        "value": "PRIVATE",
+        "mentions": 2
+      },
+      {
+        "value": "PUBLIC",
+        "mentions": 2
+      }
+    ],
+    "security_types": [],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-06T21:39:52+00:00"
+  }
+]

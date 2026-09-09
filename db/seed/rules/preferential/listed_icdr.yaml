@@ -1,0 +1,271 @@
+# Preferential issue by a LISTED issuer — SEBI (ICDR) Regulations, 2018, Chapter V.
+#
+# Every rule below is anchored to a provision already in the database and its
+# requirement text is drawn from that provision. Nothing here is invented.
+# All rules load as PENDING; only a qualified human reviewer may approve them.
+meta:
+  route: PREFERENTIAL
+  authority: SEBI
+  instrument: "SEBI (ICDR) Regulations, 2018"
+  default_effective_from: "2018-09-11"   # date of the gazette notification
+
+rules:
+  - rule_code: PREF-L-001
+    title: Special resolution of shareholders
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part II reg.160"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 160(b)"
+    requirement: >-
+      A listed issuer making a preferential issue of specified securities shall ensure that
+      a special resolution has been passed by its shareholders.
+    trigger:
+      text: "issue route is preferential"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "a special resolution has been passed by the shareholders"
+        ast: { op: exists, field: issue.special_resolution_date }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "A special resolution of shareholders is required for a preferential issue."
+    approvals:
+      - approval_code: PREF-L-APR-SR
+        approval_type: SHAREHOLDER_SPECIAL
+        name: "Special resolution approving the preferential issue"
+        authority: SEBI
+        stage: PRE_ISSUE
+    documents:
+      - requirement_code: PREF-L-DOC-SR
+        name: "Certified copy of the special resolution and the notice with explanatory statement"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: SEBI
+
+  - rule_code: PREF-L-002
+    title: Allotted equity shares must be fully paid up
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: EQUITY_SHARES, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part II reg.160"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 160(a)"
+    requirement: >-
+      All equity shares allotted by way of preferential issue shall be made fully paid up
+      at the time of the allotment.
+    trigger:
+      text: "preferential issue of equity shares by a listed issuer"
+      ast:
+        op: AND
+        args:
+          - { op: eq, field: issue.type, value: PREFERENTIAL }
+          - { op: eq, field: issue.security_type, value: EQUITY_SHARES }
+    conditions:
+      - text: "the shares will be fully paid up at the time of allotment"
+        ast: { op: eq, field: issue.fully_paid_at_allotment, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "Equity shares allotted on a preferential basis must be fully paid up at allotment."
+
+  - rule_code: PREF-L-003
+    title: Allottees' existing holdings must be dematerialised
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part II reg.160"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 160(c)"
+    requirement: >-
+      All equity shares held by the proposed allottees in the issuer shall be in dematerialised
+      form before an application seeking in-principle approval is made by the issuer to the
+      stock exchange(s) where its equity shares are listed.
+    trigger:
+      text: "preferential issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "all equity shares held by the proposed allottees are in dematerialised form"
+        ast: { op: eq, field: issue.all_allottees_demat, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Every proposed allottee's existing shareholding must be in demat form before the
+      in-principle application is made to the exchange.
+
+  - rule_code: PREF-L-004
+    title: Monitoring agency for an issue above one hundred crore rupees
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part II reg.162A(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 162A(1)"
+    requirement: >-
+      If the issue size exceeds one hundred crore rupees, the issuer shall make arrangements
+      for the use of proceeds of the issue to be monitored by a credit rating agency
+      registered with the Board.
+    trigger:
+      text: "preferential issue with consideration exceeding Rs 100 crore"
+      ast:
+        op: AND
+        args:
+          - { op: eq, field: issue.type, value: PREFERENTIAL }
+          - { op: gt, field: computed.issue_consideration, value: 1000000000 }
+    conditions:
+      - text: "a registered credit rating agency has been appointed to monitor use of proceeds"
+        ast: { op: eq, field: issue.monitoring_agency_appointed, value: true }
+    exceptions:
+      - exception_code: PREF-L-004-X1
+        description: "Issuer is a bank, public financial institution or insurance company"
+        effect: NOT_APPLICABLE
+        source:
+          citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part II reg.162A(1) proviso"
+          reference: "SEBI (ICDR) Regulations, 2018, reg. 162A(1), proviso"
+        text: "the issuer is a bank, public financial institution or insurance company"
+        ast: { op: in, field: company.entity_class, value: [BANK, PUBLIC_FINANCIAL_INSTITUTION, INSURANCE_COMPANY] }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "An issue above Rs 100 crore requires a SEBI-registered monitoring agency."
+    filings:
+      - filing_code: PREF-L-FIL-MON
+        filing_name: "Monitoring agency report uploaded on the website and submitted to the exchange"
+        authority: SEBI
+        trigger_event: FINANCIAL_YEAR_END
+        stage: ONGOING
+        deadlines:
+          - anchor_event: FINANCIAL_YEAR_END
+            direction: AFTER
+            offset_value: 45
+            offset_unit: DAYS
+            day_type: CALENDAR
+            description: "Within forty five days from the end of each quarter"
+            source_reference: "SEBI (ICDR) Regulations, 2018, reg. 162A(4)"
+
+  - rule_code: PREF-L-005
+    title: Disclosures in the explanatory statement
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part III reg.163(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 163(1)"
+    requirement: >-
+      The issuer shall, in addition to the disclosures required under the Companies Act, 2013
+      or any other applicable law, disclose the prescribed particulars in the explanatory
+      statement to the notice for the general meeting proposed for passing the special
+      resolution, including the objects of the preferential issue, the maximum number of
+      specified securities to be issued and the intent of the promoters.
+    trigger:
+      text: "preferential issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "the explanatory statement containing the prescribed disclosures has been prepared"
+        ast: { op: eq, field: issue.explanatory_statement_prepared, value: true }
+    result_if_pass: PASS
+    result_if_fail: WARNING
+    severity: WARNING
+    message: >-
+      The explanatory statement to the general-meeting notice must carry the disclosures
+      prescribed by regulation 163(1).
+    documents:
+      - requirement_code: PREF-L-DOC-EXPL
+        name: "Explanatory statement with regulation 163(1) disclosures"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: SEBI
+
+  - rule_code: PREF-L-006
+    title: Pricing floor where shares have been listed for 90 trading days or more
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: EQUITY_SHARES, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part IV reg.164(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 164(1)"
+    requirement: >-
+      If the equity shares of the issuer have been listed on a recognised stock exchange for a
+      period of 90 trading days or more as on the relevant date, the price of the equity shares
+      to be allotted pursuant to the preferential issue shall be not less than the higher of the
+      benchmarks specified in regulation 164(1).
+    trigger:
+      text: "preferential issue of equity shares, listed 90 trading days or more"
+      ast:
+        op: AND
+        args:
+          - { op: eq, field: issue.type, value: PREFERENTIAL }
+          - { op: eq, field: issue.security_type, value: EQUITY_SHARES }
+          - { op: gte, field: issue.listed_trading_days, value: 90 }
+    conditions:
+      # The benchmark itself depends on volume-weighted market data this system
+      # does not hold, so the rule asks for the determined floor price rather
+      # than computing it. Absent that, the outcome is REVIEW_REQUIRED.
+      - text: "the minimum price under regulation 164(1) has been determined and certified"
+        ast: { op: exists, field: issue.floor_price_determined }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      The floor price under regulation 164(1) must be determined from market data. This
+      platform does not hold VWAP data and cannot compute or verify it.
+    documents:
+      - requirement_code: PREF-L-DOC-PRICE
+        name: "Certificate on pricing from a practising chartered accountant or company secretary"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: SEBI
+
+  - rule_code: PREF-L-007
+    title: Lock-in of securities allotted to promoters and the promoter group
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part V reg.167(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 167(1)"
+    requirement: >-
+      The specified securities allotted on a preferential basis to the promoters or promoter
+      group, and the equity shares allotted pursuant to exercise of options attached to warrants
+      issued on a preferential basis to the promoters or the promoter group, shall be locked-in
+      for the period specified in regulation 167(1).
+    trigger:
+      text: "preferential allotment to a promoter or the promoter group"
+      ast:
+        op: AND
+        args:
+          - { op: eq, field: issue.type, value: PREFERENTIAL }
+          - { op: eq, field: issue.any_allottee_is_promoter, value: true }
+    conditions:
+      - text: "the allottees have confirmed that the allotted securities will be locked in"
+        ast: { op: eq, field: issue.lock_in_confirmed, value: true }
+    result_if_pass: PASS
+    result_if_fail: WARNING
+    severity: WARNING
+    message: "Securities allotted to promoters on a preferential basis are subject to lock-in."
+    documents:
+      - requirement_code: PREF-L-DOC-LOCKIN
+        name: "Confirmation of lock-in with distinctive numbers and lock-in period"
+        stage: POST_ALLOTMENT
+        necessity: MANDATORY
+        authority: SEBI
+
+  - rule_code: PREF-L-008
+    title: Lock-in of securities allotted to persons other than promoters
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter V Part V reg.167(2)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 167(2)"
+    requirement: >-
+      The specified securities allotted on a preferential basis to persons other than the
+      promoters and promoter group, and the equity shares allotted pursuant to exercise of
+      options attached to warrants issued on a preferential basis to such persons, shall be
+      locked-in for a period of six months from the date of trading approval.
+    trigger:
+      text: "preferential allotment to a person other than a promoter"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "the allottees have confirmed that the allotted securities will be locked in"
+        ast: { op: eq, field: issue.lock_in_confirmed, value: true }
+    result_if_pass: PASS
+    result_if_fail: WARNING
+    severity: WARNING
+    message: >-
+      Securities allotted to non-promoters are locked in for six months from the date of
+      trading approval.

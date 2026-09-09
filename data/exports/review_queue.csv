@@ -1,0 +1,35 @@
+kind,item,severity,detail,action_required
+MISSING_SOURCE,COMPANIES_ACT_2013,BLOCKER,"Primary law (P0) for the V1 routes. Every official channel tried refused automated access: mca.gov.in returns HTTP 403 to scripted clients, and indiacode.gov.in presents a certificate that does not match its hostname and serves a JavaScript shell instead of the PDF.","Download the Companies Act, 2013 **as amended to date** manually and place it in corpus/originals/, then re-run p00_inventory.py. As-enacted text is not sufficient: section 42 was wholly substituted by the Companies (Amendment) Act, 2017 w.e.f. 07-08-2018."
+MISSING_SOURCE,MCA_FORM_INSTRUCTION_KITS,GAP,"PAS-3, MGT-14, SH-7 instruction kits absent; needed for filing field-level rules.","Supply the document, or leave dependent rules unauthored."
+MISSING_SOURCE,SEBI_CIRCULARS_AND_MASTER_CIRCULARS,GAP,Absent; ICDR/LODR operational clarifications rest on these.,"Supply the document, or leave dependent rules unauthored."
+MISSING_SOURCE,NSE_CIRCULAR_NSE_CML_2023_51,GAP,"Cited by 'Points to remember_28(1)' as gating the >Rs.100cr preferential issue-summary requirement, but not supplied.","Supply the document, or leave dependent rules unauthored."
+CLASSIFICATION,BSE_FAQ_on_Listing.pdf,REVIEW,issue_type_confidence=0.54,Confirm authority / document type / issue type
+CLASSIFICATION,281_QIP_InvITs_0_20260504153924.docx,REVIEW,document_type_confidence=0.56; issue_type_confidence=0.56,Confirm authority / document type / issue type
+CLASSIFICATION,281_QIP_REITS_0_20260504154156.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type
+CLASSIFICATION,Companies (Share Capital and Debentures) Rules.pdf,REVIEW,issue_type_confidence=0.48,Confirm authority / document type / issue type
+CLASSIFICATION,Points to remember_post allotment.docx,REVIEW,authority_confidence=0.55; document_type_confidence=0.55,Confirm authority / document type / issue type
+CLASSIFICATION,Part I.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,Part II.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,T+2 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,T+3 FPO if NSE is not Designated Stock Exchange.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,T+3 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,T+4 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,T+5 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
+CLASSIFICATION,Final_Listing_Preferential.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type
+CLASSIFICATION,Final_Listing_Preferential_REIT.doc,REVIEW,authority_confidence=0.34; issue_type_confidence=0.51,Confirm authority / document type / issue type
+CLASSIFICATION,InPrinciple_Approval_InvITs_0_1.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
+CLASSIFICATION,InPrinciple_Approval_REIT_0_0.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
+CLASSIFICATION,Post_allotment_InvITs_0_0_20260504153537.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type
+CLASSIFICATION,Post_allotment__Pref_REIT_0_20260504153658.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type
+CLASSIFICATION,Checklist_Preferential_issue_Pre.docx,REVIEW,authority_confidence=0.5,Confirm authority / document type / issue type
+CLASSIFICATION,Extract of ICDR.pdf,REVIEW,authority_confidence=0.54; document_type_confidence=0.51; issue_type_confidence=0.51,Confirm authority / document type / issue type
+CLASSIFICATION,Points to remember_28(1).docx,REVIEW,authority_confidence=0.59; document_type_confidence=0.56,Confirm authority / document type / issue type
+CLASSIFICATION,Preferential Issue_FAQs.docx,REVIEW,document_type_confidence=0.53,Confirm authority / document type / issue type
+CLASSIFICATION,QIP_Post_Allotment_InvITs_0_20260504154107.docx,REVIEW,issue_type_confidence=0.59,Confirm authority / document type / issue type
+CLASSIFICATION,QIP_Post_Allotment_REITS_0_20260504154256.docx,REVIEW,issue_type_confidence=0.59,Confirm authority / document type / issue type
+CLASSIFICATION,Post_allotment-Rights.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
+CLASSIFICATION,Trading_Approval.docx,REVIEW,authority_confidence=0.0; issue_type_confidence=0.52,Confirm authority / document type / issue type
+CLASSIFICATION,SEBI LODR Regulations.pdf,REVIEW,issue_type_confidence=0.4,Confirm authority / document type / issue type
+CLASSIFICATION,Trading_Approval.docx,REVIEW,document_type_confidence=0.6; issue_type_confidence=0.49,Confirm authority / document type / issue type
+CLASSIFICATION,Trading_Approval_Fast_Track.docx,REVIEW,document_type_confidence=0.6; issue_type_confidence=0.49,Confirm authority / document type / issue type
+CLASSIFICATION,Trading_Approval_InvITs.docx,REVIEW,document_type_confidence=0.57,Confirm authority / document type / issue type

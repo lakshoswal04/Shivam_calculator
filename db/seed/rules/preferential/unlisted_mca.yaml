@@ -1,0 +1,103 @@
+# Preferential issue by an UNLISTED company — Companies (Share Capital and
+# Debentures) Rules, 2014, rule 13. Rule 13 gives effect to section 62(1)(c)
+# of the Companies Act, 2013; the Act itself is not yet in the corpus, so the
+# rules below are drawn only from the text of rule 13.
+meta:
+  route: PREFERENTIAL
+  authority: MCA
+  instrument: "Companies (Share Capital and Debentures) Rules, 2014"
+  default_effective_from: "2014-04-01"
+
+rules:
+  - rule_code: PREF-U-001
+    title: Preferential offer must be authorised by special resolution
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: UNLISTED, security_type: ANY, exchange: NONE }
+    source:
+      citation: "Companies (Share Capital and Debentures) Rules, 2014 r.13(1)"
+      reference: "Companies (Share Capital and Debentures) Rules, 2014, rule 13(1)"
+    requirement: >-
+      For the purposes of clause (c) of sub-section (1) of section 62, if authorised by a
+      special resolution passed in a general meeting, shares may be issued by any company in
+      any manner whatsoever including by way of a preferential offer.
+    trigger:
+      text: "preferential offer by an unlisted company"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "a special resolution has been passed in a general meeting"
+        ast: { op: exists, field: issue.special_resolution_date }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "A preferential offer must be authorised by a special resolution in general meeting."
+    approvals:
+      - approval_code: PREF-U-APR-SR
+        approval_type: SHAREHOLDER_SPECIAL
+        name: "Special resolution authorising the preferential offer"
+        authority: MCA
+        stage: PRE_ISSUE
+      - approval_code: PREF-U-APR-BOARD
+        approval_type: BOARD
+        name: "Board resolution approving the preferential offer"
+        authority: MCA
+        stage: PRE_ISSUE
+    documents:
+      - requirement_code: PREF-U-DOC-SR
+        name: "Certified copy of the special resolution"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: MCA
+
+  - rule_code: PREF-U-002
+    title: Explanatory statement disclosures for a preferential offer
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: UNLISTED, security_type: ANY, exchange: NONE }
+    source:
+      citation: "Companies (Share Capital and Debentures) Rules, 2014 r.13(2)(d)"
+      reference: "Companies (Share Capital and Debentures) Rules, 2014, rule 13(2)(d)"
+    requirement: >-
+      The company shall make the disclosures prescribed by rule 13(2)(d) in the explanatory
+      statement annexed to the notice of the general meeting pursuant to section 102 of the Act.
+    trigger:
+      text: "preferential offer by an unlisted company"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "the explanatory statement with the prescribed disclosures has been prepared"
+        ast: { op: eq, field: issue.explanatory_statement_prepared, value: true }
+    result_if_pass: PASS
+    result_if_fail: WARNING
+    severity: WARNING
+    message: >-
+      The notice of the general meeting must annex an explanatory statement carrying the
+      disclosures prescribed by rule 13(2)(d).
+    documents:
+      - requirement_code: PREF-U-DOC-EXPL
+        name: "Explanatory statement under section 102 with rule 13(2)(d) disclosures"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: MCA
+
+  - rule_code: PREF-U-003
+    title: Listed issuers must follow the SEBI route
+    issue_type: PREFERENTIAL
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies (Share Capital and Debentures) Rules, 2014 r.13(2)"
+      reference: "Companies (Share Capital and Debentures) Rules, 2014, rule 13(2)"
+    requirement: >-
+      Where the preferential offer of shares or other securities is made by a company whose
+      shares or other securities are listed on a recognised stock exchange, such preferential
+      offer shall be made in accordance with the provisions of the Act and the regulations made
+      by the Securities and Exchange Board.
+    trigger:
+      text: "preferential offer by a listed company"
+      ast: { op: eq, field: issue.type, value: PREFERENTIAL }
+    conditions:
+      - text: "the issuer is listed, so the SEBI ICDR requirements in Chapter V apply"
+        ast: { op: eq, field: company.listed_status, value: LISTED }
+    result_if_pass: PASS
+    result_if_fail: NOT_APPLICABLE
+    severity: INFO
+    message: >-
+      A listed issuer's preferential offer is governed by the SEBI (ICDR) Regulations in
+      addition to the Companies Act and these Rules.

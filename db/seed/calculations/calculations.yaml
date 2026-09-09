@@ -1,0 +1,105 @@
+# Calculation definitions (PRD §15.1).
+#
+# The formula text here is the human-readable and auditable definition; the
+# arithmetic is performed by the correspondingly-coded function registered in
+# backend/app/domain/calc_engine.py. Storing the definition separately is what
+# lets an assessment pin the exact version it used.
+meta:
+  default_effective_from: "2014-04-01"
+  source:
+    # Capital arithmetic follows from the capital structure itself rather than
+    # from any single provision; the Share Capital Rules are recorded as the
+    # governing instrument for share-capital concepts.
+    citation: "Companies (Share Capital and Debentures) Rules, 2014"
+    reference: "Companies (Share Capital and Debentures) Rules, 2014"
+
+calculations:
+  - calc_code: CALC-AUTH-SHARES
+    name: Authorised shares
+    issue_type: GENERAL
+    formula: "authorised_capital / face_value"
+    output_name: authorised_shares
+    output_unit: shares
+    rounding_mode: FLOOR
+    decimal_places: 0
+    required_inputs: [capital.authorised_capital, capital.face_value]
+
+  - calc_code: CALC-AVAIL-SHARES
+    name: Available authorised shares
+    issue_type: GENERAL
+    formula: "authorised_shares - issued_shares"
+    output_name: available_shares
+    output_unit: shares
+    rounding_mode: FLOOR
+    decimal_places: 0
+    required_inputs: [capital.authorised_capital, capital.face_value, capital.issued_shares]
+
+  - calc_code: CALC-NOMINAL-INC
+    name: Nominal capital increase
+    issue_type: GENERAL
+    formula: "new_shares * face_value"
+    output_name: nominal_increase
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [issue.shares_proposed, issue.face_value]
+
+  - calc_code: CALC-CONSIDERATION
+    name: Issue consideration
+    issue_type: GENERAL
+    formula: "new_shares * issue_price"
+    output_name: issue_consideration
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [issue.shares_proposed, issue.issue_price]
+
+  - calc_code: CALC-PREMIUM
+    name: Premium per share
+    issue_type: GENERAL
+    formula: "issue_price - face_value"
+    output_name: premium_per_share
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [issue.issue_price, issue.face_value]
+
+  - calc_code: CALC-PREMIUM-TOTAL
+    name: Total securities premium
+    issue_type: GENERAL
+    formula: "(issue_price - face_value) * new_shares"
+    output_name: total_premium
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [issue.issue_price, issue.face_value, issue.shares_proposed]
+
+  - calc_code: CALC-POST-SHARES
+    name: Post-issue shares
+    issue_type: GENERAL
+    formula: "existing_shares + new_shares"
+    output_name: post_issue_shares
+    output_unit: shares
+    rounding_mode: FLOOR
+    decimal_places: 0
+    required_inputs: [capital.issued_shares, issue.shares_proposed]
+
+  - calc_code: CALC-POST-CAPITAL
+    name: Post-issue paid-up capital
+    issue_type: GENERAL
+    formula: "paid_up_capital + (new_shares * face_value)"
+    output_name: post_issue_paid_up
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [capital.paid_up_capital, issue.shares_proposed, issue.face_value]
+
+  - calc_code: CALC-RIGHTS-ENT
+    name: Rights entitlement
+    issue_type: RIGHTS
+    formula: "eligible_shares * ratio_num / ratio_den"
+    output_name: rights_entitlement
+    output_unit: shares
+    rounding_mode: NONE
+    decimal_places: 4
+    required_inputs: [issue.eligible_shares, issue.rights_ratio_num, issue.rights_ratio_den]

@@ -1,0 +1,4283 @@
+{
+  "generated_at": "2026-09-06T21:38:47+00:00",
+  "corpus_root": "/Users/lakshoswal04/Desktop/Calculator_pdfs/corpus",
+  "counts": {
+    "documents": 53,
+    "containers": 5,
+    "by_authority": {
+      "NSE": 30,
+      "UNKNOWN": 9,
+      "SEBI": 6,
+      "BSE": 4,
+      "MCA": 4
+    },
+    "by_document_type": {
+      "CHECKLIST": 26,
+      "UNKNOWN": 15,
+      "REGULATION": 6,
+      "RULE": 4,
+      "FAQ": 1,
+      "LISTING_REQUIREMENT": 1
+    },
+    "by_scope": {
+      "COMPANY": 39,
+      "REIT_INVIT": 14
+    },
+    "by_priority": {
+      "P2": 39,
+      "P0": 10,
+      "P3": 3,
+      "P1": 1
+    },
+    "needs_review": 30
+  },
+  "duplicates_exact": {},
+  "duplicate_title_candidates": {
+    "national stock exchange of india limited | NSE": [
+      "Form of Listing Aplication.docx",
+      "T+2 FPO.pdf",
+      "T+3 FPO if NSE is not Designated Stock Exchange.pdf",
+      "T+3 FPO.pdf",
+      "T+4 FPO.pdf",
+      "T+5 FPO.pdf"
+    ],
+    "sr. no. | list of documents/ details to be submitted | yes/no/not applicable | UNKNOWN": [
+      "InPrinciple_Approval_InvITs_0_1.docx",
+      "InPrinciple_Approval_REIT_0_0.docx",
+      "Checklist_Preferential_issue_Pre.docx"
+    ],
+    "list of documents/details required for listing of units/ securities allotted on  | NSE": [
+      "Post_allotment_InvITs_0_0_20260504153537.docx",
+      "Post_allotment__Pref_REIT_0_20260504153658.docx"
+    ],
+    "sr. no. | documents to be submitted | yes/no/not applicable | NSE": [
+      "Post_allotment_Rights_0.docx",
+      "In_principle_approval_-_Rights.docx"
+    ],
+    "of shares allotted under qip | NSE": [
+      "QIP_Post_Allotment_0_0.docx",
+      "QIP_Post_Allotment_REITS_0_20260504154256.docx"
+    ],
+    "checklist of documents/ details to be submitted for listing of rights entitlemen | NSE": [
+      "Rights_Entitlement_-_Checklist_-_Final.docx",
+      "Rights_Entitlement_Checklist.pdf"
+    ],
+    "checklist of documents/ details to be submitted for trading approval for listing | NSE": [
+      "Trading_Approval.docx",
+      "Trading_Approval_Fast_Track.docx"
+    ]
+  },
+  "documents": [
+    {
+      "document_id": "bse-checklist-direct-listing-3157e150",
+      "file_name": "BSE_Checklist_Direct_Listing.doc",
+      "local_file_path": "fetched/BSE_Checklist_Direct_Listing.doc",
+      "file_type": "doc",
+      "file_size_bytes": 136192,
+      "sha256": "3157e150399fd66de84e2133b4f34187c0bb1296fb8a7d2c848c0766baff8cfb",
+      "authority": "BSE",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:https://www.bseindia.com/downloads1/CHECKLIST_FOR_DIRECT_LISTING_Nation_wide.doc"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "CHECKLIST FOR LISTING COMPANIES, UNDER DIRECT LISTING",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 0.85,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.71,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2014-04-01",
+          "raw": "April 1, 2014"
+        },
+        {
+          "iso": "2015-04-17",
+          "raw": "April 17, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": "https://www.bseindia.com/downloads1/CHECKLIST_FOR_DIRECT_LISTING_Nation_wide.doc",
+      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "bse-faq-on-listing-facc6804",
+      "file_name": "BSE_FAQ_on_Listing.pdf",
+      "local_file_path": "fetched/BSE_FAQ_on_Listing.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 550972,
+      "sha256": "facc680463cca862f41352683b241496404297b4a0e639bee29d8a8b916fbd30",
+      "authority": "BSE",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:https://www.bseindia.com/downloads1/FAQ_on_Listing.pdf"
+      ],
+      "document_type": "FAQ",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "FAQ",
+      "title": "FREQUENTLY ASKED QUESTIONS",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 2.74,
+          "evidence": [
+            "head:\\bQIP\\b x1",
+            "body:\\bQIP\\b x6",
+            "body:qualified institutions placement x1"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.98,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x7"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.7,
+          "evidence": [
+            "body:rights issue x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.54,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P1",
+      "dates_found_in_text": [
+        {
+          "iso": "2017-03-10",
+          "raw": "March 10, 2017"
+        },
+        {
+          "iso": "2013-01-24",
+          "raw": "January 24, 2013"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": "https://www.bseindia.com/downloads1/FAQ_on_Listing.pdf",
+      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "page_count": 7,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.54"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
+      "file_name": "BSE_InPrinciple_PrivatePlacement_DebtInstruments.doc",
+      "local_file_path": "fetched/BSE_InPrinciple_PrivatePlacement_DebtInstruments.doc",
+      "file_type": "doc",
+      "file_size_bytes": 7352,
+      "sha256": "bb498266265ab68bd669fb48933bfd12fadfee628053e0aeb95e0f1cefe60a99",
+      "authority": "BSE",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:https://www.bseindia.com/downloads1/In_principle_approval_of_PPDI.doc"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Documents / Information for in-principle approval of Private Placement Issue of Debt (PPDI)",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 1.68,
+          "evidence": [
+            "head:private placement x1",
+            "body:private placement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "PRIVATE_PLACEMENT",
+      "issue_type_confidence": 0.83,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": "https://www.bseindia.com/downloads1/In_principle_approval_of_PPDI.doc",
+      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "bse-post-issue-checklist-1d331cda",
+      "file_name": "BSE_Post_Issue_Checklist.doc",
+      "local_file_path": "fetched/BSE_Post_Issue_Checklist.doc",
+      "file_type": "doc",
+      "file_size_bytes": 70656,
+      "sha256": "1d331cdaed32bf1ba7740902cad675ea7d72e89083a02a7539baf7881e6b089c",
+      "authority": "BSE",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:https://www.bseindia.com/downloads/IPP_%20Post_Issue_Final.doc"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Documents required for granting listing approvals, for the securities issued under Institutional Placement Programme (IPP) - Post Allotment",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": "https://www.bseindia.com/downloads/IPP_%20Post_Issue_Final.doc",
+      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "281-qip-invits-0-20260504153924-8caab4a5",
+      "file_name": "281_QIP_InvITs_0_20260504153924.docx",
+      "local_file_path": "originals/281_QIP_InvITs_0_20260504153924.docx",
+      "file_type": "docx",
+      "file_size_bytes": 40780,
+      "sha256": "8caab4a5910d6c10b8062405cd8b62dc42a513dec47597d3a45844920f0e9ddd",
+      "authority": "NSE",
+      "authority_confidence": 0.84,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.56,
+      "document_type_evidence": [
+        "head:in-?principle approval x1",
+        "body:listing application x1",
+        "body:in-?principle approval x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Format of the confirmation to be submitted on the letter head of the company:",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.9,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x3"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.12,
+          "evidence": [
+            "name:\\bQIP\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.56,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 10,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.56",
+        "issue_type_confidence=0.56"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "281-qip-reits-0-20260504154156-975ba7b5",
+      "file_name": "281_QIP_REITS_0_20260504154156.docx",
+      "local_file_path": "originals/281_QIP_REITS_0_20260504154156.docx",
+      "file_type": "docx",
+      "file_size_bytes": 39596,
+      "sha256": "975ba7b504883e435d77731b015b9786d977e55225a7be2b03d561b2fe36db1e",
+      "authority": "NSE",
+      "authority_confidence": 0.74,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.81,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2",
+        "body:list of (documents|details) x4",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x3",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x3"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "issued under SEBI (Real Estate Investment Trusts) Regulations, 2014",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.94,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x4"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.82,
+          "evidence": [
+            "name:\\bQIP\\b x1",
+            "body:\\bQIP\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.47,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 14,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.47"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "checklist-recommencement-of-trading-e30818a4",
+      "file_name": "Checklist_Recommencement_of_Trading.xlsx",
+      "local_file_path": "originals/Checklist_Recommencement_F_extracted/Checklist_Recommencement/Checklist_Recommencement_of_Trading.xlsx",
+      "file_type": "xlsx",
+      "file_size_bytes": 25384,
+      "sha256": "e30818a46e615597695fc36f2c26d979a9681875c9928691d90be21a5ba463d3",
+      "authority": "NSE",
+      "authority_confidence": 0.86,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "head:\\bNEAPS\\b x4",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x4"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.78,
+      "document_type_evidence": [
+        "name:\\bchecklist\\b x1",
+        "head:\\bchecklist\\b x2",
+        "body:\\bchecklist\\b x3",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "[sheet: Instructions]",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 2,
+      "in_container": "originals/Checklist_Recommencement_F.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "form-of-listing-aplication-487b76f1",
+      "file_name": "Form of Listing Aplication.docx",
+      "local_file_path": "originals/Checklist_Recommencement_F_extracted/Checklist_Recommencement/Form of Listing Aplication.docx",
+      "file_type": "docx",
+      "file_size_bytes": 38288,
+      "sha256": "487b76f1350ecdb230721c8fe1a71acf8be3e83c03aee9072669ae51ba089c9d",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x2",
+        "head:national stock exchange x3",
+        "head:\\bNSE\\b x4",
+        "body:national stock exchange of india limited x3",
+        "body:national stock exchange x4",
+        "body:\\bNSE\\b x5",
+        "body:\\bNEAPS\\b x3"
+      ],
+      "document_type": "LISTING_REQUIREMENT",
+      "document_type_confidence": 0.99,
+      "document_type_evidence": [
+        "head:listing application x1",
+        "body:listing application x3",
+        "body:in-?principle approval x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Checklist_Recommencement_F.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
+      "file_name": "Companies (Prospectus and Allotment of Securities) Rules.pdf",
+      "local_file_path": "originals/Companies (Prospectus and Allotment of Securities) Rules.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 220484,
+      "sha256": "1f737c304cbe9de4a6b2d87da2b94bca32b25ee00335f64cde13003f5d2a2ecd",
+      "authority": "MCA",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "name:companies\\s*\\([^)]{3,60}\\)\\s*rules x1",
+        "head:ministry of corporate affairs x1",
+        "head:companies\\s*\\([^)]{3,60}\\)\\s*rules x3",
+        "head:companies act,?\\s*2013 x2",
+        "body:ministry of corporate affairs x1",
+        "body:companies\\s*\\([^)]{3,60}\\)\\s*rules x4",
+        "body:\\bRegistrar of Companies\\b x1",
+        "body:companies act,?\\s*2013 x2"
+      ],
+      "document_type": "RULE",
+      "document_type_confidence": 0.8,
+      "document_type_evidence": [
+        "head:these rules may be called x1",
+        "head:hereby makes the following rules x1",
+        "head:\\brules,?\\s*20\\d\\d\\b x3",
+        "body:these rules may be called x1",
+        "body:hereby makes the following rules x1",
+        "body:\\brules,?\\s*20\\d\\d\\b x4"
+      ],
+      "instrument_kind": "RULES",
+      "title": "SHARE CAPITAL & DEBENTURES",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 2.24,
+          "evidence": [
+            "body:private placement x10",
+            "body:\\bPAS-4\\b x2",
+            "body:\\bPAS-5\\b x1"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.92,
+          "evidence": [
+            "body:initial public off x3"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.85,
+          "evidence": [
+            "body:bonus (issue|shares) x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "PRIVATE_PLACEMENT",
+      "issue_type_confidence": 0.64,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 11,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "companies-share-capital-and-debentures-rules-64039399",
+      "file_name": "Companies (Share Capital and Debentures) Rules.pdf",
+      "local_file_path": "originals/Companies (Share Capital and Debentures) Rules.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 457254,
+      "sha256": "640393992f3e8acfcb4d8fb4b1d38a3b4b4a1b06242b0838bd2d6a5b10941423",
+      "authority": "MCA",
+      "authority_confidence": 0.84,
+      "authority_evidence": [
+        "name:companies\\s*\\([^)]{3,60}\\)\\s*rules x1",
+        "head:companies\\s*\\([^)]{3,60}\\)\\s*rules x2",
+        "head:companies act,?\\s*2013 x2",
+        "body:ministry of corporate affairs x1",
+        "body:companies\\s*\\([^)]{3,60}\\)\\s*rules x4",
+        "body:companies act,?\\s*2013 x3"
+      ],
+      "document_type": "RULE",
+      "document_type_confidence": 0.8,
+      "document_type_evidence": [
+        "head:these rules may be called x1",
+        "head:hereby makes the following rules x1",
+        "head:\\brules,?\\s*20\\d\\d\\b x2",
+        "body:these rules may be called x1",
+        "body:hereby makes the following rules x1",
+        "body:\\brules,?\\s*20\\d\\d\\b x11"
+      ],
+      "instrument_kind": "RULES",
+      "title": "COMPANIES (SHARE CAPITAL AND DEBENTURES) RULES, 2014",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 1.2,
+          "evidence": [
+            "body:sweat equity x39"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x12"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.98,
+          "evidence": [
+            "body:rights issue x5"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.98,
+          "evidence": [
+            "body:bonus (issue|shares) x5"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 0.96,
+          "evidence": [
+            "body:employee stock option x4"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.77,
+          "evidence": [
+            "body:public issue x4"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 0.7,
+          "evidence": [
+            "body:private placement x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.59,
+          "evidence": [
+            "body:\\bwarrants?\\b x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.47,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 25,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.48"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "download-post-allotment-a57e1202",
+      "file_name": "Download Post-Allotment.docx",
+      "local_file_path": "originals/Download_Post-Allotment_20260504153404_extracted/Download Post-Allotment/Download Post-Allotment.docx",
+      "file_type": "docx",
+      "file_size_bytes": 57993,
+      "sha256": "a57e120201dcba4777049afc7a945c5a2b922cf2a2850f9db47605704ecb6b87",
+      "authority": "NSE",
+      "authority_confidence": 0.78,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x4",
+        "body:national stock exchange x4",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x4"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for listing of shares/ securities issued on Preferential/Private Placement basis (Post Allotment)",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 2.34,
+          "evidence": [
+            "head:private placement x4",
+            "body:private placement x6"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x10"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.7,
+          "evidence": [
+            "body:bonus (issue|shares) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x9"
+          ]
+        }
+      ],
+      "primary_issue_type": "PRIVATE_PLACEMENT",
+      "issue_type_confidence": 0.63,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2019-08-19",
+          "raw": "August 19, 2019"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Download_Post-Allotment_20260504153404.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "points-to-remember-post-allotment-f6a19833",
+      "file_name": "Points to remember_post allotment.docx",
+      "local_file_path": "originals/Download_Post-Allotment_20260504153404_extracted/Download Post-Allotment/Points to remember_post allotment.docx",
+      "file_type": "docx",
+      "file_size_bytes": 35228,
+      "sha256": "f6a198339a9780062db4f20dec3688e3f74eac61a36caa2f26ef26995b4997a0",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.55,
+      "authority_evidence": [
+        "body:\\bNSE\\b x2",
+        "body:NSE/CML x1"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.55,
+      "document_type_evidence": [
+        "name:points to (be )?remember x1",
+        "head:points to (be )?remember x1",
+        "head:\\bguidance\\b x1",
+        "body:points to (be )?remember x1",
+        "body:\\bguidance\\b x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Points to be Remembered.",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.18,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x6"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.67,
+          "evidence": [
+            "body:\\bwarrants?\\b x4"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.68,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P3",
+      "dates_found_in_text": [
+        {
+          "iso": "2023-07-05",
+          "raw": "July 05, 2023"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Download_Post-Allotment_20260504153404.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.55",
+        "document_type_confidence=0.55"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "download-pre-allotment-ace085af",
+      "file_name": "Download_Pre-Allotment_.docx",
+      "local_file_path": "originals/Download_Pre-Allotment_.docx",
+      "file_type": "docx",
+      "file_size_bytes": 43528,
+      "sha256": "ace085af823ff28b152e2f975be94ba62ae43594a45773b9e37f580accc283bb",
+      "authority": "NSE",
+      "authority_confidence": 0.81,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x2",
+        "body:national stock exchange x2",
+        "body:\\bNSE\\b x4",
+        "body:NSE/CML x1",
+        "body:\\bNEAPS\\b x4"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.84,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2",
+        "body:list of (documents|details) x4",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x3",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x3"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "issued under QIP under Regulation 28(1) of the SEBI (LODR) Regulations, 2015",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 1.97,
+          "evidence": [
+            "head:\\bQIP\\b x1",
+            "body:\\bQIP\\b x6"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 0.7,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "QIP",
+      "issue_type_confidence": 0.65,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2021-08-13",
+          "raw": "August 13, 2021"
+        },
+        {
+          "iso": "2022-12-13",
+          "raw": "December 13, 2022"
+        },
+        {
+          "iso": "2022-12-13",
+          "raw": "December 13, 2022"
+        },
+        {
+          "iso": "2022-12-13",
+          "raw": "December 13, 2022"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "part-i-d6ff87e8",
+      "file_name": "Part I.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/Part I.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 448547,
+      "sha256": "d6ff87e89be7478c879fc14a56126b3e4b2182122e2d9539c31d4e62f94cd031",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:national stock exchange x2",
+        "head:\\bNSE\\b x2",
+        "body:national stock exchange x2",
+        "body:\\bNSE\\b x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "LETTER OF APPLICATION",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "part-ii-e68713a9",
+      "file_name": "Part II.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/Part II.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 384812,
+      "sha256": "e68713a9730accb50df737745772caa8aefb8fe1a2907974ec0d53aec84d14df",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:\\bNSE\\b x2",
+        "body:\\bNSE\\b x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "Issue Details",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 1.78,
+          "evidence": [
+            "head:public issue x3",
+            "body:public issue x3"
+          ]
+        }
+      ],
+      "primary_issue_type": "PUBLIC_ISSUE",
+      "issue_type_confidence": 0.84,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 2,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "t-2-fpo-abe9b620",
+      "file_name": "T+2 FPO.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/T+2 FPO.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 547774,
+      "sha256": "abe9b620ced680725a51215c7f7c24948d8af5d8fc006306f1bb5cbfa00923f6",
+      "authority": "NSE",
+      "authority_confidence": 0.72,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x2",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 3.36,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:further public offer x2",
+            "body:further public offer x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.91,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 2,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
+      "file_name": "T+3 FPO if NSE is not Designated Stock Exchange.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/T+3 FPO if NSE is not Designated Stock Exchange.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 348418,
+      "sha256": "6e2c4256ccf073ed7c628b06b9f3f80812b728b13535a93c91bd674ab61d98aa",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "name:\\bNSE\\b x1",
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "head:\\bNSE\\b x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 2.97,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:further public offer x1",
+            "body:further public offer x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.89,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "t-3-fpo-cccb7af1",
+      "file_name": "T+3 FPO.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/T+3 FPO.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 468616,
+      "sha256": "cccb7af15d31ebc0e7e61dd0c7d792bc4638eea9589253842d83ce8f47d36d06",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x2",
+        "head:\\bNSE\\b x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x3",
+        "body:\\bNSE\\b x1"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 3.45,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:further public offer x2",
+            "body:further public offer x3"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.91,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 3,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "t-4-fpo-c058fc65",
+      "file_name": "T+4 FPO.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/T+4 FPO.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 569429,
+      "sha256": "c058fc65cca6e50b8d4ca3b417a9623a8bb465f2279280efbd2b8d08ea261d19",
+      "authority": "NSE",
+      "authority_confidence": 0.68,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x2",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x4"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 5.17,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:\\bFPO\\b x1",
+            "head:further public offer x2",
+            "body:\\bFPO\\b x1",
+            "body:further public offer x4"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.56,
+          "evidence": [
+            "body:public issue x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.85,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 4,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "t-5-fpo-636f879e",
+      "file_name": "T+5 FPO.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Final Listing_Checklist/T+5 FPO.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 433417,
+      "sha256": "636f879e98cdacf66586637c228027f8ccd27e97d60d8d672f6284fc73416fd2",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.0,
+      "document_type_evidence": [],
+      "instrument_kind": "UNKNOWN",
+      "title": "NATIONAL STOCK EXCHANGE OF INDIA LIMITED",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 2.97,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:further public offer x1",
+            "body:further public offer x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.89,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.0"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
+      "file_name": "FPO_Inprinciple_Checklist_Revised.pdf",
+      "local_file_path": "originals/FPO_Checklist_extracted/FPO_Checklist/FPO_Inprinciple_Checklist_Revised.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 230835,
+      "sha256": "21d7cd1abb5413798c2fd4cc7e956c37b91c8acc6dc5e70e908ebd47b3a90a30",
+      "authority": "NSE",
+      "authority_confidence": 0.91,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x5"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.78,
+      "document_type_evidence": [
+        "name:\\bchecklist\\b x1",
+        "head:\\bchecklist\\b x1",
+        "body:\\bchecklist\\b x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Non-Confidential",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "FPO",
+          "score": 3.52,
+          "evidence": [
+            "name:\\bFPO\\b x1",
+            "head:further public offer x2",
+            "body:further public offer x7"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.56,
+          "evidence": [
+            "body:public issue x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "FPO",
+      "issue_type_confidence": 0.79,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2023-02-15",
+          "raw": "February 15, 2023"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 7,
+      "in_container": "originals/FPO_Checklist.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "final-listing-preferential-14b337d2",
+      "file_name": "Final_Listing_Preferential.docx",
+      "local_file_path": "originals/Final_Listing_Preferential.docx",
+      "file_type": "docx",
+      "file_size_bytes": 57587,
+      "sha256": "14b337d20c407cbba18e741e763bace1b0188534f77a549fcf847ff3b37b440a",
+      "authority": "NSE",
+      "authority_confidence": 0.7,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "body:\\bNSE\\b x2",
+        "body:\\bNEAPS\\b x5"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.63,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for Final trading approval of shares",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.83,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x2"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 1.68,
+          "evidence": [
+            "head:private placement x1",
+            "body:private placement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.47,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2019-08-19",
+          "raw": "August 19, 2019"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.47"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "final-listing-preferential-reit-7a090df0",
+      "file_name": "Final_Listing_Preferential_REIT.doc",
+      "local_file_path": "originals/Final_Listing_Preferential_REIT.doc",
+      "file_type": "doc",
+      "file_size_bytes": 78336,
+      "sha256": "7a090df0a372c7524b1b231ee677bdd9f15fa62841076b53264292a54a6859b2",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.34,
+      "authority_evidence": [
+        "head:\\bSEBI\\b x1",
+        "body:\\bSEBI\\b x1"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.67,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for Final trading approval of units",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.11,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x3"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 1.68,
+          "evidence": [
+            "head:private placement x1",
+            "body:private placement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.51,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 3,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2019-11-27",
+          "raw": "November 27, 2019"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.34",
+        "issue_type_confidence=0.51"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "inprinciple-approval-invits-0-1-e53ff681",
+      "file_name": "InPrinciple_Approval_InvITs_0_1.docx",
+      "local_file_path": "originals/InPrinciple_Approval_InvITs_0_1.docx",
+      "file_type": "docx",
+      "file_size_bytes": 41374,
+      "sha256": "e53ff681efa23e9e72710037723780fd4d6f6c96ffa3ea5141130793a5ffbbf7",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.58,
+      "authority_evidence": [
+        "head:securities and exchange board of india x1",
+        "body:securities and exchange board of india x2",
+        "body:\\bSEBI\\b x10"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.6,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | List of Documents/ details to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.19,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x21"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.86,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 11,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2024-05-15",
+          "raw": "May 15, 2024"
+        },
+        {
+          "iso": "2024-05-15",
+          "raw": "May 15, 2024"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        },
+        {
+          "iso": "2024-05-15",
+          "raw": "May 15, 2024"
+        },
+        {
+          "iso": "2024-05-25",
+          "raw": "May 25, 2024"
+        },
+        {
+          "iso": "2024-05-15",
+          "raw": "May 15, 2024"
+        },
+        {
+          "iso": "2024-05-15",
+          "raw": "May 15, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.58"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "inprinciple-approval-reit-0-0-8b1d3e9b",
+      "file_name": "InPrinciple_Approval_REIT_0_0.docx",
+      "local_file_path": "originals/InPrinciple_Approval_REIT_0_0.docx",
+      "file_type": "docx",
+      "file_size_bytes": 40009,
+      "sha256": "8b1d3e9b4ce6ce0a85ffe11f4c5e3b26bd9c3079d249dbf2eff3305b6e69aa40",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.58,
+      "authority_evidence": [
+        "head:securities and exchange board of india x1",
+        "body:securities and exchange board of india x2",
+        "body:\\bSEBI\\b x10"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.6,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | List of Documents/ details to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.19,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x21"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.86,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 11,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        },
+        {
+          "iso": "2024-05-24",
+          "raw": "May 24, 2024"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.58"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
+      "file_name": "Post Allotment ( Sweat Equity )_0_0.docx",
+      "local_file_path": "originals/Post Allotment ( Sweat Equity )_0_0.docx",
+      "file_type": "docx",
+      "file_size_bytes": 48396,
+      "sha256": "85b03e429cf18ed6f5fc39c98a58777971760e36276186f9500498d757bbf102",
+      "authority": "NSE",
+      "authority_confidence": 0.84,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x5"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for listing of shares/ securities issued pursuant to Sweat Equity Shares",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 4.22,
+          "evidence": [
+            "name:sweat equity x1",
+            "head:sweat equity x7",
+            "body:sweat equity x11"
+          ]
+        }
+      ],
+      "primary_issue_type": "SWEAT_EQUITY",
+      "issue_type_confidence": 0.92,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "post-allotment-invits-0-0-20260504153537-fe5d5a08",
+      "file_name": "Post_allotment_InvITs_0_0_20260504153537.docx",
+      "local_file_path": "originals/Post_allotment_InvITs_0_0_20260504153537.docx",
+      "file_type": "docx",
+      "file_size_bytes": 43754,
+      "sha256": "fe5d5a081c0ad52d0c00cd1a6958246d2ba6c090c1818a3b7ad79e5f3a7fb9a5",
+      "authority": "NSE",
+      "authority_confidence": 0.67,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "body:national stock exchange of india limited x2",
+        "body:national stock exchange x4",
+        "body:\\bNSE\\b x8"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for listing of Units/ securities allotted on preferential basis",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.19,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x13"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 2.11,
+          "evidence": [
+            "head:private placement x2",
+            "body:private placement x3"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.47,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 3,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2016-11-29",
+          "raw": "November 29, 2016"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.47"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "post-allotment-rights-0-dd3e7518",
+      "file_name": "Post_allotment_Rights_0.docx",
+      "local_file_path": "originals/Post_allotment_Rights_0.docx",
+      "file_type": "docx",
+      "file_size_bytes": 45404,
+      "sha256": "dd3e7518d9f112cf02e01b8cb1dae807f1bbfb420cd7a3b63c0ce816d955036e",
+      "authority": "NSE",
+      "authority_confidence": 0.8,
+      "authority_evidence": [
+        "head:\\bNEAPS\\b x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x2",
+        "body:\\bNEAPS\\b x5"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.78,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | Documents to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 2.6,
+          "evidence": [
+            "head:rights issue x1",
+            "body:rights issue x3",
+            "body:rights entitlement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "RIGHTS",
+      "issue_type_confidence": 0.88,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2017-08-01",
+          "raw": "August 01, 2017"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "post-allotment-pref-reit-0-20260504153658-dde2a535",
+      "file_name": "Post_allotment__Pref_REIT_0_20260504153658.docx",
+      "local_file_path": "originals/Post_allotment__Pref_REIT_0_20260504153658.docx",
+      "file_type": "docx",
+      "file_size_bytes": 44132,
+      "sha256": "dde2a535531e6e74b1f04f06cd047d4998a164fc8f4adf628bb027a2c2097b32",
+      "authority": "NSE",
+      "authority_confidence": 0.67,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "body:national stock exchange of india limited x2",
+        "body:national stock exchange x4",
+        "body:\\bNSE\\b x8"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "List of documents/details required for listing of Units/ securities allotted on preferential basis",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.19,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x13"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 2.11,
+          "evidence": [
+            "head:private placement x2",
+            "body:private placement x3"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.47,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 3,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2016-12-29",
+          "raw": "December 29, 2016"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.47"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "pre-allotment-sweat-equity-4226094c",
+      "file_name": "Pre-allotment_(Sweat Equity).docx",
+      "local_file_path": "originals/Pre-allotment_(Sweat Equity).docx",
+      "file_type": "docx",
+      "file_size_bytes": 50012,
+      "sha256": "4226094ca7af070f1fda75242459560fc3eb4291c83a9599807f80eb79102cda",
+      "authority": "NSE",
+      "authority_confidence": 0.77,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x2",
+        "body:national stock exchange x2",
+        "body:\\bNEAPS\\b x4"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.77,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | List of documents/ details to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 3.97,
+          "evidence": [
+            "name:sweat equity x1",
+            "head:sweat equity x2",
+            "body:sweat equity x17"
+          ]
+        }
+      ],
+      "primary_issue_type": "SWEAT_EQUITY",
+      "issue_type_confidence": 0.92,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "checklist-preferential-issue-pre-ffe507ab",
+      "file_name": "Checklist_Preferential_issue_Pre.docx",
+      "local_file_path": "originals/Preferential_Pre_Allotment_20260616122325_extracted/Preferential_Pre_Allotment/Preferential_Pre_Allotment_/Checklist_Preferential_issue_Pre.docx",
+      "file_type": "docx",
+      "file_size_bytes": 63899,
+      "sha256": "ffe507ab14abd6afe22390a0eb4c36dcdec0c32546e6e28a1cbaa57ca0cda291",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.5,
+      "authority_evidence": [
+        "head:\\bSEBI\\b x2",
+        "body:securities and exchange board of india x1",
+        "body:\\bSEBI\\b x32"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.63,
+      "document_type_evidence": [
+        "name:\\bchecklist\\b x1",
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | List of Documents/ details to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 3.31,
+          "evidence": [
+            "name:preferential (issue|allotment|basis) x1",
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x25"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bESOP\\b x1"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bQIP\\b x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.67,
+          "evidence": [
+            "body:\\bwarrants?\\b x4"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.76,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2013-01-24",
+          "raw": "January 24, 2013"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        },
+        {
+          "iso": "2024-05-21",
+          "raw": "May 21, 2024"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.5"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "extract-of-icdr-189995d8",
+      "file_name": "Extract of ICDR.pdf",
+      "local_file_path": "originals/Preferential_Pre_Allotment_20260616122325_extracted/Preferential_Pre_Allotment/Preferential_Pre_Allotment_/Extract of ICDR.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 892014,
+      "sha256": "189995d831638b9fe6d2bb0beadf79ca48b18375ccc49344623c77ba5506b7a3",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.54,
+      "authority_evidence": [
+        "body:securities and exchange board of india x16"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.51,
+      "document_type_evidence": [
+        "head:\\bact,?\\s*2013\\b x3",
+        "body:\\bact,?\\s*2013\\b x8"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "CHAPTER V  PREFERENTIAL ISSUE",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.29,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x3",
+            "body:preferential (issue|allotment|basis) x74"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.85,
+          "evidence": [
+            "head:qualified institutions placement x1",
+            "body:qualified institutions placement x1"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 1.26,
+          "evidence": [
+            "body:initial public off x1",
+            "body:public issue x1"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.85,
+          "evidence": [
+            "body:rights issue x2"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x27"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.51,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P3",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 21,
+      "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.54",
+        "document_type_confidence=0.51",
+        "issue_type_confidence=0.51"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "points-to-remember-28-1-6be45481",
+      "file_name": "Points to remember_28(1).docx",
+      "local_file_path": "originals/Preferential_Pre_Allotment_20260616122325_extracted/Preferential_Pre_Allotment/Preferential_Pre_Allotment_/Points to remember_28(1).docx",
+      "file_type": "docx",
+      "file_size_bytes": 26255,
+      "sha256": "6be45481161341e460fd5374938c6aa5290db6e32de5487e8549e1e26e3fb3e1",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.59,
+      "authority_evidence": [
+        "body:\\bNSE\\b x4",
+        "body:NSE/CML x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.56,
+      "document_type_evidence": [
+        "name:points to (be )?remember x1",
+        "head:points to (be )?remember x1",
+        "head:\\bguidance\\b x1",
+        "body:points to (be )?remember x1",
+        "body:\\bguidance\\b x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Points to be Remembered",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 2.17,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x2",
+            "body:preferential (issue|allotment|basis) x5"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.86,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P3",
+      "dates_found_in_text": [
+        {
+          "iso": "2023-07-05",
+          "raw": "July 05, 2023"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.59",
+        "document_type_confidence=0.56"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "preferential-issue-faqs-0d8e781e",
+      "file_name": "Preferential Issue_FAQs.docx",
+      "local_file_path": "originals/Preferential_Pre_Allotment_20260616122325_extracted/Preferential_Pre_Allotment/Preferential_Pre_Allotment_/Preferential Issue_FAQs.docx",
+      "file_type": "docx",
+      "file_size_bytes": 2210154,
+      "sha256": "0d8e781e406e277233e15effd04ee5644ff82ae92f844e5d46c599760b0d8251",
+      "authority": "NSE",
+      "authority_confidence": 0.85,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x2",
+        "body:\\bNSE\\b x5",
+        "body:NSE/CML x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.53,
+      "document_type_evidence": [
+        "body:trading approval x5",
+        "body:in-?principle approval x3"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "FREQUENTLY ASKED QUESTIONS",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 3.51,
+          "evidence": [
+            "name:preferential (issue|allotment|basis) x1",
+            "head:preferential (issue|allotment|basis) x6",
+            "body:preferential (issue|allotment|basis) x21"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 0.77,
+          "evidence": [
+            "body:qualified institutions placement x1"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.7,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x26"
+          ]
+        }
+      ],
+      "primary_issue_type": "PREFERENTIAL",
+      "issue_type_confidence": 0.76,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-03-30",
+          "raw": "March 30, 2025"
+        },
+        {
+          "iso": "2026-09-29",
+          "raw": "September 29, 2026"
+        },
+        {
+          "iso": "2019-08-19",
+          "raw": "August 19, 2019"
+        },
+        {
+          "iso": "2019-08-19",
+          "raw": "August 19, 2019"
+        },
+        {
+          "iso": "2019-08-19",
+          "raw": "August 19, 2019"
+        },
+        {
+          "iso": "2025-03-11",
+          "raw": "March 11, 2025"
+        },
+        {
+          "iso": "2025-03-11",
+          "raw": "March 11, 2025"
+        },
+        {
+          "iso": "2022-12-13",
+          "raw": "December 13, 2022"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.53"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "qip-post-allotment-0-0-d035add2",
+      "file_name": "QIP_Post_Allotment_0_0.docx",
+      "local_file_path": "originals/QIP_Post_Allotment_0_0.docx",
+      "file_type": "docx",
+      "file_size_bytes": 47670,
+      "sha256": "d035add2de2f8302dd803838731f2617030d469dbcef92081f6001294fba290e",
+      "authority": "NSE",
+      "authority_confidence": 0.75,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x5"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.77,
+      "document_type_evidence": [
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x3",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "of shares allotted under QIP",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 3.27,
+          "evidence": [
+            "name:\\bQIP\\b x1",
+            "head:\\bQIP\\b x2",
+            "body:\\bQIP\\b x4"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 0.7,
+          "evidence": [
+            "body:private placement x1"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.7,
+          "evidence": [
+            "body:bonus (issue|shares) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.67,
+          "evidence": [
+            "body:\\bwarrants?\\b x4"
+          ]
+        }
+      ],
+      "primary_issue_type": "QIP",
+      "issue_type_confidence": 0.76,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2021-08-13",
+          "raw": "August 13, 2021"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "qip-post-allotment-invits-0-20260504154107-88791754",
+      "file_name": "QIP_Post_Allotment_InvITs_0_20260504154107.docx",
+      "local_file_path": "originals/QIP_Post_Allotment_InvITs_0_20260504154107.docx",
+      "file_type": "docx",
+      "file_size_bytes": 38760,
+      "sha256": "88791754c57ee158a85d84dd91a84a15ecf9bb3c084a9d02470367412fa218f5",
+      "authority": "NSE",
+      "authority_confidence": 0.74,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x3",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "of units allotted under QIP",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 3.16,
+          "evidence": [
+            "name:\\bQIP\\b x1",
+            "head:\\bQIP\\b x2",
+            "body:\\bQIP\\b x2"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.83,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x2"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 1.18,
+          "evidence": [
+            "head:\\bwarrants?\\b x1",
+            "body:\\bwarrants?\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.59,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 9,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2016-11-29",
+          "raw": "November 29, 2016"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.59"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "qip-post-allotment-reits-0-20260504154256-0eb97980",
+      "file_name": "QIP_Post_Allotment_REITS_0_20260504154256.docx",
+      "local_file_path": "originals/QIP_Post_Allotment_REITS_0_20260504154256.docx",
+      "file_type": "docx",
+      "file_size_bytes": 38585,
+      "sha256": "0eb9798042c84e5871f1c6a88664a44984fae8edd3ebb2e6e06911518e4b0097",
+      "authority": "NSE",
+      "authority_confidence": 0.74,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.74,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x3",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "of shares allotted under QIP",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 3.16,
+          "evidence": [
+            "name:\\bQIP\\b x1",
+            "head:\\bQIP\\b x2",
+            "body:\\bQIP\\b x2"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.83,
+          "evidence": [
+            "head:preferential (issue|allotment|basis) x1",
+            "body:preferential (issue|allotment|basis) x2"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 1.18,
+          "evidence": [
+            "head:\\bwarrants?\\b x1",
+            "body:\\bwarrants?\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.59,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 9,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2016-11-29",
+          "raw": "November 29, 2016"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        },
+        {
+          "iso": "2025-07-11",
+          "raw": "July 11, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.59"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "in-principle-approval-rights-c26498ff",
+      "file_name": "In_principle_approval_-_Rights.docx",
+      "local_file_path": "originals/Rights Issue Checklist - InvIT_0_0_extracted/Rights Issue Checklist - InvIT/In_principle_approval_-_Rights.docx",
+      "file_type": "docx",
+      "file_size_bytes": 39287,
+      "sha256": "c26498ffdf85d6c57cbd0a61accb39818131590c924b0e8acf82cfcaca48fbd0",
+      "authority": "NSE",
+      "authority_confidence": 0.67,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.79,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x3",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | Documents to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 2.96,
+          "evidence": [
+            "head:rights issue x3",
+            "body:rights issue x4",
+            "body:rights entitlement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "RIGHTS",
+      "issue_type_confidence": 0.89,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 15,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2020-01-17",
+          "raw": "January 17, 2020"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "post-allotment-rights-22c13151",
+      "file_name": "Post_allotment-Rights.docx",
+      "local_file_path": "originals/Rights Issue Checklist - InvIT_0_0_extracted/Rights Issue Checklist - InvIT/Post_allotment-Rights.docx",
+      "file_type": "docx",
+      "file_size_bytes": 47316,
+      "sha256": "22c13151b06592485283a5474cf8430d883370bdc090ac0ad1663a2ff88c1631",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.58,
+      "authority_evidence": [
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x2"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.82,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x3",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x2"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Sr. No. | Documents to be submitted | Yes/No/Not Applicable",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 2.38,
+          "evidence": [
+            "head:rights issue x1",
+            "body:rights issue x1",
+            "body:rights entitlement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "RIGHTS",
+      "issue_type_confidence": 0.87,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 15,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2016-11-29",
+          "raw": "November 29, 2016"
+        },
+        {
+          "iso": "2020-01-17",
+          "raw": "January 17, 2020"
+        },
+        {
+          "iso": "2015-07-01",
+          "raw": "July 1, 2015"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.58"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "rights-entitlement-checklist-final-54a200b1",
+      "file_name": "Rights_Entitlement_-_Checklist_-_Final.docx",
+      "local_file_path": "originals/Rights Issue Checklist - InvIT_0_0_extracted/Rights Issue Checklist - InvIT/Rights_Entitlement_-_Checklist_-_Final.docx",
+      "file_type": "docx",
+      "file_size_bytes": 33819,
+      "sha256": "54a200b14ca4f5423704ab47190ab2fe515fb3a0092b56555dff8e91ddbbce15",
+      "authority": "NSE",
+      "authority_confidence": 0.92,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x1"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.94,
+      "document_type_evidence": [
+        "name:\\bchecklist\\b x1",
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Checklist of Documents/ details to be submitted for listing of Rights Entitlements issued under Rights Issue by already listed InvIT",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 5.69,
+          "evidence": [
+            "name:rights entitlement x1",
+            "head:rights issue x3",
+            "head:rights entitlement x5",
+            "body:rights issue x3",
+            "body:rights entitlement x5"
+          ]
+        }
+      ],
+      "primary_issue_type": "RIGHTS",
+      "issue_type_confidence": 0.94,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 5,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2020-01-17",
+          "raw": "January 17, 2020"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "trading-approval-5ee5125b",
+      "file_name": "Trading_Approval.docx",
+      "local_file_path": "originals/Rights Issue Checklist - InvIT_0_0_extracted/Rights Issue Checklist - InvIT/Trading_Approval.docx",
+      "file_type": "docx",
+      "file_size_bytes": 34390,
+      "sha256": "5ee5125b71f577a286591dafcb6a799ddb72d5be43f8cef53ada56a00d6b7943",
+      "authority": "UNKNOWN",
+      "authority_confidence": 0.0,
+      "authority_evidence": [],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.72,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Checklist of Documents/ details to be submitted for Trading approval for listing of units issued under Rights Issues by already listed InvIT",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.68,
+          "evidence": [
+            "head:rights issue x1",
+            "body:rights issue x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 1.18,
+          "evidence": [
+            "head:\\bwarrants?\\b x1",
+            "body:\\bwarrants?\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.52,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 2,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "authority_confidence=0.0",
+        "issue_type_confidence=0.52"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "rights-entitlement-checklist-e0bcaa00",
+      "file_name": "Rights_Entitlement_Checklist.pdf",
+      "local_file_path": "originals/Rights_Entitlement_Checklist.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 217547,
+      "sha256": "e0bcaa0095df8475dd80d4bc8c6c5c30e6a6e701539968cdabfe7b060026ba18",
+      "authority": "NSE",
+      "authority_confidence": 0.87,
+      "authority_evidence": [
+        "head:national stock exchange of india limited x1",
+        "head:national stock exchange x1",
+        "head:\\bNSE\\b x3",
+        "body:national stock exchange of india limited x1",
+        "body:national stock exchange x1",
+        "body:\\bNSE\\b x4",
+        "body:\\bNEAPS\\b x4"
+      ],
+      "document_type": "CHECKLIST",
+      "document_type_confidence": 0.85,
+      "document_type_evidence": [
+        "name:\\bchecklist\\b x1",
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x1",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "CHECKLIST",
+      "title": "Checklist of Documents/ details to be submitted for listing of Rights Entitlements issued under",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 5.58,
+          "evidence": [
+            "name:rights entitlement x1",
+            "head:rights issue x2",
+            "head:rights entitlement x3",
+            "body:rights issue x5",
+            "body:rights entitlement x6"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 1.51,
+          "evidence": [
+            "head:\\bIPO\\b x1",
+            "body:\\bIPO\\b x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "RIGHTS",
+      "issue_type_confidence": 0.75,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2021-10-01",
+          "raw": "October 01, 2021"
+        },
+        {
+          "iso": "2020-01-22",
+          "raw": "January 22, 2020"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 3,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-depositories-participants-regulations-fb150ec0",
+      "file_name": "SEBI Depositories & Participants Regulations.pdf",
+      "local_file_path": "originals/SEBI Depositories & Participants Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 1243505,
+      "sha256": "fb150ec0a09ebfa735e5c298c54ec0f0ac6a16db0f4428a619eac799774cac53",
+      "authority": "SEBI",
+      "authority_confidence": 0.94,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x6",
+        "head:\\bSEBI\\b x1",
+        "body:securities and exchange board of india x18",
+        "body:\\bSEBI\\b x1"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.69,
+      "document_type_evidence": [
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x13"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "Page 1 of 81",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.7,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "CONVERSION",
+      "issue_type_confidence": 0.67,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2018-10-03",
+          "raw": "3rd October, 2018"
+        },
+        {
+          "iso": "2018-10-03",
+          "raw": "OCTOBER 03, 2018"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 81,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-icdr-regulations-db196f1f",
+      "file_name": "SEBI ICDR Regulations.pdf",
+      "local_file_path": "originals/SEBI ICDR Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 4288908,
+      "sha256": "db196f1f33dc5ee9346388a7241cd9416942ec8f8bc3826e74f9403b0ca0fcc6",
+      "authority": "SEBI",
+      "authority_confidence": 0.94,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x4",
+        "head:\\bSEBI\\b x1",
+        "body:securities and exchange board of india x15",
+        "body:\\bSEBI\\b x2"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.73,
+      "document_type_evidence": [
+        "name:\\bICDR\\b|\\bLODR\\b|\\bSAST\\b|\\bPIT\\b|\\bSBEB\\b x1",
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x14"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "THE GAZETTE OF INDIA",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 3.48,
+          "evidence": [
+            "head:public issue x1",
+            "body:\\bIPO\\b x33",
+            "body:initial public off x105",
+            "body:public issue x123"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 2.0,
+          "evidence": [
+            "body:rights issue x117",
+            "body:rights entitlement x23"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 1.7,
+          "evidence": [
+            "body:\\bESOP\\b x1",
+            "body:employee stock option x38"
+          ]
+        },
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 1.18,
+          "evidence": [
+            "body:sweat equity x5"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.1,
+          "evidence": [
+            "body:qualified institutions placement x26"
+          ]
+        },
+        {
+          "issue_type": "FPO",
+          "score": 1.1,
+          "evidence": [
+            "body:further public offer x45"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x88"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 1.0,
+          "evidence": [
+            "body:bonus (issue|shares) x51"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 0.92,
+          "evidence": [
+            "body:private placement x3"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.85,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x2"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x97"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.6,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2018-09-11",
+          "raw": "11th September, 2018"
+        },
+        {
+          "iso": "2018-09-11",
+          "raw": "SEPTEMBER 11, 2018"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 475,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-lodr-regulations-62626bd8",
+      "file_name": "SEBI LODR Regulations.pdf",
+      "local_file_path": "originals/SEBI LODR Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 2010833,
+      "sha256": "62626bd86a48184b7ef99bc3fc3dd38202559c227674a067aee577d98c687c8a",
+      "authority": "SEBI",
+      "authority_confidence": 0.88,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x5",
+        "head:\\bSEBI\\b x1",
+        "body:securities and exchange board of india x29",
+        "body:\\bSEBI\\b x20"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.83,
+      "document_type_evidence": [
+        "name:\\bICDR\\b|\\bLODR\\b|\\bSAST\\b|\\bPIT\\b|\\bSBEB\\b x1",
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x45"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "SECURITIES AND EXCHANGE BOARD OF INDIA (LISTING OBLIGATIONS",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 1.72,
+          "evidence": [
+            "body:initial public off x3",
+            "body:public issue x12"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.06,
+          "evidence": [
+            "body:qualified institutions placement x4"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.0,
+          "evidence": [
+            "body:rights issue x16"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x9"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.99,
+          "evidence": [
+            "body:bonus (issue|shares) x6"
+          ]
+        },
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 0.98,
+          "evidence": [
+            "body:private placement x5"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 0.98,
+          "evidence": [
+            "body:\\bESOP\\b x5"
+          ]
+        },
+        {
+          "issue_type": "FPO",
+          "score": 0.94,
+          "evidence": [
+            "body:further public offer x2"
+          ]
+        },
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 0.84,
+          "evidence": [
+            "body:sweat equity x1"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.7,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x7"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.55,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2026-01-22",
+          "raw": "January 22, 2026"
+        },
+        {
+          "iso": "2023-04-01",
+          "raw": "April 1, 2023"
+        },
+        {
+          "iso": "2023-04-01",
+          "raw": "April 1, 2023"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 231,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.4"
+      ],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-pit-regulations-3e146320",
+      "file_name": "SEBI PIT Regulations.pdf",
+      "local_file_path": "originals/SEBI PIT Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 1144648,
+      "sha256": "3e14632093a11d5ced286205c744c7bec68df9c261cb8dcd6017b477e285f4b1",
+      "authority": "SEBI",
+      "authority_confidence": 0.87,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x4",
+        "head:\\bSEBI\\b x1",
+        "body:securities and exchange board of india x23",
+        "body:\\bSEBI\\b x1"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.99,
+      "document_type_evidence": [
+        "name:\\bICDR\\b|\\bLODR\\b|\\bSAST\\b|\\bPIT\\b|\\bSBEB\\b x1",
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x22"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "SECURITIES AND EXCHANGE BOARD OF INDIA",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.7,
+          "evidence": [
+            "body:rights issue x1"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 0.7,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x1"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.7,
+          "evidence": [
+            "body:bonus (issue|shares) x1"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.56,
+          "evidence": [
+            "body:public issue x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.4,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-03-12",
+          "raw": "March 12, 2025"
+        },
+        {
+          "iso": "2019-04-01",
+          "raw": "April 01, 2019"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        },
+        {
+          "iso": "2024-12-06",
+          "raw": "December 06, 2024"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 82,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-sast-regulations-f3486698",
+      "file_name": "SEBI SAST Regulations.pdf",
+      "local_file_path": "originals/SEBI SAST Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 1117978,
+      "sha256": "f34866984eed83113ed920a7d5194d72972a7c199fdbae7c958aff197f4fc29a",
+      "authority": "SEBI",
+      "authority_confidence": 0.77,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x2",
+        "body:securities and exchange board of india x5",
+        "body:\\bSEBI\\b x10"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.99,
+      "document_type_evidence": [
+        "name:\\bICDR\\b|\\bLODR\\b|\\bSAST\\b|\\bPIT\\b|\\bSBEB\\b x1",
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x17"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "Page 1 of 79",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.0,
+          "evidence": [
+            "body:rights issue x11"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x11"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.85,
+          "evidence": [
+            "body:bonus (issue|shares) x2"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.56,
+          "evidence": [
+            "body:public issue x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.43,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-12-05",
+          "raw": "December 5, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 79,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
+      "file_name": "SEBI SBEB & Sweat Equity Regulations.pdf",
+      "local_file_path": "originals/SEBI SBEB & Sweat Equity Regulations.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 741072,
+      "sha256": "275c396520a48747aff9a52d384ab86d58d5ea7dc64bdedd3bca4726ab9f21f8",
+      "authority": "SEBI",
+      "authority_confidence": 0.63,
+      "authority_evidence": [
+        "name:\\bSEBI\\b x1",
+        "head:securities and exchange board of india x4",
+        "head:\\bSEBI\\b x1",
+        "body:securities and exchange board of india x8",
+        "body:\\bSEBI\\b x1"
+      ],
+      "document_type": "REGULATION",
+      "document_type_confidence": 0.99,
+      "document_type_evidence": [
+        "name:\\bICDR\\b|\\bLODR\\b|\\bSAST\\b|\\bPIT\\b|\\bSBEB\\b x1",
+        "head:these regulations may be called x1",
+        "head:regulations?,?\\s*20\\d\\d x2",
+        "body:these regulations may be called x1",
+        "body:regulations?,?\\s*20\\d\\d x10"
+      ],
+      "instrument_kind": "REGULATIONS",
+      "title": "Page 1 of 45",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 4.1,
+          "evidence": [
+            "name:sweat equity x1",
+            "head:sweat equity x3",
+            "body:sweat equity x59"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 2.59,
+          "evidence": [
+            "body:\\bIPO\\b x15",
+            "body:initial public off x3",
+            "body:public issue x4"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 1.94,
+          "evidence": [
+            "head:employee stock option x1",
+            "body:employee stock option x4"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 0.96,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x4"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.92,
+          "evidence": [
+            "body:rights issue x3"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 0.85,
+          "evidence": [
+            "body:bonus (issue|shares) x2"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 0.77,
+          "evidence": [
+            "body:qualified institutions placement x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.69,
+          "evidence": [
+            "body:\\bwarrants?\\b x5"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.58,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2025-12-04",
+          "raw": "December 04, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 45,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "trading-approval-557b966e",
+      "file_name": "Trading_Approval.docx",
+      "local_file_path": "originals/Trading_Approval.docx",
+      "file_type": "docx",
+      "file_size_bytes": 42093,
+      "sha256": "557b966e9f9b6cc7c12025ef87dba5546129f05fbb58264ea7843fcb44615039",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "head:\\bNEAPS\\b x2",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.6,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x3",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Checklist of Documents/ details to be submitted for Trading approval for listing of securities issued under Rights Issues by already listed company",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.68,
+          "evidence": [
+            "head:rights issue x1",
+            "body:rights issue x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 1.43,
+          "evidence": [
+            "head:\\bwarrants?\\b x2",
+            "body:\\bwarrants?\\b x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.49,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.6",
+        "issue_type_confidence=0.49"
+      ],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "trading-approval-fast-track-a025d50d",
+      "file_name": "Trading_Approval_Fast_Track.docx",
+      "local_file_path": "originals/Trading_Approval_Fast_Track.docx",
+      "file_type": "docx",
+      "file_size_bytes": 41966,
+      "sha256": "a025d50dbb2306a43b6dc3a158da4b2646169626fa3f941da4399a63c470b874",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:\\bNSE\\b x1",
+        "head:\\bNEAPS\\b x2",
+        "body:\\bNSE\\b x1",
+        "body:\\bNEAPS\\b x2"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.6,
+      "document_type_evidence": [
+        "head:\\bchecklist\\b x1",
+        "head:list of (documents|details) x1",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:\\bchecklist\\b x3",
+        "body:list of (documents|details) x1",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x1",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Checklist of Documents/ details to be submitted for Trading approval for listing of securities issued under Rights Issues by already listed company",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.68,
+          "evidence": [
+            "head:rights issue x1",
+            "body:rights issue x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 1.43,
+          "evidence": [
+            "head:\\bwarrants?\\b x2",
+            "body:\\bwarrants?\\b x2"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.49,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.6",
+        "issue_type_confidence=0.49"
+      ],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "trading-approval-invits-f28b7302",
+      "file_name": "Trading_Approval_InvITs.docx",
+      "local_file_path": "originals/Trading_Approval_InvITs.docx",
+      "file_type": "docx",
+      "file_size_bytes": 39329,
+      "sha256": "f28b7302138c59ecbfb29c9bdb446f5fea49719958f619e6eb53b70235efca7c",
+      "authority": "NSE",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:\\bNEAPS\\b x1",
+        "body:\\bNEAPS\\b x1"
+      ],
+      "document_type": "UNKNOWN",
+      "document_type_confidence": 0.57,
+      "document_type_evidence": [
+        "head:list of (documents|details) x2",
+        "head:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "head:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1",
+        "body:list of (documents|details) x2",
+        "body:documents\\s*/?\\s*details (required|to be submitted) x2",
+        "body:Yes\\s*/\\s*No\\s*/\\s*Not Applicable x1"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "List of documents/details required for Final trading approval of Units/ securities",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 1.68,
+          "evidence": [
+            "head:private placement x1",
+            "body:private placement x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "PRIVATE_PLACEMENT",
+      "issue_type_confidence": 0.83,
+      "scope": "REIT_INVIT",
+      "scope_signal_count": 1,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 1,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "DEFERRED",
+      "human_review_required": true,
+      "review_reasons": [
+        "document_type_confidence=0.57"
+      ],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null
+    },
+    {
+      "document_id": "the-companies-management-and-administration-rule-55296434",
+      "file_name": "the-companies-management-and-administration-rules-2014-.pdf",
+      "local_file_path": "originals/the-companies-management-and-administration-rules-2014-.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 193781,
+      "sha256": "55296434c651dff6c805992bfd96ed085faf0ca14d74fbf38323b03395c62498",
+      "authority": "MCA",
+      "authority_confidence": 0.94,
+      "authority_evidence": [
+        "head:ministry of corporate affairs x1",
+        "head:companies\\s*\\([^)]{3,60}\\)\\s*rules x2",
+        "head:companies act,?\\s*2013 x1",
+        "body:ministry of corporate affairs x2",
+        "body:companies\\s*\\([^)]{3,60}\\)\\s*rules x4",
+        "body:companies act,?\\s*2013 x2"
+      ],
+      "document_type": "RULE",
+      "document_type_confidence": 0.84,
+      "document_type_evidence": [
+        "name:\\brules,?\\s*20\\d\\d\\b x1",
+        "head:these rules may be called x1",
+        "head:hereby makes the following rules x1",
+        "head:\\brules,?\\s*20\\d\\d\\b x2",
+        "body:these rules may be called x1",
+        "body:hereby makes the following rules x1",
+        "body:\\brules,?\\s*20\\d\\d\\b x4"
+      ],
+      "instrument_kind": "RULES",
+      "title": "Printed on 5 Sep 2026 at 10:44 AM IST",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 0.84,
+          "evidence": [
+            "body:sweat equity x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "SWEAT_EQUITY",
+      "issue_type_confidence": 0.71,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2014-03-31",
+          "raw": "31st March, 2014"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 41,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
+      "file_name": "the-companies-registration-offices-and-fees-rules-2014.pdf",
+      "local_file_path": "originals/the-companies-registration-offices-and-fees-rules-2014.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 163588,
+      "sha256": "b0be2898fc93f58ae09e4a2f391f933f76865b19a6cb7400d009e15ed524a2c4",
+      "authority": "MCA",
+      "authority_confidence": 0.99,
+      "authority_evidence": [
+        "head:ministry of corporate affairs x1",
+        "head:companies\\s*\\([^)]{3,60}\\)\\s*rules x2",
+        "head:companies act,?\\s*2013 x2",
+        "body:ministry of corporate affairs x2",
+        "body:companies\\s*\\([^)]{3,60}\\)\\s*rules x3",
+        "body:\\bRegistrar of Companies\\b x2",
+        "body:companies act,?\\s*2013 x2"
+      ],
+      "document_type": "RULE",
+      "document_type_confidence": 0.82,
+      "document_type_evidence": [
+        "name:\\brules,?\\s*20\\d\\d\\b x1",
+        "head:these rules may be called x1",
+        "head:hereby makes the following rules x1",
+        "head:\\brules,?\\s*20\\d\\d\\b x2",
+        "body:these rules may be called x1",
+        "body:hereby makes the following rules x1",
+        "body:\\brules,?\\s*20\\d\\d\\b x3"
+      ],
+      "instrument_kind": "RULES",
+      "title": "Printed on 5 Sep 2026 at 10:50 AM IST",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [
+        {
+          "iso": "2014-03-31",
+          "raw": "31st March, 2014"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": null,
+      "page_count": 36,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    }
+  ],
+  "containers": [
+    {
+      "document_id": "checklist-recommencement-f-da682b07",
+      "file_name": "Checklist_Recommencement_F.zip",
+      "local_file_path": "originals/Checklist_Recommencement_F.zip",
+      "file_type": "zip",
+      "file_size_bytes": 56219,
+      "sha256": "da682b07bdd3f71dfc9585b10a51bdbb5e0ae2fd12215d897deb36f843e7128e",
+      "authority": "UNKNOWN",
+      "document_type": "CONTAINER",
+      "processing_status": "CONTAINER_EXPANDED",
+      "extraction_status": "NOT_APPLICABLE",
+      "human_review_required": false,
+      "note": "Archive retained as evidence; members inventoried separately."
+    },
+    {
+      "document_id": "download-post-allotment-20260504153404-a6ce8afd",
+      "file_name": "Download_Post-Allotment_20260504153404.zip",
+      "local_file_path": "originals/Download_Post-Allotment_20260504153404.zip",
+      "file_type": "zip",
+      "file_size_bytes": 86551,
+      "sha256": "a6ce8afdd5f874221334996ccaba591940e0e2bbcd10f29d99f636e95985aba4",
+      "authority": "UNKNOWN",
+      "document_type": "CONTAINER",
+      "processing_status": "CONTAINER_EXPANDED",
+      "extraction_status": "NOT_APPLICABLE",
+      "human_review_required": false,
+      "note": "Archive retained as evidence; members inventoried separately."
+    },
+    {
+      "document_id": "fpo-checklist-d8cde54e",
+      "file_name": "FPO_Checklist.zip",
+      "local_file_path": "originals/FPO_Checklist.zip",
+      "file_type": "zip",
+      "file_size_bytes": 3284574,
+      "sha256": "d8cde54e64330a956474976425df1d6b8134aefbc7642aa9b513bd25fbe7f082",
+      "authority": "UNKNOWN",
+      "document_type": "CONTAINER",
+      "processing_status": "CONTAINER_EXPANDED",
+      "extraction_status": "NOT_APPLICABLE",
+      "human_review_required": false,
+      "note": "Archive retained as evidence; members inventoried separately."
+    },
+    {
+      "document_id": "preferential-pre-allotment-20260616122325-5702fa11",
+      "file_name": "Preferential_Pre_Allotment_20260616122325.zip",
+      "local_file_path": "originals/Preferential_Pre_Allotment_20260616122325.zip",
+      "file_type": "zip",
+      "file_size_bytes": 3145669,
+      "sha256": "5702fa11bd8e05b9c7ffd6ba4777b92f022ae1aa68bee93d251639d3c7e2f16a",
+      "authority": "UNKNOWN",
+      "document_type": "CONTAINER",
+      "processing_status": "CONTAINER_EXPANDED",
+      "extraction_status": "NOT_APPLICABLE",
+      "human_review_required": false,
+      "note": "Archive retained as evidence; members inventoried separately."
+    },
+    {
+      "document_id": "rights-issue-checklist-invit-0-0-b5c300db",
+      "file_name": "Rights Issue Checklist - InvIT_0_0.zip",
+      "local_file_path": "originals/Rights Issue Checklist - InvIT_0_0.zip",
+      "file_type": "zip",
+      "file_size_bytes": 140675,
+      "sha256": "b5c300db2a9c104944fde56ff3286254461fb1801fbd83d093380764cd74fa2e",
+      "authority": "UNKNOWN",
+      "document_type": "CONTAINER",
+      "processing_status": "CONTAINER_EXPANDED",
+      "extraction_status": "NOT_APPLICABLE",
+      "human_review_required": false,
+      "note": "Archive retained as evidence; members inventoried separately."
+    }
+  ]
+}

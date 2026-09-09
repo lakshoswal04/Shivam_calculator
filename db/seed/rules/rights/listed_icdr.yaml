@@ -1,0 +1,72 @@
+# Rights issue — SEBI (ICDR) Regulations, 2018, Chapter III (listed issuers).
+#
+# The core entitlement of a rights issue rests on section 62(1)(a) of the
+# Companies Act, 2013, which is NOT yet in the corpus. These rules therefore
+# cover only the SEBI conditions that are in hand; the Act limb is reported as
+# a source gap on every rights assessment.
+meta:
+  route: RIGHTS
+  authority: SEBI
+  instrument: "SEBI (ICDR) Regulations, 2018"
+  default_effective_from: "2018-09-11"
+
+rules:
+  - rule_code: RGT-L-001
+    title: Eligibility to make a rights issue
+    issue_type: RIGHTS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter III Part I reg.61"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 61"
+    requirement: >-
+      An issuer shall not be eligible to make a rights issue of specified securities in the
+      circumstances set out in regulation 61, which include debarment from accessing the
+      capital market and the disqualifications listed in that regulation.
+    trigger:
+      text: "rights issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: RIGHTS }
+    conditions:
+      - text: "the issuer, its promoters and directors are not debarred from accessing the capital market"
+        ast: { op: eq, field: company.debarred_from_capital_market, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      An issuer debarred from accessing the capital market is not eligible to make a rights
+      issue under regulation 61.
+
+  - rule_code: RGT-L-002
+    title: Draft letter of offer to be filed with the stock exchange
+    issue_type: RIGHTS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      # reg.71 recurs in the citation string, so this anchors by uid.
+      citation_uid: "sebi-icdr-regulations-db196f1f#512"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter III Part V reg.71(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 71(1)"
+    requirement: >-
+      Prior to making a rights issue the issuer shall, except in the case of a fast track
+      issue, file a draft letter of offer with the Board in accordance with Schedule IV, along
+      with the fees specified in Schedule III, and with the stock exchange(s).
+    trigger:
+      text: "rights issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: RIGHTS }
+    conditions:
+      - text: "the draft letter of offer has been filed"
+        ast: { op: eq, field: issue.letter_of_offer_filed, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "A draft letter of offer must be filed before making the rights issue."
+    documents:
+      - requirement_code: RGT-L-DOC-LOF
+        name: "Draft letter of offer prepared in accordance with Schedule IV"
+        stage: PRE_ISSUE
+        necessity: MANDATORY
+        authority: SEBI
+    approvals:
+      - approval_code: RGT-L-APR-INPRINCIPLE
+        approval_type: STOCK_EXCHANGE_IN_PRINCIPLE
+        name: "In-principle approval of the stock exchange"
+        authority: SEBI
+        stage: PRE_ALLOTMENT

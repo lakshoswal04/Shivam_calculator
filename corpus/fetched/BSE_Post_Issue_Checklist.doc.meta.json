@@ -1,0 +1,17 @@
+{
+  "url": "https://www.bseindia.com/downloads/IPP_%20Post_Issue_Final.doc",
+  "save_as": "BSE_Post_Issue_Checklist.doc",
+  "authority": "BSE",
+  "document_type": "CHECKLIST",
+  "priority": "P2",
+  "note": "BSE post-issue listing checklist (further issues).",
+  "fetched_at": "2026-09-06T21:38:45+00:00",
+  "http_status": 200,
+  "content_type": "application/msword",
+  "bytes": 70656,
+  "verified_tls": true,
+  "outcome": "ACQUIRED",
+  "sha256": "1d331cdaed32bf1ba7740902cad675ea7d72e89083a02a7539baf7881e6b089c",
+  "container_format": "doc",
+  "local_file_path": "fetched/BSE_Post_Issue_Checklist.doc"
+}

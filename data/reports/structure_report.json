@@ -1,0 +1,588 @@
+{
+  "run_at": "2026-09-08T09:17:14+00:00",
+  "documents": 39,
+  "total_provisions": 7369,
+  "detail": [
+    {
+      "document_id": "bse-checklist-direct-listing-3157e150",
+      "file_name": "BSE_Checklist_Direct_Listing.doc",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": "CHECKLIST FOR LISTING COMPANIES, UNDER DIRECT LISTING",
+      "provisions": 1,
+      "top_level_units": 0,
+      "by_type": {
+        "ANNEXURE": 1
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "bse-faq-on-listing-facc6804",
+      "file_name": "BSE_FAQ_on_Listing.pdf",
+      "instrument_kind": "FAQ",
+      "instrument_label": "FREQUENTLY ASKED QUESTIONS",
+      "provisions": 12,
+      "top_level_units": 12,
+      "by_type": {
+        "QUESTION": 12
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 2,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
+      "file_name": "BSE_InPrinciple_PrivatePlacement_DebtInstruments.doc",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": "Documents / Information for in-principle approval of Private Placement Issue of ",
+      "provisions": 3,
+      "top_level_units": 3,
+      "by_type": {
+        "ITEM": 3
+      },
+      "orphan_body_chars": 3,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "bse-post-issue-checklist-1d331cda",
+      "file_name": "BSE_Post_Issue_Checklist.doc",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": "Documents required for granting listing approvals, for the securities issued und",
+      "provisions": 2,
+      "top_level_units": 0,
+      "by_type": {
+        "ANNEXURE": 2
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "checklist-recommencement-of-trading-e30818a4",
+      "file_name": "Checklist_Recommencement_of_Trading.xlsx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "form-of-listing-aplication-487b76f1",
+      "file_name": "Form of Listing Aplication.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
+      "file_name": "Companies (Prospectus and Allotment of Securities) Rules.pdf",
+      "instrument_kind": "RULES",
+      "instrument_label": "Companies (Prospectus and Allotment of Securities) Rules, 2014",
+      "provisions": 182,
+      "top_level_units": 15,
+      "by_type": {
+        "CLAUSE": 64,
+        "SUB_CLAUSE": 46,
+        "SUB_RULE": 41,
+        "RULE": 15,
+        "PROVISO": 12,
+        "EXPLANATION": 4
+      },
+      "orphan_body_chars": 63,
+      "ambiguous_citations": 6,
+      "provisions_with_amendment_markers": 1
+    },
+    {
+      "document_id": "companies-share-capital-and-debentures-rules-64039399",
+      "file_name": "Companies (Share Capital and Debentures) Rules.pdf",
+      "instrument_kind": "RULES",
+      "instrument_label": "Companies (Share Capital and Debentures) Rules, 2014",
+      "provisions": 442,
+      "top_level_units": 42,
+      "by_type": {
+        "CLAUSE": 186,
+        "SUB_CLAUSE": 105,
+        "SUB_RULE": 87,
+        "RULE": 42,
+        "PROVISO": 17,
+        "EXPLANATION": 5
+      },
+      "orphan_body_chars": 136,
+      "ambiguous_citations": 33,
+      "provisions_with_amendment_markers": 10
+    },
+    {
+      "document_id": "download-post-allotment-a57e1202",
+      "file_name": "Download Post-Allotment.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "points-to-remember-post-allotment-f6a19833",
+      "file_name": "Points to remember_post allotment.docx",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "Points to be Remembered.",
+      "provisions": 4,
+      "top_level_units": 4,
+      "by_type": {
+        "PARAGRAPH": 4
+      },
+      "orphan_body_chars": 3,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "download-pre-allotment-ace085af",
+      "file_name": "Download_Pre-Allotment_.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "part-i-d6ff87e8",
+      "file_name": "Part I.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "part-ii-e68713a9",
+      "file_name": "Part II.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "t-2-fpo-abe9b620",
+      "file_name": "T+2 FPO.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
+      "file_name": "T+3 FPO if NSE is not Designated Stock Exchange.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "t-3-fpo-cccb7af1",
+      "file_name": "T+3 FPO.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "t-4-fpo-c058fc65",
+      "file_name": "T+4 FPO.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "t-5-fpo-636f879e",
+      "file_name": "T+5 FPO.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
+      "file_name": "FPO_Inprinciple_Checklist_Revised.pdf",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": "Non-Confidential",
+      "provisions": 4,
+      "top_level_units": 4,
+      "by_type": {
+        "ITEM": 4
+      },
+      "orphan_body_chars": 2,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "final-listing-preferential-14b337d2",
+      "file_name": "Final_Listing_Preferential.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
+      "file_name": "Post Allotment ( Sweat Equity )_0_0.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "post-allotment-rights-0-dd3e7518",
+      "file_name": "Post_allotment_Rights_0.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "pre-allotment-sweat-equity-4226094c",
+      "file_name": "Pre-allotment_(Sweat Equity).docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "checklist-preferential-issue-pre-ffe507ab",
+      "file_name": "Checklist_Preferential_issue_Pre.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "extract-of-icdr-189995d8",
+      "file_name": "Extract of ICDR.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "SEBI (ICDR) Regulations, 2018 [extract]",
+      "provisions": 136,
+      "top_level_units": 17,
+      "by_type": {
+        "SUB_SECTION": 56,
+        "PROVISO": 32,
+        "PARAGRAPH": 17,
+        "SUB_CLAUSE": 9,
+        "CLAUSE": 8,
+        "EXPLANATION": 7,
+        "PART": 6,
+        "CHAPTER": 1
+      },
+      "orphan_body_chars": 17,
+      "ambiguous_citations": 9,
+      "provisions_with_amendment_markers": 30
+    },
+    {
+      "document_id": "points-to-remember-28-1-6be45481",
+      "file_name": "Points to remember_28(1).docx",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "preferential-issue-faqs-0d8e781e",
+      "file_name": "Preferential Issue_FAQs.docx",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "FREQUENTLY ASKED QUESTIONS",
+      "provisions": 2,
+      "top_level_units": 0,
+      "by_type": {
+        "PART": 2
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "qip-post-allotment-0-0-d035add2",
+      "file_name": "QIP_Post_Allotment_0_0.docx",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "rights-entitlement-checklist-e0bcaa00",
+      "file_name": "Rights_Entitlement_Checklist.pdf",
+      "instrument_kind": "CHECKLIST",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-depositories-participants-regulations-fb150ec0",
+      "file_name": "SEBI Depositories & Participants Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (D&P) Regulations, 2018",
+      "provisions": 753,
+      "top_level_units": 204,
+      "by_type": {
+        "REGULATION": 204,
+        "SUB_REGULATION": 198,
+        "CLAUSE": 176,
+        "SUB_CLAUSE": 107,
+        "PROVISO": 43,
+        "EXPLANATION": 12,
+        "CHAPTER": 11,
+        "PART": 2
+      },
+      "orphan_body_chars": 177,
+      "ambiguous_citations": 64,
+      "provisions_with_amendment_markers": 71
+    },
+    {
+      "document_id": "sebi-icdr-regulations-db196f1f",
+      "file_name": "SEBI ICDR Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (ICDR) Regulations, 2018",
+      "provisions": 2527,
+      "top_level_units": 357,
+      "by_type": {
+        "SUB_REGULATION": 1010,
+        "CLAUSE": 458,
+        "REGULATION": 328,
+        "SUB_CLAUSE": 286,
+        "PROVISO": 272,
+        "PART": 60,
+        "EXPLANATION": 53,
+        "PARAGRAPH": 29,
+        "SCHEDULE": 19,
+        "CHAPTER": 12
+      },
+      "orphan_body_chars": 458,
+      "ambiguous_citations": 218,
+      "provisions_with_amendment_markers": 428
+    },
+    {
+      "document_id": "sebi-lodr-regulations-62626bd8",
+      "file_name": "SEBI LODR Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (LODR) Regulations, 2015",
+      "provisions": 1945,
+      "top_level_units": 132,
+      "by_type": {
+        "SUB_REGULATION": 691,
+        "CLAUSE": 542,
+        "SUB_CLAUSE": 292,
+        "PROVISO": 216,
+        "REGULATION": 73,
+        "PARAGRAPH": 59,
+        "EXPLANATION": 33,
+        "SUB_SECTION": 14,
+        "CHAPTER": 12,
+        "SCHEDULE": 11,
+        "PART": 2
+      },
+      "orphan_body_chars": 445,
+      "ambiguous_citations": 251,
+      "provisions_with_amendment_markers": 415
+    },
+    {
+      "document_id": "sebi-pit-regulations-3e146320",
+      "file_name": "SEBI PIT Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (PIT) Regulations, 2015",
+      "provisions": 274,
+      "top_level_units": 61,
+      "by_type": {
+        "SUB_REGULATION": 75,
+        "SUB_CLAUSE": 49,
+        "PARAGRAPH": 39,
+        "CLAUSE": 38,
+        "PROVISO": 25,
+        "REGULATION": 22,
+        "EXPLANATION": 18,
+        "CHAPTER": 5,
+        "SCHEDULE": 2,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 44,
+      "ambiguous_citations": 32,
+      "provisions_with_amendment_markers": 44
+    },
+    {
+      "document_id": "sebi-sast-regulations-f3486698",
+      "file_name": "SEBI SAST Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (SAST) Regulations, 2011",
+      "provisions": 320,
+      "top_level_units": 17,
+      "by_type": {
+        "SUB_REGULATION": 95,
+        "PROVISO": 71,
+        "SUB_CLAUSE": 59,
+        "CLAUSE": 57,
+        "REGULATION": 17,
+        "EXPLANATION": 14,
+        "CHAPTER": 6,
+        "SCHEDULE": 1
+      },
+      "orphan_body_chars": 35,
+      "ambiguous_citations": 40,
+      "provisions_with_amendment_markers": 67
+    },
+    {
+      "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
+      "file_name": "SEBI SBEB & Sweat Equity Regulations.pdf",
+      "instrument_kind": "REGULATIONS",
+      "instrument_label": "SEBI (SBEB & Sweat Equity) Regulations, 2021",
+      "provisions": 231,
+      "top_level_units": 46,
+      "by_type": {
+        "SUB_REGULATION": 81,
+        "REGULATION": 45,
+        "SUB_CLAUSE": 38,
+        "CLAUSE": 33,
+        "PROVISO": 23,
+        "CHAPTER": 6,
+        "SCHEDULE": 2,
+        "PART": 1,
+        "EXPLANATION": 1,
+        "PARAGRAPH": 1
+      },
+      "orphan_body_chars": 50,
+      "ambiguous_citations": 10,
+      "provisions_with_amendment_markers": 5
+    },
+    {
+      "document_id": "trading-approval-557b966e",
+      "file_name": "Trading_Approval.docx",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "trading-approval-fast-track-a025d50d",
+      "file_name": "Trading_Approval_Fast_Track.docx",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "the-companies-management-and-administration-rule-55296434",
+      "file_name": "the-companies-management-and-administration-rules-2014-.pdf",
+      "instrument_kind": "RULES",
+      "instrument_label": "Companies (Management and Administration) Rules, 2014",
+      "provisions": 320,
+      "top_level_units": 28,
+      "by_type": {
+        "SUB_RULE": 94,
+        "SUB_CLAUSE": 85,
+        "CLAUSE": 83,
+        "RULE": 28,
+        "PROVISO": 19,
+        "EXPLANATION": 11
+      },
+      "orphan_body_chars": 54,
+      "ambiguous_citations": 11,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
+      "file_name": "the-companies-registration-offices-and-fees-rules-2014.pdf",
+      "instrument_kind": "RULES",
+      "instrument_label": "Companies (Registration Offices and Fees) Rules, 2014",
+      "provisions": 211,
+      "top_level_units": 41,
+      "by_type": {
+        "CLAUSE": 56,
+        "SUB_RULE": 55,
+        "RULE": 41,
+        "SUB_CLAUSE": 40,
+        "PROVISO": 19
+      },
+      "orphan_body_chars": 24,
+      "ambiguous_citations": 44,
+      "provisions_with_amendment_markers": 1
+    }
+  ]
+}

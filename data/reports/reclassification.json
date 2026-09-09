@@ -1,0 +1,201 @@
+{
+  "run_at": "2026-09-06T21:39:52+00:00",
+  "note": "Issue types re-derived from full extracted text, superseding p00 head-sample values.",
+  "changed": [
+    {
+      "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
+      "file_name": "Companies (Prospectus and Allotment of Securities) Rules.pdf",
+      "from": [
+        "PUBLIC_ISSUE"
+      ],
+      "to": [
+        "BONUS",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "PUBLIC_ISSUE",
+      "primary_to": "PRIVATE_PLACEMENT"
+    },
+    {
+      "document_id": "companies-share-capital-and-debentures-rules-64039399",
+      "file_name": "Companies (Share Capital and Debentures) Rules.pdf",
+      "from": [
+        "BONUS",
+        "PREFERENTIAL",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "to": [
+        "BONUS",
+        "ESOP",
+        "PREFERENTIAL",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "checklist-preferential-issue-pre-ffe507ab",
+      "file_name": "Checklist_Preferential_issue_Pre.docx",
+      "from": [
+        "ESOP",
+        "PREFERENTIAL",
+        "WARRANTS"
+      ],
+      "to": [
+        "ESOP",
+        "PREFERENTIAL",
+        "QIP",
+        "WARRANTS"
+      ],
+      "primary_from": "PREFERENTIAL",
+      "primary_to": "PREFERENTIAL"
+    },
+    {
+      "document_id": "extract-of-icdr-189995d8",
+      "file_name": "Extract of ICDR.pdf",
+      "from": [
+        "PREFERENTIAL",
+        "QIP",
+        "WARRANTS"
+      ],
+      "to": [
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "preferential-issue-faqs-0d8e781e",
+      "file_name": "Preferential Issue_FAQs.docx",
+      "from": [
+        "PREFERENTIAL",
+        "WARRANTS"
+      ],
+      "to": [
+        "CONVERSION",
+        "PREFERENTIAL",
+        "QIP",
+        "WARRANTS"
+      ],
+      "primary_from": "PREFERENTIAL",
+      "primary_to": "PREFERENTIAL"
+    },
+    {
+      "document_id": "sebi-depositories-participants-regulations-fb150ec0",
+      "file_name": "SEBI Depositories & Participants Regulations.pdf",
+      "from": [],
+      "to": [
+        "CONVERSION"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "CONVERSION"
+    },
+    {
+      "document_id": "sebi-icdr-regulations-db196f1f",
+      "file_name": "SEBI ICDR Regulations.pdf",
+      "from": [
+        "FPO",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "SWEAT_EQUITY"
+      ],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "ESOP",
+        "FPO",
+        "PREFERENTIAL",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "PUBLIC_ISSUE",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-lodr-regulations-62626bd8",
+      "file_name": "SEBI LODR Regulations.pdf",
+      "from": [
+        "BONUS",
+        "PREFERENTIAL",
+        "RIGHTS"
+      ],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "ESOP",
+        "FPO",
+        "PREFERENTIAL",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-pit-regulations-3e146320",
+      "file_name": "SEBI PIT Regulations.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-sast-regulations-f3486698",
+      "file_name": "SEBI SAST Regulations.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
+      "file_name": "SEBI SBEB & Sweat Equity Regulations.pdf",
+      "from": [
+        "ESOP",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "SWEAT_EQUITY"
+      ],
+      "to": [
+        "BONUS",
+        "ESOP",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "SWEAT_EQUITY",
+      "primary_to": "UNKNOWN"
+    }
+  ]
+}

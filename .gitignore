@@ -1,0 +1,30 @@
+# ---- dependencies & build output -------------------------------------------
+node_modules/
+.next/
+out/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.turbo/
+
+# ---- secrets ---------------------------------------------------------------
+.env
+.env.local
+.env*.local
+!.env.example
+
+# ---- derived pipeline artefacts --------------------------------------------
+# Regenerable from corpus/ with ./run_pipeline.sh. Excluded because they are
+# large and change on every run; the committed snapshot in db/snapshot/ is the
+# fast path for rebuilding a database.
+data/extracted/
+data/structured/*/
+
+# ---- tooling noise ---------------------------------------------------------
+.DS_Store
+*.log
+next-env.d.ts
+AGENTS.md
+CLAUDE.md
+.netlify/

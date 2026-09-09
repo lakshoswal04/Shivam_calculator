@@ -1,0 +1,22 @@
+# Netlify configuration for the Next.js frontend.
+# Netlify's Next.js runtime handles the App Router, server components and
+# route handlers; no adapter or export step is needed.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# NEXT_PUBLIC_API_URL is read at build time by the browser bundle, so it must
+# be set in Netlify's environment variables before the build, not at runtime.
+# Set it to:  https://<your-render-service>.onrender.com/api/v1
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

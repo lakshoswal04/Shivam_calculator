@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Deep navy-black ground with an electric-blue accent.
+   Semantic status colours are deliberately separate from the accent: a rule
+   outcome must never be mistaken for a piece of interface chrome. */
+@theme {
+  --color-ground:      #0A0E17;
+  --color-surface:     #121826;
+  --color-surface-2:   #172033;
+  --color-border:      #1E2942;
+  --color-border-lit:  #2C3A5C;
+  --color-ink:         #E6ECF7;
+  --color-ink-2:       #B4C0D6;
+  --color-muted:       #7C8AA5;
+  --color-faint:       #55617A;
+
+  --color-accent:      #3B82F6;
+  --color-accent-hi:   #60A5FA;
+  --color-accent-dim:  #1E3A6B;
+
+  --color-pass:        #34D399;
+  --color-pass-bg:     #0C2A22;
+  --color-warn:        #FBBF24;
+  --color-warn-bg:     #2C2410;
+  --color-block:       #F87171;
+  --color-block-bg:    #2E1416;
+  --color-review:      #A78BFA;
+  --color-review-bg:   #221B3A;
+  --color-na:          #64748B;
+  --color-na-bg:       #161C29;
+
+  /* next/font hashes the real family name and exposes it via --font-inter /
+     --font-jetbrains. Naming the family literally here would silently fall
+     back to system-ui, so these chain through those variables. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html { color-scheme: dark; }
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Figures that line up in columns read as columns. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+::selection { background: var(--color-accent-dim); color: var(--color-ink); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ground); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-border-lit); }
+
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

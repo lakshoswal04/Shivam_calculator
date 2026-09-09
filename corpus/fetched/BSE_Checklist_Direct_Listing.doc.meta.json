@@ -1,0 +1,17 @@
+{
+  "url": "https://www.bseindia.com/downloads1/CHECKLIST_FOR_DIRECT_LISTING_Nation_wide.doc",
+  "save_as": "BSE_Checklist_Direct_Listing.doc",
+  "authority": "BSE",
+  "document_type": "CHECKLIST",
+  "priority": "P2",
+  "note": "BSE direct listing checklist; includes preferential allotment items.",
+  "fetched_at": "2026-09-06T21:38:45+00:00",
+  "http_status": 200,
+  "content_type": "application/msword",
+  "bytes": 136192,
+  "verified_tls": true,
+  "outcome": "ACQUIRED",
+  "sha256": "3157e150399fd66de84e2133b4f34187c0bb1296fb8a7d2c848c0766baff8cfb",
+  "container_format": "doc",
+  "local_file_path": "fetched/BSE_Checklist_Direct_Listing.doc"
+}

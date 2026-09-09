@@ -1,0 +1,37 @@
+# Render blueprint: FastAPI service + managed PostgreSQL.
+# Create from the Render dashboard with "New > Blueprint" pointed at this repo.
+
+databases:
+  - name: securities-db
+    databaseName: legal_rules
+    user: calcapp          # the app connects as this role, which is NOT a
+    plan: free             # superuser -- required for row-level security to apply
+    region: singapore      # closest Render region to India
+
+services:
+  - type: web
+    name: securities-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: securities-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true          # Render generates and stores a real secret
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: POOL_MIN
+        value: "1"
+      - key: POOL_MAX
+        value: "5"                   # the free Postgres plan caps connections
+      - key: CORS_ORIGINS
+        sync: false                  # set to your Netlify URL after the first deploy
