@@ -1,0 +1,108 @@
+# Rights issue — Companies Act, 2013, section 62.
+#
+# Section 62(1)(a) is the entitlement itself: a further issue must be offered
+# to existing equity shareholders in proportion to their paid-up capital. The
+# SEBI ICDR rules in listed_icdr.yaml sit on top of it and apply only to
+# listed issuers; these apply to every company with a share capital.
+#
+# CURRENCY WARNING. The Act in the corpus is consolidated only to 29-05-2015
+# (legal.legal_sources.as_amended_upto). Section 62 is not known to have been
+# substituted since, unlike section 42, but that is an absence of evidence in
+# this corpus rather than a positive confirmation. These rules therefore load
+# PENDING: a reviewer must check section 62 against the current Act before
+# approving them, and the review queue shows as_amended_upto for that purpose.
+#
+# Applicability is deliberately ANY. Section 62 applies to every company
+# having a share capital. MCA has exempted private companies from parts of it
+# by notification, but that notification is not in the corpus, so narrowing
+# the rule here would encode a conclusion the corpus cannot support.
+meta:
+  route: RIGHTS
+  authority: MCA
+  instrument: "Companies Act, 2013"
+  default_effective_from: "2014-04-01"
+
+rules:
+  - rule_code: RGT-A-001
+    title: Further shares must be offered to existing equity shareholders in proportion
+    issue_type: RIGHTS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.62(1)(a)"
+      reference: "Companies Act, 2013, section 62(1)(a)"
+    requirement: >-
+      Where a company having a share capital proposes to increase its subscribed capital by
+      the issue of further shares, those shares shall be offered to persons who, at the date
+      of the offer, are holders of equity shares of the company, in proportion as nearly as
+      circumstances admit to the paid-up share capital on those shares, by sending a letter
+      of offer.
+    trigger:
+      text: "rights issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: RIGHTS }
+    conditions:
+      - text: "the date of the offer, by reference to which the holders of equity shares are identified, is stated"
+        ast: { op: exists, field: issue.record_date }
+      - text: "the proportion in which the shares are offered is stated"
+        ast: { op: gt, field: issue.rights_ratio_den, value: 0 }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: BLOCK
+    message: >-
+      Entitlement under section 62(1)(a) cannot be determined without both the date of the
+      offer and the proportion in which shares are offered. State the record date and the
+      rights ratio.
+
+  - rule_code: RGT-A-002
+    title: The offer carries a right of renunciation unless the articles provide otherwise
+    issue_type: RIGHTS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.62(1)(a)"
+      reference: "Companies Act, 2013, section 62(1)(a)(ii)"
+    requirement: >-
+      Unless the articles of the company otherwise provide, the offer shall be deemed to
+      include a right exercisable by the person concerned to renounce the shares offered to
+      him or any of them in favour of any other person, and the notice shall contain a
+      statement of that right.
+    trigger:
+      text: "rights issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: RIGHTS }
+    conditions:
+      - text: "renunciation is permitted, as the Act deems it to be unless the articles exclude it"
+        ast: { op: eq, field: issue.renunciation_permitted, value: true }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      Renunciation is deemed to be permitted unless the articles of the company expressly
+      provide otherwise. Withholding it requires an article to that effect; confirm the
+      article before proceeding, and ensure the letter of offer states the position.
+
+  - rule_code: RGT-A-003
+    title: Notice of the offer must be despatched at least three days before the issue opens
+    issue_type: RIGHTS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.62(2)"
+      reference: "Companies Act, 2013, section 62(2)"
+    requirement: >-
+      The notice referred to in sub-clause (i) of clause (a) of sub-section (1) shall be
+      despatched through registered post or speed post or through electronic mode to all the
+      existing shareholders at least three days before the opening of the issue.
+    trigger:
+      text: "rights issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: RIGHTS }
+    conditions:
+      - text: "the notice was despatched by registered post, speed post or electronic mode"
+        ast:
+          op: in
+          field: issue.rights_notice_despatch_mode
+          value: [REGISTERED_POST, SPEED_POST, ELECTRONIC]
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Section 62(2) permits only registered post, speed post or electronic mode for despatch
+      of the notice, and requires despatch at least three days before the issue opens. The
+      three-day interval is not evaluated automatically; check it against the despatch date
+      and the opening date.

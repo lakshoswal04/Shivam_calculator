@@ -21,18 +21,12 @@ ALL_ROUTES = [
 SOURCE_GATES: dict[str, dict] = {
     "PRIVATE_PLACEMENT": {
         "code": "COMPANIES_ACT_2013",
-        "provisions_required": ["42", "39", "23", "117", "179(3)(c)"],
-        "detail": ("Section 42 of the Companies Act, 2013 governs private placement and is "
-                   "not in the source corpus. It must be the text as amended: section 42 was "
-                   "wholly substituted by the Companies (Amendment) Act, 2017 w.e.f. "
-                   "07-08-2018, so as-enacted text would produce wrong rules."),
-    },
-    "RIGHTS": {
-        "code": "COMPANIES_ACT_2013",
-        "provisions_required": ["62(1)(a)", "62(2)", "23"],
-        "detail": ("Section 62 of the Companies Act, 2013 is the legal basis of a rights "
-                   "issue and is not in the source corpus. SEBI ICDR Chapter III rules for "
-                   "listed issuers are available and are applied."),
+        "provisions_required": ["42"],
+        "detail": ("Section 42 of the Companies Act, 2013 governs private placement. The Act "
+                   "is now in the corpus, but consolidated only to 29-05-2015, so the section "
+                   "42 held here is the text that the Companies (Amendment) Act, 2017 wholly "
+                   "substituted w.e.f. 07-08-2018. Rules authored from it would be wrong, so "
+                   "the route's legal conclusions remain withheld."),
     },
 }
 
@@ -64,6 +58,12 @@ ROUTE_QUESTIONS: dict[str, list[dict]] = {
         {"key": "record_date", "label": "Record date", "type": "date"},
         {"key": "renunciation_permitted", "label": "Is renunciation permitted?",
          "type": "boolean"},
+        # Read by RGT-A-003 (Companies Act, 2013, s.62(2)), which permits only
+        # these three modes of despatch.
+        {"key": "rights_notice_despatch_mode",
+         "label": "How was the notice of the offer despatched to shareholders?",
+         "type": "select",
+         "options": ["REGISTERED_POST", "SPEED_POST", "ELECTRONIC", "OTHER", "NOT_DESPATCHED"]},
         {"key": "issue_open_date", "label": "Issue opens", "type": "date"},
         {"key": "issue_close_date", "label": "Issue closes", "type": "date"},
         {"key": "oversubscription_allowed", "label": "Applications for additional shares allowed?",

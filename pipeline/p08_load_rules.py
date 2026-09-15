@@ -100,6 +100,12 @@ def check_ast(ast, where: str):
 
 # ------------------------------------------------------------------ loading
 def load_source_gaps(cur) -> int:
+    """Load the gap register.
+
+    A gap is closed by giving it `resolved_on` in the seed file, not by
+    deleting it: everything downstream reads `resolved_at IS NULL`, and the
+    record of what was once missing is worth keeping.
+    """
     path = SEED / "source_gaps.yaml"
     if not path.exists():
         return 0
@@ -109,16 +115,18 @@ def load_source_gaps(cur) -> int:
         cur.execute("""
             INSERT INTO legal.source_gaps
               (code, severity, title, detail, action_required,
-               blocks_issue_types, provisions_required)
-            VALUES (%s,%s,%s,%s,%s,%s::legal.issue_type[],%s)
+               blocks_issue_types, provisions_required, resolved_at)
+            VALUES (%s,%s,%s,%s,%s,%s::legal.issue_type[],%s,%s)
             ON CONFLICT (code) DO UPDATE SET
               severity=EXCLUDED.severity, title=EXCLUDED.title, detail=EXCLUDED.detail,
               action_required=EXCLUDED.action_required,
               blocks_issue_types=EXCLUDED.blocks_issue_types,
-              provisions_required=EXCLUDED.provisions_required""",
+              provisions_required=EXCLUDED.provisions_required,
+              resolved_at=EXCLUDED.resolved_at""",
             (g["code"], g["severity"], g["title"], " ".join(g["detail"].split()),
              " ".join(g["action_required"].split()),
-             g.get("blocks_issue_types") or [], g.get("provisions_required") or []))
+             g.get("blocks_issue_types") or [], g.get("provisions_required") or [],
+             g.get("resolved_on")))
         n += 1
     return n
 

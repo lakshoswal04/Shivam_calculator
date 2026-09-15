@@ -1,29 +1,34 @@
 # Sources V1 needs but does not have. Surfaced in every affected assessment
 # so a gap is visible rather than silently producing a thin answer.
+#
+# A gap is closed with `resolved_on`, never by deletion: the record of what was
+# once missing is part of the audit trail.
 gaps:
   - code: COMPANIES_ACT_2013
     severity: BLOCKER
-    title: "Companies Act, 2013 (as amended) is not in the source corpus"
+    title: "Companies Act, 2013 in the corpus is amended only to 29-05-2015"
     detail: >-
-      The Companies Act, 2013 is not present in the source corpus. Every official channel
-      refuses automated access: mca.gov.in returns HTTP 403 to scripted clients, and
-      indiacode.gov.in presents a certificate that does not match its hostname and then serves
-      a JavaScript shell instead of the PDF. Conclusions that depend on sections 23, 39, 42,
-      55, 62, 63, 117 and 179(3)(c) cannot be produced.
+      The Companies Act, 2013 is now in the source corpus, consolidated to 29-05-2015, and
+      sections 23, 39, 55, 62, 63, 117 and 179(3)(c) are cited from it. Section 42 is the
+      exception: the text held is the pre-2018 version, which was wholly substituted by the
+      Companies (Amendment) Act, 2017 with effect from 07-08-2018. Conclusions that depend on
+      the current section 42 therefore cannot be produced.
     action_required: >-
-      Supply the Companies Act, 2013 as amended to date into corpus/originals/ and re-run the
-      ingestion pipeline. As-enacted text is not sufficient: section 42 was wholly substituted
-      by the Companies (Amendment) Act, 2017 with effect from 07-08-2018.
-    blocks_issue_types: [PRIVATE_PLACEMENT, RIGHTS]
-    provisions_required: ["23", "39", "42", "55", "62(1)(a)", "62(1)(c)", "63", "117", "179(3)(c)"]
+      Supply the Companies Act, 2013 as amended to date, carrying section 42 as substituted
+      with effect from 07-08-2018, into corpus/originals/ with a .meta.json sidecar declaring
+      its as_amended_upto date, and re-run ./run_pipeline.sh. Until then no rule may be
+      approved from section 42, and every section sourced from this edition should be checked
+      for amendment after 29-05-2015 before approval.
+    blocks_issue_types: [PRIVATE_PLACEMENT]
+    provisions_required: ["42"]
 
   - code: MCA_FORM_INSTRUCTION_KITS
     severity: GAP
-    title: "MCA form instruction kits (PAS-3, MGT-14, SH-7) are absent"
+    title: "The MCA instruction kit for PAS-3 is absent"
     detail: >-
-      Field-level filing requirements for PAS-3, MGT-14 and SH-7 cannot be stated without the
-      instruction kits.
-    action_required: "Supply the MCA instruction kits for PAS-3, MGT-14 and SH-7."
+      The instruction kits for MGT-14 and SH-7 are now in the corpus. PAS-3 (return of
+      allotment) is still missing, so its field-level filing requirements cannot be stated.
+    action_required: "Supply the MCA instruction kit for PAS-3."
     blocks_issue_types: []
     provisions_required: []
 
@@ -36,6 +41,9 @@ gaps:
     action_required: "Supply the relevant SEBI circulars and master circulars."
     blocks_issue_types: []
     provisions_required: []
+    # Closed by the ICDR master circular (last updated 09-02-2026) and the LODR
+    # master circular (last updated 30-01-2026), both now in corpus/originals/.
+    resolved_on: 2026-09-15
 
   - code: NSE_CML_2023_51
     severity: GAP

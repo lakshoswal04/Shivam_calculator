@@ -94,6 +94,27 @@ def purge(conn):
 # the review queue with real work in it, so the reviewer flow is exercisable.
 HOLD_BACK_ROUTES = ("PRIVATE_PLACEMENT",)
 
+# A rule is also held back when the text it cites is not demonstrably current.
+# The Companies Act, 2013 in the corpus is consolidated only to 29-05-2015, so
+# a rule drawn from it may rest on superseded text; approving it would assert a
+# currency check nobody performed. This clears itself the moment a more
+# recently consolidated edition is ingested, without editing this file.
+STALE_AFTER_YEARS = 3
+
+
+def _stale_sourced(cur) -> list:
+    """Rule versions citing text older than STALE_AFTER_YEARS, by amended-upto."""
+    cur.execute("""
+        SELECT DISTINCT rv.rule_version_id
+        FROM legal.legal_rule_versions rv
+        JOIN legal.legal_provisions p ON p.provision_id = rv.provision_id
+        JOIN legal.legal_documents d ON d.document_id = p.document_id
+        JOIN legal.legal_sources s ON s.source_id = d.source_id
+        WHERE s.consolidation_status = 'CONSOLIDATED'
+          AND s.as_amended_upto < (current_date - make_interval(years => %s))""",
+        (STALE_AFTER_YEARS,))
+    return [r["rule_version_id"] for r in cur.fetchall()]
+
 
 def approve_demo(conn):
     """Approve authored content under a clearly non-human reviewer identity."""
@@ -105,7 +126,9 @@ def approve_demo(conn):
                 reviewer_id=%s, reviewed_at=%s,
                 review_notes='Approved by the demonstration seed. NOT legal sign-off.'
             WHERE legal_review_status='PENDING'
-              AND issue_type <> ALL(%s::legal.issue_type[])""", (REVIEWER, now, list(HOLD_BACK_ROUTES)))
+              AND issue_type <> ALL(%s::legal.issue_type[])
+              AND rule_version_id <> ALL(%s::uuid[])""",
+            (REVIEWER, now, list(HOLD_BACK_ROUTES), _stale_sourced(cur)))
         rules = cur.rowcount
         cur.execute("""
             UPDATE calc.calculation_versions
@@ -124,7 +147,8 @@ def approve_demo(conn):
         held = cur.fetchone()["n"]
     print(f"  rules approved: {rules}   calculation versions: {calcs}")
     print(f"  left PENDING for review: {held} "
-          f"({', '.join(HOLD_BACK_ROUTES).lower().replace('_',' ')} - primary law absent)")
+          f"({', '.join(HOLD_BACK_ROUTES).lower().replace('_',' ')} - primary law absent; "
+          f"plus any rule citing text not consolidated within {STALE_AFTER_YEARS} years)")
     print(f"  compliance rows: {counts}")
 
 
