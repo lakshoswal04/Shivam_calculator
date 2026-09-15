@@ -83,21 +83,27 @@ is unresolvable or ambiguous. A rule change is a data operation, never a deploym
 
 ### Source gaps
 
-The **Companies Act, 2013 is not in the corpus** and cannot be fetched (mca.gov.in returns
-403 to scripted clients; indiacode.gov.in serves a hostname-mismatched certificate and then
-a JavaScript shell). This gates two of the three MVP routes:
+The **Companies Act, 2013 is in the corpus, consolidated to 29-05-2015** — supplied by
+hand, because it cannot be fetched (mca.gov.in returns 403 to scripted clients;
+indiacode.gov.in serves a hostname-mismatched certificate and then a JavaScript shell).
+Sections 23, 39, 55, 62, 63, 117 and 179(3)(c) are cited from it.
 
-- **Private placement** — s.42 is the governing provision.
-- **Rights** — s.62 is the legal basis of the entitlement.
+One route stays gated:
 
-Both routes still run every calculation and return `REVIEW_REQUIRED` on the Act-dependent
-legal limbs, naming the missing sections. **Preferential is the one route not Act-gated**,
-because ICDR Ch. V and SCD r.13 are both in hand.
+- **Private placement** — s.42 is the governing provision, and the section in this edition
+  is the text that the Companies (Amendment) Act, 2017 wholly substituted w.e.f. 07-08-2018.
+  The route runs every calculation and returns `REVIEW_REQUIRED` on the Act-dependent legal
+  limb, naming s.42.
 
-Supply the Act **as amended** into `corpus/originals/` and re-run `./dev.sh db`. As-enacted
-text is not enough: s.42 was wholly substituted by the Companies (Amendment) Act, 2017
-w.e.f. 07-08-2018, and a database trigger refuses to approve a rule sourced from
-`REFERENCE_ONLY` text.
+**Rights and preferential are not gated.** The s.62 rules load `PENDING`: the demo seeder
+declines to approve any rule citing text not consolidated within three years, so a reviewer
+must check s.62 against the current Act first. Nothing outside s.42 is known to have moved
+since 2015, but this corpus cannot prove it either way — that is what the review is for.
+
+Supply a more recent consolidation into `corpus/originals/` with a `.meta.json` sidecar
+declaring its `as_amended_upto`, then re-run `./run_pipeline.sh` (not `./dev.sh db`, which
+starts at p06 and would never inventory, extract or structure the new file). A database
+trigger refuses to approve a rule sourced from `REFERENCE_ONLY` text.
 
 ---
 

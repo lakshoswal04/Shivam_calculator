@@ -77,11 +77,30 @@ def source_gaps(p: Principal = Depends(current_principal)):
 
 @router.get("/sources")
 def sources(p: Principal = Depends(current_principal)):
+    """The corpus, as the Legal Library page lists it.
+
+    `title` holds whatever the extractor found on page one, which for several
+    documents is OCR noise like "Page 1 of 45". The curated instrument label is
+    the name to show; it falls back to the title only where no instrument was
+    identified, and the raw title is still returned so the two can be compared.
+    """
     with tx() as conn:
         rows = fetch_all(conn, """
-            SELECT authority, document_type, title, file_name, source_priority,
-                   left(file_hash, 12) AS file_hash_short, page_count, official_url, scope
-            FROM legal.legal_sources
-            WHERE document_type <> 'CONTAINER'
-            ORDER BY source_priority, authority, file_name""")
+            SELECT s.authority, s.document_type, s.title, s.file_name, s.source_priority,
+                   left(s.file_hash, 12) AS file_hash_short, s.page_count,
+                   s.official_url, s.scope,
+                   s.consolidation_status, s.as_amended_upto,
+                   coalesce(i.label, nullif(btrim(s.title), ''), s.file_name) AS display_name,
+                   coalesce(pc.n, 0) AS provision_count
+            FROM legal.legal_sources s
+            LEFT JOIN LATERAL (
+                SELECT p.instrument_id, count(*) AS n
+                FROM legal.legal_documents d
+                JOIN legal.legal_provisions p ON p.document_id = d.document_id
+                WHERE d.source_id = s.source_id
+                GROUP BY p.instrument_id ORDER BY count(*) DESC LIMIT 1
+            ) pc ON true
+            LEFT JOIN legal.legal_instruments i ON i.instrument_id = pc.instrument_id
+            WHERE s.document_type <> 'CONTAINER'
+            ORDER BY s.source_priority, s.authority, display_name""")
     return {"count": len(rows), "sources": rows}

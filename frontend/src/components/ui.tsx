@@ -122,7 +122,14 @@ export function SourceChip({ source }: { source: SourceReference }) {
             </p>
           )}
           <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 font-mono text-[11px] text-muted">
-            {source.citation && (<><dt>Citation</dt><dd className="text-ink-2">{source.citation}</dd></>)}
+            {/* The uid is the exact anchor; the citation string alone can be
+                ambiguous, so the link is only offered when a uid is present. */}
+            {source.citation && (<><dt>Citation</dt><dd className="text-ink-2">
+              {source.citation_uid
+                ? <Link href={`/legal/provisions/${encodeURIComponent(source.citation_uid)}`}
+                        className="text-accent-hi hover:underline">{source.citation}</Link>
+                : source.citation}
+            </dd></>)}
             {source.document && (<><dt>Document</dt><dd className="text-ink-2">{source.document}</dd></>)}
             {source.file_hash && (<><dt>SHA-256</dt><dd className="text-ink-2">{source.file_hash}…</dd></>)}
             {source.source_priority && (<><dt>Priority</dt><dd className="text-ink-2">{source.source_priority}</dd></>)}

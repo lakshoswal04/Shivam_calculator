@@ -143,6 +143,10 @@ export const api = {
   provision: (uid: string) =>
     request<Record<string, unknown>>(`/legal/provisions/${encodeURIComponent(uid)}`),
   sourceGaps: () => request<{ gaps: SourceGap[] }>("/legal/source-gaps"),
+  sources: () => request<{ count: number; sources: LegalSource[] }>("/legal/sources"),
+  searchProvisions: (q: string) =>
+    request<{ query: string; results: ProvisionHit[] }>(
+      `/legal/provisions?q=${encodeURIComponent(q)}`),
   rulesInForce: (issueType?: string) =>
     request<{ count: number; rules: Record<string, unknown>[] }>(
       `/legal/rules${issueType ? `?issue_type=${issueType}` : ""}`),
@@ -185,6 +189,17 @@ export interface AssessmentRow {
   assessment_id: string; run_at: string; overall_result: RuleStatus;
   blocks_count: number; warnings_count: number; review_count: number;
   issue_type: string; transaction_date: string; company_name: string; company_id: string;
+}
+export interface LegalSource {
+  authority: string; document_type: string; title: string | null; file_name: string;
+  source_priority: string; file_hash_short: string; page_count: number | null;
+  official_url: string | null; scope: string | null;
+  consolidation_status: string; as_amended_upto: string | null;
+  display_name: string; provision_count: number;
+}
+export interface ProvisionHit {
+  citation: string; citation_uid: string; page_from: number | null;
+  instrument_label: string | null; excerpt: string;
 }
 export interface SourceGap {
   code: string; severity: string; title: string; detail: string;
