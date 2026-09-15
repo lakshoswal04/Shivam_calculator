@@ -37,6 +37,14 @@ INSTRUMENT_LABELS = {
     "the-companies-management-and-administration-rules-2014-.pdf": "Companies (Management and Administration) Rules, 2014",
     "the-companies-registration-offices-and-fees-rules-2014.pdf": "Companies (Registration Offices and Fees) Rules, 2014",
     "Extract of ICDR.pdf": "SEBI (ICDR) Regulations, 2018 [extract]",
+    "Companies Act 2013.pdf": "Companies Act, 2013",
+    # The master circulars are reissued with a new "last updated" date rather
+    # than a new number, so the label carries no date: citations authored
+    # against them must not churn every time SEBI republishes.
+    "SEBI ICDR Master Circular.pdf": "SEBI ICDR Master Circular",
+    "SEBI LODR Master Circular.pdf": "SEBI LODR Master Circular",
+    "MCA Instruction Kit MGT-14.pdf": "MCA Instruction Kit for Form MGT-14",
+    "MCA Instruction Kit SH-7.pdf": "MCA Instruction Kit for Form SH-7",
 }
 
 

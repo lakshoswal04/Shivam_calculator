@@ -1,0 +1,15 @@
+{
+  "url": null,
+  "save_as": "SEBI LODR Master Circular.pdf",
+  "authority": "SEBI",
+  "document_type": "MASTER_CIRCULAR",
+  "priority": "P1",
+  "consolidation_status": "CONSOLIDATED",
+  "as_amended_upto": "2026-01-30",
+  "note": "Master Circular for compliance with the LODR Regulations by listed entities; issued 11-07-2023, last updated 30-01-2026.",
+  "fetched_at": "2026-09-15T00:00:00+00:00",
+  "acquisition_method": "SUPPLIED_BY_HAND",
+  "outcome": "ACQUIRED",
+  "sha256": "fa3b4360d2a86be611ecc44350baf0cbcb5eec97286dd1a6e553f94efdf1b99b",
+  "local_file_path": "originals/SEBI LODR Master Circular.pdf"
+}

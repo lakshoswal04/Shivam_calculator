@@ -29,6 +29,7 @@ CLASSIFICATION,QIP_Post_Allotment_InvITs_0_20260504154107.docx,REVIEW,issue_type
 CLASSIFICATION,QIP_Post_Allotment_REITS_0_20260504154256.docx,REVIEW,issue_type_confidence=0.59,Confirm authority / document type / issue type
 CLASSIFICATION,Post_allotment-Rights.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
 CLASSIFICATION,Trading_Approval.docx,REVIEW,authority_confidence=0.0; issue_type_confidence=0.52,Confirm authority / document type / issue type
+CLASSIFICATION,SEBI LODR Master Circular.pdf,REVIEW,issue_type_confidence=0.58,Confirm authority / document type / issue type
 CLASSIFICATION,SEBI LODR Regulations.pdf,REVIEW,issue_type_confidence=0.4,Confirm authority / document type / issue type
 CLASSIFICATION,Trading_Approval.docx,REVIEW,document_type_confidence=0.6; issue_type_confidence=0.49,Confirm authority / document type / issue type
 CLASSIFICATION,Trading_Approval_Fast_Track.docx,REVIEW,document_type_confidence=0.6; issue_type_confidence=0.49,Confirm authority / document type / issue type

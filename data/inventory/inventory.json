@@ -1,35 +1,38 @@
 {
-  "generated_at": "2026-09-06T21:38:47+00:00",
+  "generated_at": "2026-09-15T13:39:23+00:00",
   "corpus_root": "/Users/lakshoswal04/Desktop/Calculator_pdfs/corpus",
   "counts": {
-    "documents": 53,
+    "documents": 58,
     "containers": 5,
     "by_authority": {
       "NSE": 30,
       "UNKNOWN": 9,
-      "SEBI": 6,
-      "BSE": 4,
-      "MCA": 4
+      "SEBI": 8,
+      "MCA": 7,
+      "BSE": 4
     },
     "by_document_type": {
       "CHECKLIST": 26,
       "UNKNOWN": 15,
       "REGULATION": 6,
       "RULE": 4,
+      "INSTRUCTION_KIT": 2,
+      "MASTER_CIRCULAR": 2,
       "FAQ": 1,
-      "LISTING_REQUIREMENT": 1
+      "LISTING_REQUIREMENT": 1,
+      "ACT": 1
     },
     "by_scope": {
-      "COMPANY": 39,
+      "COMPANY": 44,
       "REIT_INVIT": 14
     },
     "by_priority": {
-      "P2": 39,
-      "P0": 10,
-      "P3": 3,
-      "P1": 1
+      "P2": 41,
+      "P0": 11,
+      "P1": 3,
+      "P3": 3
     },
-    "needs_review": 30
+    "needs_review": 31
   },
   "duplicates_exact": {},
   "duplicate_title_candidates": {
@@ -117,14 +120,16 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/CHECKLIST_FOR_DIRECT_LISTING_Nation_wide.doc",
-      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "retrieved_date": "2026-09-15T13:39:21+00:00",
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -194,7 +199,9 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/FAQ_on_Listing.pdf",
-      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "retrieved_date": "2026-09-15T13:39:21+00:00",
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 7,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -203,7 +210,7 @@
       "review_reasons": [
         "issue_type_confidence=0.54"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -248,14 +255,16 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/In_principle_approval_of_PPDI.doc",
-      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "retrieved_date": "2026-09-15T13:39:21+00:00",
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -291,14 +300,16 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads/IPP_%20Post_Issue_Final.doc",
-      "retrieved_date": "2026-09-06T21:38:45+00:00",
+      "retrieved_date": "2026-09-15T13:39:20+00:00",
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -371,6 +382,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -380,7 +393,7 @@
         "document_type_confidence=0.56",
         "issue_type_confidence=0.56"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null
     },
     {
@@ -458,6 +471,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -466,7 +481,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null
     },
     {
@@ -510,13 +525,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 2,
       "in_container": "originals/Checklist_Recommencement_F.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -561,13 +578,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Checklist_Recommencement_F.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -640,13 +659,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 11,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -750,6 +771,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 25,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -758,7 +781,112 @@
       "review_reasons": [
         "issue_type_confidence=0.48"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "companies-act-2013-325a7d09",
+      "file_name": "Companies Act 2013.pdf",
+      "local_file_path": "originals/Companies Act 2013.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 1995201,
+      "sha256": "325a7d09574541cd2cd48f558c42d8a8f9109830a271007c46196caa6675a832",
+      "authority": "MCA",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:None"
+      ],
+      "document_type": "ACT",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "ACT",
+      "title": "THE COMPANIES ACT, 2013",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PRIVATE_PLACEMENT",
+          "score": 1.98,
+          "evidence": [
+            "head:private placement x1",
+            "body:private placement x13"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 1.4,
+          "evidence": [
+            "body:\\bESOP\\b x1",
+            "body:employee stock option x1"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 1.26,
+          "evidence": [
+            "body:initial public off x1",
+            "body:public issue x1"
+          ]
+        },
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 1.2,
+          "evidence": [
+            "body:sweat equity x8"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 1.0,
+          "evidence": [
+            "body:bonus (issue|shares) x19"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 0.85,
+          "evidence": [
+            "body:rights issue x2"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.7,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x12"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.53,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P0",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": "2026-09-15T00:00:00+00:00",
+      "consolidation_status": "CONSOLIDATED",
+      "as_amended_upto": "2015-05-29",
+      "page_count": 288,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -842,13 +970,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Download_Post-Allotment_20260504153404.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -911,6 +1041,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Download_Post-Allotment_20260504153404.zip",
       "extraction_status": "NOT_STARTED",
@@ -920,7 +1052,7 @@
         "authority_confidence=0.55",
         "document_type_confidence=0.55"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -999,13 +1131,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1043,6 +1177,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1051,7 +1187,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1096,6 +1232,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 2,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1104,7 +1242,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1152,6 +1290,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 2,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1160,7 +1300,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1211,6 +1351,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1219,7 +1361,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1269,6 +1411,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 3,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1277,7 +1421,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1334,6 +1478,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 4,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1342,7 +1488,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1390,6 +1536,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
@@ -1398,7 +1546,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1462,13 +1610,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 7,
       "in_container": "originals/FPO_Checklist.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1534,6 +1684,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -1542,7 +1694,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:22+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1607,6 +1759,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -1616,7 +1770,7 @@
         "authority_confidence=0.34",
         "issue_type_confidence=0.51"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -1701,6 +1855,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -1709,7 +1865,7 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -1794,6 +1950,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -1802,8 +1960,131 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
+    },
+    {
+      "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
+      "file_name": "MCA Instruction Kit MGT-14.pdf",
+      "local_file_path": "originals/MCA Instruction Kit MGT-14.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 449985,
+      "sha256": "0f8c29ead7e5b499a0870f9fc6c804ddd906ef315a09de5e8e4495565f1620d1",
+      "authority": "MCA",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:None"
+      ],
+      "document_type": "INSTRUCTION_KIT",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Instruction Kit for Form No. MGT-14",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 0.84,
+          "evidence": [
+            "body:sweat equity x1"
+          ]
+        }
+      ],
+      "primary_issue_type": "SWEAT_EQUITY",
+      "issue_type_confidence": 0.71,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": "2026-09-15T00:00:00+00:00",
+      "consolidation_status": "REFERENCE_ONLY",
+      "as_amended_upto": null,
+      "page_count": 15,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "mca-instruction-kit-sh-7-25a9e662",
+      "file_name": "MCA Instruction Kit SH-7.pdf",
+      "local_file_path": "originals/MCA Instruction Kit SH-7.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 718589,
+      "sha256": "25a9e662b3dcde872397561d9f6d02fb74d6e86f2cee91bb44a7451be413dd2b",
+      "authority": "MCA",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:None"
+      ],
+      "document_type": "INSTRUCTION_KIT",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "UNKNOWN",
+      "title": "Instruction Kit for Form No. SH- 7",
+      "subject": null,
+      "issue_types": [],
+      "primary_issue_type": "GENERAL",
+      "issue_type_confidence": 0.9,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P2",
+      "dates_found_in_text": [
+        {
+          "iso": "2014-04-24",
+          "raw": "24th April 2014"
+        },
+        {
+          "iso": "2020-05-14",
+          "raw": "14th May 2020"
+        },
+        {
+          "iso": "2014-04-24",
+          "raw": "24th April 2014"
+        },
+        {
+          "iso": "2019-08-15",
+          "raw": "15th August 2019"
+        },
+        {
+          "iso": "2020-05-14",
+          "raw": "14th May 2020"
+        },
+        {
+          "iso": "2019-08-15",
+          "raw": "15th August 2019"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": "2026-09-15T00:00:00+00:00",
+      "consolidation_status": "REFERENCE_ONLY",
+      "as_amended_upto": null,
+      "page_count": 25,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
     },
     {
       "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
@@ -1863,13 +2144,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1956,6 +2239,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -1964,7 +2249,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -2026,13 +2311,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2119,6 +2406,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -2127,7 +2416,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -2185,13 +2474,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2280,6 +2571,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
       "extraction_status": "NOT_STARTED",
@@ -2288,7 +2581,7 @@
       "review_reasons": [
         "authority_confidence=0.5"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2365,6 +2658,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 21,
       "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
       "extraction_status": "NOT_STARTED",
@@ -2375,7 +2670,7 @@
         "document_type_confidence=0.51",
         "issue_type_confidence=0.51"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2431,6 +2726,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
       "extraction_status": "NOT_STARTED",
@@ -2440,7 +2737,7 @@
         "authority_confidence=0.59",
         "document_type_confidence=0.56"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2547,6 +2844,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Preferential_Pre_Allotment_20260616122325.zip",
       "extraction_status": "NOT_STARTED",
@@ -2555,7 +2854,7 @@
       "review_reasons": [
         "document_type_confidence=0.53"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2637,13 +2936,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2729,6 +3030,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -2737,7 +3040,7 @@
       "review_reasons": [
         "issue_type_confidence=0.59"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -2822,6 +3125,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -2830,7 +3135,7 @@
       "review_reasons": [
         "issue_type_confidence=0.59"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -2896,13 +3201,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "DEFERRED",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -2970,6 +3277,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
       "extraction_status": "NOT_STARTED",
@@ -2978,7 +3287,7 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -3043,13 +3352,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
       "extraction_status": "NOT_STARTED",
       "processing_status": "DEFERRED",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -3107,6 +3418,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": "originals/Rights Issue Checklist - InvIT_0_0.zip",
       "extraction_status": "NOT_STARTED",
@@ -3116,7 +3429,7 @@
         "authority_confidence=0.0",
         "issue_type_confidence=0.52"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -3195,13 +3508,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 3,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3262,13 +3577,154 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 81,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-icdr-master-circular-1f6763cd",
+      "file_name": "SEBI ICDR Master Circular.pdf",
+      "local_file_path": "originals/SEBI ICDR Master Circular.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 3843320,
+      "sha256": "1f6763cdb3a30061802e117d5615ec16a2e97d25dfe0c09a3144f449bc1d7ce0",
+      "authority": "SEBI",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:None"
+      ],
+      "document_type": "MASTER_CIRCULAR",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "CIRCULAR",
+      "title": "Page 1 of 144",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 2.66,
+          "evidence": [
+            "body:\\bIPO\\b x28",
+            "body:initial public off x4",
+            "body:public issue x82"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.96,
+          "evidence": [
+            "body:rights issue x54",
+            "body:rights entitlement x4"
+          ]
+        },
+        {
+          "issue_type": "QIP",
+          "score": 1.76,
+          "evidence": [
+            "body:\\bQIP\\b x1",
+            "body:qualified institutions placement x4"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 1.0,
+          "evidence": [
+            "body:bonus (issue|shares) x24"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 0.92,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x3"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.85,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x2"
+          ]
+        },
+        {
+          "issue_type": "FPO",
+          "score": 0.77,
+          "evidence": [
+            "body:further public offer x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x22"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.54,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P1",
+      "dates_found_in_text": [
+        {
+          "iso": "2023-06-21",
+          "raw": "June 21, 2023"
+        },
+        {
+          "iso": "2026-02-09",
+          "raw": "February 09, 2026"
+        },
+        {
+          "iso": "2023-06-21",
+          "raw": "June 21, 2023"
+        },
+        {
+          "iso": "2023-06-21",
+          "raw": "June 21, \n2023"
+        },
+        {
+          "iso": "2024-11-11",
+          "raw": "November 11, 2024"
+        },
+        {
+          "iso": "2024-09-30",
+          "raw": "September 30, 2024"
+        },
+        {
+          "iso": "2024-11-11",
+          "raw": "November 11, 2024"
+        },
+        {
+          "iso": "2025-12-31",
+          "raw": "December 31, 2025"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": "2026-09-15T00:00:00+00:00",
+      "consolidation_status": "CONSOLIDATED",
+      "as_amended_upto": "2026-02-09",
+      "page_count": 144,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": false,
+      "review_reasons": [],
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3405,13 +3861,169 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 475,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
+      "duplicate_of": null,
+      "issue_types_source": "full_text"
+    },
+    {
+      "document_id": "sebi-lodr-master-circular-fa3b4360",
+      "file_name": "SEBI LODR Master Circular.pdf",
+      "local_file_path": "originals/SEBI LODR Master Circular.pdf",
+      "file_type": "pdf",
+      "file_size_bytes": 4304934,
+      "sha256": "fa3b4360d2a86be611ecc44350baf0cbcb5eec97286dd1a6e553f94efdf1b99b",
+      "authority": "SEBI",
+      "authority_confidence": 1.0,
+      "authority_evidence": [
+        "provenance:None"
+      ],
+      "document_type": "MASTER_CIRCULAR",
+      "document_type_confidence": 1.0,
+      "document_type_evidence": [
+        "provenance:declared at acquisition"
+      ],
+      "instrument_kind": "CIRCULAR",
+      "title": "Page 1 of 291",
+      "subject": null,
+      "issue_types": [
+        {
+          "issue_type": "QIP",
+          "score": 2.05,
+          "evidence": [
+            "body:\\bQIP\\b x4",
+            "body:qualified institutions placement x6"
+          ]
+        },
+        {
+          "issue_type": "ESOP",
+          "score": 1.85,
+          "evidence": [
+            "body:\\bESOP\\b x11",
+            "body:employee stock option x2"
+          ]
+        },
+        {
+          "issue_type": "RIGHTS",
+          "score": 1.7,
+          "evidence": [
+            "body:rights issue x13",
+            "body:rights entitlement x1"
+          ]
+        },
+        {
+          "issue_type": "SWEAT_EQUITY",
+          "score": 1.18,
+          "evidence": [
+            "body:sweat equity x5"
+          ]
+        },
+        {
+          "issue_type": "PREFERENTIAL",
+          "score": 1.0,
+          "evidence": [
+            "body:preferential (issue|allotment|basis) x13"
+          ]
+        },
+        {
+          "issue_type": "BONUS",
+          "score": 1.0,
+          "evidence": [
+            "body:bonus (issue|shares) x7"
+          ]
+        },
+        {
+          "issue_type": "PUBLIC_ISSUE",
+          "score": 0.8,
+          "evidence": [
+            "body:public issue x9"
+          ]
+        },
+        {
+          "issue_type": "FPO",
+          "score": 0.77,
+          "evidence": [
+            "body:further public offer x1"
+          ]
+        },
+        {
+          "issue_type": "CONVERSION",
+          "score": 0.7,
+          "evidence": [
+            "body:conversion of (securities|debentures|loan) x1"
+          ]
+        },
+        {
+          "issue_type": "WARRANTS",
+          "score": 0.7,
+          "evidence": [
+            "body:\\bwarrants?\\b x12"
+          ]
+        }
+      ],
+      "primary_issue_type": "UNKNOWN",
+      "issue_type_confidence": 0.48,
+      "scope": "COMPANY",
+      "scope_signal_count": 0,
+      "source_priority": "P1",
+      "dates_found_in_text": [
+        {
+          "iso": "2023-07-11",
+          "raw": "July 11, 2023"
+        },
+        {
+          "iso": "2026-01-30",
+          "raw": "January 30, 2026"
+        },
+        {
+          "iso": "2023-07-11",
+          "raw": "July 11, 2023"
+        },
+        {
+          "iso": "2023-06-30",
+          "raw": "June 30, 2023"
+        },
+        {
+          "iso": "2023-07-11",
+          "raw": "July 11, 2023"
+        },
+        {
+          "iso": "2024-11-11",
+          "raw": "November 11, 2024"
+        },
+        {
+          "iso": "2024-09-30",
+          "raw": "September 30, 2024"
+        },
+        {
+          "iso": "2024-11-11",
+          "raw": "November 11, 2024"
+        }
+      ],
+      "publication_date": null,
+      "amendment_date": null,
+      "effective_date": null,
+      "version": null,
+      "source_url": null,
+      "retrieved_date": "2026-09-15T00:00:00+00:00",
+      "consolidation_status": "CONSOLIDATED",
+      "as_amended_upto": "2026-01-30",
+      "page_count": 291,
+      "in_container": null,
+      "extraction_status": "NOT_STARTED",
+      "processing_status": "PENDING_EXTRACTION",
+      "human_review_required": true,
+      "review_reasons": [
+        "issue_type_confidence=0.58"
+      ],
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3548,6 +4160,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 231,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -3556,7 +4170,7 @@
       "review_reasons": [
         "issue_type_confidence=0.4"
       ],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3663,13 +4277,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 82,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:46+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3747,13 +4363,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 79,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3865,13 +4483,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 45,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3935,6 +4555,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -3944,7 +4566,7 @@
         "document_type_confidence=0.6",
         "issue_type_confidence=0.49"
       ],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4008,6 +4630,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -4017,7 +4641,7 @@
         "document_type_confidence=0.6",
         "issue_type_confidence=0.49"
       ],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4069,6 +4693,8 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 1,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
@@ -4077,7 +4703,7 @@
       "review_reasons": [
         "document_type_confidence=0.57"
       ],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null
     },
     {
@@ -4137,13 +4763,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 41,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4197,13 +4825,15 @@
       "version": null,
       "source_url": null,
       "retrieved_date": null,
+      "consolidation_status": "UNKNOWN",
+      "as_amended_upto": null,
       "page_count": 36,
       "in_container": null,
       "extraction_status": "NOT_STARTED",
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-06T21:38:47+00:00",
+      "inventoried_at": "2026-09-15T13:39:23+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     }

@@ -28,6 +28,7 @@ DOC_TYPES = {
     "CORPORATE_ACTION_REQUIREMENT", "FILING_REQUIREMENT", "LISTING_REQUIREMENT",
     "XBRL_REQUIREMENT", "COMPLIANCE_CALENDAR", "NOTICE", "CONTAINER", "UNKNOWN"}
 KINDS = {"ACT", "RULES", "REGULATIONS", "CIRCULAR", "CHECKLIST", "FAQ", "UNKNOWN"}
+CONSOLIDATION = {"CONSOLIDATED", "AS_ENACTED", "REFERENCE_ONLY", "UNKNOWN"}
 
 
 def enum(value, allowed, default="UNKNOWN"):
@@ -42,19 +43,30 @@ def load(conn, inv):
     for d in docs:
         priority = d.get("source_priority") or ("P2" if d.get("document_type") == "CONTAINER" else "P4")
         # A fetched document's consolidation status is declared; a local file's
-        # is unknown until a human confirms it (brief §29).
-        consolidation = "UNKNOWN"
+        # is unknown until a human confirms it (brief §29). That confirmation is
+        # the .meta.json sidecar, which p00 carries into the inventory.
+        consolidation = enum(d.get("consolidation_status"), CONSOLIDATION)
+        as_amended_upto = d.get("as_amended_upto")
+        # The consolidated_needs_date CHECK refuses CONSOLIDATED without a date;
+        # failing here names the document instead of raising a bare constraint.
+        if consolidation == "CONSOLIDATED" and not as_amended_upto:
+            raise SystemExit(
+                f"{d['file_name']}: consolidation_status=CONSOLIDATED requires "
+                "as_amended_upto in its .meta.json sidecar")
         cur.execute("""
             INSERT INTO legal.legal_sources
               (document_key,authority,document_type,title,file_name,local_file_path,
                file_type,file_size_bytes,file_hash,official_url,retrieved_date,
-               source_priority,consolidation_status,scope,page_count,in_container,
-               human_review_required,review_reasons,notes)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+               source_priority,consolidation_status,as_amended_upto,scope,page_count,
+               in_container,human_review_required,review_reasons,notes)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
             ON CONFLICT (file_hash) DO UPDATE SET
               authority=EXCLUDED.authority, document_type=EXCLUDED.document_type,
               title=EXCLUDED.title, source_priority=EXCLUDED.source_priority,
               scope=EXCLUDED.scope, page_count=EXCLUDED.page_count,
+              local_file_path=EXCLUDED.local_file_path,
+              consolidation_status=EXCLUDED.consolidation_status,
+              as_amended_upto=EXCLUDED.as_amended_upto,
               human_review_required=EXCLUDED.human_review_required,
               review_reasons=EXCLUDED.review_reasons
             RETURNING source_id""",
@@ -62,7 +74,7 @@ def load(conn, inv):
              enum(d.get("document_type"), DOC_TYPES), (d.get("title") or d["file_name"])[:500],
              d["file_name"], d["local_file_path"], d["file_type"], d["file_size_bytes"],
              d["sha256"], d.get("source_url"), d.get("retrieved_date"), priority,
-             consolidation, d.get("scope", "COMPANY"), d.get("page_count"),
+             consolidation, as_amended_upto, d.get("scope", "COMPANY"), d.get("page_count"),
              d.get("in_container"), d.get("human_review_required", True),
              json.dumps(d.get("review_reasons", [])), d.get("note")))
         source_id = cur.fetchone()[0]

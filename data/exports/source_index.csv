@@ -9,6 +9,7 @@ checklist-recommencement-of-trading-e30818a4,NSE,P2,CHECKLIST,Checklist_Recommen
 form-of-listing-aplication-487b76f1,NSE,P2,LISTING_REQUIREMENT,Form of Listing Aplication.docx,487b76f1350ecdb230721c8fe1a71acf8be3e83c03aee9072669ae51ba089c9d,,COMPANY,1
 companies-prospectus-and-allotment-of-securities-1f737c30,MCA,P0,RULE,Companies (Prospectus and Allotment of Securities) Rules.pdf,1f737c304cbe9de4a6b2d87da2b94bca32b25ee00335f64cde13003f5d2a2ecd,,COMPANY,11
 companies-share-capital-and-debentures-rules-64039399,MCA,P0,RULE,Companies (Share Capital and Debentures) Rules.pdf,640393992f3e8acfcb4d8fb4b1d38a3b4b4a1b06242b0838bd2d6a5b10941423,,COMPANY,25
+companies-act-2013-325a7d09,MCA,P0,ACT,Companies Act 2013.pdf,325a7d09574541cd2cd48f558c42d8a8f9109830a271007c46196caa6675a832,,COMPANY,288
 download-post-allotment-a57e1202,NSE,P2,CHECKLIST,Download Post-Allotment.docx,a57e120201dcba4777049afc7a945c5a2b922cf2a2850f9db47605704ecb6b87,,COMPANY,1
 points-to-remember-post-allotment-f6a19833,UNKNOWN,P3,UNKNOWN,Points to remember_post allotment.docx,f6a198339a9780062db4f20dec3688e3f74eac61a36caa2f26ef26995b4997a0,,COMPANY,1
 download-pre-allotment-ace085af,NSE,P2,CHECKLIST,Download_Pre-Allotment_.docx,ace085af823ff28b152e2f975be94ba62ae43594a45773b9e37f580accc283bb,,COMPANY,1
@@ -24,6 +25,8 @@ final-listing-preferential-14b337d2,NSE,P2,CHECKLIST,Final_Listing_Preferential.
 final-listing-preferential-reit-7a090df0,UNKNOWN,P2,CHECKLIST,Final_Listing_Preferential_REIT.doc,7a090df0a372c7524b1b231ee677bdd9f15fa62841076b53264292a54a6859b2,,REIT_INVIT,1
 inprinciple-approval-invits-0-1-e53ff681,UNKNOWN,P2,CHECKLIST,InPrinciple_Approval_InvITs_0_1.docx,e53ff681efa23e9e72710037723780fd4d6f6c96ffa3ea5141130793a5ffbbf7,,REIT_INVIT,1
 inprinciple-approval-reit-0-0-8b1d3e9b,UNKNOWN,P2,CHECKLIST,InPrinciple_Approval_REIT_0_0.docx,8b1d3e9b4ce6ce0a85ffe11f4c5e3b26bd9c3079d249dbf2eff3305b6e69aa40,,REIT_INVIT,1
+mca-instruction-kit-mgt-14-0f8c29ea,MCA,P2,INSTRUCTION_KIT,MCA Instruction Kit MGT-14.pdf,0f8c29ead7e5b499a0870f9fc6c804ddd906ef315a09de5e8e4495565f1620d1,,COMPANY,15
+mca-instruction-kit-sh-7-25a9e662,MCA,P2,INSTRUCTION_KIT,MCA Instruction Kit SH-7.pdf,25a9e662b3dcde872397561d9f6d02fb74d6e86f2cee91bb44a7451be413dd2b,,COMPANY,25
 post-allotment-sweat-equity-0-0-85b03e42,NSE,P2,CHECKLIST,Post Allotment ( Sweat Equity )_0_0.docx,85b03e429cf18ed6f5fc39c98a58777971760e36276186f9500498d757bbf102,,COMPANY,1
 post-allotment-invits-0-0-20260504153537-fe5d5a08,NSE,P2,CHECKLIST,Post_allotment_InvITs_0_0_20260504153537.docx,fe5d5a081c0ad52d0c00cd1a6958246d2ba6c090c1818a3b7ad79e5f3a7fb9a5,,REIT_INVIT,1
 post-allotment-rights-0-dd3e7518,NSE,P2,CHECKLIST,Post_allotment_Rights_0.docx,dd3e7518d9f112cf02e01b8cb1dae807f1bbfb420cd7a3b63c0ce816d955036e,,COMPANY,1
@@ -42,7 +45,9 @@ rights-entitlement-checklist-final-54a200b1,NSE,P2,CHECKLIST,Rights_Entitlement_
 trading-approval-5ee5125b,UNKNOWN,P2,CHECKLIST,Trading_Approval.docx,5ee5125b71f577a286591dafcb6a799ddb72d5be43f8cef53ada56a00d6b7943,,REIT_INVIT,1
 rights-entitlement-checklist-e0bcaa00,NSE,P2,CHECKLIST,Rights_Entitlement_Checklist.pdf,e0bcaa0095df8475dd80d4bc8c6c5c30e6a6e701539968cdabfe7b060026ba18,,COMPANY,3
 sebi-depositories-participants-regulations-fb150ec0,SEBI,P0,REGULATION,SEBI Depositories & Participants Regulations.pdf,fb150ec0a09ebfa735e5c298c54ec0f0ac6a16db0f4428a619eac799774cac53,,COMPANY,81
+sebi-icdr-master-circular-1f6763cd,SEBI,P1,MASTER_CIRCULAR,SEBI ICDR Master Circular.pdf,1f6763cdb3a30061802e117d5615ec16a2e97d25dfe0c09a3144f449bc1d7ce0,,COMPANY,144
 sebi-icdr-regulations-db196f1f,SEBI,P0,REGULATION,SEBI ICDR Regulations.pdf,db196f1f33dc5ee9346388a7241cd9416942ec8f8bc3826e74f9403b0ca0fcc6,,COMPANY,475
+sebi-lodr-master-circular-fa3b4360,SEBI,P1,MASTER_CIRCULAR,SEBI LODR Master Circular.pdf,fa3b4360d2a86be611ecc44350baf0cbcb5eec97286dd1a6e553f94efdf1b99b,,COMPANY,291
 sebi-lodr-regulations-62626bd8,SEBI,P0,REGULATION,SEBI LODR Regulations.pdf,62626bd86a48184b7ef99bc3fc3dd38202559c227674a067aee577d98c687c8a,,COMPANY,231
 sebi-pit-regulations-3e146320,SEBI,P0,REGULATION,SEBI PIT Regulations.pdf,3e14632093a11d5ced286205c744c7bec68df9c261cb8dcd6017b477e285f4b1,,COMPANY,82
 sebi-sast-regulations-f3486698,SEBI,P0,REGULATION,SEBI SAST Regulations.pdf,f34866984eed83113ed920a7d5194d72972a7c199fdbae7c958aff197f4fc29a,,COMPANY,79

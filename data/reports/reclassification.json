@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-06T21:39:52+00:00",
+  "run_at": "2026-09-15T13:41:18+00:00",
   "note": "Issue types re-derived from full extracted text, superseding p00 head-sample values.",
   "changed": [
     {
@@ -38,6 +38,37 @@
       ],
       "primary_from": "UNKNOWN",
       "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "companies-act-2013-325a7d09",
+      "file_name": "Companies Act 2013.pdf",
+      "from": [
+        "BONUS",
+        "PRIVATE_PLACEMENT",
+        "SWEAT_EQUITY"
+      ],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "ESOP",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "PRIVATE_PLACEMENT",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
+      "file_name": "MCA Instruction Kit MGT-14.pdf",
+      "from": [],
+      "to": [
+        "SWEAT_EQUITY"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "SWEAT_EQUITY"
     },
     {
       "document_id": "checklist-preferential-issue-pre-ffe507ab",
@@ -101,6 +132,29 @@
       "primary_to": "CONVERSION"
     },
     {
+      "document_id": "sebi-icdr-master-circular-1f6763cd",
+      "file_name": "SEBI ICDR Master Circular.pdf",
+      "from": [
+        "BONUS",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "FPO",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "PUBLIC_ISSUE",
+      "primary_to": "UNKNOWN"
+    },
+    {
       "document_id": "sebi-icdr-regulations-db196f1f",
       "file_name": "SEBI ICDR Regulations.pdf",
       "from": [
@@ -123,6 +177,30 @@
         "WARRANTS"
       ],
       "primary_from": "PUBLIC_ISSUE",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-lodr-master-circular-fa3b4360",
+      "file_name": "SEBI LODR Master Circular.pdf",
+      "from": [
+        "ESOP",
+        "PREFERENTIAL",
+        "QIP",
+        "RIGHTS"
+      ],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "ESOP",
+        "FPO",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "SWEAT_EQUITY",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
       "primary_to": "UNKNOWN"
     },
     {

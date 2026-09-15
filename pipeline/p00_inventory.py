@@ -49,7 +49,13 @@ def head_text(path: Path) -> tuple:
 
 
 def _acquisition_meta(path: Path):
-    """Provenance sidecar written by p01_acquire.py, if this file was fetched."""
+    """Provenance sidecar written by p01_acquire.py, or hand-written beside a
+    file supplied by a human.
+
+    A hand-written sidecar is the human confirmation that legal_sources.
+    consolidation_status asks for: the pipeline cannot tell how current a
+    local PDF is, and a wrong guess would let stale text source a rule.
+    """
     meta = path.with_suffix(path.suffix + ".meta.json")
     if not meta.exists():
         return None
@@ -139,6 +145,10 @@ def build_record(path: Path) -> dict:
         "version": None,
         "source_url": provenance["url"] if provenance else None,
         "retrieved_date": provenance["fetched_at"] if provenance else None,
+        # Declared, never inferred. UNKNOWN keeps a document out of production
+        # rules until someone states how far it has been amended.
+        "consolidation_status": (provenance or {}).get("consolidation_status", "UNKNOWN"),
+        "as_amended_upto": (provenance or {}).get("as_amended_upto"),
         "page_count": pages,
         "in_container": None,
         "extraction_status": "ERROR" if err else "NOT_STARTED",

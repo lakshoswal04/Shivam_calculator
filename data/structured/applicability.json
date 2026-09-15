@@ -24,7 +24,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "bse-faq-on-listing-facc6804",
@@ -57,7 +57,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
@@ -79,7 +79,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "bse-post-issue-checklist-1d331cda",
@@ -104,7 +104,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "checklist-recommencement-of-trading-e30818a4",
@@ -129,7 +129,7 @@
     "exchanges": [],
     "v1_relevant": false,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "form-of-listing-aplication-487b76f1",
@@ -158,7 +158,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
@@ -203,7 +203,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
   },
   {
     "document_id": "companies-share-capital-and-debentures-rules-64039399",
@@ -277,7 +277,81 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:16+00:00"
+  },
+  {
+    "document_id": "companies-act-2013-325a7d09",
+    "file_name": "Companies Act 2013.pdf",
+    "authority": "MCA",
+    "document_type": "ACT",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PRIVATE_PLACEMENT",
+      "ESOP",
+      "PUBLIC_ISSUE",
+      "SWEAT_EQUITY",
+      "BONUS",
+      "RIGHTS",
+      "CONVERSION",
+      "WARRANTS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "PRIVATE",
+        "mentions": 39
+      },
+      {
+        "value": "PUBLIC",
+        "mentions": 27
+      },
+      {
+        "value": "LISTED",
+        "mentions": 25
+      },
+      {
+        "value": "GOVERNMENT",
+        "mentions": 24
+      },
+      {
+        "value": "NIDHI",
+        "mentions": 3
+      }
+    ],
+    "security_types": [
+      {
+        "value": "DEBENTURES",
+        "mentions": 128
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 40
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 27
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 18
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 12
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 8
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "download-post-allotment-a57e1202",
@@ -331,7 +405,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "points-to-remember-post-allotment-f6a19833",
@@ -367,7 +441,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "download-pre-allotment-ace085af",
@@ -395,7 +469,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "part-i-d6ff87e8",
@@ -415,7 +489,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "part-ii-e68713a9",
@@ -447,7 +521,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "t-2-fpo-abe9b620",
@@ -469,7 +543,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
@@ -496,7 +570,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "t-3-fpo-cccb7af1",
@@ -523,7 +597,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "t-4-fpo-c058fc65",
@@ -551,7 +625,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "t-5-fpo-636f879e",
@@ -568,7 +642,7 @@
     "exchanges": [],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
@@ -600,7 +674,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "final-listing-preferential-14b337d2",
@@ -623,7 +697,62 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
+  },
+  {
+    "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
+    "file_name": "MCA Instruction Kit MGT-14.pdf",
+    "authority": "MCA",
+    "document_type": "INSTRUCTION_KIT",
+    "primary_issue_type": "SWEAT_EQUITY",
+    "issue_types": [
+      "SWEAT_EQUITY"
+    ],
+    "listed_status": "UNKNOWN",
+    "company_types": [
+      {
+        "value": "SECTION_8",
+        "mentions": 2
+      }
+    ],
+    "security_types": [],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-15T13:41:17+00:00"
+  },
+  {
+    "document_id": "mca-instruction-kit-sh-7-25a9e662",
+    "file_name": "MCA Instruction Kit SH-7.pdf",
+    "authority": "MCA",
+    "document_type": "INSTRUCTION_KIT",
+    "primary_issue_type": "GENERAL",
+    "issue_types": [],
+    "listed_status": "UNKNOWN",
+    "company_types": [
+      {
+        "value": "SECTION_8",
+        "mentions": 13
+      },
+      {
+        "value": "PRIVATE",
+        "mentions": 2
+      },
+      {
+        "value": "PUBLIC",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": false,
+    "human_review_required": true,
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
@@ -654,7 +783,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "post-allotment-rights-0-dd3e7518",
@@ -681,7 +810,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "pre-allotment-sweat-equity-4226094c",
@@ -712,7 +841,7 @@
     ],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "checklist-preferential-issue-pre-ffe507ab",
@@ -767,7 +896,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "extract-of-icdr-189995d8",
@@ -806,7 +935,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "points-to-remember-28-1-6be45481",
@@ -833,7 +962,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "preferential-issue-faqs-0d8e781e",
@@ -871,7 +1000,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "qip-post-allotment-0-0-d035add2",
@@ -925,7 +1054,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "rights-entitlement-checklist-e0bcaa00",
@@ -948,7 +1077,7 @@
     ],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "sebi-depositories-participants-regulations-fb150ec0",
@@ -979,7 +1108,78 @@
     "exchanges": [],
     "v1_relevant": false,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:51+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
+  },
+  {
+    "document_id": "sebi-icdr-master-circular-1f6763cd",
+    "file_name": "SEBI ICDR Master Circular.pdf",
+    "authority": "SEBI",
+    "document_type": "MASTER_CIRCULAR",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "PUBLIC_ISSUE",
+      "RIGHTS",
+      "QIP",
+      "BONUS",
+      "PREFERENTIAL",
+      "CONVERSION",
+      "FPO",
+      "WARRANTS"
+    ],
+    "listed_status": "LISTED",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 43
+      },
+      {
+        "value": "SME",
+        "mentions": 3
+      },
+      {
+        "value": "MAIN_BOARD",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 71
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 22
+      },
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 19
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 10
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 5
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 2
+      }
+    ],
+    "exchanges": [
+      {
+        "value": "NSE",
+        "mentions": 20
+      },
+      {
+        "value": "BSE",
+        "mentions": 20
+      }
+    ],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "sebi-icdr-regulations-db196f1f",
@@ -1056,7 +1256,91 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:17+00:00"
+  },
+  {
+    "document_id": "sebi-lodr-master-circular-fa3b4360",
+    "file_name": "SEBI LODR Master Circular.pdf",
+    "authority": "SEBI",
+    "document_type": "MASTER_CIRCULAR",
+    "primary_issue_type": "UNKNOWN",
+    "issue_types": [
+      "QIP",
+      "ESOP",
+      "RIGHTS",
+      "SWEAT_EQUITY",
+      "PREFERENTIAL",
+      "BONUS",
+      "PUBLIC_ISSUE",
+      "FPO",
+      "CONVERSION",
+      "WARRANTS"
+    ],
+    "listed_status": "BOTH",
+    "company_types": [
+      {
+        "value": "LISTED",
+        "mentions": 641
+      },
+      {
+        "value": "UNLISTED",
+        "mentions": 4
+      },
+      {
+        "value": "SME",
+        "mentions": 4
+      },
+      {
+        "value": "MAIN_BOARD",
+        "mentions": 2
+      },
+      {
+        "value": "GOVERNMENT",
+        "mentions": 2
+      }
+    ],
+    "security_types": [
+      {
+        "value": "DEPOSITORY_RECEIPTS",
+        "mentions": 35
+      },
+      {
+        "value": "EQUITY_SHARES",
+        "mentions": 28
+      },
+      {
+        "value": "ESOP_OPTIONS",
+        "mentions": 13
+      },
+      {
+        "value": "WARRANTS",
+        "mentions": 12
+      },
+      {
+        "value": "CONVERTIBLE_SECURITIES",
+        "mentions": 10
+      },
+      {
+        "value": "NON_CONVERTIBLE",
+        "mentions": 10
+      },
+      {
+        "value": "PREFERENCE_SHARES",
+        "mentions": 5
+      },
+      {
+        "value": "DEBENTURES",
+        "mentions": 5
+      },
+      {
+        "value": "SWEAT_EQUITY",
+        "mentions": 5
+      }
+    ],
+    "exchanges": [],
+    "v1_relevant": true,
+    "human_review_required": false,
+    "derived_at": "2026-09-15T13:41:17+00:00"
   },
   {
     "document_id": "sebi-lodr-regulations-62626bd8",
@@ -1141,7 +1425,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "sebi-pit-regulations-3e146320",
@@ -1170,7 +1454,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "sebi-sast-regulations-f3486698",
@@ -1212,7 +1496,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
@@ -1270,7 +1554,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "trading-approval-557b966e",
@@ -1293,7 +1577,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "trading-approval-fast-track-a025d50d",
@@ -1316,7 +1600,7 @@
     "exchanges": [],
     "v1_relevant": true,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "the-companies-management-and-administration-rule-55296434",
@@ -1355,7 +1639,7 @@
     "exchanges": [],
     "v1_relevant": false,
     "human_review_required": false,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   },
   {
     "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
@@ -1379,6 +1663,6 @@
     "exchanges": [],
     "v1_relevant": false,
     "human_review_required": true,
-    "derived_at": "2026-09-06T21:39:52+00:00"
+    "derived_at": "2026-09-15T13:41:18+00:00"
   }
 ]

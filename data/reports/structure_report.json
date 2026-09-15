@@ -1,7 +1,7 @@
 {
-  "run_at": "2026-09-15T13:34:53+00:00",
-  "documents": 39,
-  "total_provisions": 7602,
+  "run_at": "2026-09-15T13:41:18+00:00",
+  "documents": 44,
+  "total_provisions": 13485,
   "detail": [
     {
       "document_id": "bse-checklist-direct-listing-3157e150",
@@ -120,6 +120,29 @@
       "orphan_body_chars": 136,
       "ambiguous_citations": 29,
       "provisions_with_amendment_markers": 10
+    },
+    {
+      "document_id": "companies-act-2013-325a7d09",
+      "file_name": "Companies Act 2013.pdf",
+      "instrument_kind": "ACT",
+      "instrument_label": "Companies Act, 2013",
+      "provisions": 4838,
+      "top_level_units": 722,
+      "by_type": {
+        "SUB_SECTION": 1586,
+        "CLAUSE": 1547,
+        "SECTION": 499,
+        "SUB_CLAUSE": 465,
+        "PROVISO": 388,
+        "PARAGRAPH": 223,
+        "EXPLANATION": 80,
+        "CHAPTER": 29,
+        "PART": 14,
+        "SCHEDULE": 7
+      },
+      "orphan_body_chars": 1389,
+      "ambiguous_citations": 213,
+      "provisions_with_amendment_markers": 17
     },
     {
       "document_id": "download-post-allotment-a57e1202",
@@ -270,6 +293,39 @@
       "provisions_with_amendment_markers": 0
     },
     {
+      "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
+      "file_name": "MCA Instruction Kit MGT-14.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "MCA Instruction Kit for Form MGT-14",
+      "provisions": 13,
+      "top_level_units": 3,
+      "by_type": {
+        "PART": 8,
+        "PARAGRAPH": 3,
+        "CLAUSE": 2
+      },
+      "orphan_body_chars": 3,
+      "ambiguous_citations": 4,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "mca-instruction-kit-sh-7-25a9e662",
+      "file_name": "MCA Instruction Kit SH-7.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "MCA Instruction Kit for Form SH-7",
+      "provisions": 13,
+      "top_level_units": 3,
+      "by_type": {
+        "SUB_CLAUSE": 5,
+        "PART": 4,
+        "PARAGRAPH": 3,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 3,
+      "ambiguous_citations": 2,
+      "provisions_with_amendment_markers": 0
+    },
+    {
       "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
       "file_name": "Post Allotment ( Sweat Equity )_0_0.docx",
       "instrument_kind": "CHECKLIST",
@@ -410,6 +466,24 @@
       "provisions_with_amendment_markers": 65
     },
     {
+      "document_id": "sebi-icdr-master-circular-1f6763cd",
+      "file_name": "SEBI ICDR Master Circular.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI ICDR Master Circular",
+      "provisions": 253,
+      "top_level_units": 208,
+      "by_type": {
+        "PARAGRAPH": 208,
+        "SUB_CLAUSE": 24,
+        "CLAUSE": 19,
+        "PROVISO": 1,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 42,
+      "ambiguous_citations": 21,
+      "provisions_with_amendment_markers": 0
+    },
+    {
       "document_id": "sebi-icdr-regulations-db196f1f",
       "file_name": "SEBI ICDR Regulations.pdf",
       "instrument_kind": "REGULATIONS",
@@ -431,6 +505,28 @@
       "orphan_body_chars": 472,
       "ambiguous_citations": 216,
       "provisions_with_amendment_markers": 410
+    },
+    {
+      "document_id": "sebi-lodr-master-circular-fa3b4360",
+      "file_name": "SEBI LODR Master Circular.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI LODR Master Circular",
+      "provisions": 766,
+      "top_level_units": 576,
+      "by_type": {
+        "PARAGRAPH": 576,
+        "CLAUSE": 74,
+        "SUB_CLAUSE": 51,
+        "ANNEXURE": 27,
+        "SUB_SECTION": 13,
+        "PROVISO": 10,
+        "CHAPTER": 7,
+        "EXPLANATION": 7,
+        "SCHEDULE": 1
+      },
+      "orphan_body_chars": 103,
+      "ambiguous_citations": 81,
+      "provisions_with_amendment_markers": 38
     },
     {
       "document_id": "sebi-lodr-regulations-62626bd8",
