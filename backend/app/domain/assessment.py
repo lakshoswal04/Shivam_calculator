@@ -137,14 +137,25 @@ def run_assessment(conn, *, org_id: str, company_id: str, scenario: dict,
     indeterminate_causes = [r.rule_code for r in review]
     if gap:
         indeterminate_causes.append(gap["gap_code"])
+    # A route with no approved rules at all is not a route that permits
+    # everything. Without this the final branch below reports capital capacity
+    # as LEGAL capacity, so a route whose law has never been authored would
+    # answer "you may issue 8,000,000 shares" on the strength of nothing.
+    if not rules:
+        indeterminate_causes.append("NO_APPROVED_RULES")
 
     legal_capacity: dict
     if indeterminate_causes:
+        if review:
+            reason = f"{len(review)} applicable rule(s) returned REVIEW_REQUIRED"
+        elif not rules:
+            reason = ("No rule has been authored and approved for this route, so no "
+                      "legal limit can be stated")
+        else:
+            reason = "The primary law for this route is not in the source corpus"
         legal_capacity = {
             "determinable": False, "value": None,
-            "reason": (f"{len(review)} applicable rule(s) returned REVIEW_REQUIRED"
-                       if review else
-                       "The primary law for this route is not in the source corpus"),
+            "reason": reason,
             "indeterminate_causes": indeterminate_causes,
         }
     elif blocking:
@@ -170,8 +181,11 @@ def run_assessment(conn, *, org_id: str, company_id: str, scenario: dict,
     # ------------------------------------------------------ binding constraint
     if indeterminate_causes:
         binding = {"type": "INDETERMINATE",
-                   "detail": "Legal capacity cannot be computed until "
-                             + ", ".join(indeterminate_causes) + " is resolved."}
+                   "detail": ("Legal capacity cannot be computed: no rule has been "
+                              "authored and approved for this route."
+                              if indeterminate_causes == ["NO_APPROVED_RULES"] else
+                              "Legal capacity cannot be computed until "
+                              + ", ".join(indeterminate_causes) + " is resolved.")}
     elif blocking:
         b = blocking[0]
         binding = {"type": "RULE", "rule_code": b.rule_code,

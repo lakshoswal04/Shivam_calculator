@@ -9,8 +9,6 @@ removing the entry.
 """
 from typing import Optional
 
-V1_ROUTES = ["RIGHTS", "PREFERENTIAL", "PRIVATE_PLACEMENT"]
-
 ALL_ROUTES = [
     "RIGHTS", "PREFERENTIAL", "PRIVATE_PLACEMENT", "BONUS", "ESOP", "SWEAT_EQUITY",
     "PUBLIC_ISSUE", "FPO", "QIP", "CONVERSION", "WARRANTS", "OTHER",
@@ -19,6 +17,17 @@ ALL_ROUTES = [
 # Routes whose primary law is absent. The route still runs every calculation;
 # its legal conclusions return REVIEW_REQUIRED naming what is missing.
 SOURCE_GATES: dict[str, dict] = {
+    "PUBLIC_ISSUE": {
+        "code": "PUBLIC_ISSUE_ICDR_CH2",
+        "provisions_required": ["5", "6", "7", "14", "15", "16", "236", "238"],
+        "detail": ("An initial public offer is governed by Chapter II of the SEBI ICDR "
+                   "Regulations - eligibility, minimum promoter contribution, lock-in, "
+                   "minimum offer to the public - together with the prospectus provisions "
+                   "of the Companies Act, 2013. The regulations are in the corpus but no "
+                   "rule has been authored from them, and several requirements rest on "
+                   "SEBI circulars that have not been authored either. Calculations are "
+                   "produced; the legal conclusions are withheld."),
+    },
     "PRIVATE_PLACEMENT": {
         "code": "COMPANIES_ACT_2013",
         "provisions_required": ["42"],
@@ -141,7 +150,68 @@ ROUTE_QUESTIONS: dict[str, list[dict]] = {
          "type": "boolean"},
         {"key": "proposed_allotment_date", "label": "Proposed allotment date", "type": "date"},
     ],
+    # Companies Act s.63 and, for a listed issuer, ICDR Chapter XI. s.63(2)
+    # makes the articles and the general-meeting authority conditions of the
+    # capitalisation itself, so both are asked as required facts rather than
+    # inferred from the presence of a resolution date.
+    "BONUS": [
+        {"key": "bonus_ratio_num", "label": "Bonus ratio - new shares issued",
+         "type": "number", "required": True},
+        {"key": "bonus_ratio_den", "label": "Bonus ratio - for every N held",
+         "type": "number", "required": True},
+        {"key": "capitalisation_source", "label": "Reserve being capitalised",
+         "type": "select",
+         "options": ["FREE_RESERVES", "SECURITIES_PREMIUM", "CAPITAL_REDEMPTION_RESERVE",
+                     "REVALUATION_RESERVE", "OTHER"],
+         "required": True},
+        {"key": "articles_authorise_bonus", "label": "Do the articles authorise capitalisation of reserves?",
+         "type": "boolean", "required": True},
+        {"key": "general_meeting_authority_date",
+         "label": "Date of the general meeting authorising the bonus, on the Board's recommendation",
+         "type": "date"},
+        {"key": "partly_paid_shares_outstanding",
+         "label": "Are any partly paid-up shares outstanding?", "type": "boolean", "required": True},
+        {"key": "defaulted_on_deposits_or_debt",
+         "label": "Has the company defaulted on interest or principal of fixed deposits or debt securities?",
+         "type": "boolean"},
+        {"key": "defaulted_on_statutory_employee_dues",
+         "label": "Has the company defaulted on statutory employee dues (PF, gratuity, bonus)?",
+         "type": "boolean"},
+        {"key": "in_lieu_of_dividend", "label": "Is the bonus being issued in lieu of dividend?",
+         "type": "boolean", "required": True},
+        {"key": "record_date", "label": "Record date", "type": "date"},
+        {"key": "announcement_date", "label": "Date the bonus was announced", "type": "date",
+         "listed_only": True},
+        {"key": "allotment_in_demat_only", "label": "Will allotment be in dematerialised form only?",
+         "type": "boolean", "listed_only": True},
+        {"key": "reservation_for_convertible_holders",
+         "label": "Have equity shares of the same class been reserved for holders of outstanding convertibles?",
+         "type": "boolean", "listed_only": True},
+    ],
+    # No rule is authored from these yet - the route is source-gated above.
+    # They are collected so the calculations run and so the facts are already
+    # on file when Chapter II is authored.
+    "PUBLIC_ISSUE": [
+        {"key": "offer_type", "label": "Offer structure",
+         "type": "select", "options": ["FRESH_ISSUE", "OFFER_FOR_SALE", "BOTH"], "required": True},
+        {"key": "drhp_filing_date", "label": "Date the draft red herring prospectus was filed",
+         "type": "date"},
+        {"key": "lead_manager", "label": "Lead manager(s) to the issue", "type": "text"},
+        {"key": "promoter_contribution_pct",
+         "label": "Promoters' contribution as a percentage of post-issue capital", "type": "number",
+         "unit": "%"},
+        {"key": "net_tangible_assets_track_record",
+         "label": "Does the issuer meet the net tangible assets and operating profit track record?",
+         "type": "boolean"},
+        {"key": "issue_open_date", "label": "Issue opens", "type": "date"},
+        {"key": "issue_close_date", "label": "Issue closes", "type": "date"},
+    ],
 }
+
+# A route is offered as supported when its facts have been modelled. Deriving
+# it from the manifests rather than a second hand-maintained list means the
+# two cannot drift apart.
+V1_ROUTES = [r for r in ALL_ROUTES if r in ROUTE_QUESTIONS]
 
 
 def questions_for(route: str, listed: bool) -> list[dict]:

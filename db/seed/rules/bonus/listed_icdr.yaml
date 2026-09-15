@@ -1,0 +1,132 @@
+# Bonus issue by a LISTED issuer — SEBI (ICDR) Regulations, 2018, Chapter XI.
+#
+# These are additional to section 63 of the Companies Act, which applies to
+# every company and is authored in companies_act.yaml. Regulation 293 applies
+# Chapter XI to a bonus issue by a listed issuer; the operative conditions are
+# in regulations 294 and 295.
+meta:
+  route: BONUS
+  authority: SEBI
+  instrument: "SEBI (ICDR) Regulations, 2018"
+  default_effective_from: "2018-09-11"
+
+rules:
+  - rule_code: BON-L-001
+    title: Bonus issue only out of free reserves, securities premium or capital redemption reserve
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter XI reg.294(3)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 294(3)"
+    requirement: >-
+      A bonus issue shall be made only out of free reserves, securities premium account or
+      capital redemption reserve account and built out of the genuine profits or securities
+      premium collected in cash, and reserves created by revaluation of fixed assets shall not
+      be capitalised for the purpose of issuing bonus shares.
+    trigger:
+      text: "bonus issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the reserve being capitalised is a free reserve, the securities premium account or the capital redemption reserve account"
+        ast:
+          op: in
+          field: issue.capitalisation_source
+          value: [FREE_RESERVES, SECURITIES_PREMIUM, CAPITAL_REDEMPTION_RESERVE]
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      A listed issuer may capitalise only free reserves, the securities premium account or the
+      capital redemption reserve account, built out of genuine profits or premium collected in
+      cash. A revaluation reserve cannot be capitalised.
+
+  - rule_code: BON-L-002
+    title: Bonus shares must not be issued in lieu of dividend
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter XI reg.294(4)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 294(4)"
+    requirement: "Bonus shares shall not be issued in lieu of dividends."
+    trigger:
+      text: "bonus issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the bonus is not being issued in lieu of dividend"
+        ast: { op: eq, field: issue.in_lieu_of_dividend, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "A listed issuer may not issue bonus shares in lieu of a dividend."
+
+  - rule_code: BON-L-003
+    title: Reservation for holders of outstanding convertible debt instruments
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter XI reg.294(1)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 294(1)"
+    requirement: >-
+      An issuer shall make a bonus issue of equity shares only if it has made reservation of
+      equity shares of the same class in favour of the holders of outstanding compulsorily
+      convertible debt instruments, if any, in proportion to the convertible part thereof.
+    trigger:
+      text: "bonus issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "equity shares of the same class are reserved for holders of outstanding compulsorily convertible debt instruments"
+        ast: { op: eq, field: issue.reservation_for_convertible_holders, value: true }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: BLOCK
+    message: >-
+      Where compulsorily convertible debt instruments are outstanding, equity shares of the
+      same class must be reserved for their holders in proportion to the convertible part
+      before the bonus issue is made. Confirm the position even if no such instruments exist.
+
+  - rule_code: BON-L-004
+    title: Allotment of bonus shares must be in dematerialised form
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter XI reg.294(6)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 294(6)"
+    requirement: "The allotment of shares in a bonus issue shall be made only in the dematerialised form."
+    trigger:
+      text: "bonus issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "allotment will be made only in dematerialised form"
+        ast: { op: eq, field: issue.allotment_in_demat_only, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "A listed issuer must allot bonus shares only in dematerialised form."
+
+  - rule_code: BON-L-005
+    title: A bonus issue, once announced, must be implemented and cannot be withdrawn
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
+    source:
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter XI reg.295(2)"
+      reference: "SEBI (ICDR) Regulations, 2018, reg. 295(1) and (2)"
+    requirement: >-
+      An issuer announcing a bonus issue after approval by its board of directors and not
+      requiring shareholders' approval for capitalisation of profits or reserves shall
+      implement the bonus issue within fifteen days from the date of approval of the issue by
+      its board of directors; where shareholders' approval is required, within two months from
+      the date of the board meeting. A bonus issue, once announced, shall not be withdrawn.
+    trigger:
+      text: "bonus issue by a listed issuer"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the date of announcement is recorded, so the implementation deadline can be checked"
+        ast: { op: exists, field: issue.announcement_date }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      Once announced a bonus issue cannot be withdrawn, and it must be implemented within
+      fifteen days of the board approval where no shareholders' approval is needed, or within
+      two months of the board meeting where it is. The interval is not computed automatically;
+      check the announcement date against the intended date of commencement of trading.

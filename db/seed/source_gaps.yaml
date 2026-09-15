@@ -22,6 +22,24 @@ gaps:
     blocks_issue_types: [PRIVATE_PLACEMENT]
     provisions_required: ["42"]
 
+  - code: PUBLIC_ISSUE_ICDR_CH2
+    severity: BLOCKER
+    title: "No rule has been authored for an initial public offer"
+    detail: >-
+      An initial public offer is governed by Chapter II of the SEBI ICDR Regulations -
+      eligibility, minimum promoter contribution, lock-in, minimum offer to the public - with
+      the prospectus provisions of the Companies Act, 2013. Chapter II is in the corpus and
+      readable in the legal library, but no rule has been authored from it, and several of its
+      requirements rest on SEBI circulars that have not been authored either. The route runs
+      every calculation; its legal conclusions are withheld.
+    action_required: >-
+      Author the Chapter II rule set (regulations 5 to 7 eligibility, 14 to 16 promoter
+      contribution and lock-in, 236 and 238 minimum offer and allocation) against the ICDR
+      Regulations already in corpus/originals/, and supply the SEBI circulars the allocation
+      and anchor-investor requirements depend on.
+    blocks_issue_types: [PUBLIC_ISSUE]
+    provisions_required: ["5", "6", "7", "14", "15", "16", "236", "238"]
+
   - code: MCA_FORM_INSTRUCTION_KITS
     severity: GAP
     title: "The MCA instruction kit for PAS-3 is absent"

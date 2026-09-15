@@ -1,0 +1,180 @@
+# Bonus issue — Companies Act, 2013, section 63.
+#
+# Section 63 applies to every company with a share capital. The ICDR rules in
+# listed_icdr.yaml sit on top of it for listed issuers.
+#
+# CURRENCY WARNING. The Act in the corpus is consolidated only to 29-05-2015
+# (legal.legal_sources.as_amended_upto). Section 63 is not known to have been
+# substituted since, unlike section 42, but that is an absence of evidence in
+# this corpus rather than a positive confirmation. These rules therefore load
+# PENDING and the demo seeder holds them back as stale-sourced; a reviewer must
+# check section 63 against the current Act before approving them.
+meta:
+  route: BONUS
+  authority: MCA
+  instrument: "Companies Act, 2013"
+  default_effective_from: "2014-04-01"
+
+rules:
+  - rule_code: BON-A-001
+    title: Bonus shares may be capitalised only from permitted reserves
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(1)"
+      reference: "Companies Act, 2013, section 63(1)"
+    requirement: >-
+      A company may issue fully paid-up bonus shares to its members out of its free reserves,
+      the securities premium account or the capital redemption reserve account. No issue of
+      bonus shares shall be made by capitalising reserves created by the revaluation of assets.
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the reserve being capitalised is a free reserve, the securities premium account or the capital redemption reserve account"
+        ast:
+          op: in
+          field: issue.capitalisation_source
+          value: [FREE_RESERVES, SECURITIES_PREMIUM, CAPITAL_REDEMPTION_RESERVE]
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Bonus shares may be capitalised only from free reserves, the securities premium account
+      or the capital redemption reserve account. A reserve created by revaluation of assets
+      cannot be capitalised for a bonus issue.
+
+  - rule_code: BON-A-002
+    title: The articles must authorise capitalisation of reserves
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(2)(a)"
+      reference: "Companies Act, 2013, section 63(2)(a)"
+    requirement: >-
+      No company shall capitalise its profits or reserves for the purpose of issuing fully
+      paid-up bonus shares unless it is authorised by its articles.
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the articles authorise capitalisation of profits or reserves"
+        ast: { op: eq, field: issue.articles_authorise_bonus, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      The articles must authorise capitalisation of profits or reserves before a bonus issue
+      can be made. Where they do not, the articles must be altered first.
+    approvals:
+      - approval_code: BON-A-APR-ARTICLES
+        approval_type: SHAREHOLDER_SPECIAL
+        name: "Alteration of articles to permit capitalisation of reserves, where not already permitted"
+        authority: MCA
+        stage: PRE_ISSUE
+
+  - rule_code: BON-A-003
+    title: The bonus must be authorised in general meeting on the Board's recommendation
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(2)(b)"
+      reference: "Companies Act, 2013, section 63(2)(b)"
+    requirement: >-
+      No company shall capitalise its profits or reserves for the purpose of issuing fully
+      paid-up bonus shares unless it has, on the recommendation of the Board, been authorised
+      in the general meeting of the company.
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the general meeting has authorised the bonus on the recommendation of the Board"
+        ast: { op: exists, field: issue.general_meeting_authority_date }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: BLOCK
+    message: >-
+      A bonus issue requires authorisation in general meeting on the recommendation of the
+      Board. Record the date of that meeting.
+    approvals:
+      - approval_code: BON-A-APR-BOARD
+        approval_type: BOARD
+        name: "Board resolution recommending the bonus issue"
+        authority: MCA
+        stage: PRE_ISSUE
+      - approval_code: BON-A-APR-GM
+        approval_type: SHAREHOLDER_ORDINARY
+        name: "General meeting authorising capitalisation of reserves"
+        authority: MCA
+        stage: PRE_ISSUE
+
+  - rule_code: BON-A-004
+    title: Outstanding partly paid-up shares must be made fully paid-up
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(2)(e)"
+      reference: "Companies Act, 2013, section 63(2)(e)"
+    requirement: >-
+      No company shall capitalise its profits or reserves for the purpose of issuing fully
+      paid-up bonus shares unless the partly paid-up shares, if any outstanding on the date of
+      allotment, are made fully paid-up.
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "no partly paid-up shares remain outstanding"
+        ast: { op: eq, field: issue.partly_paid_shares_outstanding, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Partly paid-up shares outstanding on the date of allotment must be made fully paid-up
+      before the bonus shares are allotted.
+
+  - rule_code: BON-A-005
+    title: Bonus shares must not be issued in lieu of dividend
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(3)"
+      reference: "Companies Act, 2013, section 63(3)"
+    requirement: "The bonus shares shall not be issued in lieu of dividend."
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "the bonus is not being issued in lieu of dividend"
+        ast: { op: eq, field: issue.in_lieu_of_dividend, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: "Bonus shares cannot be issued in lieu of a dividend."
+
+  - rule_code: BON-A-006
+    title: The company must not be in default on deposits, debt securities or employee dues
+    issue_type: BONUS
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter IV s.63(2)(c)"
+      reference: "Companies Act, 2013, section 63(2)(c) and (d)"
+    requirement: >-
+      No company shall capitalise its profits or reserves for the purpose of issuing fully
+      paid-up bonus shares unless it has not defaulted in payment of interest or principal in
+      respect of fixed deposits or debt securities issued by it, and has not defaulted in
+      respect of the payment of statutory dues of the employees such as contribution to
+      provident fund, gratuity and bonus.
+    trigger:
+      text: "bonus issue by a company having a share capital"
+      ast: { op: eq, field: issue.type, value: BONUS }
+    conditions:
+      - text: "no default subsists on fixed deposits or debt securities"
+        ast: { op: eq, field: issue.defaulted_on_deposits_or_debt, value: false }
+      - text: "no default subsists on statutory employee dues"
+        ast: { op: eq, field: issue.defaulted_on_statutory_employee_dues, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      A subsisting default on fixed deposits, debt securities or statutory employee dues bars
+      the capitalisation of reserves for a bonus issue until it is made good.

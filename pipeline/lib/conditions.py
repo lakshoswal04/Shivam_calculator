@@ -13,7 +13,12 @@ from typing import Any, Dict
 COMPARISONS = {"eq", "ne", "gt", "gte", "lt", "lte", "in", "not_in"}
 PRESENCE = {"exists", "not_exists"}
 LOGICAL = {"AND", "OR", "NOT"}
-OPS = COMPARISONS | PRESENCE | LOGICAL
+# Aggregates read a list of records - previous issues, holdings - and reduce it
+# to a scalar before comparing. Without them `resolve` can only walk dicts, so
+# a rule that depends on issue history could not be authored at all without a
+# code change, and PRD FR-INP-006 requires exactly that to be possible.
+AGGREGATES = {"count_where", "any_where"}
+OPS = COMPARISONS | PRESENCE | LOGICAL | AGGREGATES
 
 _MISSING = object()
 
@@ -84,6 +89,14 @@ def validate(node) -> bool:
         if op in ("in", "not_in") and not isinstance(node["value"], list):
             return False
         return True
+    if op in AGGREGATES:
+        # {op, field: <list path>, where: <inner node>, op2, value}
+        # count_where compares the match count; any_where is true if any match.
+        if "field" not in node or "where" not in node or not validate(node["where"]):
+            return False
+        if op == "any_where":
+            return True
+        return node.get("op2") in COMPARISONS and "value" in node
     return False
 
 
@@ -106,6 +119,28 @@ def evaluate(node, facts, trace=None):
         out = any(results)
     elif op == "NOT":
         out = not evaluate(node["arg"], facts, trace)
+    elif op in AGGREGATES:
+        rows = resolve(facts, node["field"])
+        if rows is _MISSING or rows is None:
+            raise UnknownFact(node["field"])
+        if not isinstance(rows, list):
+            raise InvalidCondition(
+                f"{node['field']!r} is not a list, so {op} cannot be applied to it")
+        # A record that lacks the field the inner test needs is not a match.
+        # It must not raise: one incomplete historical row would otherwise make
+        # the whole rule indeterminate.
+        matched = 0
+        for row in rows:
+            try:
+                if evaluate(node["where"], row if isinstance(row, dict) else {"row": row}):
+                    matched += 1
+            except UnknownFact:
+                continue
+        out = matched > 0 if op == "any_where" \
+            else _compare(node["op2"], matched, node["value"])
+        if trace is not None:
+            trace.append({"op": op, "field": node["field"], "actual": matched,
+                          "expected": node.get("value"), "result": out})
     else:
         value = resolve(facts, node["field"])
         if op == "exists":
