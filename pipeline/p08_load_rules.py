@@ -40,15 +40,27 @@ def resolve_source(cur, block: dict) -> tuple:
     `citation_uid` is exact and always preferred. `citation` is human-readable
     but can repeat (Schedules restart their numbering), so an ambiguous one is
     rejected rather than guessed at.
+
+    A uid embeds the provision's sequence number, which shifts whenever the
+    structure parser improves, so a uid authored against an older parse can
+    silently point at different text. Where the rule also states a citation,
+    the two must agree: a drifted anchor must fail the load, not load quietly
+    against the wrong provision.
     """
     if block.get("citation_uid"):
         cur.execute("""
-            SELECT p.provision_id, d.source_id, p.page_from
+            SELECT p.provision_id, d.source_id, p.page_from, p.citation
             FROM legal.legal_provisions p JOIN legal.legal_documents d USING (document_id)
             WHERE p.citation_uid = %s""", (block["citation_uid"],))
         row = cur.fetchone()
         if row is None:
             raise LoadError(f"citation_uid does not exist: {block['citation_uid']!r}")
+        stated = block.get("citation")
+        if stated and row["citation"] != stated:
+            raise LoadError(
+                f"citation_uid {block['citation_uid']!r} now resolves to "
+                f"{row['citation']!r}, but the rule states {stated!r}. The uid has "
+                "drifted across a re-parse; re-anchor the rule to the current uid.")
         return row["provision_id"], row["source_id"], row["page_from"]
     return resolve_citation(cur, block["citation"])
 

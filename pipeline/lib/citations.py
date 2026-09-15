@@ -28,6 +28,17 @@ RE_NUMBERED_UNIT = re.compile(
 )
 # An inline sub-unit opening a numbered unit: "(1) ..." or "335[(1)] ..."
 RE_INLINE_SUBUNIT = re.compile(r"^" + _MARKER + r"\((?P<num>\d{1,2})\)\]?\s*(?P<rest>.*)$")
+# The same thing in Act style, where a marginal note precedes the first
+# sub-section on one line: "62. Further issue of share capital.-(1) Where ...".
+# The Act prints this both ways, ".-(1)" and ".- (1)", 66 and 240 times
+# respectively, so at most one space is allowed either side of the dash. The
+# separator is anchored on a sentence-ending "." or ":" immediately before the
+# dash, which is what keeps a "(1)" occurring mid-sentence from triggering it.
+# Across the whole existing corpus this matches three rule headings, all of the
+# "Definitions.- (1) In these rules" shape, where the split is equally correct.
+RE_MARGINAL_SUBUNIT = re.compile(
+    r"^(?P<note>.{0,180}?[.:])\s?[-–—]\s?" + _MARKER + r"\((?P<num>\d{1,2})\)\]?\s*(?P<rest>\S.*)$"
+)
 # Structural headings are set in capitals in the gazette; a title-case
 # "Schedule VI, as applicable" is a cross-reference inside a sentence that has
 # wrapped onto its own line. Matching case-insensitively made every such
@@ -37,11 +48,28 @@ RE_CHAPTER = re.compile(r"^\s*CHAPTER[\s–-]+(?P<num>" + ROMAN + r")\b\.?\s*(?P
 RE_PART = re.compile(r"^\s*PART[\s–-]+(?P<num>" + ROMAN + r")\b\.?\s*(?P<head>.*)$")
 RE_SCHEDULE = re.compile(r"^\s*(?:THE\s+)?SCHEDULE[\s–-]*(?P<num>" + ROMAN + r"|\d+)?\b\.?\s*(?P<head>.*)$")
 RE_ANNEXURE = re.compile(r"^\s*ANNEXURE[\s–-]*(?P<num>" + ROMAN + r"|\d+|[A-Z])?\b\.?\s*(?P<head>.*)$")
-RE_SUBUNIT = re.compile(r"^\s{0,10}\((?P<num>\d{1,2})\)\s+(?P<head>\S.*)$")
-RE_CLAUSE = re.compile(r"^\s{0,14}\((?P<num>[a-z]{1,2})\)\s+(?P<head>\S.*)$")
-RE_SUBCLAUSE = re.compile(r"^\s{0,18}\((?P<num>" + ROMAN.lower() + r")\)\s+(?P<head>\S.*)$")
+# These carry the same amendment markers as RE_NUMBERED_UNIT. Without _MARKER a
+# substituted sub-section, "1[(3) The Board shall ...", matched nothing and fell
+# through to body text, so the sub-section could not be cited at all. An amended
+# Act is saturated with them, and so are the SEBI regulations already loaded.
+RE_SUBUNIT = re.compile(r"^\s{0,10}" + _MARKER + r"\((?P<num>\d{1,2})\)\]?\s+(?P<head>\S.*)$")
+RE_CLAUSE = re.compile(r"^\s{0,14}" + _MARKER + r"\((?P<num>[a-z]{1,2})\)\]?\s+(?P<head>\S.*)$")
+RE_SUBCLAUSE = re.compile(r"^\s{0,18}" + _MARKER + r"\((?P<num>" + ROMAN.lower() + r")\)\]?\s+(?P<head>\S.*)$")
 RE_PROVISO = re.compile(r"^\s*(?P<head>Provided\s+(?:further\s+|also\s+)?that\b.*)$", re.I)
-RE_EXPLANATION = re.compile(r"^\s*(?P<head>Explanation\s*[—.\-:].*)$", re.I)
+# "Explanation 1.-", "Explanation I:" and bare "Explanation.-" are all used.
+RE_EXPLANATION = re.compile(
+    r"^\s*(?P<head>Explanation\s*(?:\d{1,2}|[IVX]{1,4})?\s*[—.\-:].*)$", re.I)
+
+# --- Front matter -----------------------------------------------------------
+# A bare "ARRANGEMENT OF SECTIONS" index reproduces every section number and
+# marginal note, so each body section collides with a phantom of itself and the
+# citation becomes ambiguous. The index is skipped between this marker and the
+# start of the operative text.
+# "TABLE OF CONTENTS" is deliberately NOT a marker: ICDR Schedule VI prescribes
+# what a prospectus's own table of contents must show, so the phrase appears in
+# the body from page 256 onward and would suppress a third of the document.
+RE_FRONT_MATTER_START = re.compile(r"^\s*ARRANGEMENT OF (?:SECTIONS|RULES|REGULATIONS)\s*$", re.I)
+RE_OPERATIVE_START = re.compile(r"^\s*(?:ACT\s+NO\.\s*\d+\s+OF\s+\d{4}\b|BE\s+it\s+enacted\b)", re.I)
 
 # --- Inline citation references (for cross-linking, not structure) ----------
 RE_REF_SECTION = re.compile(r"\bsection\s+(\d{1,3}[A-Z]{0,2})((?:\s*\([0-9a-zA-Z]{1,3}\))*)", re.I)
@@ -106,6 +134,54 @@ def _iter_lines(pages):
             offset += len(line) + 1
 
 
+# "(i)", "(v)", "(x)", "(c)" and "(l)" are both letters and roman numerals, so
+# the sub-clause pattern claims them even where the document plainly means a
+# clause: after "(b)", a "(c)" was nested under (b) as a sub-clause, which is
+# why s.62(1)(c) and s.179(3)(c) - both named in db/seed/source_gaps.yaml -
+# could not be cited at all. Continuity of the surrounding sequence decides it.
+_ROMAN_SEQ = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x",
+              "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx"]
+
+
+def _continues_clause_sequence(num, stack):
+    """True when an ambiguous token reads as the next clause, not a sub-clause.
+
+    A running sub-clause sequence wins: "(iii)" after "(ii)" stays a sub-clause
+    even though the enclosing clause is "(b)". Otherwise the token is treated as
+    a clause only when it is the immediate successor of the enclosing clause
+    letter. Everything else keeps the previous behaviour of nesting, so a clause
+    that genuinely opens with "(i)" is unaffected.
+    """
+    top = stack[-1]
+    if top.provision_type == "SUB_CLAUSE":
+        prev = top.number.lower()
+        if prev in _ROMAN_SEQ and _ROMAN_SEQ.index(prev) + 1 < len(_ROMAN_SEQ) \
+                and _ROMAN_SEQ[_ROMAN_SEQ.index(prev) + 1] == num.lower():
+            return False
+    for node in reversed(stack):
+        if node.provision_type == "CLAUSE":
+            prev = node.number.lower()
+            return len(prev) == 1 and len(num) == 1 and ord(num.lower()) == ord(prev) + 1
+    return False
+
+
+def _front_matter_span(lines):
+    """Index range [start, end) of an 'ARRANGEMENT OF SECTIONS' index, or None.
+
+    Both ends must be found. A document whose index has no operative-start
+    marker after it is left entirely unsuppressed: losing a whole document to a
+    runaway span is far worse than tolerating the ambiguity the index causes.
+    """
+    start = None
+    for i, (_, _, line) in enumerate(lines):
+        if start is None:
+            if RE_FRONT_MATTER_START.match(line):
+                start = i
+        elif RE_OPERATIVE_START.match(line):
+            return start, i
+    return None
+
+
 def parse_provisions(pages, instrument_kind="UNKNOWN"):
     """Return a flat list of Provision objects with parent links."""
     top_label = TOP_UNIT.get(instrument_kind, "PARAGRAPH")
@@ -128,7 +204,12 @@ def parse_provisions(pages, instrument_kind="UNKNOWN"):
         seq += 1
         return prov
 
-    for page_no, off, line in _iter_lines(pages):
+    lines = list(_iter_lines(pages))
+    front = _front_matter_span(lines)
+
+    for idx, (page_no, off, line) in enumerate(lines):
+        if front and front[0] <= idx < front[1]:
+            continue
         s = line.strip()
         if not s:
             if stack:
@@ -160,10 +241,18 @@ def parse_provisions(pages, instrument_kind="UNKNOWN"):
             # "164. (1) If the equity shares ..." carries both the regulation and
             # its first sub-regulation on one line. Without splitting, reg.164(1)
             # cannot be cited apart from reg.164, which a rule engine needs.
+            # The Act writes the same thing with its marginal note in front:
+            # "62. Further issue of share capital.-(1) Where ...". Without the
+            # split the "(1)" is swallowed into the heading, s.62(1) is never
+            # created, and its clauses attach to the section itself - yielding
+            # s.62(a) where a rule needs s.62(1)(a).
             inline = RE_INLINE_SUBUNIT.match(head)
-            unit = push(label_here, m.group("num"), "" if inline else head, page_no, off)
-            if inline:
-                sub = push(sub_here, inline.group("num"), inline.group("rest")[:160], page_no, off)
+            marginal = None if inline else RE_MARGINAL_SUBUNIT.match(head)
+            opener = inline or marginal
+            unit_head = marginal.group("note") if marginal else ("" if inline else head)
+            unit = push(label_here, m.group("num"), unit_head, page_no, off)
+            if opener:
+                sub = push(sub_here, opener.group("num"), opener.group("rest")[:160], page_no, off)
                 sub.inline_split = True
             continue
 
@@ -178,7 +267,8 @@ def parse_provisions(pages, instrument_kind="UNKNOWN"):
         if m and stack:
             push(sub_label, m.group("num"), m.group("head")[:160], page_no, off); continue
         m = RE_SUBCLAUSE.match(line)
-        if m and stack and stack[-1].depth >= DEPTH["CLAUSE"]:
+        if m and stack and stack[-1].depth >= DEPTH["CLAUSE"] \
+                and not _continues_clause_sequence(m.group("num"), stack):
             push("SUB_CLAUSE", m.group("num"), m.group("head")[:160], page_no, off); continue
         m = RE_CLAUSE.match(line)
         if m and stack:

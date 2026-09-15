@@ -40,8 +40,10 @@ rules:
     issue_type: RIGHTS
     applicability: { company_type: ANY, listed_status: LISTED, security_type: ANY, exchange: ANY }
     source:
-      # reg.71 recurs in the citation string, so this anchors by uid.
-      citation_uid: "sebi-icdr-regulations-db196f1f#512"
+      # reg.71 recurs in the citation string, so this anchors by uid. The uid
+      # embeds a sequence number and moves whenever the parser changes; p08
+      # checks it against the citation below and fails the load if they part.
+      citation_uid: "sebi-icdr-regulations-db196f1f#531"
       citation: "SEBI (ICDR) Regulations, 2018 Chapter III Part V reg.71(1)"
       reference: "SEBI (ICDR) Regulations, 2018, reg. 71(1)"
     requirement: >-
