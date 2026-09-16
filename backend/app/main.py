@@ -57,6 +57,24 @@ app.add_middleware(
 )
 
 
+def _with_cors(request: Request, response: JSONResponse) -> JSONResponse:
+    """Put the CORS headers back on an error response.
+
+    A handler registered with @app.exception_handler(Exception) runs in
+    Starlette's ServerErrorMiddleware, which sits OUTSIDE the CORS middleware,
+    so its response never gets those headers. The browser then reports a plain
+    500 as "No 'Access-Control-Allow-Origin' header is present", which sends
+    whoever is debugging after a CORS misconfiguration that does not exist.
+    The status code is the thing worth seeing, so the headers are restored.
+    """
+    origin = request.headers.get("origin")
+    if origin and (origin in _origins or "*" in _origins):
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Vary"] = "Origin"
+    return response
+
+
 @app.middleware("http")
 async def trace_id(request: Request, call_next):
     """Every request carries a trace id linking API, engine and database logs."""
@@ -100,11 +118,11 @@ async def integrity(request: Request, exc: psycopg.errors.IntegrityError):
         # Echoing the raw database message would leak schema internals.
         message = "That change conflicts with a rule the database enforces."
     conflict = isinstance(exc, psycopg.errors.UniqueViolation)
-    return JSONResponse(
+    return _with_cors(request, JSONResponse(
         status_code=(status.HTTP_409_CONFLICT if conflict
                      else status.HTTP_422_UNPROCESSABLE_ENTITY),
         content={"error_code": "CONSTRAINT_VIOLATION", "trace_id": tid,
-                 "constraint": name or None, "detail": message, "message": message})
+                 "constraint": name or None, "detail": message, "message": message}))
 
 
 @app.exception_handler(Exception)
@@ -112,11 +130,11 @@ async def unhandled(request: Request, exc: Exception):
     tid = getattr(request.state, "trace_id", "unknown")
     log.exception("unhandled error trace_id=%s", tid)
     # No stack trace leaves the process; the trace id is how support finds it.
-    return JSONResponse(
+    return _with_cors(request, JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"error_code": "INTERNAL_ERROR", "trace_id": tid,
                  "message": "Something went wrong handling this request.",
-                 "remediation": "Retry. If it persists, quote the trace id to support."})
+                 "remediation": "Retry. If it persists, quote the trace id to support."}))
 
 
 for r in (auth_router.router, companies_router.router, assessments_router.router,
