@@ -40,9 +40,12 @@ ALTER TABLE company.company_classifications
   ADD CONSTRAINT listed_identifiers_need_listing
     CHECK (listed_status = 'LISTED' OR (ticker_symbol IS NULL AND isin IS NULL));
 
--- Per-org, not global. See note 2 above.
+-- Per-org, and NOT unique. See note 2 above. FR-INP-001 requires a duplicate
+-- CIN within an organisation to warn rather than block: a company may be
+-- re-registered, and an advisor may legitimately want a second record of the
+-- same client. create_company reports the clash back to the user instead.
 ALTER TABLE company.companies DROP CONSTRAINT companies_cin_key;
-CREATE UNIQUE INDEX companies_org_cin_key
+CREATE INDEX companies_org_cin_idx
   ON company.companies (org_id, cin) WHERE cin IS NOT NULL;
 
 -- Search: ILIKE under an RLS predicate, no pg_trgm. The extension is not
@@ -78,7 +81,7 @@ COMMIT;
 --   DROP INDEX IF EXISTS company.classifications_isin_lower_idx;
 --   DROP INDEX IF EXISTS company.classifications_ticker_lower_idx;
 --   DROP INDEX IF EXISTS company.companies_name_lower_idx;
---   DROP INDEX IF EXISTS company.companies_org_cin_key;
+--   DROP INDEX IF EXISTS company.companies_org_cin_idx;
 --   ALTER TABLE company.companies ADD CONSTRAINT companies_cin_key UNIQUE (cin);
 --   ALTER TABLE company.company_classifications
 --     DROP CONSTRAINT listed_identifiers_need_listing,

@@ -46,7 +46,13 @@ def _overall(statuses: list[str]) -> str:
 def build_facts(company: dict, capital: dict, issue: dict,
                 holdings: Optional[list] = None,
                 previous_issues: Optional[list] = None) -> dict:
-    """The fact bundle the engines evaluate against."""
+    """The fact bundle the engines evaluate against.
+
+    `previous_issues` is a list of records, addressed by the count_where and
+    any_where operators - e.g. a rule limiting private placements in a
+    financial year counts the matching entries. Plain dotted paths cannot
+    traverse it.
+    """
     return {
         "company": company or {},
         "capital": capital or {},

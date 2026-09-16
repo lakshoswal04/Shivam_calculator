@@ -67,6 +67,46 @@ async def trace_id(request: Request, call_next):
     return response
 
 
+# Constraints the database enforces are part of the contract, not accidents.
+# Without this every CHECK or UNIQUE violation reached the catch-all below and
+# came back as an opaque 500 with a trace id, so a user who typed a malformed
+# CIN was told to contact support.
+_CONSTRAINT_MESSAGES = {
+    "cin_shape": ("That CIN is not in the expected format: 21 characters, "
+                  "for example U27100MH2016PLC123456."),
+    "isin_shape": "That ISIN is not in the expected format, for example INE123A01024.",
+    "ticker_symbol_shape": "A ticker symbol may only contain letters, digits, & . and -.",
+    "listed_identifiers_need_listing":
+        "A ticker symbol and ISIN can only be recorded for a listed company.",
+    "issued_within_authorised": "Issued capital cannot exceed authorised capital.",
+    "subscribed_within_issued": "Subscribed capital cannot exceed issued capital.",
+    "paidup_within_subscribed": "Paid-up capital cannot exceed subscribed capital.",
+    "issue_dates_sane": ("Those issue dates are out of order: the issue must close on or "
+                         "after it opens, and allotment on or after it closes."),
+    "issue_status_vocab": "That is not a recognised issue status.",
+    "classification_no_overlap":
+        "This company already has a classification covering that period.",
+}
+
+
+@app.exception_handler(psycopg.errors.IntegrityError)
+async def integrity(request: Request, exc: psycopg.errors.IntegrityError):
+    tid = getattr(request.state, "trace_id", "unknown")
+    name = getattr(getattr(exc, "diag", None), "constraint_name", None) or ""
+    message = _CONSTRAINT_MESSAGES.get(name)
+    log.warning("constraint %r rejected a write trace_id=%s", name or "unknown", tid)
+    if message is None:
+        # Unmapped constraint: still a client error, but say only that much.
+        # Echoing the raw database message would leak schema internals.
+        message = "That change conflicts with a rule the database enforces."
+    conflict = isinstance(exc, psycopg.errors.UniqueViolation)
+    return JSONResponse(
+        status_code=(status.HTTP_409_CONFLICT if conflict
+                     else status.HTTP_422_UNPROCESSABLE_ENTITY),
+        content={"error_code": "CONSTRAINT_VIOLATION", "trace_id": tid,
+                 "constraint": name or None, "detail": message, "message": message})
+
+
 @app.exception_handler(Exception)
 async def unhandled(request: Request, exc: Exception):
     tid = getattr(request.state, "trace_id", "unknown")

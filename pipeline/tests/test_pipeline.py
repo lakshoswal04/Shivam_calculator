@@ -253,10 +253,10 @@ AST_CASES = [
     ({"op": "exists", "field": "a"}, True),
     ({"op": "AND", "args": [{"op": "bogus", "field": "a", "value": 1}]}, False),
     # Aggregates over a list of records.
-    ({"op": "count_where", "field": "company.previous_issues",
+    ({"op": "count_where", "field": "previous_issues",
       "where": {"op": "eq", "field": "issue_type", "value": "BONUS"},
       "op2": "lte", "value": 2}, True),
-    ({"op": "any_where", "field": "company.previous_issues",
+    ({"op": "any_where", "field": "previous_issues",
       "where": {"op": "eq", "field": "issue_type", "value": "BONUS"}}, True),
     # count_where without a comparison has nothing to compare the count to.
     ({"op": "count_where", "field": "x",
@@ -270,15 +270,15 @@ AST_CASES = [
 
 
 # ------------------------------------------------------------- aggregates
-_HISTORY = {"company": {"previous_issues": [
+_HISTORY = {"previous_issues": [
     {"issue_type": "PRIVATE_PLACEMENT", "allotment_date": "2026-02-01"},
     {"issue_type": "PRIVATE_PLACEMENT", "allotment_date": "2026-05-01"},
     {"issue_type": "BONUS"},
-]}}
+]}
 
 
 def test_count_where_counts_matching_records():
-    ast = {"op": "count_where", "field": "company.previous_issues",
+    ast = {"op": "count_where", "field": "previous_issues",
            "where": {"op": "eq", "field": "issue_type", "value": "PRIVATE_PLACEMENT"},
            "op2": "lte", "value": 2}
     out = C.evaluate_safe(ast, _HISTORY)
@@ -287,14 +287,14 @@ def test_count_where_counts_matching_records():
 
 
 def test_any_where_is_true_when_one_record_matches():
-    ast = {"op": "any_where", "field": "company.previous_issues",
+    ast = {"op": "any_where", "field": "previous_issues",
            "where": {"op": "eq", "field": "issue_type", "value": "BONUS"}}
     assert C.evaluate_safe(ast, _HISTORY)["result"] is True
 
 
 def test_incomplete_history_row_is_not_a_match_and_does_not_block():
     """One row missing the field must not make the whole rule indeterminate."""
-    ast = {"op": "count_where", "field": "company.previous_issues",
+    ast = {"op": "count_where", "field": "previous_issues",
            "where": {"op": "eq", "field": "allotment_date", "value": "2026-02-01"},
            "op2": "eq", "value": 1}
     out = C.evaluate_safe(ast, _HISTORY)
@@ -303,18 +303,18 @@ def test_incomplete_history_row_is_not_a_match_and_does_not_block():
 
 def test_absent_history_is_review_required_not_false():
     """An unsupplied list is unknown, not empty - the engine's core contract."""
-    ast = {"op": "any_where", "field": "company.previous_issues",
+    ast = {"op": "any_where", "field": "previous_issues",
            "where": {"op": "eq", "field": "issue_type", "value": "BONUS"}}
-    out = C.evaluate_safe(ast, {"company": {}})
+    out = C.evaluate_safe(ast, {})
     assert out["status"] == "REVIEW_REQUIRED"
-    assert out["missing_field"] == "company.previous_issues"
+    assert out["missing_field"] == "previous_issues"
 
 
 def test_empty_history_evaluates_rather_than_blocking():
     """An explicitly empty list IS known: nothing matches, so the answer is false."""
-    ast = {"op": "any_where", "field": "company.previous_issues",
+    ast = {"op": "any_where", "field": "previous_issues",
            "where": {"op": "eq", "field": "issue_type", "value": "BONUS"}}
-    out = C.evaluate_safe(ast, {"company": {"previous_issues": []}})
+    out = C.evaluate_safe(ast, {"previous_issues": []})
     assert out["status"] == "EVALUATED" and out["result"] is False
 
 

@@ -16,7 +16,7 @@ router = APIRouter(tags=["assessments"])
 
 
 def _facts_from(company_row: dict, cls: dict, cap: dict, holdings: list,
-                issue: ProposedIssue) -> dict:
+                issue: ProposedIssue, previous_issues: list | None = None) -> dict:
     issue_facts = {
         "type": issue.issue_type,
         "security_type": issue.security_type,
@@ -49,6 +49,7 @@ def _facts_from(company_row: dict, cls: dict, cap: dict, holdings: list,
         },
         issue=issue_facts,
         holdings=[dict(h) for h in (holdings or [])],
+        previous_issues=[dict(i) for i in (previous_issues or [])],
     )
 
 
@@ -69,7 +70,7 @@ def run_assessment(body: AssessmentRequest, p: Principal = Depends(current_princ
         holdings = body.holdings or facts_src["holdings"]
         holdings = [h.model_dump() if hasattr(h, "model_dump") else dict(h) for h in holdings]
         facts = _facts_from(facts_src["company"], facts_src["classification"], cap,
-                            holdings, body.issue)
+                            holdings, body.issue, facts_src.get("issues"))
 
         scenario = {"transaction_date": body.transaction_date,
                     "issue_type": body.issue.issue_type}
@@ -155,11 +156,21 @@ def preview(body: CalculationPreviewRequest, p: Principal = Depends(current_prin
 
 @router.get("/routes")
 def routes(listed: bool = False):
+    """Every route, with how much law is actually authored behind each.
+
+    `authored_rule_count` lets the wizard say plainly that a route has no
+    approved rules rather than presenting it as equivalent to one that does.
+    """
+    with tx() as conn:
+        counts = {r["issue_type"]: r["n"] for r in fetch_all(conn, """
+            SELECT issue_type::text AS issue_type, count(*) AS n
+            FROM legal.v_active_rule_versions GROUP BY issue_type""")}
     return {
         "routes": [
             {"issue_type": r, "label": route_manifests.ROUTE_LABELS[r],
              "in_mvp": r in route_manifests.V1_ROUTES,
              "source_gate": route_manifests.gate_for(r),
+             "authored_rule_count": counts.get(r, 0),
              "questions": route_manifests.questions_for(r, listed)}
             for r in route_manifests.ALL_ROUTES
         ]
