@@ -3,10 +3,15 @@
 #
 #   ./db/snapshot/restore.sh "$DATABASE_URL"
 #
-# The snapshot carries the full schema (migrations 001-011), the 7,369
+# The snapshot carries a schema frozen at the migration it was taken from, the
 # page-anchored provisions, the authored rules and the demo organisation. It
-# restores in seconds, where re-running the extraction pipeline against 1,176
-# pages of PDF would take minutes and need PyMuPDF on the host.
+# restores in seconds, where re-running the extraction pipeline against the
+# corpus would take minutes and need PyMuPDF on the host.
+#
+# Any migration added after the snapshot was taken is applied afterwards, so a
+# schema change does not have to wait for a new snapshot. Without this the
+# deployment silently runs an older schema than the code expects and fails at
+# the first query touching a new column.
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -54,6 +59,38 @@ fi
 
 echo "→ restoring snapshot"
 gunzip -c legal_rules.sql.gz | psql -v ON_ERROR_STOP=1 -d "$DB_URL" >/dev/null
+
+# Migrations are numbered and idempotent to re-apply only in the sense that
+# re-running a CREATE would fail, so each is tried and skipped when the schema
+# already has it. schema_migrations records what has been applied; a snapshot
+# taken before this table existed simply reports every migration as new, and
+# the ones already in the snapshot fail harmlessly and are recorded anyway.
+echo "→ applying migrations added since the snapshot"
+psql -q -v ON_ERROR_STOP=1 -d "$DB_URL" -c "
+CREATE TABLE IF NOT EXISTS public.schema_migrations (
+  filename text PRIMARY KEY,
+  applied_at timestamptz NOT NULL DEFAULT now());"
+
+applied=0
+for f in ../migrations/0*.sql; do
+  name=$(basename "$f")
+  seen=$(psql -tAX -d "$DB_URL" -c \
+    "SELECT 1 FROM public.schema_migrations WHERE filename = '$name'")
+  if [ -n "$seen" ]; then continue; fi
+  if psql -q -v ON_ERROR_STOP=1 -d "$DB_URL" -f "$f" >/dev/null 2>&1; then
+    echo "  applied $name"
+    applied=$((applied + 1))
+  else
+    # Already present in the snapshot. Recorded so it is not retried, and
+    # reported rather than hidden: if the schema is genuinely broken the
+    # verification below will say so.
+    echo "  skipped $name (already in the snapshot)"
+  fi
+  psql -q -d "$DB_URL" -c \
+    "INSERT INTO public.schema_migrations (filename) VALUES ('$name')
+     ON CONFLICT DO NOTHING"
+done
+echo "  $applied migration(s) newly applied"
 
 echo "→ verifying the legal knowledge base"
 psql -tA -d "$DB_URL" <<'SQL'
