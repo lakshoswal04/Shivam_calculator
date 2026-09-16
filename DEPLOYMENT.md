@@ -39,9 +39,16 @@ one — the internal URL is only reachable from inside Render), then run locally
 ./db/snapshot/restore.sh "postgresql://…external…/legal_rules"
 ```
 
-This restores the schema, 7,369 provisions, the authored rules and the demo organisation
-in seconds, and verifies the result. Re-running the extraction pipeline on Render instead
-would need PyMuPDF and several minutes of CPU for no benefit.
+This restores the schema, 13,485 provisions, the authored rules and the demo organisation
+in seconds, then applies any migration added after the snapshot was taken, and verifies the
+result. Re-running the extraction pipeline on Render instead would need PyMuPDF and several
+minutes of CPU for no benefit.
+
+**Re-run this after any change to the corpus, the authored rules or the schema.** The
+snapshot is regenerated from a local database with `./db/snapshot/create.sh`, which refuses
+to write one whose quality checks are failing. A deployment that restores an old snapshot
+runs the new code against the previous corpus, which is worse than an obvious failure
+because it looks like it is working.
 
 Render requires TLS for external connections; if `psql` complains, append `?sslmode=require`
 to the URL.

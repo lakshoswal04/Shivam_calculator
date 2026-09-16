@@ -21,6 +21,12 @@ provision, page and source document.
 Sign in at http://localhost:3000 with `cs@demo.test` / `demo1234`
 (also `cfo@`, `legal@`, `owner@` for the other roles).
 
+Three demo companies are seeded, but nothing limits you to them: **New assessment** starts
+at company selection, where you can search the organisation by name, CIN, ticker or ISIN, or
+add your own company — including a hypothetical one with no CIN, which is then marked
+`user-entered` wherever it appears. Capital, shareholders and previous issues are captured
+in the same flow, and any step already on file is skipped.
+
 ---
 
 ## Layout
@@ -67,15 +73,29 @@ bank from the monitoring-agency requirement — and the engine says so, naming t
 
 ## Rule content
 
-15 rules across three routes, each anchored to a real provision with its requirement text
+29 rules across four routes, each anchored to a real provision with its requirement text
 quoted from the source:
 
-| Route | Rules | Instrument |
-|---|---|---|
-| Preferential (listed) | 8 | SEBI (ICDR) Regulations, 2018, Ch. V |
-| Preferential (unlisted) | 3 | Companies (Share Capital and Debentures) Rules, 2014, r.13 |
-| Rights (listed) | 2 | SEBI (ICDR) Regulations, 2018, Ch. III |
-| Private placement | 2 | Companies (Prospectus and Allotment) Rules, 2014, r.14 |
+| Route | Rules | Instrument | Status |
+|---|---|---|---|
+| Preferential (listed) | 8 | SEBI (ICDR) Regulations, 2018, Ch. V | live |
+| Preferential (unlisted) | 3 | Companies (Share Capital and Debentures) Rules, 2014, r.13 | live |
+| Rights (listed) | 2 | SEBI (ICDR) Regulations, 2018, Ch. III | live |
+| Bonus (listed) | 5 | SEBI (ICDR) Regulations, 2018, Ch. XI, reg. 294-295 | live |
+| Rights (all companies) | 3 | Companies Act, 2013, s.62 | pending review |
+| Bonus (all companies) | 6 | Companies Act, 2013, s.63 | pending review |
+| Private placement | 2 | Companies (Prospectus and Allotment) Rules, 2014, r.14 | pending review |
+
+The eleven pending rules are not unfinished — they are held deliberately. The Act in the
+corpus is consolidated only to 29-05-2015, so `db/seed/demo/seed_demo.py` declines to
+approve any rule citing text not consolidated within three years, and a reviewer must check
+the section against the current Act first. Supplying a newer edition clears the hold with no
+code change.
+
+**A route with no approved rules withholds its legal conclusion.** It still produces every
+calculation, but `legal_issue_capacity.determinable` is `false` with `NO_APPROVED_RULES`
+named as the cause, so a route whose law nobody has authored cannot answer the legal
+question by falling through to capital headroom.
 
 Rules live in `db/seed/rules/**.yaml` and load via `pipeline/p08_load_rules.py`, which
 resolves every citation against the provision tree and refuses to load a rule whose anchor
@@ -157,11 +177,13 @@ inert. Migration `008` creates that role; do not point `DATABASE_URL` at a super
 ./dev.sh test
 ```
 
-- **pipeline** — 38 tests: hashing, cleaning, citation parsing, amendment markers,
-  SQL↔Python AST parity
-- **backend** — 22 tests: calculation truth tables, dual-capacity separation,
+- **pipeline** — 53 tests: hashing, cleaning, citation parsing, amendment markers,
+  list aggregates over issue history, SQL↔Python AST parity
+- **backend** — 48 tests: calculation truth tables, dual-capacity separation,
   `REVIEW_REQUIRED` on missing facts, statutory exception override, reproducibility,
-  RBAC matrix, tenant isolation, source-gate honesty
+  RBAC matrix, tenant isolation, source-gate honesty, and the company-entry path —
+  CIN format, listing coherence, the capital/cap-table role bar, issue-history
+  idempotency, and that a route with no rules withholds its legal conclusion
 - **schema guarantees** — 12 negative tests that must fail
 - **tenant isolation** — 7 checks, run as the application role
 - **data quality** — `legal.v_quality_checks` must return zero failing rows
@@ -172,6 +194,8 @@ inert. Migration `008` creates that role; do not point `DATABASE_URL` at a super
 
 ## Not built yet
 
-MFA and SSO · what-if simulator (schema supports it) · PDF report export · bonus, ESOP,
-sweat equity, IPO, FPO, QIP routes · BSE rule content beyond the four acquired documents ·
-notification delivery.
+MFA and SSO · what-if simulator (schema supports it) · PDF report export · rule content for
+ESOP, sweat equity, IPO, FPO and QIP — these routes are selectable and run their
+calculations, but report their legal conclusions as unavailable · convertible instruments
+and fully-diluted counts (FR-INP-004) · BSE rule content beyond the four acquired documents
+· notification delivery.
