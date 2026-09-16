@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api, inr, rupees, type Company, type SourceGap } from "@/lib/api";
-import { Banner, Button, Card, Empty, SectionTitle } from "@/components/ui";
+import { Badge, Banner, Button, Card, Empty, SectionTitle } from "@/components/ui";
 
 export default function CompaniesPage() {
   const [companies, setCompanies] = useState<Company[] | null>(null);
@@ -25,7 +25,10 @@ export default function CompaniesPage() {
             Client companies in your organisation. Select one to assess a proposed issue.
           </p>
         </div>
-        <Button href="/assess">New assessment</Button>
+        <div className="flex gap-2">
+          <Button variant="ghost" href="/companies/new">+ Add company</Button>
+          <Button href="/assess">New assessment</Button>
+        </div>
       </div>
 
       {blocker && (
@@ -45,7 +48,10 @@ export default function CompaniesPage() {
       {companies === null ? (
         <p className="text-sm text-muted">Loading…</p>
       ) : companies.length === 0 ? (
-        <Empty title="No companies yet">Add a company to run its first assessment.</Empty>
+        <Empty title="No companies yet">
+          <p>Add a company to run its first assessment.</p>
+          <Button className="mt-4" href="/companies/new">+ Add your first company</Button>
+        </Empty>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {companies.map((c) => {
@@ -56,9 +62,26 @@ export default function CompaniesPage() {
             return (
               <Card key={c.company_id} className="p-5">
                 <div className="mb-3 flex items-start justify-between gap-3">
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-medium leading-tight text-ink">{c.name}</h3>
-                    <p className="mt-1 font-mono text-[11px] text-faint">{c.cin ?? "CIN not recorded"}</p>
+                    <p className="mt-1 font-mono text-[11px] text-faint">
+                      {c.cin ?? "CIN not recorded"}
+                      {c.ticker_symbol ? ` · ${c.ticker_symbol}` : ""}
+                    </p>
+                    {/* A CIN is format-checked only, so its absence is stated and
+                        its presence is never described as verified. */}
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      {!c.cin && (
+                        <Badge tone="warn" title="Added by a user. Nothing is verified against any register.">
+                          user-entered
+                        </Badge>
+                      )}
+                      {c.face_value === null && (
+                        <Badge title="No capital structure is recorded, so this company cannot be assessed yet.">
+                          setup incomplete
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                   <span className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium
                     ${c.listed_status === "LISTED"
@@ -85,7 +108,9 @@ export default function CompaniesPage() {
                   Headroom is arithmetic only — it is not what the company may lawfully issue.
                 </p>
                 <div className="mt-4 flex gap-2">
-                  <Button href={`/assess?company=${c.company_id}`} className="flex-1">Assess</Button>
+                  <Button href={`/assess?company=${c.company_id}`} className="flex-1">
+                    {c.face_value === null ? "Finish setup" : "Assess"}
+                  </Button>
                   <Link href={`/assessments?company=${c.company_id}`}
                         className="grid place-items-center rounded-md border border-border-lit
                                    px-3 text-xs text-muted hover:text-ink-2">History</Link>

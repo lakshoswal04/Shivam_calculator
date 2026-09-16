@@ -62,15 +62,19 @@ export function Button({
   );
 }
 
-export function Field({ label, hint, children, required }:
-  { label: string; hint?: string; children: ReactNode; required?: boolean }) {
+export function Field({ label, hint, children, required, error }:
+  { label: string; hint?: string; children: ReactNode;
+    required?: boolean; error?: string | null }) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-sm text-ink-2">
         {label}{required && <span className="ml-1 text-accent">*</span>}
       </span>
       {children}
-      {hint && <span className="mt-1 block text-xs text-faint">{hint}</span>}
+      {/* The error replaces the hint rather than stacking with it: two lines of
+          small print under one input is harder to read than one. */}
+      {error ? <span className="mt-1 block text-xs text-block">{error}</span>
+        : hint ? <span className="mt-1 block text-xs text-faint">{hint}</span> : null}
     </label>
   );
 }
@@ -78,6 +82,105 @@ export function Field({ label, hint, children, required }:
 export const inputCls =
   "w-full rounded-md border border-border bg-ground px-3 py-2 text-sm text-ink " +
   "placeholder:text-faint focus:border-accent focus:outline-none";
+
+const invalidCls = "border-block/60 focus:border-block";
+
+/** Text, number or date input. Carries its own invalid state and aria-invalid. */
+export function Input({ value, onChange, type = "text", placeholder, invalid,
+                        step, min, max, disabled, id }: {
+  value: string; onChange: (v: string) => void;
+  type?: "text" | "number" | "date"; placeholder?: string; invalid?: boolean;
+  step?: string; min?: string; max?: string; disabled?: boolean; id?: string;
+}) {
+  return (
+    <input id={id} type={type} value={value} placeholder={placeholder}
+           step={step} min={min} max={max} disabled={disabled}
+           aria-invalid={invalid || undefined}
+           onChange={(e) => onChange(e.target.value)}
+           className={`${inputCls} ${invalid ? invalidCls : ""} disabled:opacity-60`} />
+  );
+}
+
+export function Select({ value, onChange, options, placeholder = "Not stated",
+                         invalid, disabled }: {
+  value: string; onChange: (v: string) => void;
+  options: Array<{ value: string; label: string }>;
+  placeholder?: string; invalid?: boolean; disabled?: boolean;
+}) {
+  return (
+    <select value={value} disabled={disabled} aria-invalid={invalid || undefined}
+            onChange={(e) => onChange(e.target.value)}
+            className={`${inputCls} ${invalid ? invalidCls : ""} disabled:opacity-60`}>
+      <option value="">{placeholder}</option>
+      {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+    </select>
+  );
+}
+
+export function CheckboxField({ label, checked, onChange, hint }: {
+  label: string; checked: boolean; onChange: (v: boolean) => void; hint?: string;
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-2.5">
+      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)}
+             className="mt-0.5 h-4 w-4 rounded border-border accent-accent" />
+      <span>
+        <span className="block text-sm text-ink-2">{label}</span>
+        {hint && <span className="block text-xs text-faint">{hint}</span>}
+      </span>
+    </label>
+  );
+}
+
+/** Small inline marker. Duplicated in three places before this existed. */
+export function Badge({ children, tone = "neutral", title }: {
+  children: ReactNode; tone?: "neutral" | "accent" | "warn" | "block"; title?: string;
+}) {
+  const map = {
+    neutral: "bg-surface-2 text-muted",
+    accent: "bg-accent-dim/40 text-accent-hi",
+    warn: "bg-warn/10 text-warn",
+    block: "bg-block-bg text-block",
+  }[tone];
+  return (
+    <span title={title}
+          className={`inline-block rounded px-1.5 py-0.5 font-mono text-[10px] ${map}`}>
+      {children}
+    </span>
+  );
+}
+
+/** A large selectable card. The select-me pattern appears all over the wizard. */
+export function ChoiceCard({ selected, onClick, children, disabled, className = "" }: {
+  selected: boolean; onClick: () => void; children: ReactNode;
+  disabled?: boolean; className?: string;
+}) {
+  return (
+    <button type="button" onClick={onClick} disabled={disabled} aria-pressed={selected}
+            className={`rounded-md border px-4 py-3 text-left transition-colors
+                        disabled:cursor-not-allowed disabled:opacity-50 ${
+              selected ? "border-accent bg-accent-dim/30"
+                       : "border-border hover:border-border-lit"} ${className}`}>
+      {children}
+    </button>
+  );
+}
+
+export function SearchInput({ value, onChange, placeholder, busy, label }: {
+  value: string; onChange: (v: string) => void;
+  placeholder?: string; busy?: boolean; label: string;
+}) {
+  return (
+    <div className="relative">
+      <input value={value} onChange={(e) => onChange(e.target.value)}
+             placeholder={placeholder} aria-label={label} type="search"
+             className={`${inputCls} pr-20`} />
+      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] text-faint">
+        {busy ? "searching…" : value ? "" : "⌕"}
+      </span>
+    </div>
+  );
+}
 
 export function Banner({ tone, title, children }:
   { tone: "info" | "warn" | "block" | "review"; title: string; children?: ReactNode }) {

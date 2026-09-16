@@ -102,6 +102,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const t = session.token;
   if (t) headers.set("Authorization", `Bearer ${t}`);
 
+  // `init.signal` is honoured, so a superseded search can be cancelled and a
+  // slow earlier response cannot overwrite a newer one.
   const res = await fetch(`${BASE}${path}`, { ...init, headers });
   if (res.status === 401 && typeof window !== "undefined"
       && !window.location.pathname.startsWith("/login")) {
@@ -126,12 +128,31 @@ export const api = {
     request<{ access_token: string; refresh_token: string; user: SessionUser }>(
       "/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
   health: () => request<{ status: string; active_rules: number }>("/health"),
-  companies: () => request<{ companies: Company[] }>("/companies"),
-  company: (id: string) => request<Record<string, unknown>>(`/companies/${id}`),
-  createCompany: (body: unknown) =>
-    request<{ company_id: string }>("/companies", { method: "POST", body: JSON.stringify(body) }),
-  setCapital: (id: string, body: unknown) =>
+  companies: () => request<CompanyPage>("/companies?limit=100"),
+  searchCompanies: (q: string, opts: { limit?: number; offset?: number;
+                                       signal?: AbortSignal } = {}) => {
+    const p = new URLSearchParams();
+    if (q.trim()) p.set("q", q.trim());
+    p.set("limit", String(opts.limit ?? 25));
+    p.set("offset", String(opts.offset ?? 0));
+    return request<CompanyPage>(`/companies?${p}`, { signal: opts.signal });
+  },
+  company: (id: string) => request<CompanyDetail>(`/companies/${id}`),
+  createCompany: (body: CompanyCreateBody) =>
+    request<{ company_id: string; name: string; cin: string | null; warnings: string[] }>(
+      "/companies", { method: "POST", body: JSON.stringify(body) }),
+  setCapital: (id: string, body: CapitalBody) =>
     request<unknown>(`/companies/${id}/capital`, { method: "PUT", body: JSON.stringify(body) }),
+  setHoldings: (id: string, rows: HoldingBody[]) =>
+    request<{ holders: number; as_of_date: string }>(
+      `/companies/${id}/holdings`, { method: "PUT", body: JSON.stringify(rows) }),
+  companyIssues: (id: string) =>
+    request<{ issues: IssueHistoryRow[] }>(`/companies/${id}/issues`),
+  recordIssues: (id: string, rows: IssueHistoryBody[]) =>
+    request<{ recorded: number; submitted: number }>(
+      `/companies/${id}/issues`, { method: "POST", body: JSON.stringify(rows) }),
+  deleteIssue: (id: string, issueId: string) =>
+    request<unknown>(`/companies/${id}/issues/${issueId}`, { method: "DELETE" }),
   routes: (listed: boolean) => request<{ routes: RouteInfo[] }>(`/routes?listed=${listed}`),
   guidance: (body: unknown) =>
     request<{ status: string; candidates: RouteCandidate[]; message: string }>(
@@ -168,13 +189,59 @@ export interface DilutionRow {
 
 export interface Company {
   company_id: string; name: string; cin: string | null;
+  incorporation_date: string | null; registered_office: string | null;
   company_type: string; listed_status: string; exchanges: string[] | null;
+  is_sme: boolean | null; ticker_symbol: string | null; isin: string | null;
   authorised_capital: number | null; issued_capital: number | null;
+  subscribed_capital: number | null;
   paid_up_capital: number | null; face_value: number | null; shares_issued: number | null;
+  capital_as_of: string | null;
+  // Drive which wizard steps are already satisfied, without a second request.
+  holder_count: number; issue_count: number;
+}
+export interface CompanyPage {
+  companies: Company[]; total: number; limit: number; offset: number;
+}
+/** What GET /companies/{id} returns: the company plus everything on file for it. */
+export interface CompanyDetail {
+  company: Record<string, unknown>;
+  classification: Record<string, unknown> | null;
+  capital: Record<string, unknown> | null;
+  holdings: Array<{ name: string; category: string | null;
+                    is_promoter: boolean; shares_held: number }>;
+  issues: IssueHistoryRow[];
+}
+export interface CompanyCreateBody {
+  name: string; cin?: string | null; incorporation_date?: string | null;
+  registered_office?: string | null; company_type: string; listed_status: string;
+  exchanges: string[]; ticker_symbol?: string | null; isin?: string | null; is_sme: boolean;
+}
+export interface CapitalBody {
+  authorised_capital: number; issued_capital: number; subscribed_capital?: number | null;
+  paid_up_capital?: number | null; face_value: number; shares_issued: number;
+  as_of_date?: string | null;
+}
+export interface HoldingBody {
+  name: string; shares_held: number; category?: string | null; is_promoter: boolean;
+}
+export interface IssueHistoryBody {
+  client_ref: string; issue_type: string; security_type?: string; status?: string;
+  announcement_date?: string | null; board_resolution_date?: string | null;
+  shareholder_resolution_date?: string | null; record_date?: string | null;
+  issue_open_date?: string | null; issue_close_date?: string | null;
+  allotment_date?: string | null; shares_offered?: number | null;
+  issue_price?: number | null; premium_per_share?: number | null;
+  total_consideration?: number | null;
+  rights_ratio_num?: number | null; rights_ratio_den?: number | null;
+}
+export interface IssueHistoryRow extends Omit<IssueHistoryBody, "client_ref"> {
+  issue_id: string;
 }
 export interface RouteInfo {
   issue_type: string; label: string; in_mvp: boolean;
   source_gate: { code: string; detail: string; provisions_required: string[] } | null;
+  /** Approved rules behind this route. Zero means its legal limb is withheld. */
+  authored_rule_count: number;
   questions: RouteQuestion[];
 }
 export interface RouteQuestion {
