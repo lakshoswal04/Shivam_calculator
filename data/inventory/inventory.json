@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T09:29:34+00:00",
+  "generated_at": "2026-09-21T10:52:16+00:00",
   "corpus_root": "/Users/lakshoswal04/Desktop/Calculator_pdfs/corpus",
   "counts": {
     "documents": 59,
@@ -121,7 +121,7 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/CHECKLIST_FOR_DIRECT_LISTING_Nation_wide.doc",
-      "retrieved_date": "2026-09-21T09:28:45+00:00",
+      "retrieved_date": "2026-09-21T10:52:15+00:00",
       "consolidation_status": "UNKNOWN",
       "as_amended_upto": null,
       "page_count": 1,
@@ -130,7 +130,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -200,7 +200,7 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/FAQ_on_Listing.pdf",
-      "retrieved_date": "2026-09-21T09:28:44+00:00",
+      "retrieved_date": "2026-09-21T10:52:15+00:00",
       "consolidation_status": "UNKNOWN",
       "as_amended_upto": null,
       "page_count": 7,
@@ -211,7 +211,7 @@
       "review_reasons": [
         "issue_type_confidence=0.54"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -256,7 +256,7 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads1/In_principle_approval_of_PPDI.doc",
-      "retrieved_date": "2026-09-21T09:28:44+00:00",
+      "retrieved_date": "2026-09-21T10:52:14+00:00",
       "consolidation_status": "UNKNOWN",
       "as_amended_upto": null,
       "page_count": 1,
@@ -265,7 +265,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -301,7 +301,7 @@
       "effective_date": null,
       "version": null,
       "source_url": "https://www.bseindia.com/downloads/IPP_%20Post_Issue_Final.doc",
-      "retrieved_date": "2026-09-21T09:28:43+00:00",
+      "retrieved_date": "2026-09-21T10:52:14+00:00",
       "consolidation_status": "UNKNOWN",
       "as_amended_upto": null,
       "page_count": 1,
@@ -310,7 +310,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -394,7 +394,7 @@
         "document_type_confidence=0.56",
         "issue_type_confidence=0.56"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null
     },
     {
@@ -482,7 +482,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null
     },
     {
@@ -534,7 +534,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -587,7 +587,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -668,7 +668,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -782,7 +782,7 @@
       "review_reasons": [
         "issue_type_confidence=0.48"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -887,7 +887,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -979,7 +979,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1053,7 +1053,7 @@
         "authority_confidence=0.55",
         "document_type_confidence=0.55"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1140,7 +1140,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1188,7 +1188,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1243,7 +1243,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1301,7 +1301,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1362,7 +1362,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1422,7 +1422,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1489,7 +1489,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1547,7 +1547,7 @@
       "review_reasons": [
         "document_type_confidence=0.0"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1619,7 +1619,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1695,7 +1695,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:15+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1771,7 +1771,7 @@
         "authority_confidence=0.34",
         "issue_type_confidence=0.51"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -1847,7 +1847,7 @@
       "review_reasons": [
         "issue_type_confidence=0.57"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -1943,7 +1943,7 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -2038,7 +2038,7 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -2090,7 +2090,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2160,7 +2160,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2230,7 +2230,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2327,7 +2327,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -2397,7 +2397,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2494,7 +2494,7 @@
       "review_reasons": [
         "issue_type_confidence=0.47"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -2560,7 +2560,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2659,7 +2659,7 @@
       "review_reasons": [
         "authority_confidence=0.5"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2748,7 +2748,7 @@
         "document_type_confidence=0.51",
         "issue_type_confidence=0.51"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2815,7 +2815,7 @@
         "authority_confidence=0.59",
         "document_type_confidence=0.56"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -2932,7 +2932,7 @@
       "review_reasons": [
         "document_type_confidence=0.53"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3022,7 +3022,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3118,7 +3118,7 @@
       "review_reasons": [
         "issue_type_confidence=0.59"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3213,7 +3213,7 @@
       "review_reasons": [
         "issue_type_confidence=0.59"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3287,7 +3287,7 @@
       "processing_status": "DEFERRED",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3365,7 +3365,7 @@
       "review_reasons": [
         "authority_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3438,7 +3438,7 @@
       "processing_status": "DEFERRED",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3507,7 +3507,7 @@
         "authority_confidence=0.0",
         "issue_type_confidence=0.52"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -3594,7 +3594,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3663,7 +3663,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3802,7 +3802,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -3947,7 +3947,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4101,7 +4101,7 @@
       "review_reasons": [
         "issue_type_confidence=0.58"
       ],
-      "inventoried_at": "2026-09-21T09:29:33+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4248,7 +4248,7 @@
       "review_reasons": [
         "issue_type_confidence=0.4"
       ],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4363,7 +4363,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4449,7 +4449,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4569,7 +4569,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4644,7 +4644,7 @@
         "document_type_confidence=0.6",
         "issue_type_confidence=0.49"
       ],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4719,7 +4719,7 @@
         "document_type_confidence=0.6",
         "issue_type_confidence=0.49"
       ],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4781,7 +4781,7 @@
       "review_reasons": [
         "document_type_confidence=0.57"
       ],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null
     },
     {
@@ -4849,7 +4849,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     },
@@ -4911,7 +4911,7 @@
       "processing_status": "PENDING_EXTRACTION",
       "human_review_required": false,
       "review_reasons": [],
-      "inventoried_at": "2026-09-21T09:29:34+00:00",
+      "inventoried_at": "2026-09-21T10:52:16+00:00",
       "duplicate_of": null,
       "issue_types_source": "full_text"
     }

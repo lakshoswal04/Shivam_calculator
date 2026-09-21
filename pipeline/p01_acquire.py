@@ -133,11 +133,14 @@ def main():
         acquire(spec, results)
 
     print("\nCompanies Act, 2013 fallback chain (P0):")
-    act_ok = False
-    for spec in ACT_SOURCES:
-        if acquire(spec, results):
-            act_ok = True
-            break
+    act_ok = (ROOT / "corpus" / "originals" / "Companies Act 2013.pdf").exists()
+    if act_ok:
+        print("  OK      Companies Act 2013.pdf is already supplied in corpus/originals/")
+    else:
+        for spec in ACT_SOURCES:
+            if acquire(spec, results):
+                act_ok = True
+                break
 
     queue = []
     if not act_ok:
@@ -158,13 +161,19 @@ def main():
             "attempts": [{"url": s["url"], "outcome": r["outcome"], "reason": r.get("reason")}
                          for s, r in zip(ACT_SOURCES, results[-len(ACT_SOURCES):])],
         })
-    for item, why in [
-        ("MCA_FORM_INSTRUCTION_KITS", "PAS-3, MGT-14, SH-7 instruction kits absent; needed for filing field-level rules."),
+
+    pas3_ok = (ROOT / "corpus" / "originals" / "Form PAS-3.pdf").exists()
+    gap_items = [
         ("SEBI_CIRCULARS_AND_MASTER_CIRCULARS", "Absent; ICDR/LODR operational clarifications rest on these."),
         ("NSE_CIRCULAR_NSE_CML_2023_51", "Cited by 'Points to remember_28(1)' as gating the >Rs.100cr preferential issue-summary requirement, but not supplied."),
-    ]:
+    ]
+    if not pas3_ok:
+        gap_items.insert(0, ("MCA_FORM_INSTRUCTION_KITS", "PAS-3, MGT-14, SH-7 instruction kits absent; needed for filing field-level rules."))
+
+    for item, why in gap_items:
         queue.append({"item": item, "severity": "GAP", "why": why,
                       "action_required": "Supply the document, or leave dependent rules unauthored."})
+
 
     (REPORTS / "acquisition_log.json").write_text(json.dumps({
         "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),

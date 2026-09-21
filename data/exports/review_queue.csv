@@ -1,6 +1,4 @@
 kind,item,severity,detail,action_required
-MISSING_SOURCE,COMPANIES_ACT_2013,BLOCKER,"Primary law (P0) for the V1 routes. Every official channel tried refused automated access: mca.gov.in returns HTTP 403 to scripted clients, and indiacode.gov.in presents a certificate that does not match its hostname and serves a JavaScript shell instead of the PDF.","Download the Companies Act, 2013 **as amended to date** manually and place it in corpus/originals/, then re-run p00_inventory.py. As-enacted text is not sufficient: section 42 was wholly substituted by the Companies (Amendment) Act, 2017 w.e.f. 07-08-2018."
-MISSING_SOURCE,MCA_FORM_INSTRUCTION_KITS,GAP,"PAS-3, MGT-14, SH-7 instruction kits absent; needed for filing field-level rules.","Supply the document, or leave dependent rules unauthored."
 MISSING_SOURCE,SEBI_CIRCULARS_AND_MASTER_CIRCULARS,GAP,Absent; ICDR/LODR operational clarifications rest on these.,"Supply the document, or leave dependent rules unauthored."
 MISSING_SOURCE,NSE_CIRCULAR_NSE_CML_2023_51,GAP,"Cited by 'Points to remember_28(1)' as gating the >Rs.100cr preferential issue-summary requirement, but not supplied.","Supply the document, or leave dependent rules unauthored."
 CLASSIFICATION,BSE_FAQ_on_Listing.pdf,REVIEW,issue_type_confidence=0.54,Confirm authority / document type / issue type

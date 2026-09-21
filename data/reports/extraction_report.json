@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-09-21T09:31:27+00:00",
+  "run_at": "2026-09-21T10:54:12+00:00",
   "extracted": 45,
   "failed": 0,
   "deferred": 14,
@@ -26,7 +26,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "bse-faq-on-listing-facc6804",
@@ -42,7 +42,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
@@ -58,7 +58,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "bse-post-issue-checklist-1d331cda",
@@ -74,7 +74,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "checklist-recommencement-of-trading-e30818a4",
@@ -90,7 +90,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "form-of-listing-aplication-487b76f1",
@@ -106,7 +106,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:34+00:00"
+      "extracted_at": "2026-09-21T10:52:16+00:00"
     },
     {
       "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
@@ -122,7 +122,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:35+00:00"
+      "extracted_at": "2026-09-21T10:52:17+00:00"
     },
     {
       "document_id": "companies-share-capital-and-debentures-rules-64039399",
@@ -138,7 +138,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:37+00:00"
+      "extracted_at": "2026-09-21T10:52:20+00:00"
     },
     {
       "document_id": "companies-act-2013-325a7d09",
@@ -154,7 +154,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "download-post-allotment-a57e1202",
@@ -170,7 +170,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "points-to-remember-post-allotment-f6a19833",
@@ -186,7 +186,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "download-pre-allotment-ace085af",
@@ -202,7 +202,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "part-i-d6ff87e8",
@@ -218,7 +218,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "part-ii-e68713a9",
@@ -234,7 +234,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "t-2-fpo-abe9b620",
@@ -250,7 +250,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
@@ -266,7 +266,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "t-3-fpo-cccb7af1",
@@ -282,7 +282,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "t-4-fpo-c058fc65",
@@ -298,7 +298,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "t-5-fpo-636f879e",
@@ -314,7 +314,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:57+00:00"
+      "extracted_at": "2026-09-21T10:52:39+00:00"
     },
     {
       "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
@@ -330,7 +330,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:58+00:00"
+      "extracted_at": "2026-09-21T10:52:40+00:00"
     },
     {
       "document_id": "final-listing-preferential-14b337d2",
@@ -346,7 +346,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:58+00:00"
+      "extracted_at": "2026-09-21T10:52:40+00:00"
     },
     {
       "document_id": "form-pas-3-71132ad1",
@@ -362,7 +362,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:58+00:00"
+      "extracted_at": "2026-09-21T10:52:40+00:00"
     },
     {
       "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
@@ -378,7 +378,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:29:59+00:00"
+      "extracted_at": "2026-09-21T10:52:41+00:00"
     },
     {
       "document_id": "mca-instruction-kit-sh-7-25a9e662",
@@ -396,7 +396,7 @@
       "pages_empty": [
         25
       ],
-      "extracted_at": "2026-09-21T09:30:01+00:00"
+      "extracted_at": "2026-09-21T10:52:43+00:00"
     },
     {
       "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
@@ -412,7 +412,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:01+00:00"
+      "extracted_at": "2026-09-21T10:52:43+00:00"
     },
     {
       "document_id": "post-allotment-rights-0-dd3e7518",
@@ -428,7 +428,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:01+00:00"
+      "extracted_at": "2026-09-21T10:52:43+00:00"
     },
     {
       "document_id": "pre-allotment-sweat-equity-4226094c",
@@ -444,7 +444,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:01+00:00"
+      "extracted_at": "2026-09-21T10:52:43+00:00"
     },
     {
       "document_id": "checklist-preferential-issue-pre-ffe507ab",
@@ -460,7 +460,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:01+00:00"
+      "extracted_at": "2026-09-21T10:52:43+00:00"
     },
     {
       "document_id": "extract-of-icdr-189995d8",
@@ -476,7 +476,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:04+00:00"
+      "extracted_at": "2026-09-21T10:52:47+00:00"
     },
     {
       "document_id": "points-to-remember-28-1-6be45481",
@@ -492,7 +492,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:04+00:00"
+      "extracted_at": "2026-09-21T10:52:47+00:00"
     },
     {
       "document_id": "preferential-issue-faqs-0d8e781e",
@@ -508,7 +508,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:05+00:00"
+      "extracted_at": "2026-09-21T10:52:47+00:00"
     },
     {
       "document_id": "qip-post-allotment-0-0-d035add2",
@@ -524,7 +524,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:05+00:00"
+      "extracted_at": "2026-09-21T10:52:47+00:00"
     },
     {
       "document_id": "rights-entitlement-checklist-e0bcaa00",
@@ -540,7 +540,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:05+00:00"
+      "extracted_at": "2026-09-21T10:52:47+00:00"
     },
     {
       "document_id": "sebi-depositories-participants-regulations-fb150ec0",
@@ -556,7 +556,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:09+00:00"
+      "extracted_at": "2026-09-21T10:52:51+00:00"
     },
     {
       "document_id": "sebi-icdr-master-circular-1f6763cd",
@@ -583,7 +583,7 @@
         128
       ],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:16+00:00"
+      "extracted_at": "2026-09-21T10:52:59+00:00"
     },
     {
       "document_id": "sebi-icdr-regulations-db196f1f",
@@ -604,7 +604,7 @@
         364
       ],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:37+00:00"
+      "extracted_at": "2026-09-21T10:53:20+00:00"
     },
     {
       "document_id": "sebi-lodr-master-circular-fa3b4360",
@@ -620,7 +620,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:30:58+00:00"
+      "extracted_at": "2026-09-21T10:53:42+00:00"
     },
     {
       "document_id": "sebi-lodr-regulations-62626bd8",
@@ -636,7 +636,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:13+00:00"
+      "extracted_at": "2026-09-21T10:53:57+00:00"
     },
     {
       "document_id": "sebi-pit-regulations-3e146320",
@@ -652,7 +652,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:16+00:00"
+      "extracted_at": "2026-09-21T10:54:01+00:00"
     },
     {
       "document_id": "sebi-sast-regulations-f3486698",
@@ -668,7 +668,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:20+00:00"
+      "extracted_at": "2026-09-21T10:54:05+00:00"
     },
     {
       "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
@@ -684,7 +684,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:22+00:00"
+      "extracted_at": "2026-09-21T10:54:07+00:00"
     },
     {
       "document_id": "trading-approval-557b966e",
@@ -700,7 +700,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:22+00:00"
+      "extracted_at": "2026-09-21T10:54:07+00:00"
     },
     {
       "document_id": "trading-approval-fast-track-a025d50d",
@@ -716,7 +716,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:22+00:00"
+      "extracted_at": "2026-09-21T10:54:07+00:00"
     },
     {
       "document_id": "the-companies-management-and-administration-rule-55296434",
@@ -732,7 +732,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:24+00:00"
+      "extracted_at": "2026-09-21T10:54:09+00:00"
     },
     {
       "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
@@ -748,7 +748,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T09:31:27+00:00"
+      "extracted_at": "2026-09-21T10:54:12+00:00"
     }
   ],
   "failures": [],

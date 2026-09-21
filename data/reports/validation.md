@@ -1,6 +1,6 @@
 # Validation Report
 
-_Generated 2026-09-21T09:31:34+00:00_
+_Generated 2026-09-21T10:54:18+00:00_
 
 **29/30 checks passed** (0 hard failures, 1 soft).
 
@@ -33,9 +33,9 @@ _Generated 2026-09-21T09:31:34+00:00_
 | PASS | HARD | db: source_without_document | 0 row(s) |
 | PASS | HARD | db: no rule reaches production without human approval | 0 active (expected 0 in Pass 1) |
 | PASS | HARD | db: provision pages within document bounds |  |
+| PASS | SOFT | V1 route RIGHTS has at least one primary-law source | 15 document(s), 9 from MCA/SEBI |
 | PASS | SOFT | V1 route PREFERENTIAL has at least one primary-law source | 19 document(s), 9 from MCA/SEBI |
 | PASS | SOFT | V1 route PRIVATE_PLACEMENT has at least one primary-law source | 10 document(s), 6 from MCA/SEBI |
-| PASS | SOFT | V1 route RIGHTS has at least one primary-law source | 15 document(s), 9 from MCA/SEBI |
 
 ## Corpus
 
