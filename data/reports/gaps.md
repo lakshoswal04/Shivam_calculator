@@ -1,6 +1,6 @@
 # Source Gaps
 
-_Generated 2026-09-15T13:41:23+00:00_
+_Generated 2026-09-21T09:31:34+00:00_
 
 Provisions that V1 needs but that no supplied document covers. Rules depending on these are not authored (brief §29).
 
@@ -30,6 +30,6 @@ Provisions that V1 needs but that no supplied document covers. Rules depending o
 
 | Route | Documents | Primary law (MCA/SEBI) |
 |---|---|---|
-| PREFERENTIAL | 18 | 8 |
-| PRIVATE_PLACEMENT | 9 | 5 |
+| PREFERENTIAL | 19 | 9 |
+| PRIVATE_PLACEMENT | 10 | 6 |
 | RIGHTS | 15 | 9 |

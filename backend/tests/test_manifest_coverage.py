@@ -17,7 +17,8 @@ CORE_FACTS = {
 COMPUTED = {f"computed.{n}" for n in (
     "authorised_shares", "available_shares", "nominal_increase", "issue_consideration",
     "premium_per_share", "total_premium", "post_issue_shares", "post_issue_paid_up",
-    "rights_entitlement")}
+    "rights_entitlement", "refund_interest")}
+
 
 
 def _fields(node, out):

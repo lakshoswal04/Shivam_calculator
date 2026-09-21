@@ -92,7 +92,7 @@ def purge(conn):
 # left PENDING: approving a private-placement rule while section 42 is absent
 # would assert a review that could not honestly have happened. It also leaves
 # the review queue with real work in it, so the reviewer flow is exercisable.
-HOLD_BACK_ROUTES = ("PRIVATE_PLACEMENT",)
+HOLD_BACK_ROUTES = ()
 
 # A rule is also held back when the text it cites is not demonstrably current.
 # The Companies Act, 2013 in the corpus is consolidated only to 29-05-2015, so

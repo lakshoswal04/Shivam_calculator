@@ -12,7 +12,7 @@ echo "== 0b. re-inventory ==";   $PY pipeline/p00_inventory.py >/dev/null
 echo "== 2. extraction ==";      $PY pipeline/p02_extract.py
 echo "== 3. applicability ==";   $PY pipeline/p03_classify.py
 echo "== 4. structure ==";       $PY pipeline/p04_structure.py
-echo "== migrations ==";         dropdb --if-exists "$DB"; createdb "$DB"
+echo "== migrations ==";         dropdb -f --if-exists "$DB"; createdb "$DB"
 for f in db/migrations/0*.sql; do psql -v ON_ERROR_STOP=1 -q -d "$DB" -f "$f"; echo "   applied $f"; done
 echo "== 6. load ==";            $PY pipeline/p06_load.py --dsn "dbname=$DB"
 echo "== 7. export ==";          $PY pipeline/p07_export.py

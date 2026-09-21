@@ -1,7 +1,7 @@
 {
-  "run_at": "2026-09-15T13:41:18+00:00",
-  "documents": 44,
-  "total_provisions": 13485,
+  "run_at": "2026-09-21T09:31:29+00:00",
+  "documents": 45,
+  "total_provisions": 13526,
   "detail": [
     {
       "document_id": "bse-checklist-direct-listing-3157e150",
@@ -290,6 +290,22 @@
       "by_type": {},
       "orphan_body_chars": 0,
       "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "form-pas-3-71132ad1",
+      "file_name": "Form PAS-3.pdf",
+      "instrument_kind": "UNKNOWN",
+      "instrument_label": "MCA Form PAS-3 Return of Allotment",
+      "provisions": 41,
+      "top_level_units": 15,
+      "by_type": {
+        "CLAUSE": 21,
+        "PARAGRAPH": 15,
+        "SUB_CLAUSE": 5
+      },
+      "orphan_body_chars": 32,
+      "ambiguous_citations": 8,
       "provisions_with_amendment_markers": 0
     },
     {

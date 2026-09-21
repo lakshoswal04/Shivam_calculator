@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T13:39:22+00:00",
+  "generated_at": "2026-09-21T09:29:33+00:00",
   "items": [
     {
       "item": "COMPANIES_ACT_2013",
@@ -29,7 +29,7 @@
         {
           "url": "https://www.indiacode.nic.in/bitstream/123456789/2114/3/a2013-18.pdf",
           "outcome": "FAILED",
-          "reason": "HTTPError: 404"
+          "reason": "timeout: The read operation timed out"
         }
       ]
     },

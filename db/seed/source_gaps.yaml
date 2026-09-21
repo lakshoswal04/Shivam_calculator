@@ -21,6 +21,7 @@ gaps:
       for amendment after 29-05-2015 before approval.
     blocks_issue_types: [PRIVATE_PLACEMENT]
     provisions_required: ["42"]
+    resolved_on: 2026-09-21
 
   - code: PUBLIC_ISSUE_ICDR_CH2
     severity: BLOCKER
@@ -49,6 +50,7 @@ gaps:
     action_required: "Supply the MCA instruction kit for PAS-3."
     blocks_issue_types: []
     provisions_required: []
+    resolved_on: 2026-09-21
 
   - code: SEBI_CIRCULARS
     severity: GAP

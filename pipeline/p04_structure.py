@@ -45,6 +45,7 @@ INSTRUMENT_LABELS = {
     "SEBI LODR Master Circular.pdf": "SEBI LODR Master Circular",
     "MCA Instruction Kit MGT-14.pdf": "MCA Instruction Kit for Form MGT-14",
     "MCA Instruction Kit SH-7.pdf": "MCA Instruction Kit for Form SH-7",
+    "Form PAS-3.pdf": "MCA Form PAS-3 Return of Allotment",
 }
 
 

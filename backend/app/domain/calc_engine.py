@@ -196,6 +196,19 @@ def _rights_ent(f, code):
     return exact, {"eligible_shares": e, "ratio_num": num, "ratio_den": den}
 
 
+@calculation("CALC-PAS3-REFUND-INT", "Delayed allotment refund interest (Section 42(6))",
+             "refund_amount * 12% * (overdue_days / 365)", "INR",
+             ["issue.refund_amount", "issue.overdue_days"])
+def _pas3_refund_int(f, code):
+    amt = D(_get(f, "issue.refund_amount", code), code, "issue.refund_amount")
+    days = D(_get(f, "issue.overdue_days", code), code, "issue.overdue_days")
+    if days < 0:
+        raise MissingInput(code, "issue.overdue_days (must be >= 0)")
+    interest = amt * Decimal("0.12") * (days / Decimal("365"))
+    return _money(interest), {"refund_amount": amt, "overdue_days": days}
+
+
+
 def compute_dilution(facts: dict) -> list[dict]:
     """Per-holder pre/post ownership. Percentages are derived, never entered."""
     holdings = facts.get("holdings") or []

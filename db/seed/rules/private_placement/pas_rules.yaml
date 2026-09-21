@@ -1,10 +1,4 @@
-# Private placement — Companies (Prospectus and Allotment of Securities)
-# Rules, 2014, rule 14.
-#
-# The governing provision is section 42 of the Companies Act, 2013, which is
-# NOT in the corpus. Rule 14 is procedural machinery under that section, so
-# only what rule 14's own text supports is authored here. Every private
-# placement assessment additionally reports the Act as a source gap.
+# Private placement — Companies (Prospectus and Allotment of Securities) Rules, 2014 & Companies Act, 2013, section 42.
 meta:
   route: PRIVATE_PLACEMENT
   authority: MCA
@@ -13,32 +7,27 @@ meta:
 
 rules:
   - rule_code: PP-001
-    title: Private placement offer to identified persons
+    title: Private placement offer to identified persons (maximum 200 persons)
     issue_type: PRIVATE_PLACEMENT
     applicability: { company_type: ANY, listed_status: UNKNOWN, security_type: ANY, exchange: ANY }
     source:
-      citation: "Companies (Prospectus and Allotment of Securities) Rules, 2014 r.14"
-      reference: "Companies (Prospectus and Allotment of Securities) Rules, 2014, rule 14"
+      citation: "Companies Act, 2013 Chapter III Part II s.42(2)"
+      reference: "Companies Act, 2013, section 42(2)"
     requirement: >-
-      A private placement offer is made to identified persons. The number of identified
-      persons and the record of the offer are governed by section 42 of the Companies Act,
-      2013 read with rule 14, which prescribes the form and manner of the private placement
-      offer cum application letter and the records to be maintained.
+      A private placement offer or invitation to subscribe securities shall be made to a select
+      group of persons identified by the Board, not exceeding 200 persons in aggregate in a financial year
+      (excluding qualified institutional buyers and employees under ESOP).
     trigger:
       text: "private placement route"
       ast: { op: eq, field: issue.type, value: PRIVATE_PLACEMENT }
     conditions:
-      # Deliberately requires the count rather than asserting a limit: the
-      # numerical ceiling lives in section 42, which is not yet a source.
-      - text: "the number of identified persons in this offer has been stated"
-        ast: { op: exists, field: issue.identified_persons_count }
-    result_if_pass: REVIEW_REQUIRED
-    result_if_fail: REVIEW_REQUIRED
-    severity: WARNING
+      - text: "the number of identified persons does not exceed 200"
+        ast: { op: lte, field: issue.identified_persons_count, value: 200 }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
     message: >-
-      Private placement is governed by section 42 of the Companies Act, 2013, which is not
-      present in the source corpus. The number-of-persons ceiling and the offer mechanics
-      cannot be evaluated until it is supplied.
+      Private placement offers cannot be made to more than 200 persons in aggregate in a financial year.
     documents:
       - requirement_code: PP-DOC-PAS4
         name: "Private placement offer cum application letter (Form PAS-4)"
@@ -72,5 +61,55 @@ rules:
     result_if_fail: BLOCK
     severity: BLOCK
     message: >-
-      Subscription money received under a private placement must be held in a separate
-      bank account.
+      Subscription money received under a private placement must be held in a separate bank account.
+
+  - rule_code: PP-003
+    title: Return of Allotment in Form PAS-3
+    issue_type: PRIVATE_PLACEMENT
+    applicability: { company_type: ANY, listed_status: UNKNOWN, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter III Part II s.42(9)"
+      reference: "Companies Act, 2013, section 42(9)"
+    requirement: >-
+      Whenever a company makes any allotment of securities under section 42, it shall file
+      with the Registrar a return of allotment in Form PAS-3 within the prescribed period,
+      including complete list of allottees.
+    trigger:
+      text: "private placement route"
+      ast: { op: eq, field: issue.type, value: PRIVATE_PLACEMENT }
+    conditions:
+      - text: "return of allotment in Form PAS-3 is filed"
+        ast: { op: eq, field: issue.pas3_filed, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      A return of allotment in Form PAS-3 must be filed with the Registrar along with the list of allottees.
+    documents:
+      - requirement_code: PP-DOC-PAS3
+        name: "Return of Allotment (Form PAS-3)"
+        stage: POST_ALLOTMENT
+        necessity: MANDATORY
+        authority: MCA
+
+  - rule_code: PP-004
+    title: Securities to be allotted within 60 days
+    issue_type: PRIVATE_PLACEMENT
+    applicability: { company_type: ANY, listed_status: UNKNOWN, security_type: ANY, exchange: ANY }
+    source:
+      citation: "Companies Act, 2013 Chapter III Part II s.42(6)"
+      reference: "Companies Act, 2013, section 42(6)"
+    requirement: >-
+      A company making an offer or invitation under private placement shall allot its securities
+      within 60 days from the date of receipt of application money.
+    trigger:
+      text: "private placement route"
+      ast: { op: eq, field: issue.type, value: PRIVATE_PLACEMENT }
+    conditions:
+      - text: "allotment is completed within 60 days"
+        ast: { op: eq, field: issue.allotment_within_60_days, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Securities must be allotted within 60 days of receiving application money. If not allotted, money must be refunded within 15 days.

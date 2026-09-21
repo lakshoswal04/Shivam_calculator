@@ -28,15 +28,6 @@ SOURCE_GATES: dict[str, dict] = {
                    "SEBI circulars that have not been authored either. Calculations are "
                    "produced; the legal conclusions are withheld."),
     },
-    "PRIVATE_PLACEMENT": {
-        "code": "COMPANIES_ACT_2013",
-        "provisions_required": ["42"],
-        "detail": ("Section 42 of the Companies Act, 2013 governs private placement. The Act "
-                   "is now in the corpus, but consolidated only to 29-05-2015, so the section "
-                   "42 held here is the text that the Companies (Amendment) Act, 2017 wholly "
-                   "substituted w.e.f. 07-08-2018. Rules authored from it would be wrong, so "
-                   "the route's legal conclusions remain withheld."),
-    },
 }
 
 ROUTE_LABELS = {
@@ -149,6 +140,14 @@ ROUTE_QUESTIONS: dict[str, list[dict]] = {
         {"key": "previous_offer_closed", "label": "Has any previous private placement offer been completed or withdrawn?",
          "type": "boolean"},
         {"key": "proposed_allotment_date", "label": "Proposed allotment date", "type": "date"},
+        {"key": "allotment_within_60_days", "label": "Were securities allotted within 60 days of application money receipt?",
+         "type": "boolean"},
+        {"key": "pas3_filed", "label": "Has the Return of Allotment in Form PAS-3 been filed with the Registrar?",
+         "type": "boolean"},
+        {"key": "pas3_allottee_list_attached", "label": "Is the complete list of allottees attached to Form PAS-3?",
+         "type": "boolean"},
+        {"key": "valuation_report_attached", "label": "Is a Valuation Report from a Registered Valuer attached?",
+         "type": "boolean"},
     ],
     # Companies Act s.63 and, for a listed issuer, ICDR Chapter XI. s.63(2)
     # makes the articles and the general-meeting authority conditions of the

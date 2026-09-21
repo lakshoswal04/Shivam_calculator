@@ -17,6 +17,7 @@ CLASSIFICATION,T+4 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority
 CLASSIFICATION,T+5 FPO.pdf,REVIEW,document_type_confidence=0.0,Confirm authority / document type / issue type
 CLASSIFICATION,Final_Listing_Preferential.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type
 CLASSIFICATION,Final_Listing_Preferential_REIT.doc,REVIEW,authority_confidence=0.34; issue_type_confidence=0.51,Confirm authority / document type / issue type
+CLASSIFICATION,Form PAS-3.pdf,REVIEW,issue_type_confidence=0.57,Confirm authority / document type / issue type
 CLASSIFICATION,InPrinciple_Approval_InvITs_0_1.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
 CLASSIFICATION,InPrinciple_Approval_REIT_0_0.docx,REVIEW,authority_confidence=0.58,Confirm authority / document type / issue type
 CLASSIFICATION,Post_allotment_InvITs_0_0_20260504153537.docx,REVIEW,issue_type_confidence=0.47,Confirm authority / document type / issue type

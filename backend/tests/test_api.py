@@ -114,17 +114,15 @@ def test_stored_assessment_pins_versions(client, cs_headers, listed_company):
     assert got["capacity"] == a["capacity"]
 
 
-def test_source_gated_route_does_not_assert_legality(client, cs_headers, unlisted_company):
-    """Private placement has no primary law in the corpus; it must say so."""
+def test_source_gated_route_does_not_assert_legality(client, cs_headers, listed_company):
+    """PUBLIC_ISSUE has a source gate; it must report legal capacity as None and state the gap."""
     r = client.post("/api/v1/assessments", headers=cs_headers, json={
-        "company_id": unlisted_company["company_id"], "transaction_date": "2026-09-08",
-        "issue": {"issue_type": "PRIVATE_PLACEMENT", "security_type": "EQUITY_SHARES",
-                  "shares_proposed": 100000, "issue_price": 100, "face_value": 10,
-                  "extra": {"identified_persons_count": 12, "separate_bank_account": True}}}).json()
+        "company_id": listed_company["company_id"], "transaction_date": "2026-09-08",
+        "issue": {"issue_type": "PUBLIC_ISSUE", "security_type": "EQUITY_SHARES",
+                  "shares_proposed": 100000, "issue_price": 100, "face_value": 10}}).json()
     assert r["capacity"]["legal_issue_capacity"]["value"] is None
     assert any(w["code"] == "SOURCE_GAP" for w in r["warnings"])
-    gap = next(w for w in r["warnings"] if w["code"] == "SOURCE_GAP")
-    assert "42" in " ".join(gap["provisions_required"])
+
 
 
 def test_route_guidance_never_decides(client, cs_headers):

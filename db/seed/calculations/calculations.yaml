@@ -103,3 +103,14 @@ calculations:
     rounding_mode: NONE
     decimal_places: 4
     required_inputs: [issue.eligible_shares, issue.rights_ratio_num, issue.rights_ratio_den]
+
+  - calc_code: CALC-PAS3-REFUND-INT
+    name: Delayed allotment refund interest (Section 42(6))
+    issue_type: PRIVATE_PLACEMENT
+    formula: "refund_amount * 12% * (overdue_days / 365)"
+    output_name: refund_interest
+    output_unit: INR
+    rounding_mode: HALF_UP
+    decimal_places: 2
+    required_inputs: [issue.refund_amount, issue.overdue_days]
+
