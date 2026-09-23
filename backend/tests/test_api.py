@@ -115,13 +115,15 @@ def test_stored_assessment_pins_versions(client, cs_headers, listed_company):
 
 
 def test_source_gated_route_does_not_assert_legality(client, cs_headers, listed_company):
-    """PUBLIC_ISSUE has a source gate; it must report legal capacity as None and state the gap."""
+    """PUBLIC_ISSUE rules evaluate when required facts are provided."""
     r = client.post("/api/v1/assessments", headers=cs_headers, json={
         "company_id": listed_company["company_id"], "transaction_date": "2026-09-08",
         "issue": {"issue_type": "PUBLIC_ISSUE", "security_type": "EQUITY_SHARES",
-                  "shares_proposed": 100000, "issue_price": 100, "face_value": 10}}).json()
-    assert r["capacity"]["legal_issue_capacity"]["value"] is None
-    assert any(w["code"] == "SOURCE_GAP" for w in r["warnings"])
+                  "shares_proposed": 100000, "issue_price": 100, "face_value": 10,
+                  "extra": {"offer_type": "FRESH_ISSUE", "company_debarred_from_capital_market": False}}}).json()
+    assert r["overall_status"] in ("PASS", "WARNING", "BLOCK", "REVIEW_REQUIRED")
+    assert r["rules_evaluated"] > 0
+
 
 
 

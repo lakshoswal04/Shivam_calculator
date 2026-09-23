@@ -1,0 +1,125 @@
+# Initial Public Offer — SEBI (ICDR) Regulations, 2018 Chapter II.
+meta:
+  route: PUBLIC_ISSUE
+  authority: SEBI
+  instrument: "SEBI (ICDR) Regulations, 2018"
+  default_effective_from: "2018-09-11"
+
+rules:
+  - rule_code: IPO-L-001
+    title: Entities not eligible to make an initial public offer (Debarment)
+    issue_type: PUBLIC_ISSUE
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation_uid: "sebi-icdr-regulations-db196f1f#92"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter II Part I reg.5"
+      reference: "SEBI (ICDR) Regulations, 2018, regulation 5(1)"
+    requirement: >-
+      An issuer shall not be eligible to make an initial public offer if the issuer, any of its
+      promoters, promoter group or directors or selling shareholders are debarred from accessing
+      the capital market by the Board.
+    trigger:
+      text: "initial public offer"
+      ast: { op: eq, field: issue.type, value: PUBLIC_ISSUE }
+    conditions:
+      - text: "neither the issuer, promoter, promoter group nor directors are debarred"
+        ast: { op: eq, field: issue.company_debarred_from_capital_market, value: false }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Issuers, promoters, promoter group members, or directors debarred by SEBI are ineligible to make an IPO.
+
+  - rule_code: IPO-L-002
+    title: Eligibility requirements for an initial public offer
+    issue_type: PUBLIC_ISSUE
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation_uid: "sebi-icdr-regulations-db196f1f#104"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter II Part I reg.6"
+      reference: "SEBI (ICDR) Regulations, 2018, regulation 6(1)"
+    requirement: >-
+      An issuer shall be eligible to make an initial public offer if it has net tangible assets of at
+      least three crore rupees in each of the preceding three full years, an average operating profit
+      of at least fifteen crore rupees during the preceding three years, and a net worth of at least
+      one crore rupees in each of the preceding three full years.
+    trigger:
+      text: "initial public offer"
+      ast: { op: eq, field: issue.type, value: PUBLIC_ISSUE }
+    conditions:
+      - text: "the issuer meets the net tangible assets and profit eligibility criteria"
+        ast: { op: eq, field: issue.ipo_eligibility_met, value: true }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      Verify net tangible assets (Rs. 3 crore+), average operating profit (Rs. 15 crore+), and net worth (Rs. 1 crore+) for the preceding three years.
+
+  - rule_code: IPO-L-003
+    title: In-principle listing approval from stock exchange
+    issue_type: PUBLIC_ISSUE
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation_uid: "sebi-icdr-regulations-db196f1f#112"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter II Part I reg.7"
+      reference: "SEBI (ICDR) Regulations, 2018, regulation 7(1)(a)"
+    requirement: >-
+      An issuer making an initial public offer shall ensure that it has made an application to one
+      or more stock exchanges to seek an in-principle approval for listing of its specified securities.
+    trigger:
+      text: "initial public offer"
+      ast: { op: eq, field: issue.type, value: PUBLIC_ISSUE }
+    conditions:
+      - text: "in-principle listing approval has been sought from the designated stock exchange"
+        ast: { op: exists, field: issue.in_principle_approval_date }
+    result_if_pass: PASS
+    result_if_fail: REVIEW_REQUIRED
+    severity: WARNING
+    message: >-
+      In-principle listing approval must be obtained from the designated stock exchange before launching the IPO.
+
+  - rule_code: IPO-L-004
+    title: Minimum promoters contribution for initial public offer
+    issue_type: PUBLIC_ISSUE
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation_uid: "sebi-icdr-regulations-db196f1f#152"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter II Part III reg.14"
+      reference: "SEBI (ICDR) Regulations, 2018, regulation 14(1)"
+    requirement: >-
+      The promoters of the issuer shall hold at least twenty per cent of the post-issue capital
+      as minimum promoters' contribution.
+    trigger:
+      text: "initial public offer"
+      ast: { op: eq, field: issue.type, value: PUBLIC_ISSUE }
+    conditions:
+      - text: "promoters contribution is at least 20 percent of post-issue capital"
+        ast: { op: eq, field: issue.minimum_promoters_contribution_met, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Promoters must contribute at least 20% of the post-issue equity share capital.
+
+  - rule_code: IPO-L-005
+    title: Lock-in of specified securities held by promoters
+    issue_type: PUBLIC_ISSUE
+    applicability: { company_type: ANY, listed_status: BOTH, security_type: ANY, exchange: ANY }
+    source:
+      citation_uid: "sebi-icdr-regulations-db196f1f#182"
+      citation: "SEBI (ICDR) Regulations, 2018 Chapter II Part IV reg.16"
+      reference: "SEBI (ICDR) Regulations, 2018, regulation 16"
+    requirement: >-
+      Minimum promoters' contribution shall be locked-in for a period of three years from the date
+      of allotment in the initial public offer, and holdings in excess of minimum contribution shall be locked-in for one year.
+    trigger:
+      text: "initial public offer"
+      ast: { op: eq, field: issue.type, value: PUBLIC_ISSUE }
+    conditions:
+      - text: "promoter lock-in commitments confirmed"
+        ast: { op: eq, field: issue.lock_in_confirmed, value: true }
+    result_if_pass: PASS
+    result_if_fail: BLOCK
+    severity: BLOCK
+    message: >-
+      Promoters' minimum 20% contribution is locked in for 3 years, and excess pre-issue capital for 1 year.

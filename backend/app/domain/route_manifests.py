@@ -16,19 +16,7 @@ ALL_ROUTES = [
 
 # Routes whose primary law is absent. The route still runs every calculation;
 # its legal conclusions return REVIEW_REQUIRED naming what is missing.
-SOURCE_GATES: dict[str, dict] = {
-    "PUBLIC_ISSUE": {
-        "code": "PUBLIC_ISSUE_ICDR_CH2",
-        "provisions_required": ["5", "6", "7", "14", "15", "16", "236", "238"],
-        "detail": ("An initial public offer is governed by Chapter II of the SEBI ICDR "
-                   "Regulations - eligibility, minimum promoter contribution, lock-in, "
-                   "minimum offer to the public - together with the prospectus provisions "
-                   "of the Companies Act, 2013. The regulations are in the corpus but no "
-                   "rule has been authored from them, and several requirements rest on "
-                   "SEBI circulars that have not been authored either. Calculations are "
-                   "produced; the legal conclusions are withheld."),
-    },
-}
+SOURCE_GATES: dict[str, dict] = {}
 
 ROUTE_LABELS = {
     "RIGHTS": "Rights Issue",
@@ -196,11 +184,17 @@ ROUTE_QUESTIONS: dict[str, list[dict]] = {
         {"key": "drhp_filing_date", "label": "Date the draft red herring prospectus was filed",
          "type": "date"},
         {"key": "lead_manager", "label": "Lead manager(s) to the issue", "type": "text"},
-        {"key": "promoter_contribution_pct",
-         "label": "Promoters' contribution as a percentage of post-issue capital", "type": "number",
-         "unit": "%"},
-        {"key": "net_tangible_assets_track_record",
-         "label": "Does the issuer meet the net tangible assets and operating profit track record?",
+        {"key": "company_debarred_from_capital_market",
+         "label": "Is the issuer, any promoter or any director debarred from accessing the capital market?",
+         "type": "boolean", "required": True},
+        {"key": "ipo_eligibility_met",
+         "label": "Does the issuer meet the SEBI net tangible assets and operating profit eligibility criteria (Reg 6)?",
+         "type": "boolean"},
+        {"key": "in_principle_approval_date", "label": "Exchange in-principle approval date", "type": "date"},
+        {"key": "minimum_promoters_contribution_met",
+         "label": "Is minimum promoters' contribution at least 20% of post-issue capital (Reg 14)?",
+         "type": "boolean"},
+        {"key": "lock_in_confirmed", "label": "Have promoter lock-in commitments been confirmed (Reg 16)?",
          "type": "boolean"},
         {"key": "issue_open_date", "label": "Issue opens", "type": "date"},
         {"key": "issue_close_date", "label": "Issue closes", "type": "date"},
