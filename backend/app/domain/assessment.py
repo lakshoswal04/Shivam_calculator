@@ -22,13 +22,18 @@ from . import calc_engine, compliance_engine, rule_engine, route_manifests
 # supplies one. Keep in step with db/seed/calculations/calculations.yaml.
 OUTPUT_NAMES = {
     "CALC-AUTH-SHARES": "authorised_shares",
+    "CALC-EXISTING-SHARES": "existing_issued_shares",
     "CALC-AVAIL-SHARES": "available_shares",
+    "CALC-AVAIL-NOMINAL": "available_nominal_capital",
+    "CALC-POTENTIAL-CONSIDERATION": "potential_issue_consideration",
     "CALC-NOMINAL-INC": "nominal_increase",
     "CALC-CONSIDERATION": "issue_consideration",
     "CALC-PREMIUM": "premium_per_share",
     "CALC-PREMIUM-TOTAL": "total_premium",
     "CALC-POST-SHARES": "post_issue_shares",
     "CALC-POST-CAPITAL": "post_issue_paid_up",
+    "CALC-REMAINING-SHARES": "remaining_authorised_shares",
+    "CALC-EXCESS-SHARES": "excess_shares",
     "CALC-RIGHTS-ENT": "rights_entitlement",
 }
 

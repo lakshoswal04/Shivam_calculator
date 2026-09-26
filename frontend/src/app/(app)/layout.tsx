@@ -6,6 +6,7 @@ import { session, type SessionUser } from "@/lib/api";
 
 const NAV = [
   { href: "/companies", label: "Companies" },
+  { href: "/calculator", label: "Calculator" },
   { href: "/assess", label: "New assessment" },
   { href: "/assessments", label: "History" },
   { href: "/legal", label: "Legal library" },

@@ -43,14 +43,15 @@ export function Button({
   children, onClick, type = "button", variant = "primary", disabled, className = "", href,
 }: {
   children: ReactNode; onClick?: () => void; type?: "button" | "submit";
-  variant?: "primary" | "ghost" | "danger"; disabled?: boolean; className?: string; href?: string;
+  variant?: "primary" | "secondary" | "ghost" | "danger"; disabled?: boolean; className?: string; href?: string;
 }) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium " +
     "transition-colors disabled:cursor-not-allowed disabled:opacity-50";
   const styles = {
     primary: "bg-accent text-white hover:bg-accent-hi",
-    ghost: "border border-border-lit bg-surface-2 text-ink-2 hover:border-accent/60 hover:text-ink",
+    secondary: "border border-border-lit bg-surface-2 text-ink-2 hover:border-accent/60 hover:text-ink",
+    ghost: "border border-transparent bg-transparent text-muted hover:bg-surface-2 hover:text-ink-2",
     danger: "border border-block/40 bg-block-bg text-block hover:border-block/70",
   }[variant];
   if (href) {

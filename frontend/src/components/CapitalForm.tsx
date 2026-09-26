@@ -41,15 +41,26 @@ export function CapitalForm({ value, onChange }: {
       ? "Paid-up capital cannot exceed subscribed capital." : null,
   };
 
-  // Shares are not re-derived from capital / face value: a company may have
-  // classes at different face values, and silently overwriting an entered
-  // count would hide the discrepancy rather than surface it.
-  const impliedShares = v.issued !== null && v.faceValue ? v.issued / v.faceValue : null;
+  const impliedShares = v.issued !== null && v.faceValue ? Math.floor(v.issued / v.faceValue) : null;
+  const impliedAuthShares = v.authorised !== null && v.faceValue ? Math.floor(v.authorised / v.faceValue) : null;
   const mismatch = impliedShares !== null && v.shares !== null
     && Math.abs(impliedShares - v.shares) > 1;
 
+  const availableShares = impliedAuthShares !== null && v.shares !== null ? Math.max(0, impliedAuthShares - v.shares) : null;
+  const availableNominalCap = availableShares !== null && v.faceValue ? availableShares * v.faceValue : null;
+
   function update(key: keyof typeof f, raw: string) {
     const next = { ...f, [key]: raw };
+
+    // Auto-fill shares_issued if user enters issued_capital and face_value and shares_issued is empty
+    if (key === "issued_capital" || key === "face_value") {
+      const ic = n(next.issued_capital);
+      const fv = n(next.face_value);
+      if (ic !== null && fv !== null && fv > 0 && (!next.shares_issued || key === "issued_capital")) {
+        next.shares_issued = String(Math.floor(ic / fv));
+      }
+    }
+
     setF(next);
     const num = (k: keyof typeof f) => (next[k].trim() === "" ? null : Number(next[k]));
     const a = num("authorised_capital"), i = num("issued_capital");
@@ -72,11 +83,11 @@ export function CapitalForm({ value, onChange }: {
           <Input type="number" step="0.01" value={f.face_value}
                  onChange={(x) => update("face_value", x)} />
         </Field>
-        <Field label="Shares issued" required>
+        <Field label="Shares issued" required hint={impliedShares ? `Implied: ${impliedShares.toLocaleString("en-IN")}` : undefined}>
           <Input type="number" value={f.shares_issued}
                  onChange={(x) => update("shares_issued", x)} invalid={mismatch} />
         </Field>
-        <Field label="Authorised capital (₹)" required>
+        <Field label="Authorised capital (₹)" required hint={impliedAuthShares ? `Supports ${impliedAuthShares.toLocaleString("en-IN")} shares` : undefined}>
           <Input type="number" step="0.01" value={f.authorised_capital}
                  onChange={(x) => update("authorised_capital", x)} />
         </Field>
@@ -106,11 +117,14 @@ export function CapitalForm({ value, onChange }: {
         </Banner>
       )}
 
-      {v.authorised !== null && v.faceValue ? (
-        <p className="text-xs text-faint">
-          Authorised capital of {rupees(v.authorised)} supports{" "}
-          {Math.floor(v.authorised / v.faceValue).toLocaleString("en-IN")} shares in total.
-        </p>
+      {availableShares !== null && availableNominalCap !== null && v.faceValue ? (
+        <div className="rounded-md border border-accent/20 bg-accent-dim/10 p-3 text-xs leading-relaxed text-ink-1">
+          <div className="font-semibold text-accent uppercase tracking-wider text-[11px]">Current Authorised Capital Capacity</div>
+          <div className="mt-1 flex flex-wrap justify-between gap-2 text-sm">
+            <span>Additional Shares Capacity: <strong>{availableShares.toLocaleString("en-IN")} shares</strong></span>
+            <span>Nominal Capital Capacity: <strong>{rupees(availableNominalCap)}</strong></span>
+          </div>
+        </div>
       ) : null}
     </div>
   );

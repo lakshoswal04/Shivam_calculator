@@ -111,22 +111,65 @@ def _get(facts: dict, path: str, code: str) -> Any:
 
 @calculation("CALC-AUTH-SHARES", "Authorised shares",
              "authorised_capital / face_value", "shares",
-             ["capital.authorised_capital", "capital.face_value"])
+             ["capital.face_value"])
 def _auth_shares(f, code):
-    ac = D(_get(f, "capital.authorised_capital", code), code, "capital.authorised_capital")
     fv = D(_get(f, "capital.face_value", code), code, "capital.face_value")
     if fv <= 0:
         raise MissingInput(code, "capital.face_value (must be greater than zero)")
+    cap = f.get("capital") or {}
+    auth_sh = cap.get("authorised_shares")
+    if auth_sh not in (None, ""):
+        sh = D(auth_sh, code, "capital.authorised_shares")
+        ac = cap.get("authorised_capital")
+        ac_val = D(ac, code, "capital.authorised_capital") if ac not in (None, "") else sh * fv
+        return _shares(sh), {"authorised_shares": sh, "authorised_capital": ac_val, "face_value": fv}
+    ac = D(_get(f, "capital.authorised_capital", code), code, "capital.authorised_capital")
     return _shares(ac / fv), {"authorised_capital": ac, "face_value": fv}
+
+
+@calculation("CALC-EXISTING-SHARES", "Already issued shares",
+             "issued_capital / face_value", "shares",
+             ["capital.face_value"])
+def _existing_shares(f, code):
+    fv = D(_get(f, "capital.face_value", code), code, "capital.face_value")
+    if fv <= 0:
+        raise MissingInput(code, "capital.face_value (must be greater than zero)")
+    cap = f.get("capital") or {}
+    iss_sh = cap.get("issued_shares")
+    if iss_sh not in (None, ""):
+        sh = D(iss_sh, code, "capital.issued_shares")
+        ic = cap.get("issued_capital")
+        ic_val = D(ic, code, "capital.issued_capital") if ic not in (None, "") else sh * fv
+        return _shares(sh), {"issued_shares": sh, "issued_capital": ic_val, "face_value": fv}
+    ic = D(_get(f, "capital.issued_capital", code), code, "capital.issued_capital")
+    return _shares(ic / fv), {"issued_capital": ic, "face_value": fv}
 
 
 @calculation("CALC-AVAIL-SHARES", "Available authorised shares",
              "authorised_shares - issued_shares", "shares",
-             ["capital.authorised_capital", "capital.face_value", "capital.issued_shares"])
+             ["capital.face_value"])
 def _avail_shares(f, code):
     auth, _ = _auth_shares(f, code)
-    issued = D(_get(f, "capital.issued_shares", code), code, "capital.issued_shares")
+    issued, _ = _existing_shares(f, code)
     return _shares(auth - issued), {"authorised_shares": auth, "issued_shares": issued}
+
+
+@calculation("CALC-AVAIL-NOMINAL", "Additional nominal capital capacity",
+             "available_shares * face_value", "INR",
+             ["capital.face_value"])
+def _avail_nominal(f, code):
+    avail, _ = _avail_shares(f, code)
+    fv = D(_get(f, "capital.face_value", code), code, "capital.face_value")
+    return _money(avail * fv), {"available_shares": avail, "face_value": fv}
+
+
+@calculation("CALC-POTENTIAL-CONSIDERATION", "Potential issue consideration",
+             "available_shares * issue_price", "INR",
+             ["capital.face_value", "issue.issue_price"])
+def _potential_consideration(f, code):
+    avail, _ = _avail_shares(f, code)
+    p = D(_get(f, "issue.issue_price", code), code, "issue.issue_price")
+    return _money(avail * p), {"available_shares": avail, "issue_price": p}
 
 
 @calculation("CALC-NOMINAL-INC", "Nominal capital increase",
@@ -167,20 +210,51 @@ def _premium_total(f, code):
 
 @calculation("CALC-POST-SHARES", "Post-issue shares",
              "existing_shares + new_shares", "shares",
-             ["capital.issued_shares", "issue.shares_proposed"])
+             ["capital.face_value", "issue.shares_proposed"])
 def _post_shares(f, code):
-    e = D(_get(f, "capital.issued_shares", code), code, "capital.issued_shares")
+    e, _ = _existing_shares(f, code)
     n = D(_get(f, "issue.shares_proposed", code), code, "issue.shares_proposed")
     return _shares(e + n), {"existing_shares": e, "new_shares": n}
 
 
 @calculation("CALC-POST-CAPITAL", "Post-issue paid-up capital",
              "paid_up_capital + (new_shares * face_value)", "INR",
-             ["capital.paid_up_capital", "issue.shares_proposed", "issue.face_value"])
+             ["issue.shares_proposed", "issue.face_value"])
 def _post_capital(f, code):
-    pu = D(_get(f, "capital.paid_up_capital", code), code, "capital.paid_up_capital")
+    cap = f.get("capital") or {}
+    pu_raw = cap.get("paid_up_capital")
+    if pu_raw not in (None, ""):
+        pu = D(pu_raw, code, "capital.paid_up_capital")
+    else:
+        existing_cap = cap.get("issued_capital")
+        if existing_cap not in (None, ""):
+            pu = D(existing_cap, code, "capital.issued_capital")
+        else:
+            e, _ = _existing_shares(f, code)
+            fv = D(_get(f, "issue.face_value", code), code, "issue.face_value")
+            pu = e * fv
     inc, _ = _nominal(f, code)
     return _money(pu + inc), {"paid_up_capital": pu, "nominal_increase": inc}
+
+
+@calculation("CALC-REMAINING-SHARES", "Shares remaining after issue",
+             "authorised_shares - post_issue_shares", "shares",
+             ["capital.face_value", "issue.shares_proposed"])
+def _remaining_shares(f, code):
+    auth, _ = _auth_shares(f, code)
+    post, _ = _post_shares(f, code)
+    rem = auth - post
+    return _shares(rem), {"authorised_shares": auth, "post_issue_shares": post}
+
+
+@calculation("CALC-EXCESS-SHARES", "Excess shares over authorised capacity",
+             "max(0, new_shares - available_shares)", "shares",
+             ["capital.face_value", "issue.shares_proposed"])
+def _excess_shares(f, code):
+    avail, _ = _avail_shares(f, code)
+    n = D(_get(f, "issue.shares_proposed", code), code, "issue.shares_proposed")
+    excess = max(Decimal(0), n - avail)
+    return _shares(excess), {"available_shares": avail, "new_shares": n}
 
 
 @calculation("CALC-RIGHTS-ENT", "Rights entitlement",

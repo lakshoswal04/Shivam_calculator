@@ -49,6 +49,87 @@ def test_money_uses_decimal_not_float():
     assert r["CALC-CONSIDERATION"] == "0.30"   # 0.30000000000000004 under float
 
 
+# --------------------------------------------------------- PRD §17 Test Cases
+def test_calculator_test_case_1():
+    """PRD Test Case 1: Auth=50L, Issued=20L, FV=10 -> AuthSh=5L, ExistingSh=2L, AvailSh=3L, AvailNominal=30L."""
+    facts = {
+        "capital": {"authorised_capital": "5000000", "issued_capital": "2000000", "face_value": "10"}
+    }
+    got = {r.calc_code: str(r.result) for r in ce.run(facts)[0]}
+    assert got["CALC-AUTH-SHARES"] == "500000"
+    assert got["CALC-EXISTING-SHARES"] == "200000"
+    assert got["CALC-AVAIL-SHARES"] == "300000"
+    assert got["CALC-AVAIL-NOMINAL"] == "3000000.00"
+
+
+def test_calculator_test_case_2():
+    """PRD Test Case 2: Auth=1Cr, Issued=25L, FV=10 -> AuthSh=10L, ExistingSh=2.5L, AvailSh=7.5L, AvailNominal=75L."""
+    facts = {
+        "capital": {"authorised_capital": "10000000", "issued_capital": "2500000", "face_value": "10"}
+    }
+    got = {r.calc_code: str(r.result) for r in ce.run(facts)[0]}
+    assert got["CALC-AUTH-SHARES"] == "1000000"
+    assert got["CALC-EXISTING-SHARES"] == "250000"
+    assert got["CALC-AVAIL-SHARES"] == "750000"
+    assert got["CALC-AVAIL-NOMINAL"] == "7500000.00"
+
+
+def test_calculator_test_case_3():
+    """PRD Test Case 3: Proposed issue with premium calculation."""
+    facts = {
+        "capital": {"authorised_capital": "5000000", "issued_capital": "2000000", "face_value": "10"},
+        "issue": {"shares_proposed": "100000", "issue_price": "125", "face_value": "10"}
+    }
+    got = {r.calc_code: str(r.result) for r in ce.run(facts)[0]}
+    assert got["CALC-AVAIL-SHARES"] == "300000"
+    assert got["CALC-NOMINAL-INC"] == "1000000.00"
+    assert got["CALC-PREMIUM"] == "115.00"
+    assert got["CALC-PREMIUM-TOTAL"] == "11500000.00"
+    assert got["CALC-CONSIDERATION"] == "12500000.00"
+    assert got["CALC-POST-SHARES"] == "300000"
+    assert got["CALC-REMAINING-SHARES"] == "200000"
+
+
+def test_calculator_test_case_4_exceeds_capacity():
+    """PRD Test Case 4: Proposed issue exceeds available capacity."""
+    facts = {
+        "capital": {"authorised_capital": "5000000", "issued_capital": "2000000", "face_value": "10"},
+        "issue": {"shares_proposed": "400000", "face_value": "10"}
+    }
+    got = {r.calc_code: str(r.result) for r in ce.run(facts)[0]}
+    assert got["CALC-AVAIL-SHARES"] == "300000"
+    assert got["CALC-POST-SHARES"] == "600000"
+    assert got["CALC-EXCESS-SHARES"] == "100000"
+    avail = int(got["CALC-AVAIL-SHARES"])
+    proposed = 400000
+    exceeds = proposed > avail
+    assert exceeds is True
+
+
+def test_calculator_edge_cases():
+    """Different face values (₹1, ₹100), zero issued capital, at par issue price."""
+    # Face value = ₹1
+    facts_fv1 = {
+        "capital": {"authorised_capital": "1000000", "issued_capital": "0", "face_value": "1"},
+        "issue": {"shares_proposed": "500000", "issue_price": "1", "face_value": "1"}
+    }
+    got_fv1 = {r.calc_code: str(r.result) for r in ce.run(facts_fv1)[0]}
+    assert got_fv1["CALC-AUTH-SHARES"] == "1000000"
+    assert got_fv1["CALC-EXISTING-SHARES"] == "0"
+    assert got_fv1["CALC-AVAIL-SHARES"] == "1000000"
+    assert got_fv1["CALC-PREMIUM"] == "0.00"
+    assert got_fv1["CALC-CONSIDERATION"] == "500000.00"
+
+    # Direct share input mode
+    facts_shares_in = {
+        "capital": {"authorised_shares": "500000", "issued_shares": "200000", "face_value": "10"}
+    }
+    got_sh = {r.calc_code: str(r.result) for r in ce.run(facts_shares_in)[0]}
+    assert got_sh["CALC-AUTH-SHARES"] == "500000"
+    assert got_sh["CALC-EXISTING-SHARES"] == "200000"
+    assert got_sh["CALC-AVAIL-SHARES"] == "300000"
+
+
 # --------------------------------------------------------- condition engine
 def test_unknown_fact_is_not_false():
     node = {"op": "eq", "field": "company.is_sme", "value": True}
@@ -59,3 +140,4 @@ def test_unknown_fact_is_not_false():
         assert exc.field == "company.is_sme"
     out = evaluate_safe(node, {"company": {}})
     assert out["status"] == "REVIEW_REQUIRED" and out["result"] is None
+
