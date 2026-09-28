@@ -204,7 +204,7 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
 
     with tx(p.org_id) as conn:
         row = fetch_one(conn, """
-            SELECT c.name, c.cin, c.incorporation_date, c.registered_office,
+            SELECT c.company_id, c.name, c.cin, c.incorporation_date, c.registered_office,
                    cc.company_type, cc.listed_status
             FROM company.companies c
             LEFT JOIN LATERAL (
@@ -216,6 +216,8 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
             return {
                 "cin": cin_clean,
                 "found": True,
+                "is_existing": True,
+                "company_id": str(row["company_id"]),
                 "name": row["name"],
                 "company_type": row["company_type"] or "PRIVATE",
                 "incorporation_date": str(row["incorporation_date"]) if row.get("incorporation_date") else None,
@@ -228,6 +230,8 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
         return {
             "cin": cin_clean,
             "found": True,
+            "is_existing": False,
+            "company_id": None,
             "name": k["name"],
             "company_type": k["company_type"],
             "incorporation_date": k["incorporation_date"],
@@ -244,10 +248,14 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
     inc_date = f"{year_str}-06-15" if year_str.isdigit() and 1950 <= int(year_str) <= 2026 else None
     reg_office = STATE_NAMES.get(state_code, f"{state_code}, India")
 
+    synth_name = f"Example {'Industries' if type_code == 'PLC' else 'Enterprise'} {'Limited' if type_code == 'PLC' else 'Private Limited'}"
+
     return {
         "cin": cin_clean,
         "found": True,
-        "name": None,
+        "is_existing": False,
+        "company_id": None,
+        "name": synth_name,
         "company_type": company_type,
         "incorporation_date": inc_date,
         "registered_office": reg_office,

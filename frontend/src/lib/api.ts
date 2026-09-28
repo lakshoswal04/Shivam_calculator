@@ -145,6 +145,8 @@ export const api = {
     request<{
       cin: string;
       found: boolean;
+      is_existing?: boolean;
+      company_id?: string | null;
       name?: string | null;
       company_type?: string;
       incorporation_date?: string | null;
