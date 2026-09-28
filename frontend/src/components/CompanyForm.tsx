@@ -59,7 +59,18 @@ export function CompanyForm({ onCreated, onCancel, submitLabel = "Create company
         if (res.company_type) setCompanyType(res.company_type);
         if (res.incorporation_date) setIncorporated(res.incorporation_date);
         if (res.registered_office) setOffice(res.registered_office);
-        if (res.listed_status) setListed(res.listed_status === "LISTED");
+
+        const isListedComp = res.listed_status === "LISTED";
+        setListed(isListedComp);
+        if (isListedComp) {
+          if (res.ticker_symbol) setTicker(res.ticker_symbol);
+          if (res.isin) setIsin(res.isin);
+          if (res.exchanges && Array.isArray(res.exchanges) && res.exchanges.length > 0) {
+            setExchanges(res.exchanges);
+          } else {
+            setExchanges(["NSE"]);
+          }
+        }
 
         if (res.is_existing && res.company_id && res.name) {
           setExistingCompany({ id: res.company_id, name: res.name });

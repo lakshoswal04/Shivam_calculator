@@ -152,6 +152,9 @@ export const api = {
       incorporation_date?: string | null;
       registered_office?: string | null;
       listed_status?: string;
+      ticker_symbol?: string | null;
+      isin?: string | null;
+      exchanges?: string[];
     }>(`/companies/lookup?cin=${encodeURIComponent(cin)}`),
   setCapital: (id: string, body: CapitalBody) =>
     request<unknown>(`/companies/${id}/capital`, { method: "PUT", body: JSON.stringify(body) }),

@@ -163,6 +163,9 @@ KNOWN_CINS = {
         "incorporation_date": "2016-06-15",
         "registered_office": "Mumbai, Maharashtra",
         "listed_status": "UNLISTED",
+        "ticker_symbol": None,
+        "isin": None,
+        "exchanges": [],
     },
     "U72900KA2020PTC098765": {
         "name": "Acme Software Solutions Private Limited",
@@ -170,6 +173,9 @@ KNOWN_CINS = {
         "incorporation_date": "2020-03-10",
         "registered_office": "Bengaluru, Karnataka",
         "listed_status": "UNLISTED",
+        "ticker_symbol": None,
+        "isin": None,
+        "exchanges": [],
     },
     "L24110DL1995PLC067890": {
         "name": "Apex Chemicals & Synthetics Limited",
@@ -177,6 +183,9 @@ KNOWN_CINS = {
         "incorporation_date": "1995-11-20",
         "registered_office": "New Delhi, Delhi",
         "listed_status": "LISTED",
+        "ticker_symbol": "APEXCHEM",
+        "isin": "INE123A01024",
+        "exchanges": ["NSE", "BSE"],
     },
 }
 
@@ -205,10 +214,11 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
     with tx(p.org_id) as conn:
         row = fetch_one(conn, """
             SELECT c.company_id, c.name, c.cin, c.incorporation_date, c.registered_office,
-                   cc.company_type, cc.listed_status
+                   cc.company_type, cc.listed_status, cc.ticker_symbol, cc.isin, cc.exchanges
             FROM company.companies c
             LEFT JOIN LATERAL (
-                SELECT company_type, listed_status FROM company.company_classifications
+                SELECT company_type, listed_status, ticker_symbol, isin, exchanges
+                FROM company.company_classifications
                 WHERE company_id = c.company_id ORDER BY effective_from DESC LIMIT 1
             ) cc ON true
             WHERE upper(c.cin) = %s LIMIT 1""", (cin_clean,))
@@ -223,6 +233,9 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
                 "incorporation_date": str(row["incorporation_date"]) if row.get("incorporation_date") else None,
                 "registered_office": row["registered_office"],
                 "listed_status": row["listed_status"] or "UNLISTED",
+                "ticker_symbol": row.get("ticker_symbol"),
+                "isin": row.get("isin"),
+                "exchanges": list(row.get("exchanges") or []),
             }
 
     if cin_clean in KNOWN_CINS:
@@ -237,6 +250,9 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
             "incorporation_date": k["incorporation_date"],
             "registered_office": k["registered_office"],
             "listed_status": k["listed_status"],
+            "ticker_symbol": k.get("ticker_symbol"),
+            "isin": k.get("isin"),
+            "exchanges": k.get("exchanges", []),
         }
 
     is_listed = cin_clean.startswith("L")
@@ -249,6 +265,9 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
     reg_office = STATE_NAMES.get(state_code, f"{state_code}, India")
 
     synth_name = f"Example {'Industries' if type_code == 'PLC' else 'Enterprise'} {'Limited' if type_code == 'PLC' else 'Private Limited'}"
+    synth_ticker = f"EXM{cin_clean[1:5]}" if is_listed else None
+    synth_isin = f"INE{cin_clean[15:21]}01024" if is_listed else None
+    synth_exchanges = ["NSE", "BSE"] if is_listed else []
 
     return {
         "cin": cin_clean,
@@ -260,6 +279,9 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
         "incorporation_date": inc_date,
         "registered_office": reg_office,
         "listed_status": "LISTED" if is_listed else "UNLISTED",
+        "ticker_symbol": synth_ticker,
+        "isin": synth_isin,
+        "exchanges": synth_exchanges,
     }
 
 
