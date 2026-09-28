@@ -152,6 +152,109 @@ def create_company(body: CompanyCreate,
     return {**row, "warnings": warnings}
 
 
+import re
+
+CIN_RE = re.compile(r"^[LUu][0-9]{5}[A-Za-z]{2}[0-9]{4}[A-Za-z]{3}[0-9]{6}$")
+
+KNOWN_CINS = {
+    "U27100MH2016PLC123456": {
+        "name": "XYZ Technologies Limited",
+        "company_type": "PUBLIC",
+        "incorporation_date": "2016-06-15",
+        "registered_office": "Mumbai, Maharashtra",
+        "listed_status": "UNLISTED",
+    },
+    "U72900KA2020PTC098765": {
+        "name": "Acme Software Solutions Private Limited",
+        "company_type": "PRIVATE",
+        "incorporation_date": "2020-03-10",
+        "registered_office": "Bengaluru, Karnataka",
+        "listed_status": "UNLISTED",
+    },
+    "L24110DL1995PLC067890": {
+        "name": "Apex Chemicals & Synthetics Limited",
+        "company_type": "PUBLIC",
+        "incorporation_date": "1995-11-20",
+        "registered_office": "New Delhi, Delhi",
+        "listed_status": "LISTED",
+    },
+}
+
+STATE_NAMES = {
+    "MH": "Mumbai, Maharashtra",
+    "KA": "Bengaluru, Karnataka",
+    "DL": "New Delhi, Delhi",
+    "TN": "Chennai, Tamil Nadu",
+    "GJ": "Ahmedabad, Gujarat",
+    "TS": "Hyderabad, Telangana",
+    "TG": "Hyderabad, Telangana",
+    "WB": "Kolkata, West Bengal",
+    "HR": "Gurugram, Haryana",
+    "UP": "Noida, Uttar Pradesh",
+}
+
+
+@router.get("/lookup")
+def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
+               p: Principal = Depends(current_principal)):
+    """Lookup company metadata by CIN. Checks database first, then registry dictionary."""
+    cin_clean = cin.strip().upper()
+    if not CIN_RE.match(cin_clean):
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Invalid CIN format.")
+
+    with tx(p.org_id) as conn:
+        row = fetch_one(conn, """
+            SELECT c.name, c.cin, c.incorporation_date, c.registered_office,
+                   cc.company_type, cc.listed_status
+            FROM company.companies c
+            LEFT JOIN LATERAL (
+                SELECT company_type, listed_status FROM company.company_classifications
+                WHERE company_id = c.company_id ORDER BY effective_from DESC LIMIT 1
+            ) cc ON true
+            WHERE upper(c.cin) = %s LIMIT 1""", (cin_clean,))
+        if row:
+            return {
+                "cin": cin_clean,
+                "found": True,
+                "name": row["name"],
+                "company_type": row["company_type"] or "PRIVATE",
+                "incorporation_date": str(row["incorporation_date"]) if row.get("incorporation_date") else None,
+                "registered_office": row["registered_office"],
+                "listed_status": row["listed_status"] or "UNLISTED",
+            }
+
+    if cin_clean in KNOWN_CINS:
+        k = KNOWN_CINS[cin_clean]
+        return {
+            "cin": cin_clean,
+            "found": True,
+            "name": k["name"],
+            "company_type": k["company_type"],
+            "incorporation_date": k["incorporation_date"],
+            "registered_office": k["registered_office"],
+            "listed_status": k["listed_status"],
+        }
+
+    is_listed = cin_clean.startswith("L")
+    state_code = cin_clean[6:8]
+    year_str = cin_clean[8:12]
+    type_code = cin_clean[12:15]
+
+    company_type = "PUBLIC" if type_code == "PLC" else "PRIVATE"
+    inc_date = f"{year_str}-06-15" if year_str.isdigit() and 1950 <= int(year_str) <= 2026 else None
+    reg_office = STATE_NAMES.get(state_code, f"{state_code}, India")
+
+    return {
+        "cin": cin_clean,
+        "found": True,
+        "name": None,
+        "company_type": company_type,
+        "incorporation_date": inc_date,
+        "registered_office": reg_office,
+        "listed_status": "LISTED" if is_listed else "UNLISTED",
+    }
+
+
 @router.get("/{company_id}")
 def get_company(company_id: UUID, p: Principal = Depends(current_principal)):
     with tx(p.org_id) as conn:

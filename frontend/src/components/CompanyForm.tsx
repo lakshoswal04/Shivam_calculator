@@ -39,6 +39,47 @@ export function CompanyForm({ onCreated, onCancel, submitLabel = "Create company
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [lookupStatus, setLookupStatus] = useState<"idle" | "loading" | "found" | "not_found" | "prompt_overwrite" | "error">("idle");
+  const [lookupError, setLookupError] = useState<string | null>(null);
+  const [pendingFetched, setPendingFetched] = useState<Record<string, any> | null>(null);
+
+  function applyFetched(data: Record<string, any>) {
+    if (data.name) setName(data.name);
+    if (data.company_type) setCompanyType(data.company_type);
+    if (data.incorporation_date) setIncorporated(data.incorporation_date);
+    if (data.registered_office) setOffice(data.registered_office);
+    if (data.listed_status) setListed(data.listed_status === "LISTED");
+    setLookupStatus("found");
+    setPendingFetched(null);
+  }
+
+  async function fetchCinDetails() {
+    const cleanCin = cin.trim().toUpperCase();
+    if (!cleanCin || !CIN_RE.test(cleanCin)) {
+      setLookupError("Invalid CIN format.");
+      setLookupStatus("error");
+      return;
+    }
+    setLookupStatus("loading");
+    setLookupError(null);
+    try {
+      const res = await api.lookupCin(cleanCin);
+      if (res && res.found) {
+        const hasManualData = !!(name.trim() || office.trim() || incorporated);
+        if (hasManualData) {
+          setPendingFetched(res);
+          setLookupStatus("prompt_overwrite");
+        } else {
+          applyFetched(res);
+        }
+      } else {
+        setLookupStatus("not_found");
+      }
+    } catch {
+      setLookupStatus("not_found");
+    }
+  }
+
   const cinError = cin.trim() && !CIN_RE.test(cin.trim())
     ? "A CIN is 21 characters, for example U27100MH2016PLC123456." : null;
   const isinError = isin.trim() && !ISIN_RE.test(isin.trim())
@@ -81,10 +122,43 @@ export function CompanyForm({ onCreated, onCancel, submitLabel = "Create company
           <Input value={name} onChange={setName} placeholder="Acme Industries Limited"
                  invalid={!!nameError} />
         </Field>
-        <Field label="CIN" error={cinError}
+        <Field label="CIN" error={cinError || (lookupStatus === "error" ? lookupError : null)}
                hint="Optional. Leave it blank to model a company that is not registered yet.">
-          <Input value={cin} onChange={setCin} placeholder="U27100MH2016PLC123456"
-                 invalid={!!cinError} />
+          <div className="flex gap-2">
+            <Input value={cin} onChange={(v) => { setCin(v.toUpperCase()); setLookupStatus("idle"); setLookupError(null); }} placeholder="U27100MH2016PLC123456"
+                   invalid={!!cinError || lookupStatus === "error"} />
+            <Button type="button" variant="ghost" className="whitespace-nowrap text-xs"
+                    onClick={fetchCinDetails} disabled={!cin.trim() || lookupStatus === "loading"}>
+              {lookupStatus === "loading" ? "Fetching…" : "Fetch details"}
+            </Button>
+          </div>
+
+          {lookupStatus === "found" && (
+            <p className="mt-1.5 text-xs font-medium text-pass">✓ Company found</p>
+          )}
+
+          {lookupStatus === "not_found" && (
+            <p className="mt-1.5 text-xs text-warn">
+              Company details could not be found. You can continue entering the company details manually.
+            </p>
+          )}
+
+          {lookupStatus === "prompt_overwrite" && pendingFetched && (
+            <div className="mt-2 rounded-md border border-accent/30 bg-accent-dim/20 p-3 text-xs">
+              <p className="font-semibold text-ink-1">
+                Company details found for this CIN: {pendingFetched.name ? `"${pendingFetched.name}"` : cin.trim()}
+              </p>
+              <p className="mt-1 text-muted">Use fetched company information?</p>
+              <div className="mt-2 flex gap-2">
+                <Button type="button" className="px-2.5 py-1 text-xs" onClick={() => applyFetched(pendingFetched)}>
+                  Use fetched details
+                </Button>
+                <Button type="button" variant="ghost" className="px-2.5 py-1 text-xs" onClick={() => { setLookupStatus("found"); setPendingFetched(null); }}>
+                  Keep my details
+                </Button>
+              </div>
+            </div>
+          )}
         </Field>
         <Field label="Company type" required>
           <Select value={companyType} onChange={setCompanyType} options={COMPANY_TYPES}

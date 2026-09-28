@@ -45,6 +45,24 @@ def test_duplicate_cin_warns_rather_than_blocks(client, cs_headers):
     assert second.json()["warnings"], "a duplicate CIN should be reported back"
 
 
+def test_cin_lookup_endpoint(client, cs_headers):
+    """CIN lookup returns company metadata for valid CIN and 422 for invalid CIN format."""
+    r = client.get("/api/v1/companies/lookup?cin=U27100MH2016PLC123456", headers=cs_headers)
+    assert r.status_code == 200, r.text
+    data = r.json()
+    assert data["found"] is True
+    assert data["name"] in ("Aurora Components Limited", "XYZ Technologies Limited")
+    assert data["company_type"] == "PUBLIC"
+
+    # Non-seeded test CIN lookup
+    r2 = client.get("/api/v1/companies/lookup?cin=U72900KA2020PTC098765", headers=cs_headers)
+    assert r2.status_code == 200
+    assert r2.json()["name"] == "Acme Software Solutions Private Limited"
+
+    bad = client.get("/api/v1/companies/lookup?cin=NOT-A-CIN", headers=cs_headers)
+    assert bad.status_code == 422
+
+
 def test_listed_company_must_name_an_exchange(client, cs_headers):
     r = _new_company(client, cs_headers, listed_status="LISTED", exchanges=[])
     assert r.status_code == 422

@@ -141,6 +141,16 @@ export const api = {
   createCompany: (body: CompanyCreateBody) =>
     request<{ company_id: string; name: string; cin: string | null; warnings: string[] }>(
       "/companies", { method: "POST", body: JSON.stringify(body) }),
+  lookupCin: (cin: string) =>
+    request<{
+      cin: string;
+      found: boolean;
+      name?: string | null;
+      company_type?: string;
+      incorporation_date?: string | null;
+      registered_office?: string | null;
+      listed_status?: string;
+    }>(`/companies/lookup?cin=${encodeURIComponent(cin)}`),
   setCapital: (id: string, body: CapitalBody) =>
     request<unknown>(`/companies/${id}/capital`, { method: "PUT", body: JSON.stringify(body) }),
   setHoldings: (id: string, rows: HoldingBody[]) =>
