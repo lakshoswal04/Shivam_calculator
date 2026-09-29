@@ -58,7 +58,33 @@ if ! psql -d "$DB_URL" -c 'SELECT 1' >/dev/null 2>&1; then
 fi
 
 echo "→ restoring snapshot"
-gunzip -c legal_rules.sql.gz | psql -v ON_ERROR_STOP=1 -d "$DB_URL" >/dev/null
+# pg_dump --clean only drops what the snapshot itself knows about. If the
+# target carries a schema NEWER than the snapshot, its extra objects are never
+# dropped, and the restore dies on whatever still depends on them - typically
+# an opaque "cannot drop constraint ... because other objects depend on it".
+# The cause is almost always a snapshot that was not regenerated after a schema
+# change, so say that rather than leaving the Postgres error to speak for itself.
+if ! gunzip -c legal_rules.sql.gz | psql -v ON_ERROR_STOP=1 -d "$DB_URL" >/dev/null; then
+  cat >&2 <<'HELP'
+
+error: the snapshot did not restore cleanly.
+
+If the message above is about dropping a constraint or index that other objects
+depend on, the target database has a schema newer than this snapshot. That
+happens when a migration changed the schema and db/snapshot/legal_rules.sql.gz
+was not regenerated afterwards.
+
+Fix it in one of two ways:
+
+  * regenerate the snapshot from an up-to-date local database, commit it, and
+    redeploy:
+        ./db/snapshot/create.sh
+  * or restore into an empty database instead, which has nothing to drop:
+        dropdb <target> && createdb <target>
+
+HELP
+  exit 1
+fi
 
 # Migrations are numbered and idempotent to re-apply only in the sense that
 # re-running a CREATE would fail, so each is tried and skipped when the schema
