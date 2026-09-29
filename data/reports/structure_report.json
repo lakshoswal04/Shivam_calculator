@@ -1,7 +1,7 @@
 {
-  "run_at": "2026-09-21T10:54:14+00:00",
-  "documents": 45,
-  "total_provisions": 13526,
+  "run_at": "2026-09-29T09:03:20+00:00",
+  "documents": 89,
+  "total_provisions": 20890,
   "detail": [
     {
       "document_id": "bse-checklist-direct-listing-3157e150",
@@ -57,6 +57,760 @@
       },
       "orphan_body_chars": 0,
       "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20081219-pdf-class-points-master-circula-5d760fe9",
+      "file_name": "SEBI_MC_20081219_PDF_class_points_Master_Circular_on_Anti_Money_Laundering_and_Combatin.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Anti Money Laundering and Combating Financing of Terrorism (AML and CFT) Standards",
+      "provisions": 54,
+      "top_level_units": 30,
+      "by_type": {
+        "PARAGRAPH": 30,
+        "CLAUSE": 21,
+        "PART": 3
+      },
+      "orphan_body_chars": 11,
+      "ambiguous_citations": 14,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20100212-master-circular-on-anti-money-l-c921adf7",
+      "file_name": "SEBI_MC_20100212_Master_Circular_on_Anti_Money_Laundering_AML_and_Combating_Financing_o.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Anti-Money Laundering (AML) and Combating Financing of Terrorism (CFT) Standards",
+      "provisions": 46,
+      "top_level_units": 20,
+      "by_type": {
+        "CLAUSE": 22,
+        "PARAGRAPH": 20,
+        "PART": 4
+      },
+      "orphan_body_chars": 11,
+      "ambiguous_citations": 7,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20100317-master-circular-on-oversight-of-c925dabd",
+      "file_name": "SEBI_MC_20100317_Master_Circular_on_Oversight_of_Members_Stock_Brokers_Trading_Members.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Oversight of Members (Stock Brokers/Trading Members/Clearing Members of any Segment of Stock Exchanges and Clearing Corporations)",
+      "provisions": 47,
+      "top_level_units": 46,
+      "by_type": {
+        "PARAGRAPH": 46,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 8,
+      "ambiguous_citations": 16,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20100406-master-circular-on-allotment-of-926569e5",
+      "file_name": "SEBI_MC_20100406_Master_Circular_on_Allotment_of_codes_to_Stock_Exchanges_Subsidiary_ma.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Allotment of codes to Stock Exchanges, Subsidiary management by Stock Exchanges, Governance of recognised Stock Exchanges and Arbitration in recognised Stock Exchanges",
+      "provisions": 7,
+      "top_level_units": 6,
+      "by_type": {
+        "PARAGRAPH": 6,
+        "SCHEDULE": 1
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 2,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20101231-aml-cft-master-circular-ca09660c",
+      "file_name": "SEBI_MC_20101231_AML_CFT_Master_Circular.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI AML/CFT- Master Circular",
+      "provisions": 55,
+      "top_level_units": 22,
+      "by_type": {
+        "CLAUSE": 25,
+        "PARAGRAPH": 22,
+        "PART": 4,
+        "SUB_CLAUSE": 4
+      },
+      "orphan_body_chars": 12,
+      "ambiguous_citations": 8,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-stock-excha-21c2209c",
+      "file_name": "SEBI_MC_20101231_Master_Circular_for_Stock_Exchanges_and_Depositories.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Stock Exchanges and Depositories",
+      "provisions": 18,
+      "top_level_units": 15,
+      "by_type": {
+        "PARAGRAPH": 15,
+        "SUB_CLAUSE": 2,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 2,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-on-administrati-cd9240f4",
+      "file_name": "SEBI_MC_20101231_Master_Circular_on_Administration_of_Stock_Exchanges_Arbitration_in_re.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Administration of Stock Exchanges, Arbitration in recognised Stock Exchanges and Stock Exchanges / trading platform for Small & Medium Enterprises including guidelines for Market Makers",
+      "provisions": 13,
+      "top_level_units": 4,
+      "by_type": {
+        "CLAUSE": 8,
+        "PARAGRAPH": 4,
+        "PROVISO": 1
+      },
+      "orphan_body_chars": 1,
+      "ambiguous_citations": 2,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-exchange-tr-54367f48",
+      "file_name": "SEBI_MC_20101231_Master_circular_for_Exchange_Traded_Derivatives.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master circular for Exchange Traded Derivatives",
+      "provisions": 207,
+      "top_level_units": 176,
+      "by_type": {
+        "PARAGRAPH": 176,
+        "SUB_SECTION": 10,
+        "CLAUSE": 10,
+        "ANNEXURE": 8,
+        "SCHEDULE": 2,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 56,
+      "ambiguous_citations": 32,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20130401-master-circular-on-matters-rela-76560208",
+      "file_name": "SEBI_MC_20130401_Master_Circular_on_Matters_relating_to_Exchange_Traded_Derivatives.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Matters relating to Exchange Traded Derivatives",
+      "provisions": 197,
+      "top_level_units": 168,
+      "by_type": {
+        "PARAGRAPH": 168,
+        "SUB_SECTION": 10,
+        "CLAUSE": 10,
+        "ANNEXURE": 5,
+        "EXPLANATION": 2,
+        "SCHEDULE": 2
+      },
+      "orphan_body_chars": 66,
+      "ambiguous_citations": 23,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20130417-master-circular-for-stock-excha-b97e25e0",
+      "file_name": "SEBI_MC_20130417_Master_Circular_for_Stock_Exchange_Cash_Market.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20140520-master-circular-for-stock-excha-b4f812bd",
+      "file_name": "SEBI_MC_20140520_Master_Circular_for_Stock_Exchanges_2014.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": null,
+      "provisions": 0,
+      "top_level_units": 0,
+      "by_type": {},
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20180511-master-circular-for-underwriter-7562e7ea",
+      "file_name": "SEBI_MC_20180511_Master_Circular_for_Underwriters.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Underwriters",
+      "provisions": 50,
+      "top_level_units": 40,
+      "by_type": {
+        "PARAGRAPH": 40,
+        "ANNEXURE": 7,
+        "CHAPTER": 2,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 15,
+      "ambiguous_citations": 3,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20201222-master-circular-on-i-scheme-of--3aeab719",
+      "file_name": "SEBI_MC_20201222_Master_Circular_on_i_Scheme_of_Arrangement_by_Listed_Entities_and_ii_R.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on (i) Scheme of Arrangement by Listed Entities and (ii) Relaxation under Sub-rule (7) of rule 19 of the Securities Contracts (Regulation) Rules, 1957",
+      "provisions": 121,
+      "top_level_units": 35,
+      "by_type": {
+        "CLAUSE": 70,
+        "PARAGRAPH": 35,
+        "SUB_CLAUSE": 8,
+        "PROVISO": 5,
+        "EXPLANATION": 1,
+        "ANNEXURE": 1,
+        "SCHEDULE": 1
+      },
+      "orphan_body_chars": 18,
+      "ambiguous_citations": 25,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13",
+      "file_name": "SEBI_MC_20220517_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Commodity Derivatives Market",
+      "provisions": 30,
+      "top_level_units": 20,
+      "by_type": {
+        "PARAGRAPH": 20,
+        "PROVISO": 5,
+        "EXPLANATION": 3,
+        "CLAUSE": 1,
+        "SUB_CLAUSE": 1
+      },
+      "orphan_body_chars": 9,
+      "ambiguous_citations": 8,
+      "provisions_with_amendment_markers": 1
+    },
+    {
+      "document_id": "sebi-mc-20221107-master-circular-on-issuance-of--773dff8d",
+      "file_name": "SEBI_MC_20221107_Master_Circular_on_issuance_of_No_Objection_Certificate_NOC_for_releas.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on issuance of No Objection Certificate (NOC) for release of 1% of Issue Amount",
+      "provisions": 51,
+      "top_level_units": 51,
+      "by_type": {
+        "PARAGRAPH": 51
+      },
+      "orphan_body_chars": 21,
+      "ambiguous_citations": 12,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20221107-master-circular-on-the-redressa-78a729d8",
+      "file_name": "SEBI_MC_20221107_Master_Circular_on_the_redressal_of_investor_grievances_through_the_SE.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "Master Circular on the redressal of investor grievances through the SEBI Complaints Redress System (SCORES) platform",
+      "provisions": 81,
+      "top_level_units": 81,
+      "by_type": {
+        "PARAGRAPH": 81
+      },
+      "orphan_body_chars": 25,
+      "ambiguous_citations": 26,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20230216-master-circular-for-substantial-f4a1299d",
+      "file_name": "SEBI_MC_20230216_Master_Circular_for_Substantial_Acquisition_of_Shares_and_Takeovers.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Substantial Acquisition of Shares and Takeovers",
+      "provisions": 273,
+      "top_level_units": 260,
+      "by_type": {
+        "PARAGRAPH": 260,
+        "CLAUSE": 9,
+        "SUB_SECTION": 4
+      },
+      "orphan_body_chars": 69,
+      "ambiguous_citations": 16,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20230303-master-circular-for-foreign-ven-5bf7a731",
+      "file_name": "SEBI_MC_20230303_Master_Circular_for_Foreign_Venture_Capital_Investors_FVCIs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Foreign Venture Capital Investors (FVCIs)",
+      "provisions": 41,
+      "top_level_units": 41,
+      "by_type": {
+        "PARAGRAPH": 41
+      },
+      "orphan_body_chars": 30,
+      "ambiguous_citations": 6,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20230620-master-circular-on-scheme-of-ar-99f669b0",
+      "file_name": "SEBI_MC_20230620_Master_Circular_on_Scheme_of_Arrangement.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Scheme of Arrangement",
+      "provisions": 60,
+      "top_level_units": 45,
+      "by_type": {
+        "PARAGRAPH": 45,
+        "PROVISO": 5,
+        "CLAUSE": 5,
+        "PART": 4,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 13,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20230804-master-circular-for-commodity-d-dff1615b",
+      "file_name": "SEBI_MC_20230804_Master_Circular_for_Commodity_Derivatives_Segment.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Commodity Derivatives Segment",
+      "provisions": 91,
+      "top_level_units": 76,
+      "by_type": {
+        "PARAGRAPH": 76,
+        "PROVISO": 4,
+        "SUB_CLAUSE": 4,
+        "ANNEXURE": 3,
+        "EXPLANATION": 3,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 12,
+      "ambiguous_citations": 11,
+      "provisions_with_amendment_markers": 1
+    },
+    {
+      "document_id": "sebi-mc-20231012-master-circular-on-know-your-cl-d1c3acb3",
+      "file_name": "SEBI_MC_20231012_Master_Circular_on_Know_Your_Client_KYC_norms_for_the_securities_marke.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Know Your Client (KYC) norms for the securities market",
+      "provisions": 209,
+      "top_level_units": 198,
+      "by_type": {
+        "PARAGRAPH": 198,
+        "SUB_CLAUSE": 8,
+        "CLAUSE": 2,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 19,
+      "ambiguous_citations": 57,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20231228-master-circular-for-online-reso-40e68a22",
+      "file_name": "SEBI_MC_20231228_Master_Circular_for_Online_Resolution_of_Disputes_in_the_Indian_Securi.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Online Resolution of Disputes in the Indian Securities Market",
+      "provisions": 98,
+      "top_level_units": 95,
+      "by_type": {
+        "PARAGRAPH": 95,
+        "SUB_CLAUSE": 2,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 32,
+      "ambiguous_citations": 17,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20240510-master-circular-for-custodians-bb1b1963",
+      "file_name": "SEBI_MC_20240510_Master_Circular_for_Custodians.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Custodians",
+      "provisions": 69,
+      "top_level_units": 54,
+      "by_type": {
+        "PARAGRAPH": 54,
+        "CLAUSE": 7,
+        "CHAPTER": 5,
+        "ANNEXURE": 3
+      },
+      "orphan_body_chars": 7,
+      "ambiguous_citations": 9,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20240530-master-circular-for-foreign-por-e743ea0a",
+      "file_name": "SEBI_MC_20240530_Master_Circular_for_Foreign_Portfolio_Investors_Designated_Depository.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Foreign Portfolio Investors, Designated Depository Participants and Eligible Foreign Investors",
+      "provisions": 88,
+      "top_level_units": 72,
+      "by_type": {
+        "PARAGRAPH": 72,
+        "CLAUSE": 12,
+        "PART": 2,
+        "EXPLANATION": 2
+      },
+      "orphan_body_chars": 7,
+      "ambiguous_citations": 26,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20240603-master-circular-for-bankers-to--c6681963",
+      "file_name": "SEBI_MC_20240603_Master_Circular_for_Bankers_to_an_Issue.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Bankers to an Issue",
+      "provisions": 97,
+      "top_level_units": 88,
+      "by_type": {
+        "PARAGRAPH": 88,
+        "CHAPTER": 6,
+        "CLAUSE": 3
+      },
+      "orphan_body_chars": 16,
+      "ambiguous_citations": 26,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20240606-guidelines-on-anti-money-launde-450620ca",
+      "file_name": "SEBI_MC_20240606_Guidelines_on_Anti_Money_Laundering_AML_Standards_and_Combating_the_Fi.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Guidelines on Anti-Money Laundering (AML) Standards and Combating the Financing of Terrorism (CFT) /Obligations of Securities Market Intermediaries under the Prevention of Money Laundering Act, 2002 and Rules framed there under",
+      "provisions": 104,
+      "top_level_units": 95,
+      "by_type": {
+        "PARAGRAPH": 95,
+        "PROVISO": 3,
+        "EXPLANATION": 3,
+        "CLAUSE": 2,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 1,
+      "ambiguous_citations": 7,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20240624-master-circular-for-electronic--fedf1d32",
+      "file_name": "SEBI_MC_20240624_Master_Circular_for_Electronic_Gold_Receipts_EGRs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Electronic Gold Receipts (EGRs)",
+      "provisions": 29,
+      "top_level_units": 18,
+      "by_type": {
+        "PARAGRAPH": 18,
+        "SUB_CLAUSE": 9,
+        "EXPLANATION": 1,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 5,
+      "ambiguous_citations": 7,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20241203-master-circular-for-depositorie-bc113d4f",
+      "file_name": "SEBI_MC_20241203_Master_Circular_for_Depositories.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Depositories",
+      "provisions": 266,
+      "top_level_units": 184,
+      "by_type": {
+        "PARAGRAPH": 184,
+        "CLAUSE": 47,
+        "EXPLANATION": 14,
+        "SUB_CLAUSE": 13,
+        "PROVISO": 5,
+        "SUB_SECTION": 2,
+        "SCHEDULE": 1
+      },
+      "orphan_body_chars": 57,
+      "ambiguous_citations": 42,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20241230-master-circular-for-stock-excha-251ede45",
+      "file_name": "SEBI_MC_20241230_Master_Circular_for_Stock_Exchanges_and_Clearing_Corporations.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Stock Exchanges and Clearing Corporations",
+      "provisions": 6,
+      "top_level_units": 6,
+      "by_type": {
+        "PARAGRAPH": 6
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 0,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1",
+      "file_name": "SEBI_MC_20250617_Master_Circular_for_Stock_Brokers.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Stock Brokers",
+      "provisions": 705,
+      "top_level_units": 693,
+      "by_type": {
+        "PARAGRAPH": 693,
+        "SUB_CLAUSE": 5,
+        "PROVISO": 3,
+        "CLAUSE": 2,
+        "EXPLANATION": 1,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 59,
+      "ambiguous_citations": 94,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_Credit_Rating_Agencies_CRAs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Credit Rating Agencies (CRAs)",
+      "provisions": 41,
+      "top_level_units": 38,
+      "by_type": {
+        "PARAGRAPH": 38,
+        "ANNEXURE": 2,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 7,
+      "ambiguous_citations": 10,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-esg-rating--09a6ba33",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_ESG_Rating_Providers_ERPs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for ESG Rating Providers (ERPs)",
+      "provisions": 44,
+      "top_level_units": 34,
+      "by_type": {
+        "PARAGRAPH": 34,
+        "SUB_CLAUSE": 9,
+        "CLAUSE": 1
+      },
+      "orphan_body_chars": 10,
+      "ambiguous_citations": 8,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-listing-obl-d0aed4fb",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_listing_obligations_and_disclosure_requirements_fo.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for listing obligations and disclosure requirements for Non-convertible Securities, Securitized Debt Instruments and/ or Commercial Paper",
+      "provisions": 221,
+      "top_level_units": 154,
+      "by_type": {
+        "PARAGRAPH": 154,
+        "CLAUSE": 58,
+        "SUB_CLAUSE": 3,
+        "PROVISO": 3,
+        "EXPLANATION": 1,
+        "PART": 1,
+        "SUB_SECTION": 1
+      },
+      "orphan_body_chars": 24,
+      "ambiguous_citations": 27,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20250716-master-circular-for-portfolio-m-acb45418",
+      "file_name": "SEBI_MC_20250716_Master_Circular_for_Portfolio_Managers.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Portfolio Managers",
+      "provisions": 190,
+      "top_level_units": 168,
+      "by_type": {
+        "PARAGRAPH": 168,
+        "SUB_CLAUSE": 12,
+        "PROVISO": 3,
+        "CLAUSE": 3,
+        "EXPLANATION": 2,
+        "ANNEXURE": 2
+      },
+      "orphan_body_chars": 18,
+      "ambiguous_citations": 38,
+      "provisions_with_amendment_markers": 1
+    },
+    {
+      "document_id": "sebi-mc-20250813-master-circular-for-debenture-t-825c002c",
+      "file_name": "SEBI_MC_20250813_Master_Circular_for_Debenture_Trustees_DTs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Debenture Trustees (DTs)",
+      "provisions": 145,
+      "top_level_units": 121,
+      "by_type": {
+        "PARAGRAPH": 121,
+        "CLAUSE": 18,
+        "SUB_SECTION": 3,
+        "SUB_CLAUSE": 2,
+        "PROVISO": 1
+      },
+      "orphan_body_chars": 9,
+      "ambiguous_citations": 12,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20251015-master-circular-for-issue-and-l-57a07691",
+      "file_name": "SEBI_MC_20251015_Master_Circular_for_issue_and_listing_of_Non_convertible_Securities_Se.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for issue and listing of Non-convertible Securities, Securitised Debt Instruments, Security Receipts, Municipal Debt Securities and Commercial Paper",
+      "provisions": 544,
+      "top_level_units": 479,
+      "by_type": {
+        "PARAGRAPH": 479,
+        "SUB_CLAUSE": 34,
+        "CLAUSE": 9,
+        "PROVISO": 9,
+        "EXPLANATION": 7,
+        "SUB_SECTION": 3,
+        "PART": 3
+      },
+      "orphan_body_chars": 84,
+      "ambiguous_citations": 43,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260119-master-circular-for-framework-o-c74df98e",
+      "file_name": "SEBI_MC_20260119_Master_Circular_for_Framework_on_Social_Stock_Exchange.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Framework on Social Stock Exchange",
+      "provisions": 24,
+      "top_level_units": 18,
+      "by_type": {
+        "PARAGRAPH": 18,
+        "CLAUSE": 3,
+        "PROVISO": 3
+      },
+      "orphan_body_chars": 0,
+      "ambiguous_citations": 6,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-investment--ab1d6f24",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Investment_Advisers.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Investment Advisers",
+      "provisions": 262,
+      "top_level_units": 123,
+      "by_type": {
+        "PARAGRAPH": 123,
+        "CLAUSE": 80,
+        "SUB_CLAUSE": 43,
+        "ANNEXURE": 15,
+        "PROVISO": 1
+      },
+      "orphan_body_chars": 25,
+      "ambiguous_citations": 35,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-registrars--941c0ead",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Registrars to an Issue and Share Transfer Agents",
+      "provisions": 607,
+      "top_level_units": 428,
+      "by_type": {
+        "PARAGRAPH": 428,
+        "CLAUSE": 113,
+        "SUB_SECTION": 29,
+        "SUB_CLAUSE": 28,
+        "ANNEXURE": 3,
+        "SCHEDULE": 3,
+        "EXPLANATION": 1,
+        "PROVISO": 1,
+        "PART": 1
+      },
+      "orphan_body_chars": 115,
+      "ambiguous_citations": 98,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-research-an-a5f6855f",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Research_Analysts.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Research Analysts",
+      "provisions": 217,
+      "top_level_units": 163,
+      "by_type": {
+        "PARAGRAPH": 163,
+        "SUB_CLAUSE": 31,
+        "CLAUSE": 11,
+        "ANNEXURE": 10,
+        "PROVISO": 1,
+        "EXPLANATION": 1
+      },
+      "orphan_body_chars": 14,
+      "ambiguous_citations": 38,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7",
+      "file_name": "SEBI_MC_20260320_Master_Circular_for_Mutual_Funds.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Mutual Funds",
+      "provisions": 1302,
+      "top_level_units": 935,
+      "by_type": {
+        "PARAGRAPH": 935,
+        "SUB_CLAUSE": 195,
+        "CLAUSE": 103,
+        "ANNEXURE": 29,
+        "EXPLANATION": 14,
+        "PART": 11,
+        "PROVISO": 8,
+        "SUB_SECTION": 7
+      },
+      "orphan_body_chars": 180,
+      "ambiguous_citations": 126,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260515-master-circular-on-surveillance-8191b73c",
+      "file_name": "SEBI_MC_20260515_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular on Surveillance of Securities Market",
+      "provisions": 45,
+      "top_level_units": 42,
+      "by_type": {
+        "PARAGRAPH": 42,
+        "SUB_SECTION": 1,
+        "CLAUSE": 1,
+        "SUB_CLAUSE": 1
+      },
+      "orphan_body_chars": 4,
+      "ambiguous_citations": 11,
+      "provisions_with_amendment_markers": 0
+    },
+    {
+      "document_id": "sebi-mc-20260603-master-circular-for-alternative-ad8253cd",
+      "file_name": "SEBI_MC_20260603_Master_Circular_for_Alternative_Investment_Funds_AIFs.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Alternative Investment Funds (AIFs)",
+      "provisions": 183,
+      "top_level_units": 110,
+      "by_type": {
+        "PARAGRAPH": 110,
+        "CLAUSE": 37,
+        "SUB_CLAUSE": 28,
+        "PROVISO": 8
+      },
+      "orphan_body_chars": 14,
+      "ambiguous_citations": 25,
+      "provisions_with_amendment_markers": 1
+    },
+    {
+      "document_id": "sebi-mc-20260714-master-circular-for-merchant-ba-e4f871e2",
+      "file_name": "SEBI_MC_20260714_Master_Circular_for_Merchant_Bankers.pdf",
+      "instrument_kind": "CIRCULAR",
+      "instrument_label": "SEBI Master Circular for Merchant Bankers",
+      "provisions": 427,
+      "top_level_units": 385,
+      "by_type": {
+        "PARAGRAPH": 385,
+        "ANNEXURE": 18,
+        "SUB_SECTION": 7,
+        "CHAPTER": 6,
+        "CLAUSE": 5,
+        "SUB_CLAUSE": 4,
+        "EXPLANATION": 1,
+        "PROVISO": 1
+      },
+      "orphan_body_chars": 126,
+      "ambiguous_citations": 32,
       "provisions_with_amendment_markers": 0
     },
     {
@@ -160,7 +914,7 @@
       "document_id": "points-to-remember-post-allotment-f6a19833",
       "file_name": "Points to remember_post allotment.docx",
       "instrument_kind": "UNKNOWN",
-      "instrument_label": "Points to be Remembered.",
+      "instrument_label": "Points to be Remembered",
       "provisions": 4,
       "top_level_units": 4,
       "by_type": {
@@ -527,13 +1281,13 @@
       "file_name": "SEBI LODR Master Circular.pdf",
       "instrument_kind": "CIRCULAR",
       "instrument_label": "SEBI LODR Master Circular",
-      "provisions": 766,
+      "provisions": 765,
       "top_level_units": 576,
       "by_type": {
         "PARAGRAPH": 576,
         "CLAUSE": 74,
         "SUB_CLAUSE": 51,
-        "ANNEXURE": 27,
+        "ANNEXURE": 26,
         "SUB_SECTION": 13,
         "PROVISO": 10,
         "CHAPTER": 7,

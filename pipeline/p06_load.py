@@ -29,6 +29,7 @@ DOC_TYPES = {
     "XBRL_REQUIREMENT", "COMPLIANCE_CALENDAR", "NOTICE", "CONTAINER", "UNKNOWN"}
 KINDS = {"ACT", "RULES", "REGULATIONS", "CIRCULAR", "CHECKLIST", "FAQ", "UNKNOWN"}
 CONSOLIDATION = {"CONSOLIDATED", "AS_ENACTED", "REFERENCE_ONLY", "UNKNOWN"}
+STATUSES = {"ACTIVE", "SUPERSEDED", "WITHDRAWN"}
 
 
 def enum(value, allowed, default="UNKNOWN"):
@@ -39,6 +40,7 @@ def load(conn, inv):
     cur = conn.cursor()
     docs = inv["documents"] + inv.get("containers", [])
     n_src = n_doc = n_page = n_block = n_table = n_prov = 0
+    source_id_by_key, supersession = {}, {}
 
     for d in docs:
         priority = d.get("source_priority") or ("P2" if d.get("document_type") == "CONTAINER" else "P4")
@@ -53,13 +55,18 @@ def load(conn, inv):
             raise SystemExit(
                 f"{d['file_name']}: consolidation_status=CONSOLIDATED requires "
                 "as_amended_upto in its .meta.json sidecar")
+        # superseded_by is left out here on purpose: it references another
+        # row of this same table, which may not be inserted yet. It is wired
+        # in a second pass below, exactly as provision parent_id is.
         cur.execute("""
             INSERT INTO legal.legal_sources
               (document_key,authority,document_type,title,file_name,local_file_path,
                file_type,file_size_bytes,file_hash,official_url,retrieved_date,
                source_priority,consolidation_status,as_amended_upto,scope,page_count,
-               in_container,human_review_required,review_reasons,notes)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+               in_container,human_review_required,review_reasons,notes,
+               publication_date,status,document_family,supersession_basis)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
+                    %s,%s,%s,%s)
             ON CONFLICT (file_hash) DO UPDATE SET
               authority=EXCLUDED.authority, document_type=EXCLUDED.document_type,
               title=EXCLUDED.title, source_priority=EXCLUDED.source_priority,
@@ -68,7 +75,11 @@ def load(conn, inv):
               consolidation_status=EXCLUDED.consolidation_status,
               as_amended_upto=EXCLUDED.as_amended_upto,
               human_review_required=EXCLUDED.human_review_required,
-              review_reasons=EXCLUDED.review_reasons
+              review_reasons=EXCLUDED.review_reasons,
+              publication_date=EXCLUDED.publication_date,
+              status=EXCLUDED.status,
+              document_family=EXCLUDED.document_family,
+              supersession_basis=EXCLUDED.supersession_basis
             RETURNING source_id""",
             (d["document_id"], enum(d.get("authority"), AUTHORITIES),
              enum(d.get("document_type"), DOC_TYPES), (d.get("title") or d["file_name"])[:500],
@@ -76,8 +87,13 @@ def load(conn, inv):
              d["sha256"], d.get("source_url"), d.get("retrieved_date"), priority,
              consolidation, as_amended_upto, d.get("scope", "COMPANY"), d.get("page_count"),
              d.get("in_container"), d.get("human_review_required", True),
-             json.dumps(d.get("review_reasons", [])), d.get("note")))
+             json.dumps(d.get("review_reasons", [])), d.get("note"),
+             d.get("publication_date"), enum(d.get("status"), STATUSES, "ACTIVE"),
+             d.get("document_family"), d.get("supersession_basis")))
         source_id = cur.fetchone()[0]
+        source_id_by_key[d["document_id"]] = source_id
+        if d.get("superseded_by"):
+            supersession[d["document_id"]] = d["superseded_by"]
         n_src += 1
 
         meta_file = EXTRACTED / d["document_id"] / "extraction_meta.json"
@@ -172,7 +188,23 @@ def load(conn, inv):
         n_prov += len(provs)
         print(f"  {d['authority']:7} {len(provs):>6} provisions  {d['file_name'][:46]}")
 
-    return dict(sources=n_src, documents=n_doc, pages=n_page,
+    # Second pass: every source row now exists, so an edition can point at the
+    # one that replaced it. A successor missing from this run is a real fault -
+    # the superseded_needs_successor CHECK would reject the row - so it is
+    # raised by name rather than left to surface as a bare constraint error.
+    n_super = 0
+    for key, successor_key in supersession.items():
+        successor_id = source_id_by_key.get(successor_key)
+        if successor_id is None:
+            raise SystemExit(
+                f"{key}: marked superseded by {successor_key}, which is not in "
+                "this inventory. Re-run p00_inventory.py over the whole corpus.")
+        cur.execute("""
+            UPDATE legal.legal_sources SET superseded_by=%s
+             WHERE document_key=%s""", (successor_id, key))
+        n_super += 1
+
+    return dict(sources=n_src, superseded=n_super, documents=n_doc, pages=n_page,
                 blocks=n_block, tables=n_table, provisions=n_prov)
 
 

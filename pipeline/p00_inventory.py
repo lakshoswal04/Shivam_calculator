@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from lib.hashing import sha256_file, doc_id_for
 from lib import taxonomy as tx
+from lib import supersession as sup
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "corpus"
@@ -108,13 +109,18 @@ def build_record(path: Path) -> dict:
     else:
         proc = "PENDING_EXTRACTION"
 
-    # Titles come from the document's own first substantive line where possible.
-    title = path.stem
-    for line in txt.splitlines():
-        s = line.strip()
-        if 12 <= len(s) <= 160 and not s.isdigit():
-            title = s
-            break
+    # A fetched document's title is the one the regulator's own listing printed
+    # beside the link, which is better evidence of what the document is called
+    # than anything the extractor can recover from page one - master circulars
+    # open on a letterhead and a circular number, not a title. Only where there
+    # is no such declaration does the first substantive line stand in.
+    title = sup.clean_title((provenance or {}).get("title", "")) or path.stem
+    if not (provenance or {}).get("title"):
+        for line in txt.splitlines():
+            s = line.strip()
+            if 12 <= len(s) <= 160 and not s.isdigit():
+                title = s
+                break
 
     return {
         "document_id": doc_id_for(rel, sha),
@@ -139,7 +145,18 @@ def build_record(path: Path) -> dict:
         "scope_signal_count": scope_hits,
         "source_priority": priority,
         "dates_found_in_text": dates[:8],
-        "publication_date": None,
+        # The date the regulator's listing printed for this document. Set from
+        # the sidecar only; a date parsed out of body text is a date the
+        # document mentions, not necessarily the date it was published.
+        "publication_date": (sup.parse_date((provenance or {}).get("date", "")).isoformat()
+                             if (provenance or {}).get("date")
+                             and sup.parse_date((provenance or {}).get("date", "")) else None),
+        # Filled in by _apply_supersession() once every record exists, because
+        # an edition can only be ranked against its siblings.
+        "document_family": None,
+        "status": "ACTIVE",
+        "supersession_basis": None,
+        "superseded_by": None,
         "amendment_date": None,
         "effective_date": None,
         "version": None,
@@ -157,6 +174,45 @@ def build_record(path: Path) -> dict:
         "review_reasons": reasons,
         "inventoried_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
+
+
+def _apply_supersession(records):
+    """Rank reissued circulars against their siblings and mark the current one.
+
+    Scoped to master circulars, which are the only instrument in this corpus
+    that SEBI republishes under an unchanged name. Acts, rules and regulations
+    are amended in place and carry their currency in `as_amended_upto`; running
+    a title heuristic over them could only do harm.
+
+    It must run over the WHOLE corpus, not just one fetched batch. The current
+    edition of the ICDR and LODR master circulars was supplied by hand into
+    corpus/originals/ while the earlier editions came from the listing, so a
+    batch-local view would mark a 2024 edition current and quietly drop the
+    2026 text that the live rules are written against.
+    """
+    circulars = [r for r in records if r["document_type"] == "MASTER_CIRCULAR"]
+    if not circulars:
+        return {}
+
+    verdicts = sup.classify([
+        {"document_key": r["document_id"], "title": r["title"], "date": r["publication_date"]}
+        for r in circulars
+    ])
+    by_key = {r["document_id"]: r for r in circulars}
+
+    for r in circulars:
+        v = verdicts[r["document_id"]]
+        r["document_family"] = v["document_family"]
+        r["status"] = v["status"]
+        r["supersession_basis"] = v["supersession_basis"]
+        # Carry the successor as a document_id, which p06 resolves to a row.
+        r["superseded_by"] = v["superseded_by"]
+        if v["status"] == "SUPERSEDED":
+            r["processing_status"] = "DEFERRED"
+            succ = by_key.get(v["superseded_by"], {})
+            r["review_reasons"] = r["review_reasons"] + [
+                f"superseded_by:{succ.get('file_name', v['superseded_by'])}"]
+    return verdicts
 
 
 def main():
@@ -190,6 +246,8 @@ def main():
         print(f"  [{rec['authority']:7}/{rec['document_type']:22}] "
               f"{rec['scope']:11} {rec['primary_issue_type']:18} {rec['file_name'][:52]}")
 
+    _apply_supersession(records)
+
     # Duplicate detection (brief §1): exact by hash, candidates by title+authority.
     by_hash, by_title = {}, {}
     for r in records:
@@ -214,6 +272,8 @@ def main():
             "by_scope": _tally(records, "scope"),
             "by_priority": _tally(records, "source_priority"),
             "needs_review": sum(1 for r in records if r["human_review_required"]),
+            "by_status": _tally(records, "status"),
+            "superseded": sum(1 for r in records if r["status"] == "SUPERSEDED"),
         },
         "duplicates_exact": dup_exact,
         "duplicate_title_candidates": dup_title,
@@ -225,6 +285,7 @@ def main():
     cols = ["document_id", "file_name", "file_type", "authority", "document_type",
             "instrument_kind", "title", "primary_issue_type", "scope", "source_priority",
             "page_count", "sha256", "extraction_status", "processing_status",
+            "status", "document_family", "publication_date",
             "human_review_required", "local_file_path"]
     with open(OUT / "inventory.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=cols, extrasaction="ignore")
@@ -236,6 +297,7 @@ def main():
           f"needs_review={payload['counts']['needs_review']}")
     print(f"  by_authority: {payload['counts']['by_authority']}")
     print(f"  by_scope:     {payload['counts']['by_scope']}")
+    print(f"  by_status:    {payload['counts']['by_status']}")
     print(f"  -> {OUT/'inventory.json'}")
 
 

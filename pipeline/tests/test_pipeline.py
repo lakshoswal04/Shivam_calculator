@@ -9,6 +9,7 @@ from lib.cleaning import clean_page, find_running_headers, repair_hyphenation
 from lib.citations import parse_provisions, build_citation, extract_references
 from lib.hashing import sha256_text, doc_id_for
 from lib import conditions as C
+from lib import supersession as S
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -340,3 +341,143 @@ def test_python_and_sql_validators_agree():
         if sql_says != expected:
             mismatches.append((ast, expected, sql_says))
     assert not mismatches, f"SQL/Python validator disagreement: {mismatches}"
+
+
+# ------------------------------------------------------------ supersession
+def test_family_key_ignores_acronym_gloss():
+    """SEBI prints the same circular with and without its acronym."""
+    assert (S.family_key("Master Circular for Credit Rating Agencies (CRAs)")
+            == S.family_key("Master Circular for Credit Rating Agencies"))
+    assert (S.family_key("Master Circular for Debenture Trustees (DTs)")
+            == S.family_key("Master Circular for Debenture Trustees"))
+
+
+def test_family_key_ignores_updated_marker_and_connective():
+    assert (S.family_key("Master Circular for Real Estate Investment Trusts (REITs) (Updated)")
+            == S.family_key("Master Circular for Real Estate Investment Trusts (REITs)"))
+    # "for", "on" and a bare dash are all used to join the label to the subject.
+    assert (S.family_key("Master Circular-Mutual Funds")
+            == S.family_key("Master Circular for Mutual Funds"))
+    assert (S.family_key("Master Circular on Electronic Gold Receipts (EGR)")
+            == S.family_key("Master Circular for Electronic Gold Receipts (EGRs)"))
+
+
+def test_family_key_ignores_singular_plural_drift():
+    assert (S.family_key("Master Circular for Stock Exchange and Clearing Corporation")
+            == S.family_key("Master Circular for Stock Exchanges and Clearing Corporations"))
+
+
+def test_family_key_strips_markup_spilled_into_a_listing_title():
+    """One 2008 listing row carries its own anchor markup in the title."""
+    spilled = ("PDF\" class='points'>Master Circular on Anti Money Laundering and "
+               "Combating Financing of Terrorism (AML and CFT) Standards-PDF")
+    assert S.clean_title(spilled).startswith("Master Circular on Anti Money Laundering")
+    assert '>' not in S.clean_title(spilled)
+    assert S.family_key(spilled) == S.family_key(S.clean_title(spilled))
+
+
+def test_family_key_keeps_genuinely_different_circulars_apart():
+    """Under-merging costs redundant extraction; over-merging loses a source."""
+    assert (S.family_key("Master Circular for Mutual Funds")
+            != S.family_key("Master Circular for Stock Brokers"))
+    # A long parenthetical is doing real work and must not be stripped as a gloss.
+    assert (S.family_key("Master Circular on Scheme of Arrangement")
+            != S.family_key("Master Circular on (i) Scheme of Arrangement by Listed "
+                            "Entities and (ii) Relaxation under Sub-rule (7) of rule 19"))
+
+
+def test_newest_edition_is_in_force_and_others_name_it():
+    recs = [
+        {"document_key": "a", "title": "Master Circular for Depositories", "date": "Apr 06, 2010"},
+        {"document_key": "b", "title": "Master Circular for Depositories", "date": "Dec 03, 2024"},
+        {"document_key": "c", "title": "Master Circular for Depositories", "date": "Oct 06, 2023"},
+    ]
+    out = S.classify(recs)
+    assert out["b"]["status"] == "ACTIVE"
+    assert out["b"]["superseded_by"] is None
+    for key in ("a", "c"):
+        assert out[key]["status"] == "SUPERSEDED"
+        assert out[key]["superseded_by"] == "b", "must name the edition that replaced it"
+        assert out[key]["supersession_basis"] == "INFERRED_TITLE_DATE"
+
+
+def test_supersession_is_never_reported_as_a_declaration():
+    """consolidation_status is a reviewer's word; this heuristic must not borrow it."""
+    out = S.classify([
+        {"document_key": "old", "title": "Master Circular for Custodians", "date": "Apr 27, 2023"},
+        {"document_key": "new", "title": "Master Circular for Custodians", "date": "May 10, 2024"},
+    ])
+    assert out["old"]["supersession_basis"] == "INFERRED_TITLE_DATE"
+    assert "consolidation_status" not in out["old"]
+
+
+def test_undated_edition_is_left_in_force_rather_than_ranked_last():
+    """Sorting an unreadable date last would supersede a document on no evidence."""
+    out = S.classify([
+        {"document_key": "dated", "title": "Master Circular for Custodians", "date": "May 10, 2024"},
+        {"document_key": "undated", "title": "Master Circular for Custodians", "date": "n/a"},
+    ])
+    assert out["undated"]["status"] == "ACTIVE"
+    assert out["undated"]["publication_date"] is None
+
+
+def test_extraction_gate_defers_superseded_and_out_of_scope():
+    assert S.is_extractable({"scope": "COMPANY", "status": "ACTIVE"})
+    assert not S.is_extractable({"scope": "COMPANY", "status": "SUPERSEDED"})
+    assert not S.is_extractable({"scope": "REIT_INVIT", "status": "ACTIVE"})
+
+
+def test_every_deferral_states_a_reason():
+    """A document dropped from extraction must say why, never disappear silently."""
+    assert S.deferral_reason({"scope": "COMPANY", "status": "ACTIVE"}) is None
+    assert "REIT_INVIT" in S.deferral_reason({"scope": "REIT_INVIT", "status": "ACTIVE"})
+    reason = S.deferral_reason({"scope": "COMPANY", "status": "SUPERSEDED",
+                                "superseded_by": "x", "supersession_basis": "INFERRED_TITLE_DATE"})
+    assert "SUPERSEDED" in reason and "x" in reason
+
+
+def test_corpus_has_no_duplicate_hashes():
+    """A second copy of the same bytes would upsert over the row rules cite.
+
+    legal_sources.file_hash is UNIQUE and p06 upserts on it, so two inventory
+    records sharing a hash silently collapse into one row whose title and path
+    depend on load order.
+    """
+    inv_path = ROOT / "data" / "inventory" / "inventory.json"
+    if not inv_path.exists():
+        pytest.skip("inventory not built")
+    inv = json.loads(inv_path.read_text())
+    assert inv["duplicates_exact"] == {}, (
+        f"duplicate file hashes in corpus: {inv['duplicates_exact']}")
+
+
+def test_every_superseded_document_names_its_successor():
+    inv_path = ROOT / "data" / "inventory" / "inventory.json"
+    if not inv_path.exists():
+        pytest.skip("inventory not built")
+    inv = json.loads(inv_path.read_text())
+    by_id = {d["document_id"]: d for d in inv["documents"]}
+    for d in inv["documents"]:
+        if d.get("status") == "SUPERSEDED":
+            succ = d.get("superseded_by")
+            assert succ, f"{d['file_name']} is SUPERSEDED but names no successor"
+            assert succ in by_id, f"{d['file_name']} names a successor not in the corpus"
+            assert by_id[succ]["status"] == "ACTIVE", (
+                f"{d['file_name']} points at an edition that is not in force")
+
+
+def test_plural_annexures_is_not_annexure_s():
+    """Regression: "ANNEXURES" parsed as Annexure "S".
+
+    [A-Z] consumed the final S and \\b was satisfied by the end of the word, so
+    a contents page headed ANNEXURES opened a provision with no heading and no
+    body, and everything after it was reparented under that phantom.
+    """
+    from lib.citations import RE_ANNEXURE
+    assert RE_ANNEXURE.match("ANNEXURES") is None
+    assert RE_ANNEXURE.match("ANNEXURES TO THE MASTER CIRCULAR") is None
+    # ...while genuine annexure headings still parse.
+    assert RE_ANNEXURE.match("ANNEXURE II").group("num") == "II"
+    assert RE_ANNEXURE.match("ANNEXURE-I").group("num") == "I"
+    assert RE_ANNEXURE.match("ANNEXURE A").group("num") == "A"
+    assert RE_ANNEXURE.match("ANNEXURE") is not None

@@ -65,6 +65,9 @@ gaps:
     provisions_required: []
     # Closed by the ICDR master circular (last updated 09-02-2026) and the LODR
     # master circular (last updated 30-01-2026), both now in corpus/originals/.
+    # Widened since: pipeline/sebi_scraper.py took the whole SEBI master-circular
+    # listing, and the current edition of each of the 48 circular families is in
+    # the corpus. Earlier editions are catalogued but marked SUPERSEDED.
     resolved_on: 2026-09-15
 
   - code: NSE_CML_2023_51

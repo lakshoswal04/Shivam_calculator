@@ -1,7 +1,323 @@
 {
-  "run_at": "2026-09-21T10:54:13+00:00",
+  "run_at": "2026-09-29T09:01:51+00:00",
   "note": "Issue types re-derived from full extracted text, superseding p00 head-sample values.",
   "changed": [
+    {
+      "document_id": "sebi-mc-20101231-master-circular-on-administrati-cd9240f4",
+      "file_name": "SEBI_MC_20101231_Master_Circular_on_Administration_of_Stock_Exchanges_Arbitration_in_re.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "PUBLIC_ISSUE"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-exchange-tr-54367f48",
+      "file_name": "SEBI_MC_20101231_Master_circular_for_Exchange_Traded_Derivatives.pdf",
+      "from": [],
+      "to": [
+        "BONUS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "BONUS"
+    },
+    {
+      "document_id": "sebi-mc-20130401-master-circular-on-matters-rela-76560208",
+      "file_name": "SEBI_MC_20130401_Master_Circular_on_Matters_relating_to_Exchange_Traded_Derivatives.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20201222-master-circular-on-i-scheme-of--3aeab719",
+      "file_name": "SEBI_MC_20201222_Master_Circular_on_i_Scheme_of_Arrangement_by_Listed_Entities_and_ii_R.pdf",
+      "from": [],
+      "to": [
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13",
+      "file_name": "SEBI_MC_20220517_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "from": [],
+      "to": [
+        "FPO",
+        "PRIVATE_PLACEMENT",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20221107-master-circular-on-the-redressa-78a729d8",
+      "file_name": "SEBI_MC_20221107_Master_Circular_on_the_redressal_of_investor_grievances_through_the_SE.pdf",
+      "from": [],
+      "to": [
+        "RIGHTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "RIGHTS"
+    },
+    {
+      "document_id": "sebi-mc-20230216-master-circular-for-substantial-f4a1299d",
+      "file_name": "SEBI_MC_20230216_Master_Circular_for_Substantial_Acquisition_of_Shares_and_Takeovers.pdf",
+      "from": [],
+      "to": [
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20230620-master-circular-on-scheme-of-ar-99f669b0",
+      "file_name": "SEBI_MC_20230620_Master_Circular_on_Scheme_of_Arrangement.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE",
+        "QIP",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20230804-master-circular-for-commodity-d-dff1615b",
+      "file_name": "SEBI_MC_20230804_Master_Circular_for_Commodity_Derivatives_Segment.pdf",
+      "from": [],
+      "to": [
+        "FPO",
+        "PRIVATE_PLACEMENT",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20231228-master-circular-for-online-reso-40e68a22",
+      "file_name": "SEBI_MC_20231228_Master_Circular_for_Online_Resolution_of_Disputes_in_the_Indian_Securi.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "PUBLIC_ISSUE"
+    },
+    {
+      "document_id": "sebi-mc-20240510-master-circular-for-custodians-bb1b1963",
+      "file_name": "SEBI_MC_20240510_Master_Circular_for_Custodians.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "CONVERSION",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20240530-master-circular-for-foreign-por-e743ea0a",
+      "file_name": "SEBI_MC_20240530_Master_Circular_for_Foreign_Portfolio_Investors_Designated_Depository.pdf",
+      "from": [],
+      "to": [
+        "FPO",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20240603-master-circular-for-bankers-to--c6681963",
+      "file_name": "SEBI_MC_20240603_Master_Circular_for_Bankers_to_an_Issue.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20241203-master-circular-for-depositorie-bc113d4f",
+      "file_name": "SEBI_MC_20241203_Master_Circular_for_Depositories.pdf",
+      "from": [
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "to": [
+        "BONUS",
+        "FPO",
+        "PREFERENTIAL",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1",
+      "file_name": "SEBI_MC_20250617_Master_Circular_for_Stock_Brokers.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "PUBLIC_ISSUE",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_Credit_Rating_Agencies_CRAs.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "PUBLIC_ISSUE"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-listing-obl-d0aed4fb",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_listing_obligations_and_disclosure_requirements_fo.pdf",
+      "from": [],
+      "to": [
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20250716-master-circular-for-portfolio-m-acb45418",
+      "file_name": "SEBI_MC_20250716_Master_Circular_for_Portfolio_Managers.pdf",
+      "from": [],
+      "to": [
+        "PRIVATE_PLACEMENT"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "PRIVATE_PLACEMENT"
+    },
+    {
+      "document_id": "sebi-mc-20250813-master-circular-for-debenture-t-825c002c",
+      "file_name": "SEBI_MC_20250813_Master_Circular_for_Debenture_Trustees_DTs.pdf",
+      "from": [],
+      "to": [
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20251015-master-circular-for-issue-and-l-57a07691",
+      "file_name": "SEBI_MC_20251015_Master_Circular_for_issue_and_listing_of_Non_convertible_Securities_Se.pdf",
+      "from": [
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE"
+      ],
+      "to": [
+        "BONUS",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-registrars--941c0ead",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "from": [
+        "PUBLIC_ISSUE",
+        "RIGHTS"
+      ],
+      "to": [
+        "BONUS",
+        "FPO",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-research-an-a5f6855f",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Research_Analysts.pdf",
+      "from": [],
+      "to": [
+        "PUBLIC_ISSUE"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "PUBLIC_ISSUE"
+    },
+    {
+      "document_id": "sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7",
+      "file_name": "SEBI_MC_20260320_Master_Circular_for_Mutual_Funds.pdf",
+      "from": [],
+      "to": [
+        "BONUS",
+        "ESOP",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "GENERAL",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20260515-master-circular-on-surveillance-8191b73c",
+      "file_name": "SEBI_MC_20260515_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "from": [
+        "ESOP",
+        "RIGHTS"
+      ],
+      "to": [
+        "ESOP",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
+    {
+      "document_id": "sebi-mc-20260714-master-circular-for-merchant-ba-e4f871e2",
+      "file_name": "SEBI_MC_20260714_Master_Circular_for_Merchant_Bankers.pdf",
+      "from": [
+        "FPO",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "QIP"
+      ],
+      "to": [
+        "FPO",
+        "PREFERENTIAL",
+        "PRIVATE_PLACEMENT",
+        "PUBLIC_ISSUE",
+        "QIP",
+        "RIGHTS",
+        "WARRANTS"
+      ],
+      "primary_from": "UNKNOWN",
+      "primary_to": "UNKNOWN"
+    },
     {
       "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
       "file_name": "Companies (Prospectus and Allotment of Securities) Rules.pdf",

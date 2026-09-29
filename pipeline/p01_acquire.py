@@ -163,8 +163,10 @@ def main():
         })
 
     pas3_ok = (ROOT / "corpus" / "originals" / "Form PAS-3.pdf").exists()
+    # The SEBI master circulars were a gap until pipeline/sebi_scraper.py took
+    # the whole master-circular listing; the current edition of each is now in
+    # the corpus. Only the items still genuinely missing are queued here.
     gap_items = [
-        ("SEBI_CIRCULARS_AND_MASTER_CIRCULARS", "Absent; ICDR/LODR operational clarifications rest on these."),
         ("NSE_CIRCULAR_NSE_CML_2023_51", "Cited by 'Points to remember_28(1)' as gating the >Rs.100cr preferential issue-summary requirement, but not supplied."),
     ]
     if not pas3_ok:

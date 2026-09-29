@@ -1,13 +1,23 @@
 {
-  "run_at": "2026-09-21T10:54:12+00:00",
-  "extracted": 45,
+  "run_at": "2026-09-29T09:01:47+00:00",
+  "extracted": 89,
   "failed": 0,
-  "deferred": 14,
-  "total_pages": 1944,
-  "total_blocks": 41566,
-  "total_tables": 533,
-  "total_chars": 4734286,
+  "deferred": 101,
+  "total_pages": 6755,
+  "total_blocks": 127728,
+  "total_tables": 3194,
+  "total_chars": 12974862,
   "documents_with_flagged_pages": [
+    "sebi-mc-20101231-master-circular-for-exchange-tr-54367f48",
+    "sebi-mc-20130401-master-circular-on-matters-rela-76560208",
+    "sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13",
+    "sebi-mc-20230804-master-circular-for-commodity-d-dff1615b",
+    "sebi-mc-20240510-master-circular-for-custodians-bb1b1963",
+    "sebi-mc-20241203-master-circular-for-depositorie-bc113d4f",
+    "sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1",
+    "sebi-mc-20250716-master-circular-for-portfolio-m-acb45418",
+    "sebi-mc-20251015-master-circular-for-issue-and-l-57a07691",
+    "sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7",
     "sebi-icdr-master-circular-1f6763cd",
     "sebi-icdr-regulations-db196f1f"
   ],
@@ -26,7 +36,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:55:11+00:00"
     },
     {
       "document_id": "bse-faq-on-listing-facc6804",
@@ -42,7 +52,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:55:11+00:00"
     },
     {
       "document_id": "bse-inprinciple-privateplacement-debtinstruments-bb498266",
@@ -58,7 +68,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:55:11+00:00"
     },
     {
       "document_id": "bse-post-issue-checklist-1d331cda",
@@ -74,7 +84,747 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:55:11+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20081219-pdf-class-points-master-circula-5d760fe9",
+      "file_name": "SEBI_MC_20081219_PDF_class_points_Master_Circular_on_Anti_Money_Laundering_and_Combatin.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 34,
+      "blocks": 962,
+      "tables": 3,
+      "chars_clean": 44883,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:12+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20100212-master-circular-on-anti-money-l-c921adf7",
+      "file_name": "SEBI_MC_20100212_Master_Circular_on_Anti_Money_Laundering_AML_and_Combating_Financing_o.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 37,
+      "blocks": 1106,
+      "tables": 4,
+      "chars_clean": 50202,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:13+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20100317-master-circular-on-oversight-of-c925dabd",
+      "file_name": "SEBI_MC_20100317_Master_Circular_on_Oversight_of_Members_Stock_Brokers_Trading_Members.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 5,
+      "blocks": 10,
+      "tables": 2,
+      "chars_clean": 13263,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:14+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20100406-master-circular-on-allotment-of-926569e5",
+      "file_name": "SEBI_MC_20100406_Master_Circular_on_Allotment_of_codes_to_Stock_Exchanges_Subsidiary_ma.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 19,
+      "blocks": 61,
+      "tables": 1,
+      "chars_clean": 37985,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:15+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20101231-aml-cft-master-circular-ca09660c",
+      "file_name": "SEBI_MC_20101231_AML_CFT_Master_Circular.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 38,
+      "blocks": 950,
+      "tables": 5,
+      "chars_clean": 52432,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:16+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-stock-excha-21c2209c",
+      "file_name": "SEBI_MC_20101231_Master_Circular_for_Stock_Exchanges_and_Depositories.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 11,
+      "blocks": 60,
+      "tables": 4,
+      "chars_clean": 15924,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:17+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-on-administrati-cd9240f4",
+      "file_name": "SEBI_MC_20101231_Master_Circular_on_Administration_of_Stock_Exchanges_Arbitration_in_re.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 35,
+      "blocks": 277,
+      "tables": 2,
+      "chars_clean": 66634,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:18+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-exchange-tr-54367f48",
+      "file_name": "SEBI_MC_20101231_Master_circular_for_Exchange_Traded_Derivatives.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 142,
+      "blocks": 704,
+      "tables": 34,
+      "chars_clean": 281866,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        94
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:24+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20130401-master-circular-on-matters-rela-76560208",
+      "file_name": "SEBI_MC_20130401_Master_Circular_on_Matters_relating_to_Exchange_Traded_Derivatives.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 156,
+      "blocks": 777,
+      "tables": 34,
+      "chars_clean": 325740,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        117
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:31+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20130417-master-circular-for-stock-excha-b97e25e0",
+      "file_name": "SEBI_MC_20130417_Master_Circular_for_Stock_Exchange_Cash_Market.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 1,
+      "blocks": 7,
+      "tables": 0,
+      "chars_clean": 1478,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:31+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20140520-master-circular-for-stock-excha-b4f812bd",
+      "file_name": "SEBI_MC_20140520_Master_Circular_for_Stock_Exchanges_2014.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 1,
+      "blocks": 11,
+      "tables": 0,
+      "chars_clean": 1548,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:31+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20180511-master-circular-for-underwriter-7562e7ea",
+      "file_name": "SEBI_MC_20180511_Master_Circular_for_Underwriters.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 27,
+      "blocks": 341,
+      "tables": 12,
+      "chars_clean": 48502,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:33+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20201222-master-circular-on-i-scheme-of--3aeab719",
+      "file_name": "SEBI_MC_20201222_Master_Circular_on_i_Scheme_of_Arrangement_by_Listed_Entities_and_ii_R.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 25,
+      "blocks": 407,
+      "tables": 9,
+      "chars_clean": 46023,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:34+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13",
+      "file_name": "SEBI_MC_20220517_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 330,
+      "blocks": 4491,
+      "tables": 158,
+      "chars_clean": 576944,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        53,
+        284,
+        315
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:54+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20221107-master-circular-on-issuance-of--773dff8d",
+      "file_name": "SEBI_MC_20221107_Master_Circular_on_issuance_of_No_Objection_Certificate_NOC_for_releas.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 11,
+      "blocks": 164,
+      "tables": 16,
+      "chars_clean": 14638,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:54+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20221107-master-circular-on-the-redressa-78a729d8",
+      "file_name": "SEBI_MC_20221107_Master_Circular_on_the_redressal_of_investor_grievances_through_the_SE.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 11,
+      "blocks": 156,
+      "tables": 3,
+      "chars_clean": 23462,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:55:55+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20230216-master-circular-for-substantial-f4a1299d",
+      "file_name": "SEBI_MC_20230216_Master_Circular_for_Substantial_Acquisition_of_Shares_and_Takeovers.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 110,
+      "blocks": 1885,
+      "tables": 97,
+      "chars_clean": 173018,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:02+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20230303-master-circular-for-foreign-ven-5bf7a731",
+      "file_name": "SEBI_MC_20230303_Master_Circular_for_Foreign_Venture_Capital_Investors_FVCIs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 7,
+      "blocks": 107,
+      "tables": 4,
+      "chars_clean": 8365,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:03+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20230620-master-circular-on-scheme-of-ar-99f669b0",
+      "file_name": "SEBI_MC_20230620_Master_Circular_on_Scheme_of_Arrangement.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 28,
+      "blocks": 436,
+      "tables": 7,
+      "chars_clean": 53395,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:04+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20230804-master-circular-for-commodity-d-dff1615b",
+      "file_name": "SEBI_MC_20230804_Master_Circular_for_Commodity_Derivatives_Segment.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 348,
+      "blocks": 4033,
+      "tables": 168,
+      "chars_clean": 576024,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        245
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:23+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20231012-master-circular-on-know-your-cl-d1c3acb3",
+      "file_name": "SEBI_MC_20231012_Master_Circular_on_Know_Your_Client_KYC_norms_for_the_securities_marke.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 43,
+      "blocks": 665,
+      "tables": 10,
+      "chars_clean": 80704,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:25+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20231228-master-circular-for-online-reso-40e68a22",
+      "file_name": "SEBI_MC_20231228_Master_Circular_for_Online_Resolution_of_Disputes_in_the_Indian_Securi.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 29,
+      "blocks": 255,
+      "tables": 4,
+      "chars_clean": 64922,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:26+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20240510-master-circular-for-custodians-bb1b1963",
+      "file_name": "SEBI_MC_20240510_Master_Circular_for_Custodians.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 38,
+      "blocks": 376,
+      "tables": 25,
+      "chars_clean": 48677,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        18
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:28+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20240530-master-circular-for-foreign-por-e743ea0a",
+      "file_name": "SEBI_MC_20240530_Master_Circular_for_Foreign_Portfolio_Investors_Designated_Depository.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 68,
+      "blocks": 901,
+      "tables": 31,
+      "chars_clean": 131043,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:32+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20240603-master-circular-for-bankers-to--c6681963",
+      "file_name": "SEBI_MC_20240603_Master_Circular_for_Bankers_to_an_Issue.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 42,
+      "blocks": 765,
+      "tables": 18,
+      "chars_clean": 66384,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:34+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20240606-guidelines-on-anti-money-launde-450620ca",
+      "file_name": "SEBI_MC_20240606_Guidelines_on_Anti_Money_Laundering_AML_Standards_and_Combating_the_Fi.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 37,
+      "blocks": 1063,
+      "tables": 0,
+      "chars_clean": 72833,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:35+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20240624-master-circular-for-electronic--fedf1d32",
+      "file_name": "SEBI_MC_20240624_Master_Circular_for_Electronic_Gold_Receipts_EGRs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 56,
+      "blocks": 807,
+      "tables": 10,
+      "chars_clean": 97256,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:56:37+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20241203-master-circular-for-depositorie-bc113d4f",
+      "file_name": "SEBI_MC_20241203_Master_Circular_for_Depositories.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 309,
+      "blocks": 4634,
+      "tables": 168,
+      "chars_clean": 613106,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        243,
+        244,
+        245,
+        246,
+        257,
+        258,
+        259,
+        270,
+        281,
+        282
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:02+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20241230-master-circular-for-stock-excha-251ede45",
+      "file_name": "SEBI_MC_20241230_Master_Circular_for_Stock_Exchanges_and_Clearing_Corporations.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 4,
+      "blocks": 66,
+      "tables": 0,
+      "chars_clean": 3873,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:02+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1",
+      "file_name": "SEBI_MC_20250617_Master_Circular_for_Stock_Brokers.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 399,
+      "blocks": 6669,
+      "tables": 303,
+      "chars_clean": 785862,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        314,
+        315
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:33+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_Credit_Rating_Agencies_CRAs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 109,
+      "blocks": 2736,
+      "tables": 35,
+      "chars_clean": 163830,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:37+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-esg-rating--09a6ba33",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_ESG_Rating_Providers_ERPs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 68,
+      "blocks": 1705,
+      "tables": 16,
+      "chars_clean": 107508,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:40+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-listing-obl-d0aed4fb",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_listing_obligations_and_disclosure_requirements_fo.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 114,
+      "blocks": 1495,
+      "tables": 58,
+      "chars_clean": 203107,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:47+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250716-master-circular-for-portfolio-m-acb45418",
+      "file_name": "SEBI_MC_20250716_Master_Circular_for_Portfolio_Managers.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 207,
+      "blocks": 4210,
+      "tables": 309,
+      "chars_clean": 228273,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        189
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:57:57+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20250813-master-circular-for-debenture-t-825c002c",
+      "file_name": "SEBI_MC_20250813_Master_Circular_for_Debenture_Trustees_DTs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 122,
+      "blocks": 3393,
+      "tables": 43,
+      "chars_clean": 155613,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:01+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20251015-master-circular-for-issue-and-l-57a07691",
+      "file_name": "SEBI_MC_20251015_Master_Circular_for_issue_and_listing_of_Non_convertible_Securities_Se.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 215,
+      "blocks": 3661,
+      "tables": 165,
+      "chars_clean": 367632,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        24,
+        26,
+        37,
+        38,
+        39
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:14+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260119-master-circular-for-framework-o-c74df98e",
+      "file_name": "SEBI_MC_20260119_Master_Circular_for_Framework_on_Social_Stock_Exchange.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 31,
+      "blocks": 914,
+      "tables": 12,
+      "chars_clean": 47942,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:16+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-investment--ab1d6f24",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Investment_Advisers.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 99,
+      "blocks": 2993,
+      "tables": 37,
+      "chars_clean": 158542,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:21+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-registrars--941c0ead",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 294,
+      "blocks": 8051,
+      "tables": 165,
+      "chars_clean": 419333,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:36+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260206-master-circular-for-research-an-a5f6855f",
+      "file_name": "SEBI_MC_20260206_Master_Circular_for_Research_Analysts.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 107,
+      "blocks": 3185,
+      "tables": 27,
+      "chars_clean": 180527,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:58:41+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7",
+      "file_name": "SEBI_MC_20260320_Master_Circular_for_Mutual_Funds.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 748,
+      "blocks": 14914,
+      "tables": 520,
+      "chars_clean": 1292028,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [
+        335
+      ],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:59:33+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260515-master-circular-on-surveillance-8191b73c",
+      "file_name": "SEBI_MC_20260515_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 38,
+      "blocks": 825,
+      "tables": 22,
+      "chars_clean": 53017,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:59:36+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260603-master-circular-for-alternative-ad8253cd",
+      "file_name": "SEBI_MC_20260603_Master_Circular_for_Alternative_Investment_Funds_AIFs.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 153,
+      "blocks": 2523,
+      "tables": 50,
+      "chars_clean": 295107,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:59:45+00:00"
+    },
+    {
+      "document_id": "sebi-mc-20260714-master-circular-for-merchant-ba-e4f871e2",
+      "file_name": "SEBI_MC_20260714_Master_Circular_for_Merchant_Bankers.pdf",
+      "authority": "SEBI",
+      "document_type": "MASTER_CIRCULAR",
+      "instrument_kind": "CIRCULAR",
+      "pages": 105,
+      "blocks": 2411,
+      "tables": 70,
+      "chars_clean": 191131,
+      "tool": "pymupdf 1.26.5",
+      "ocr_used": false,
+      "pages_flagged_low_text": [],
+      "pages_empty": [],
+      "extracted_at": "2026-09-29T08:59:52+00:00"
     },
     {
       "document_id": "checklist-recommencement-of-trading-e30818a4",
@@ -90,7 +840,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:59:52+00:00"
     },
     {
       "document_id": "form-of-listing-aplication-487b76f1",
@@ -106,7 +856,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:16+00:00"
+      "extracted_at": "2026-09-29T08:59:52+00:00"
     },
     {
       "document_id": "companies-prospectus-and-allotment-of-securities-1f737c30",
@@ -122,7 +872,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:17+00:00"
+      "extracted_at": "2026-09-29T08:59:52+00:00"
     },
     {
       "document_id": "companies-share-capital-and-debentures-rules-64039399",
@@ -138,7 +888,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:20+00:00"
+      "extracted_at": "2026-09-29T08:59:55+00:00"
     },
     {
       "document_id": "companies-act-2013-325a7d09",
@@ -154,7 +904,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:14+00:00"
     },
     {
       "document_id": "download-post-allotment-a57e1202",
@@ -170,7 +920,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:14+00:00"
     },
     {
       "document_id": "points-to-remember-post-allotment-f6a19833",
@@ -186,7 +936,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:14+00:00"
     },
     {
       "document_id": "download-pre-allotment-ace085af",
@@ -202,7 +952,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:14+00:00"
     },
     {
       "document_id": "part-i-d6ff87e8",
@@ -218,7 +968,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "part-ii-e68713a9",
@@ -234,7 +984,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "t-2-fpo-abe9b620",
@@ -250,7 +1000,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "t-3-fpo-if-nse-is-not-designated-stock-exchange-6e2c4256",
@@ -266,7 +1016,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "t-3-fpo-cccb7af1",
@@ -282,7 +1032,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "t-4-fpo-c058fc65",
@@ -298,7 +1048,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "t-5-fpo-636f879e",
@@ -314,7 +1064,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:39+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "fpo-inprinciple-checklist-revised-21d7cd1a",
@@ -330,7 +1080,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:40+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "final-listing-preferential-14b337d2",
@@ -346,7 +1096,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:40+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "form-pas-3-71132ad1",
@@ -362,7 +1112,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:40+00:00"
+      "extracted_at": "2026-09-29T09:00:15+00:00"
     },
     {
       "document_id": "mca-instruction-kit-mgt-14-0f8c29ea",
@@ -378,7 +1128,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:41+00:00"
+      "extracted_at": "2026-09-29T09:00:17+00:00"
     },
     {
       "document_id": "mca-instruction-kit-sh-7-25a9e662",
@@ -396,7 +1146,7 @@
       "pages_empty": [
         25
       ],
-      "extracted_at": "2026-09-21T10:52:43+00:00"
+      "extracted_at": "2026-09-29T09:00:18+00:00"
     },
     {
       "document_id": "post-allotment-sweat-equity-0-0-85b03e42",
@@ -412,7 +1162,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:43+00:00"
+      "extracted_at": "2026-09-29T09:00:18+00:00"
     },
     {
       "document_id": "post-allotment-rights-0-dd3e7518",
@@ -428,7 +1178,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:43+00:00"
+      "extracted_at": "2026-09-29T09:00:18+00:00"
     },
     {
       "document_id": "pre-allotment-sweat-equity-4226094c",
@@ -444,7 +1194,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:43+00:00"
+      "extracted_at": "2026-09-29T09:00:18+00:00"
     },
     {
       "document_id": "checklist-preferential-issue-pre-ffe507ab",
@@ -460,7 +1210,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:43+00:00"
+      "extracted_at": "2026-09-29T09:00:18+00:00"
     },
     {
       "document_id": "extract-of-icdr-189995d8",
@@ -476,7 +1226,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:47+00:00"
+      "extracted_at": "2026-09-29T09:00:22+00:00"
     },
     {
       "document_id": "points-to-remember-28-1-6be45481",
@@ -492,7 +1242,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:47+00:00"
+      "extracted_at": "2026-09-29T09:00:22+00:00"
     },
     {
       "document_id": "preferential-issue-faqs-0d8e781e",
@@ -508,7 +1258,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:47+00:00"
+      "extracted_at": "2026-09-29T09:00:22+00:00"
     },
     {
       "document_id": "qip-post-allotment-0-0-d035add2",
@@ -524,7 +1274,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:47+00:00"
+      "extracted_at": "2026-09-29T09:00:22+00:00"
     },
     {
       "document_id": "rights-entitlement-checklist-e0bcaa00",
@@ -540,7 +1290,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:47+00:00"
+      "extracted_at": "2026-09-29T09:00:22+00:00"
     },
     {
       "document_id": "sebi-depositories-participants-regulations-fb150ec0",
@@ -556,7 +1306,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:51+00:00"
+      "extracted_at": "2026-09-29T09:00:27+00:00"
     },
     {
       "document_id": "sebi-icdr-master-circular-1f6763cd",
@@ -583,7 +1333,7 @@
         128
       ],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:52:59+00:00"
+      "extracted_at": "2026-09-29T09:00:34+00:00"
     },
     {
       "document_id": "sebi-icdr-regulations-db196f1f",
@@ -604,7 +1354,7 @@
         364
       ],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:53:20+00:00"
+      "extracted_at": "2026-09-29T09:00:56+00:00"
     },
     {
       "document_id": "sebi-lodr-master-circular-fa3b4360",
@@ -620,7 +1370,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:53:42+00:00"
+      "extracted_at": "2026-09-29T09:01:18+00:00"
     },
     {
       "document_id": "sebi-lodr-regulations-62626bd8",
@@ -636,7 +1386,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:53:57+00:00"
+      "extracted_at": "2026-09-29T09:01:33+00:00"
     },
     {
       "document_id": "sebi-pit-regulations-3e146320",
@@ -652,7 +1402,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:01+00:00"
+      "extracted_at": "2026-09-29T09:01:36+00:00"
     },
     {
       "document_id": "sebi-sast-regulations-f3486698",
@@ -668,7 +1418,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:05+00:00"
+      "extracted_at": "2026-09-29T09:01:40+00:00"
     },
     {
       "document_id": "sebi-sbeb-sweat-equity-regulations-275c3965",
@@ -684,7 +1434,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:07+00:00"
+      "extracted_at": "2026-09-29T09:01:42+00:00"
     },
     {
       "document_id": "trading-approval-557b966e",
@@ -700,7 +1450,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:07+00:00"
+      "extracted_at": "2026-09-29T09:01:42+00:00"
     },
     {
       "document_id": "trading-approval-fast-track-a025d50d",
@@ -716,7 +1466,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:07+00:00"
+      "extracted_at": "2026-09-29T09:01:42+00:00"
     },
     {
       "document_id": "the-companies-management-and-administration-rule-55296434",
@@ -732,7 +1482,7 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:09+00:00"
+      "extracted_at": "2026-09-29T09:01:45+00:00"
     },
     {
       "document_id": "the-companies-registration-offices-and-fees-rule-b0be2898",
@@ -748,11 +1498,446 @@
       "ocr_used": false,
       "pages_flagged_low_text": [],
       "pages_empty": [],
-      "extracted_at": "2026-09-21T10:54:12+00:00"
+      "extracted_at": "2026-09-29T09:01:47+00:00"
     }
   ],
   "failures": [],
   "deferred_documents": [
+    {
+      "document_id": "sebi-mc-20100101-master-circular-mutual-funds-49ce803e",
+      "file_name": "SEBI_MC_20100101_Master_Circular_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20100406-master-circular-for-depositorie-29a7dc2f",
+      "file_name": "SEBI_MC_20100406_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20100406-master-circular-for-stock-excha-20568e44",
+      "file_name": "SEBI_MC_20100406_Master_Circular_for_Stock_Exchange_Cash_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20130417-master-circular-for-stock-excha-b97e25e0 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-depositorie-ae1c000e",
+      "file_name": "SEBI_MC_20101231_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20101231-master-circular-for-stock-excha-44afcaa7",
+      "file_name": "SEBI_MC_20101231_Master_Circular_for_Stock_Exchange_Cash_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20130417-master-circular-for-stock-excha-b97e25e0 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20110107-master-circular-for-mutual-fund-17da6270",
+      "file_name": "SEBI_MC_20110107_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20120102-master-circular-on-matters-rela-944234e1",
+      "file_name": "SEBI_MC_20120102_Master_Circular_on_Matters_relating_to_Exchange_Traded_Derivatives.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20130401-master-circular-on-matters-rela-76560208 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20120413-master-circular-for-depositorie-341f24a1",
+      "file_name": "SEBI_MC_20120413_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20120413-master-circular-for-stock-excha-abeeb93b",
+      "file_name": "SEBI_MC_20120413_Master_Circular_for_Stock_Exchanges_Cash_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20130417-master-circular-for-stock-excha-b97e25e0 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20120511-master-circular-for-mutual-fund-b944e5f2",
+      "file_name": "SEBI_MC_20120511_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20130415-master-circular-for-depositorie-afec501d",
+      "file_name": "SEBI_MC_20130415_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20130911-master-circular-for-mutual-fund-2e97fb95",
+      "file_name": "SEBI_MC_20130911_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20140407-master-circular-for-depositorie-5cf0d537",
+      "file_name": "SEBI_MC_20140407_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20141001-master-circular-for-mutual-fund-2eb783b8",
+      "file_name": "SEBI_MC_20141001_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20150507-master-circular-for-depositorie-c80ee5da",
+      "file_name": "SEBI_MC_20150507_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20150526-master-circular-for-stock-excha-e7daf071",
+      "file_name": "SEBI_MC_20150526_Master_Circular_for_Stock_Exchange_and_Clearing_Corporation.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241230-master-circular-for-stock-excha-251ede45 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20160914-master-circular-for-mutual-fund-cc4f349e",
+      "file_name": "SEBI_MC_20160914_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20161215-master-circular-for-depositorie-5993ad57",
+      "file_name": "SEBI_MC_20161215_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20161216-master-circular-for-stock-excha-04bfd397",
+      "file_name": "SEBI_MC_20161216_Master_Circular_for_Stock_Exchange_and_Clearing_Corporation.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241230-master-circular-for-stock-excha-251ede45 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180409-master-circular-for-debenture-t-af4f0e16",
+      "file_name": "SEBI_MC_20180409_Master_Circular_for_Debenture_Trustees_DTs.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250813-master-circular-for-debenture-t-825c002c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180502-master-circular-for-credit-rati-f64f33bc",
+      "file_name": "SEBI_MC_20180502_Master_Circular_for_Credit_Rating_Agencies.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180601-master-circular-for-stock-broke-dd0f1c77",
+      "file_name": "SEBI_MC_20180601_Master_Circular_for_Stock_Brokers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180704-guidelines-on-anti-money-launde-d9de4c1e",
+      "file_name": "SEBI_MC_20180704_Guidelines_on_Anti_Money_Laundering_AML_Standards_and_Combating_the_Fi.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240606-guidelines-on-anti-money-launde-450620ca (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180710-master-circular-for-mutual-fund-9633edfe",
+      "file_name": "SEBI_MC_20180710_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20180907-master-circular-for-commodity-d-ba2eaad4",
+      "file_name": "SEBI_MC_20180907_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20191015-guidelines-on-anti-money-launde-912e1bcd",
+      "file_name": "SEBI_MC_20191015_Guidelines_on_Anti_Money_Laundering_AML_Standards_and_Combating_the_Fi.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240606-guidelines-on-anti-money-launde-450620ca (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20191025-master-circular-for-depositorie-0ff3ee38",
+      "file_name": "SEBI_MC_20191025_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20191025-master-circular-for-stock-excha-7a18a1bb",
+      "file_name": "SEBI_MC_20191025_Master_Circular_for_Stock_Exchanges_and_Clearing_Corporations.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241230-master-circular-for-stock-excha-251ede45 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20200710-master-circular-for-commodity-d-140593cb",
+      "file_name": "SEBI_MC_20200710_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20200824-master-circular-for-mutual-fund-7cc49fcb",
+      "file_name": "SEBI_MC_20200824_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20210205-master-circular-for-depositorie-1b42dfa3",
+      "file_name": "SEBI_MC_20210205_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20210301-master-circular-on-surveillance-0c1e9609",
+      "file_name": "SEBI_MC_20210301_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260515-master-circular-on-surveillance-8191b73c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20210701-master-circular-for-commodity-d-9cc71b5a",
+      "file_name": "SEBI_MC_20210701_Master_Circular_for_Commodity_Derivatives_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20220517-master-circular-for-commodity-d-8d1e6a13 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20210705-master-circular-for-stock-excha-c2cf21e8",
+      "file_name": "SEBI_MC_20210705_Master_Circular_for_Stock_Exchanges_and_Clearing_Corporations.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241230-master-circular-for-stock-excha-251ede45 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20211123-master-circular-on-scheme-of-ar-01ea00e7",
+      "file_name": "SEBI_MC_20211123_Master_Circular_on_Scheme_of_Arrangement.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20230620-master-circular-on-scheme-of-ar-99f669b0 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20211129-master-circular-for-infrastruct-4a04234a",
+      "file_name": "SEBI_MC_20211129_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20211129-master-circular-for-real-estate-bfa66b46",
+      "file_name": "SEBI_MC_20211129_Master_Circular_for_Real_Estate_Investment_Trusts_REITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20220426-master-circular-for-infrastruct-cc968f0e",
+      "file_name": "SEBI_MC_20220426_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20220426-master-circular-for-real-estate-11969a54",
+      "file_name": "SEBI_MC_20220426_Master_Circular_for_Real_Estate_Investment_Trusts_REITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20221219-master-circular-for-foreign-por-751ee9fc",
+      "file_name": "SEBI_MC_20221219_Master_Circular_for_Foreign_Portfolio_Investors_Designated_Depository.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240530-master-circular-for-foreign-por-e743ea0a (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230203-guidelines-on-anti-money-launde-ff6e7790",
+      "file_name": "SEBI_MC_20230203_Guidelines_on_Anti_Money_Laundering_AML_Standards_and_Combating_the_Fi.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240606-guidelines-on-anti-money-launde-450620ca (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230320-master-circular-for-portfolio-m-2a156927",
+      "file_name": "SEBI_MC_20230320_Master_Circular_for_Portfolio_Managers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250716-master-circular-for-portfolio-m-acb45418 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230323-master-circular-on-surveillance-0ab3ac97",
+      "file_name": "SEBI_MC_20230323_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260515-master-circular-on-surveillance-8191b73c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230427-master-circular-for-custodians-9d49967f",
+      "file_name": "SEBI_MC_20230427_Master_Circular_for_Custodians.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240510-master-circular-for-custodians-bb1b1963 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230517-master-circular-for-registrars--340d0c4d",
+      "file_name": "SEBI_MC_20230517_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-registrars--941c0ead (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230517-master-circular-for-stock-broke-a601729d",
+      "file_name": "SEBI_MC_20230517_Master_Circular_for_Stock_Brokers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230519-master-circular-for-mutual-fund-65889f60",
+      "file_name": "SEBI_MC_20230519_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230601-master-circular-on-electronic-g-563413a4",
+      "file_name": "SEBI_MC_20230601_Master_Circular_on_Electronic_Gold_Receipts_EGR.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20240624-master-circular-for-electronic--fedf1d32 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230615-master-circular-for-investment--32fbdb29",
+      "file_name": "SEBI_MC_20230615_Master_Circular_for_Investment_Advisers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-investment--ab1d6f24 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230615-master-circular-for-research-an-fca77222",
+      "file_name": "SEBI_MC_20230615_Master_Circular_for_Research_Analysts.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-research-an-a5f6855f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230621-master-circular-for-issue-of-ca-7eea3a77",
+      "file_name": "SEBI_MC_20230621_Master_Circular_for_Issue_of_Capital_and_Disclosure_Requirements.pdf",
+      "reason": "status=SUPERSEDED by sebi-icdr-master-circular-1f6763cd (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230630-master-circular-for-listing-obl-6b96f2e7",
+      "file_name": "SEBI_MC_20230630_Master_Circular_for_listing_obligations_and_disclosure_requirements_fo.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-listing-obl-d0aed4fb (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230703-master-circular-for-credit-rati-701b4d05",
+      "file_name": "SEBI_MC_20230703_Master_Circular_for_Credit_Rating_Agencies.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230706-master-circular-for-debenture-t-880456e4",
+      "file_name": "SEBI_MC_20230706_Master_Circular_for_Debenture_Trustees.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250813-master-circular-for-debenture-t-825c002c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230706-master-circular-for-infrastruct-2cb62f7b",
+      "file_name": "SEBI_MC_20230706_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20230706-master-circular-for-real-estate-1e207c05",
+      "file_name": "SEBI_MC_20230706_Master_Circular_for_Real_Estate_Investment_Trusts_REITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20230707-master-circular-for-issue-and-l-8927a6ef",
+      "file_name": "SEBI_MC_20230707_Master_Circular_for_issue_and_listing_of_Non_convertible_Securities_Se.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20251015-master-circular-for-issue-and-l-57a07691 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230711-master-circular-for-compliance--8fe4d5e2",
+      "file_name": "SEBI_MC_20230711_Master_circular_for_compliance_with_the_provisions_of_the_Securities_a.pdf",
+      "reason": "status=SUPERSEDED by sebi-lodr-master-circular-fa3b4360 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230712-master-circular-for-esg-rating--4b993393",
+      "file_name": "SEBI_MC_20230712_Master_Circular_for_ESG_Rating_Providers_ERPs.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-esg-rating--09a6ba33 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20230811-online-resolution-of-disputes-i-6ebbc406",
+      "file_name": "SEBI_MC_20230811_Online_Resolution_of_Disputes_in_the_Indian_Securities_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20231228-master-circular-for-online-reso-40e68a22 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20231006-master-circular-for-depositorie-aa002c51",
+      "file_name": "SEBI_MC_20231006_Master_Circular_for_Depositories.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241203-master-circular-for-depositorie-bc113d4f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20231016-master-circular-for-stock-excha-81520351",
+      "file_name": "SEBI_MC_20231016_Master_Circular_for_Stock_Exchanges_and_Clearing_Corporations.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20241230-master-circular-for-stock-excha-251ede45 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240507-master-circular-for-registrars--accf5eb9",
+      "file_name": "SEBI_MC_20240507_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-registrars--941c0ead (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240515-master-circular-for-infrastruct-62b5f4f4",
+      "file_name": "SEBI_MC_20240515_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20240515-master-circular-for-infrastruct-efd965f0",
+      "file_name": "SEBI_MC_20240515_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs_Updated.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20240515-master-circular-for-real-estate-d381ac22",
+      "file_name": "SEBI_MC_20240515_Master_Circular_for_Real_Estate_Investment_Trusts_REITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20240515-master-circular-for-real-estate-c2c5e3fa",
+      "file_name": "SEBI_MC_20240515_Master_Circular_for_Real_Estate_Investment_Trusts_REITs_Updated.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20240516-master-circular-for-credit-rati-aa414130",
+      "file_name": "SEBI_MC_20240516_Master_Circular_for_Credit_Rating_Agencies_CRAs.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-credit-rati-4f4d3670 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240516-master-circular-for-debenture-t-11a9ea00",
+      "file_name": "SEBI_MC_20240516_Master_Circular_for_Debenture_Trustees_DTs.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250813-master-circular-for-debenture-t-825c002c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240516-master-circular-for-esg-rating--cbe5eb1a",
+      "file_name": "SEBI_MC_20240516_Master_Circular_for_ESG_Rating_Providers_ERPs.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-esg-rating--09a6ba33 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240521-master-circular-for-investment--8c48b1a1",
+      "file_name": "SEBI_MC_20240521_Master_Circular_for_Investment_Advisers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-investment--ab1d6f24 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240521-master-circular-for-research-an-905187ba",
+      "file_name": "SEBI_MC_20240521_Master_Circular_for_Research_Analysts.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-research-an-a5f6855f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240521-master-circular-for-listing-obl-8105944f",
+      "file_name": "SEBI_MC_20240521_Master_Circular_for_listing_obligations_and_disclosure_requirements_fo.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250711-master-circular-for-listing-obl-d0aed4fb (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240522-master-circular-for-stock-broke-f505e33e",
+      "file_name": "SEBI_MC_20240522_Master_Circular_for_Stock_Brokers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240522-master-circular-for-issue-and-l-00b03a35",
+      "file_name": "SEBI_MC_20240522_Master_Circular_for_issue_and_listing_of_Non_convertible_Securities_Se.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20251015-master-circular-for-issue-and-l-57a07691 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240607-master-circular-for-portfolio-m-cd9cc00a",
+      "file_name": "SEBI_MC_20240607_Master_Circular_for_Portfolio_Managers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250716-master-circular-for-portfolio-m-acb45418 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240627-master-circular-for-mutual-fund-c01735fc",
+      "file_name": "SEBI_MC_20240627_Master_Circular_for_Mutual_Funds.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260320-master-circular-for-mutual-fund-6402ffa7 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240709-master-circular-on-surveillance-07c58941",
+      "file_name": "SEBI_MC_20240709_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260515-master-circular-on-surveillance-8191b73c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240809-master-circular-for-stock-broke-a6a30dd4",
+      "file_name": "SEBI_MC_20240809_Master_Circular_for_Stock_Brokers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20250617-master-circular-for-stock-broke-e268b5a1 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20240923-master-circular-on-surveillance-38b59625",
+      "file_name": "SEBI_MC_20240923_Master_Circular_on_Surveillance_of_Securities_Market.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260515-master-circular-on-surveillance-8191b73c (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20241111-master-circular-for-issue-of-ca-dc1b8671",
+      "file_name": "SEBI_MC_20241111_Master_Circular_for_Issue_of_Capital_and_Disclosure_Requirements.pdf",
+      "reason": "status=SUPERSEDED by sebi-icdr-master-circular-1f6763cd (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20241111-master-circular-for-compliance--10f9ddcf",
+      "file_name": "SEBI_MC_20241111_Master_circular_for_compliance_with_the_provisions_of_the_Securities_a.pdf",
+      "reason": "status=SUPERSEDED by sebi-lodr-master-circular-fa3b4360 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20250623-master-circular-for-registrars--2d9f7b12",
+      "file_name": "SEBI_MC_20250623_Master_Circular_for_Registrars_to_an_Issue_and_Share_Transfer_Agents.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-registrars--941c0ead (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20250627-master-circular-for-investment--d6ccc707",
+      "file_name": "SEBI_MC_20250627_Master_Circular_for_Investment_Advisers.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-investment--ab1d6f24 (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20250627-master-circular-for-research-an-f5912ee8",
+      "file_name": "SEBI_MC_20250627_Master_Circular_for_Research_Analysts.pdf",
+      "reason": "status=SUPERSEDED by sebi-mc-20260206-master-circular-for-research-an-a5f6855f (basis=INFERRED_TITLE_DATE); not the text in force"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-infrastruct-536b4f57",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_Infrastructure_Investment_Trusts_InvITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
+    {
+      "document_id": "sebi-mc-20250711-master-circular-for-real-estate-dd087f99",
+      "file_name": "SEBI_MC_20250711_Master_Circular_for_Real_Estate_Investment_Trusts_REITs.pdf",
+      "reason": "scope=REIT_INVIT (different legal regime; out of V1)"
+    },
     {
       "document_id": "281-qip-invits-0-20260504153924-8caab4a5",
       "file_name": "281_QIP_InvITs_0_20260504153924.docx",
