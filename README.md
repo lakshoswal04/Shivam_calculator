@@ -39,6 +39,7 @@ db/seed/rules/ authored legal rules as versioned YAML
 db/tests/      schema guarantees and tenant-isolation tests
 pipeline/      document ingestion p00–p08 (built in an earlier pass)
 corpus/        original source documents, read-only, hash-verified
+               originals/ supplied by hand · fetched/ acquired from the regulator
 docs/PRD.md    the specification
 ```
 
@@ -68,6 +69,15 @@ PREF-L-004  Monitoring agency for an issue above one hundred crore rupees   BLOC
 **Exceptions are evaluated after conditions.** A rule that applies but is excepted is not
 the same as a rule that never applied. The reg. 162A(1) proviso, for instance, excepts a
 bank from the monitoring-agency requirement — and the engine says so, naming the exception.
+
+**A superseded edition is not the law.** SEBI republishes each master circular under an
+unchanged name, so the corpus holds eleven editions of the Depositories circular and ten of
+Mutual Funds. Only the current edition of each is extracted and citable; the rest are
+catalogued with the edition that replaced them and withheld from provision search, so a
+search cannot return wording withdrawn in 2012 beside the text in force. Supersession is
+inferred from title and date, which is weaker than a reviewer's word — so it is recorded as
+`INFERRED_TITLE_DATE` and never written into `consolidation_status`, and an approved rule
+resting on a replaced edition is reported by `legal.v_quality_checks`.
 
 ---
 
@@ -100,6 +110,21 @@ question by falling through to capital headroom.
 Rules live in `db/seed/rules/**.yaml` and load via `pipeline/p08_load_rules.py`, which
 resolves every citation against the provision tree and refuses to load a rule whose anchor
 is unresolvable or ambiguous. A rule change is a data operation, never a deployment.
+
+### SEBI master circulars
+
+`pipeline/sebi_scraper.py` takes the whole [master-circular listing][mc] — all six pages,
+131 PDFs across 48 circular families. The current edition of each family is extracted and
+citable; the 83 earlier editions are catalogued and marked `SUPERSEDED`, as are REIT/InvIT
+circulars, which are a different legal regime and out of V1.
+
+[mc]: https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=6&smid=0
+
+The PDFs themselves are not in git — 211 MB against a 65 MB repository. Each omitted PDF
+keeps its `.meta.json` sidecar, carrying the official SEBI URL and the SHA-256 that
+`data/inventory/inventory.json` also records, so re-running the scraper restores the bytes
+and verifies them. The ICDR and LODR master circulars the live rules cite are in
+`corpus/originals/` and are committed like every other original.
 
 ### Source gaps
 
@@ -177,14 +202,16 @@ inert. Migration `008` creates that role; do not point `DATABASE_URL` at a super
 ./dev.sh test
 ```
 
-- **pipeline** — 53 tests: hashing, cleaning, citation parsing, amendment markers,
-  list aggregates over issue history, SQL↔Python AST parity
-- **backend** — 48 tests: calculation truth tables, dual-capacity separation,
+- **pipeline** — 65 tests: hashing, cleaning, citation parsing, amendment markers,
+  list aggregates over issue history, SQL↔Python AST parity, and supersession —
+  that editions of one circular group together, that the newest is the one in force,
+  and that every deferred document states why it was deferred
+- **backend** — 57 tests: calculation truth tables, dual-capacity separation,
   `REVIEW_REQUIRED` on missing facts, statutory exception override, reproducibility,
   RBAC matrix, tenant isolation, source-gate honesty, and the company-entry path —
   CIN format, listing coherence, the capital/cap-table role bar, issue-history
   idempotency, and that a route with no rules withholds its legal conclusion
-- **schema guarantees** — 12 negative tests that must fail
+- **schema guarantees** — 18 negative tests that must fail
 - **tenant isolation** — 7 checks, run as the application role
 - **data quality** — `legal.v_quality_checks` must return zero failing rows
 - **manifest coverage** — every fact any rule reads must be collectable by its route's

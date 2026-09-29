@@ -179,7 +179,10 @@ export const api = {
   provision: (uid: string) =>
     request<Record<string, unknown>>(`/legal/provisions/${encodeURIComponent(uid)}`),
   sourceGaps: () => request<{ gaps: SourceGap[] }>("/legal/source-gaps"),
-  sources: () => request<{ count: number; sources: LegalSource[] }>("/legal/sources"),
+  sources: (includeSuperseded = false) =>
+    request<{ count: number; superseded_included: boolean; superseded_count: number;
+              sources: LegalSource[] }>(
+      `/legal/sources${includeSuperseded ? "?include_superseded=true" : ""}`),
   searchProvisions: (q: string) =>
     request<{ query: string; results: ProvisionHit[] }>(
       `/legal/provisions?q=${encodeURIComponent(q)}`),
@@ -278,6 +281,15 @@ export interface LegalSource {
   official_url: string | null; scope: string | null;
   consolidation_status: string; as_amended_upto: string | null;
   display_name: string; provision_count: number;
+  /** ACTIVE while this is the edition in force; SUPERSEDED once replaced. */
+  status: string;
+  /** Shared by every edition of one reissued circular; null if never reissued. */
+  document_family: string | null;
+  publication_date: string | null;
+  /** DECLARED by a reviewer, or INFERRED_TITLE_DATE by the pipeline. */
+  supersession_basis: string | null;
+  superseded_by_hash_short: string | null;
+  superseded_by_date: string | null;
 }
 export interface ProvisionHit {
   citation: string; citation_uid: string; page_from: number | null;

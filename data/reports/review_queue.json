@@ -1,12 +1,6 @@
 {
-  "generated_at": "2026-09-21T10:52:15+00:00",
+  "generated_at": "2026-09-29T08:55:07+00:00",
   "items": [
-    {
-      "item": "SEBI_CIRCULARS_AND_MASTER_CIRCULARS",
-      "severity": "GAP",
-      "why": "Absent; ICDR/LODR operational clarifications rest on these.",
-      "action_required": "Supply the document, or leave dependent rules unauthored."
-    },
     {
       "item": "NSE_CIRCULAR_NSE_CML_2023_51",
       "severity": "GAP",

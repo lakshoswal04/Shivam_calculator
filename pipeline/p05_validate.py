@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lib.supersession import is_extractable  # noqa: E402
 from lib.hashing import sha256_file  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -67,11 +68,21 @@ def main():
           f"{len(hashes)-len(set(hashes))} duplicate(s)", hard=False)
 
     # ---- extraction ------------------------------------------------------
-    company = [d for d in docs if d["scope"] == "COMPANY"]
+    # Scope alone no longer decides what gets extracted: a superseded edition of
+    # a reissued circular is COMPANY-scope but is deliberately left unextracted,
+    # so requiring text for it would fail the run for doing the right thing.
+    company = [d for d in docs if is_extractable(d)]
     no_extract = [d["file_name"] for d in company
                   if not (EXTRACTED / d["document_id"] / "pages.jsonl").exists()]
-    check("every COMPANY-scope document was extracted", not no_extract,
+    check("every in-force COMPANY-scope document was extracted", not no_extract,
           ", ".join(no_extract[:5]))
+
+    # The converse is worth asserting too: a deferred document must NOT have
+    # been extracted, or the gate is not actually holding.
+    leaked = [d["file_name"] for d in docs
+              if not is_extractable(d)
+              and (EXTRACTED / d["document_id"] / "pages.jsonl").exists()]
+    check("no deferred document was extracted", not leaked, ", ".join(leaked[:5]))
 
     page_mismatch, empty_pages, flagged = [], [], []
     for d in company:

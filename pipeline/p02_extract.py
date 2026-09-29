@@ -6,7 +6,9 @@ Writes, per document:
     data/extracted/<document_id>/blocks.jsonl  positioned blocks (bbox, type)
     data/extracted/<document_id>/tables.jsonl  table grids
 
-REIT/InvIT documents are inventoried but deferred (not extracted) for V1.
+Documents are inventoried but deferred (not extracted) where they are out of
+scope for V1 (REIT/InvIT units) or are a superseded edition of a reissued
+circular. Each deferral is recorded with its reason.
 Originals are opened read-only and never written to.
 """
 import json
@@ -17,6 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.extractors import extract  # noqa: E402
+from lib.supersession import is_extractable, deferral_reason  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "corpus"
@@ -36,10 +39,12 @@ def main():
     docs = inv["documents"]
     OUTDIR.mkdir(parents=True, exist_ok=True)
 
-    todo = [d for d in docs if d["scope"] == "COMPANY"]
-    deferred = [d for d in docs if d["scope"] != "COMPANY"]
-    print(f"extracting {len(todo)} COMPANY-scope documents "
-          f"({len(deferred)} REIT/InvIT deferred)\n")
+    todo = [d for d in docs if is_extractable(d)]
+    deferred = [d for d in docs if not is_extractable(d)]
+    n_scope = sum(1 for d in deferred if d["scope"] != "COMPANY")
+    n_super = len(deferred) - n_scope
+    print(f"extracting {len(todo)} in-force COMPANY-scope documents "
+          f"({n_scope} out-of-scope, {n_super} superseded deferred)\n")
 
     summary, failures = [], []
     for d in todo:
@@ -92,7 +97,7 @@ def main():
         "documents_with_flagged_pages": [s["document_id"] for s in summary if s["pages_flagged_low_text"]],
         "documents": summary, "failures": failures,
         "deferred_documents": [{"document_id": d["document_id"], "file_name": d["file_name"],
-                                "reason": "scope=REIT_INVIT (different legal regime; out of V1)"}
+                                "reason": deferral_reason(d)}
                                for d in deferred],
     }
     REPORTS.mkdir(parents=True, exist_ok=True)

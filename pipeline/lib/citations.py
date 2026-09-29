@@ -47,7 +47,12 @@ RE_MARGINAL_SUBUNIT = re.compile(
 RE_CHAPTER = re.compile(r"^\s*CHAPTER[\s–-]+(?P<num>" + ROMAN + r")\b\.?\s*(?P<head>.*)$")
 RE_PART = re.compile(r"^\s*PART[\s–-]+(?P<num>" + ROMAN + r")\b\.?\s*(?P<head>.*)$")
 RE_SCHEDULE = re.compile(r"^\s*(?:THE\s+)?SCHEDULE[\s–-]*(?P<num>" + ROMAN + r"|\d+)?\b\.?\s*(?P<head>.*)$")
-RE_ANNEXURE = re.compile(r"^\s*ANNEXURE[\s–-]*(?P<num>" + ROMAN + r"|\d+|[A-Z])?\b\.?\s*(?P<head>.*)$")
+# The number must be separated from the word, or the plural "ANNEXURES" parses
+# as Annexure "S": [A-Z] consumes the final S and \b is satisfied by the end of
+# the word. That phantom carries no heading and no body, and every paragraph
+# that follows a contents page headed "ANNEXURES" is reparented under it.
+RE_ANNEXURE = re.compile(
+    r"^\s*ANNEXURE(?:[\s–-]+(?P<num>" + ROMAN + r"|\d+|[A-Z]))?\b\.?\s*(?P<head>.*)$")
 # These carry the same amendment markers as RE_NUMBERED_UNIT. Without _MARKER a
 # substituted sub-section, "1[(3) The Board shall ...", matched nothing and fell
 # through to body text, so the sub-section could not be cited at all. An amended

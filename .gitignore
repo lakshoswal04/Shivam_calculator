@@ -21,6 +21,17 @@ __pycache__/
 data/extracted/
 data/structured/*/
 
+# ---- bulk SEBI master circulars --------------------------------------------
+# 131 PDFs, 211 MB, against a 65 MB repository. The bytes are excluded; the
+# provenance is not. Each .meta.json sidecar beside the omitted PDF carries its
+# official SEBI URL and its SHA-256, data/inventory/inventory.json records every
+# hash, and `python pipeline/sebi_scraper.py` re-fetches and verifies against
+# them. Nothing that anchors a citation depends on the bytes being in git.
+#
+# corpus/originals/ is NOT covered by this: the documents the live rules cite
+# stay in the repository, including the ICDR and LODR master circulars.
+corpus/fetched/sebi_master_circulars/*.pdf
+
 # ---- tooling noise ---------------------------------------------------------
 .DS_Store
 *.log

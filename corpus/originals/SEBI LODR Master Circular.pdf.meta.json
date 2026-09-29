@@ -1,5 +1,5 @@
 {
-  "url": null,
+  "url": "https://www.sebi.gov.in/sebi_data/attachdocs/jan-2026/1769776024792.pdf",
   "save_as": "SEBI LODR Master Circular.pdf",
   "authority": "SEBI",
   "document_type": "MASTER_CIRCULAR",
@@ -11,5 +11,10 @@
   "acquisition_method": "SUPPLIED_BY_HAND",
   "outcome": "ACQUIRED",
   "sha256": "fa3b4360d2a86be611ecc44350baf0cbcb5eec97286dd1a6e553f94efdf1b99b",
-  "local_file_path": "originals/SEBI LODR Master Circular.pdf"
+  "local_file_path": "originals/SEBI LODR Master Circular.pdf",
+  "detail_url": "https://www.sebi.gov.in/legal/master-circulars/jan-2026/master-circular-for-compliance-with-the-provisions-of-the-securities-and-exchange-board-of-india-listing-obligations-and-disclosure-requirements-regulations-2015-by-listed-entities_99432.html",
+  "source": "sebi.gov.in/legal/master-circulars",
+  "official_url_confirmed_by": "pipeline/sebi_scraper.py on 2026-09-28: the PDF downloaded from this URL is byte-identical to the hand-supplied copy (sha256 fa3b4360d2a8…).",
+  "title": "Master circular for compliance with the provisions of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015 by listed entities",
+  "date": "Jan 30, 2026"
 }

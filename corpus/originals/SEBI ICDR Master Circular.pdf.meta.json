@@ -1,5 +1,5 @@
 {
-  "url": null,
+  "url": "https://www.sebi.gov.in/sebi_data/attachdocs/feb-2026/1770636136785.pdf",
   "save_as": "SEBI ICDR Master Circular.pdf",
   "authority": "SEBI",
   "document_type": "MASTER_CIRCULAR",
@@ -11,5 +11,10 @@
   "acquisition_method": "SUPPLIED_BY_HAND",
   "outcome": "ACQUIRED",
   "sha256": "1f6763cdb3a30061802e117d5615ec16a2e97d25dfe0c09a3144f449bc1d7ce0",
-  "local_file_path": "originals/SEBI ICDR Master Circular.pdf"
+  "local_file_path": "originals/SEBI ICDR Master Circular.pdf",
+  "detail_url": "https://www.sebi.gov.in/legal/master-circulars/feb-2026/master-circular-for-issue-of-capital-and-disclosure-requirements_99611.html",
+  "source": "sebi.gov.in/legal/master-circulars",
+  "official_url_confirmed_by": "pipeline/sebi_scraper.py on 2026-09-28: the PDF downloaded from this URL is byte-identical to the hand-supplied copy (sha256 1f6763cdb3a3…).",
+  "title": "Master Circular for Issue of Capital and Disclosure Requirements",
+  "date": "Feb 09, 2026"
 }

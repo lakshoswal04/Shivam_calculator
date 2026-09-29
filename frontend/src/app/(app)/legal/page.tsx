@@ -42,10 +42,113 @@ function CurrencyBadge({ source }: { source: LegalSource }) {
   );
 }
 
+/** Whether this edition is the law in force, and on whose authority we say so. */
+function SupersessionBadge({ source }: { source: LegalSource }) {
+  if (source.status !== "SUPERSEDED") return null;
+  const replacedBy = source.superseded_by_date
+    ? `the ${source.superseded_by_date} edition`
+    : "a later edition";
+  const basis = source.supersession_basis === "DECLARED"
+    ? "Confirmed by a reviewer."
+    : "Inferred from the title and date by the ingestion pipeline, not confirmed by a reviewer.";
+  return (
+    <span title={`Replaced by ${replacedBy}. ${basis}`}
+          className="rounded bg-warn/10 px-1.5 py-0.5 font-mono text-[10px] text-warn">
+      superseded
+    </span>
+  );
+}
+
+/** One circular and every earlier edition of it the corpus holds. */
+interface Family {
+  key: string;
+  current: LegalSource;
+  earlier: LegalSource[];
+}
+
+/** Group editions of a reissued circular under the one in force.
+ *
+ * A document with no family, or the only edition of its family, is a family of
+ * one and renders exactly as it did before. */
+function toFamilies(list: LegalSource[]): Family[] {
+  const grouped = new Map<string, LegalSource[]>();
+  for (const s of list) {
+    const key = s.document_family ?? `__solo__${s.file_hash_short}`;
+    grouped.set(key, [...(grouped.get(key) ?? []), s]);
+  }
+  return [...grouped.entries()].map(([key, editions]) => {
+    const sorted = [...editions].sort(
+      (a, b) => (b.publication_date ?? "").localeCompare(a.publication_date ?? ""));
+    // The in-force edition leads even where the API returned it second.
+    const idx = Math.max(0, sorted.findIndex((s) => s.status !== "SUPERSEDED"));
+    return { key, current: sorted[idx], earlier: sorted.filter((_, i) => i !== idx) };
+  });
+}
+
+function FamilyRows({ family }: { family: Family }) {
+  const [open, setOpen] = useState(false);
+  const { current, earlier } = family;
+  return (
+    <>
+      <SourceRow source={current} />
+      {earlier.length > 0 && (
+        <tr className="bg-surface-2/40">
+          <td colSpan={6} className="px-4 py-1.5">
+            <button type="button" onClick={() => setOpen((v) => !v)}
+                    aria-expanded={open}
+                    className="text-[11px] text-muted hover:text-accent-hi">
+              {open ? "▾" : "▸"} {earlier.length} earlier edition
+              {earlier.length > 1 ? "s" : ""} of this circular
+            </button>
+          </td>
+        </tr>
+      )}
+      {open && earlier.map((s) => <SourceRow key={s.file_hash_short} source={s} nested />)}
+    </>
+  );
+}
+
+function SourceRow({ source: s, nested = false }: { source: LegalSource; nested?: boolean }) {
+  return (
+    <tr className={nested ? "bg-surface-2/20" : "hover:bg-surface-2"}>
+      <td className={`py-2.5 pr-4 ${nested ? "pl-10" : "px-4"}`}>
+        <span className="text-ink-2">{s.display_name}</span>
+        <span className="ml-2 font-mono text-[10px] text-faint">{s.source_priority}</span>
+        {s.publication_date && (
+          <span className="ml-2 font-mono text-[10px] text-faint">{s.publication_date}</span>
+        )}
+        <div className="font-mono text-[10px] text-faint">
+          {s.official_url
+            ? <a href={s.official_url} target="_blank" rel="noopener noreferrer"
+                 className="hover:text-accent-hi hover:underline">{s.file_name}</a>
+            : s.file_name}
+        </div>
+      </td>
+      <td className="px-4 py-2.5 font-mono text-[11px] text-muted">
+        {s.document_type.toLowerCase().replace(/_/g, " ")}
+      </td>
+      <td className="px-4 py-2.5">
+        <div className="flex flex-wrap items-center gap-1">
+          <SupersessionBadge source={s} />
+          <CurrencyBadge source={s} />
+        </div>
+      </td>
+      <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
+        {s.page_count ?? "—"}
+      </td>
+      <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
+        {s.provision_count > 0 ? s.provision_count.toLocaleString() : "—"}
+      </td>
+      <td className="px-4 py-2.5 font-mono text-[10px] text-faint">{s.file_hash_short}…</td>
+    </tr>
+  );
+}
+
 export default function LegalLibraryPage() {
   const [sources, setSources] = useState<LegalSource[] | null>(null);
   const [gaps, setGaps] = useState<SourceGap[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showSuperseded, setShowSuperseded] = useState(false);
 
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<ProvisionHit[] | null>(null);
@@ -53,7 +156,13 @@ export default function LegalLibraryPage() {
   const [searchError, setSearchError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.sources().then((r) => setSources(r.sources)).catch((e) => setError(e.message));
+    setSources(null);
+    api.sources(showSuperseded)
+      .then((r) => setSources(r.sources))
+      .catch((e) => setError(e.message));
+  }, [showSuperseded]);
+
+  useEffect(() => {
     api.sourceGaps()
       .then((r) => setGaps(r.gaps.filter((g) => !g.resolved_at)))
       .catch(() => { /* the library is still usable without the gap register */ });
@@ -69,11 +178,19 @@ export default function LegalLibraryPage() {
       list.push(s);
       groups.set(s.authority, list);
     }
-    for (const list of groups.values()) {
-      list.sort((a, b) => b.provision_count - a.provision_count);
+    const out: Array<[string, Family[]]> = [];
+    for (const [authority, list] of groups) {
+      const families = toFamilies(list);
+      // A family ranks by the edition in force, so a circular does not fall to
+      // the bottom of the list merely because its older editions yielded less.
+      families.sort((a, b) => b.current.provision_count - a.current.provision_count);
+      out.push([authority, families]);
     }
-    return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+    return out.sort((a, b) => a[0].localeCompare(b[0]));
   }, [sources]);
+
+  const supersededShown = (sources ?? []).filter((s) => s.status === "SUPERSEDED").length;
+  const inForceShown = (sources ?? []).length - supersededShown;
 
   async function search(e: React.FormEvent) {
     e.preventDefault();
@@ -157,9 +274,19 @@ export default function LegalLibraryPage() {
         : sources.length === 0 ? <Empty title="The corpus is empty" />
         : (
           <>
-            <p className="text-sm text-muted">
-              {sources.length} documents · {totalProvisions.toLocaleString()} citable provisions
-            </p>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <p className="text-sm text-muted">
+                {inForceShown} in force
+                {supersededShown > 0 && <> · {supersededShown} superseded</>}
+                {" "}· {totalProvisions.toLocaleString()} citable provisions
+              </p>
+              <label className="flex items-center gap-2 text-[13px] text-muted">
+                <input type="checkbox" checked={showSuperseded}
+                       onChange={(e) => setShowSuperseded(e.target.checked)}
+                       className="accent-accent" />
+                Show superseded editions
+              </label>
+            </div>
             {byAuthority.map(([authority, list]) => (
               <Card key={authority} className="overflow-x-auto">
                 <div className="border-b border-border px-4 py-2.5">
@@ -177,26 +304,7 @@ export default function LegalLibraryPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border">
-                    {list.map((s) => (
-                      <tr key={s.file_hash_short} className="hover:bg-surface-2">
-                        <td className="px-4 py-2.5">
-                          <span className="text-ink-2">{s.display_name}</span>
-                          <span className="ml-2 font-mono text-[10px] text-faint">{s.source_priority}</span>
-                          <div className="font-mono text-[10px] text-faint">{s.file_name}</div>
-                        </td>
-                        <td className="px-4 py-2.5 font-mono text-[11px] text-muted">
-                          {s.document_type.toLowerCase().replace(/_/g, " ")}
-                        </td>
-                        <td className="px-4 py-2.5"><CurrencyBadge source={s} /></td>
-                        <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
-                          {s.page_count ?? "—"}
-                        </td>
-                        <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
-                          {s.provision_count > 0 ? s.provision_count.toLocaleString() : "—"}
-                        </td>
-                        <td className="px-4 py-2.5 font-mono text-[10px] text-faint">{s.file_hash_short}…</td>
-                      </tr>
-                    ))}
+                    {list.map((f) => <FamilyRows key={f.key} family={f} />)}
                   </tbody>
                 </table>
               </Card>

@@ -106,6 +106,68 @@ SELECT pg_temp.must_fail('duplicate file_hash rejected (§2)', $$
      file_size_bytes,file_hash,source_priority)
    VALUES ('dup','SEBI','REGULATION','dup','d.pdf','d.pdf','pdf',1,repeat('a',64),'P0') $$);
 
+-- ---------------------------------------------------------------- supersession
+\echo ''
+\echo '--- supersession guarantees ---'
+
+SELECT pg_temp.must_fail('unknown status value rejected', $$
+   INSERT INTO legal.legal_sources
+    (document_key,authority,document_type,title,file_name,local_file_path,file_type,
+     file_size_bytes,file_hash,source_priority,status)
+   VALUES ('t-badstatus','SEBI','MASTER_CIRCULAR','x','x.pdf','x.pdf','pdf',1,
+           repeat('d',64),'P1','RETIRED') $$);
+
+SELECT pg_temp.must_fail('SUPERSEDED without a basis rejected', $$
+   INSERT INTO legal.legal_sources
+    (document_key,authority,document_type,title,file_name,local_file_path,file_type,
+     file_size_bytes,file_hash,source_priority,status,superseded_by)
+   SELECT 't-nobasis','SEBI','MASTER_CIRCULAR','x','x.pdf','x.pdf','pdf',1,
+          repeat('e',64),'P1','SUPERSEDED',s.source_id
+   FROM legal.legal_sources s WHERE s.document_key='t-p0' $$);
+
+-- Deferred: the violation surfaces at COMMIT, so the check needs its own
+-- subtransaction to be observed. Without the SUPERSEDED row naming a successor
+-- the trigger must fire.
+SELECT pg_temp.must_fail('SUPERSEDED without a successor rejected at commit', $$
+   DO $d$
+   BEGIN
+     INSERT INTO legal.legal_sources
+      (document_key,authority,document_type,title,file_name,local_file_path,file_type,
+       file_size_bytes,file_hash,source_priority,status,supersession_basis)
+     VALUES ('t-nosucc','SEBI','MASTER_CIRCULAR','x','x.pdf','x.pdf','pdf',1,
+             repeat('f',64),'P1','SUPERSEDED','INFERRED_TITLE_DATE');
+     SET CONSTRAINTS legal.superseded_needs_successor IMMEDIATE;
+   END $d$; $$);
+
+SELECT pg_temp.must_fail('a document cannot supersede itself', $$
+   UPDATE legal.legal_sources SET superseded_by = source_id
+    WHERE document_key = 't-p0' $$);
+
+SELECT pg_temp.must_fail('unknown supersession basis rejected', $$
+   UPDATE legal.legal_sources SET supersession_basis = 'BECAUSE_I_SAID_SO'
+    WHERE document_key = 't-p0' $$);
+
+-- An approved rule resting on a replaced edition must be reported, not ignored:
+-- nobody has checked it against the text now in force.
+DO $$
+DECLARE n bigint;
+BEGIN
+  UPDATE legal.legal_sources SET status='SUPERSEDED',
+         supersession_basis='DECLARED',
+         superseded_by=(SELECT source_id FROM legal.legal_sources WHERE document_key='t-ref')
+   WHERE document_key='t-p0';
+  UPDATE legal.legal_rule_versions SET legal_review_status='APPROVED',
+         reviewer_id='test-reviewer', reviewed_at=now(), human_review_required=false
+   WHERE version_no=1;
+  SELECT failing_rows INTO n FROM legal.v_quality_checks
+   WHERE check_name='approved_rule_on_superseded_source';
+  IF n > 0 THEN
+    RAISE NOTICE 'ok      approved rule on superseded source is reported (% row(s))', n;
+  ELSE
+    RAISE WARNING 'BROKEN  approved rule on a superseded source went unreported';
+  END IF;
+END $$;
+
 -- Positive: a valid AST must be accepted.
 \echo ''
 \echo '--- positive checks ---'

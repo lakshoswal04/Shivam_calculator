@@ -9,12 +9,14 @@ This is the anchor every rule authored in Pass 2 must cite. Nothing here
 interprets the law; it only locates it.
 """
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.citations import parse_provisions, build_citation, extract_references  # noqa: E402
+from lib.supersession import is_extractable  # noqa: E402
 from lib.hashing import sha256_text  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -49,6 +51,33 @@ INSTRUMENT_LABELS = {
 }
 
 
+def instrument_label(doc):
+    """The name a citation to this document will carry.
+
+    A curated entry always wins - those were chosen by hand and existing rules
+    are written against them. Failing that, a master circular is named by the
+    title SEBI's own listing printed for it, which is already the form the
+    comment above asks for: no date, because SEBI reissues under an unchanged
+    name and a dated label would churn every citation on republication.
+
+    The authority is prefixed only where the title does not already carry it,
+    so a citation reads "SEBI Master Circular for Merchant Bankers, para 3"
+    rather than leaving the reader to infer who issued it.
+    """
+    curated = INSTRUMENT_LABELS.get(doc["file_name"])
+    if curated:
+        return curated
+
+    title = " ".join((doc.get("title") or "").split()).rstrip(" .")
+    if doc.get("document_type") == "MASTER_CIRCULAR" and title:
+        authority = doc.get("authority", "")
+        if authority not in ("", "UNKNOWN") and not re.search(
+                r"\bSEBI\b|Securities and Exchange Board", title, re.I):
+            title = f"{authority} {title}"
+        return title[:300]
+    return (title or doc["file_name"])[:80]
+
+
 def structure_document(doc):
     pages_file = EXTRACTED / doc["document_id"] / "pages.jsonl"
     if not pages_file.exists():
@@ -56,7 +85,7 @@ def structure_document(doc):
     pages = [json.loads(l) for l in pages_file.open()]
     kind = doc["instrument_kind"] or "UNKNOWN"
     provs = parse_provisions(pages, kind)
-    label = INSTRUMENT_LABELS.get(doc["file_name"], doc["title"][:80])
+    label = instrument_label(doc)
 
     by_seq = {p.seq: p for p in provs}
     rows = []
@@ -106,7 +135,10 @@ def main():
     summary, total = [], 0
 
     for doc in inv["documents"]:
-        if doc["scope"] != "COMPANY":
+        # Same gate as p02: a superseded edition has no extracted text to
+        # structure, and giving it citable provisions would put withdrawn
+        # wording into provision search beside the text in force.
+        if not is_extractable(doc):
             continue
         rows = structure_document(doc)
         if rows is None:

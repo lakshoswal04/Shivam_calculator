@@ -76,13 +76,20 @@ def source_gaps(p: Principal = Depends(current_principal)):
 
 
 @router.get("/sources")
-def sources(p: Principal = Depends(current_principal)):
+def sources(include_superseded: bool = False,
+            p: Principal = Depends(current_principal)):
     """The corpus, as the Legal Library page lists it.
 
     `title` holds whatever the extractor found on page one, which for several
     documents is OCR noise like "Page 1 of 45". The curated instrument label is
     the name to show; it falls back to the title only where no instrument was
     identified, and the raw title is still returned so the two can be compared.
+
+    Superseded editions are withheld by default. SEBI reissues a master
+    circular under an unchanged name, so the corpus holds eleven editions of
+    some of them; listing every edition beside the one in force buries the live
+    corpus. They remain one query parameter away, never deleted, because what
+    an earlier edition said is a fact worth being able to look up.
     """
     with tx() as conn:
         rows = fetch_all(conn, """
@@ -90,9 +97,14 @@ def sources(p: Principal = Depends(current_principal)):
                    left(s.file_hash, 12) AS file_hash_short, s.page_count,
                    s.official_url, s.scope,
                    s.consolidation_status, s.as_amended_upto,
+                   s.status, s.document_family, s.publication_date,
+                   s.supersession_basis,
+                   left(succ.file_hash, 12) AS superseded_by_hash_short,
+                   succ.publication_date AS superseded_by_date,
                    coalesce(i.label, nullif(btrim(s.title), ''), s.file_name) AS display_name,
                    coalesce(pc.n, 0) AS provision_count
             FROM legal.legal_sources s
+            LEFT JOIN legal.legal_sources succ ON succ.source_id = s.superseded_by
             LEFT JOIN LATERAL (
                 SELECT p.instrument_id, count(*) AS n
                 FROM legal.legal_documents d
@@ -102,5 +114,10 @@ def sources(p: Principal = Depends(current_principal)):
             ) pc ON true
             LEFT JOIN legal.legal_instruments i ON i.instrument_id = pc.instrument_id
             WHERE s.document_type <> 'CONTAINER'
-            ORDER BY s.source_priority, s.authority, display_name""")
-    return {"count": len(rows), "sources": rows}
+              AND (%s OR s.status <> 'SUPERSEDED')
+            ORDER BY s.source_priority, s.authority, display_name,
+                     s.publication_date DESC NULLS LAST""", (include_superseded,))
+    return {"count": len(rows),
+            "superseded_included": include_superseded,
+            "superseded_count": sum(1 for r in rows if r["status"] == "SUPERSEDED"),
+            "sources": rows}
