@@ -34,7 +34,7 @@ export function CompanyStep({ company, onSelect, onCreated }: {
         </Banner>
       )}
       {company && (
-        <div className="rounded-md border border-accent bg-accent-dim/20 px-4 py-3">
+        <div className="rounded-xl border border-accent bg-accent-dim/20 px-4 py-3">
           <div className="text-sm font-medium text-ink">
             {company.name}<CompanyBadges company={company} />
           </div>

@@ -68,7 +68,7 @@ export function CompanySearch({ selectedId, onSelect, onAddNew }: {
       {error && <p className="text-sm text-block">{error}</p>}
 
       {rows.length === 0 && !busy ? (
-        <div className="rounded-md border border-dashed border-border px-4 py-6 text-center">
+        <div className="rounded-xl border border-dashed border-border px-4 py-6 text-center">
           <p className="text-sm text-muted">
             {query ? `Nothing matches "${query}".` : "No companies on file yet."}
           </p>

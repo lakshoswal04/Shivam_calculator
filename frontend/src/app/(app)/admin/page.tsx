@@ -78,7 +78,7 @@ export default function AdminPage() {
                     {it.rule_code}
                   </span>
                   <span className="text-sm font-medium text-ink">{it.title}</span>
-                  <span className="ml-auto rounded border border-border-lit bg-surface-2
+                  <span className="ml-auto rounded-full border border-border-lit bg-surface-2
                                    px-2 py-0.5 font-mono text-[10px] text-muted">
                     {it.legal_review_status}
                   </span>

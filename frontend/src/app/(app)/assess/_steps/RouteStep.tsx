@@ -51,7 +51,7 @@ export function RouteStep({ routes, issueType, onSelect, guidance, onAskGuidance
                      onSelect={() => onSelect(r.issue_type)} />
         ))}
         <button type="button" onClick={onAskGuidance}
-                className="rounded-md border border-dashed border-border px-4 py-3 text-left
+                className="rounded-xl border border-dashed border-border px-4 py-3 text-left
                            hover:border-accent/50">
           <div className="text-sm font-medium text-ink-2">Not sure</div>
           <div className="mt-1 text-[11px] text-faint">Explain which routes may apply</div>
@@ -83,7 +83,7 @@ export function RouteStep({ routes, issueType, onSelect, guidance, onAskGuidance
       )}
 
       {guidance && (
-        <div className="space-y-2 rounded-md border border-border bg-ground p-4">
+        <div className="space-y-2 rounded-xl border border-border bg-ground p-4">
           <p className="text-sm text-ink-2">
             These routes may apply. This is guidance, not a decision.
           </p>

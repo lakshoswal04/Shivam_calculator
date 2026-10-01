@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { inr, rupees } from "@/lib/api";
-import { Banner, Button, Field, Input, SectionTitle } from "@/components/ui";
+import {
+  Badge, Banner, Button, Card, Donut, Field, HeroButton, HeroCard,
+  Input, MiniBars, SectionTitle, Stat,
+} from "@/components/ui";
 
 export default function CalculatorPage() {
   // State inputs
@@ -147,301 +149,296 @@ export default function CalculatorPage() {
     setLastIssuedEdit("capital");
   }
 
+  // Post-issue authorised capital splits three ways. Shown as proportions of
+  // the authorised total, which is what "capacity" is measured against.
+  const stack = [
+    { label: "Already issued", value: issuedShares, color: "var(--color-review)" },
+    { label: "Proposed", value: Math.min(proposedShares, Math.max(0, authShares - issuedShares)),
+      color: "var(--color-accent)" },
+    { label: "Unused headroom", value: Math.max(0, remainingAuthorisedShares),
+      color: "var(--color-surface-2)" },
+  ];
+
   return (
-    <div className="mx-auto max-w-5xl space-y-8">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-ink-1">
-            Authorised Capital & Share Issue Capacity Calculator
+          <h1 className="text-[32px] font-semibold leading-tight tracking-tight sm:text-[40px]">
+            Capital calculator
           </h1>
-          <p className="mt-1 text-sm text-muted">
-            Determine maximum additional share capacity, nominal capital, securities premium, and post-issue capital position.
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+            Maximum additional share capacity, nominal capital, securities premium and the
+            post-issue capital position. Arithmetic only — legal issue capacity is a separate
+            question, answered by an assessment.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Button variant="secondary" onClick={loadStandardExample} className="text-xs">
-            PRD Standard Example (10L @ ₹125)
+            Standard example
           </Button>
           <Button variant="secondary" onClick={loadExceedsExample} className="text-xs">
-            Exceeds Capacity Example (4L shares)
+            Exceeds-capacity example
           </Button>
         </div>
       </div>
 
-      {/* Input Section */}
-      <div className="rounded-xl border border-border bg-ground p-6 shadow-sm">
-        <SectionTitle hint="All calculations derive dynamically">Company Capital & Issue Inputs</SectionTitle>
+      {/* Headline figure, with the stat tiles beside it as in the reference. */}
+      <div className="grid gap-4 lg:grid-cols-[1.35fr_1fr]">
+        <HeroCard
+          tone={isExceeded ? "alert" : "default"}
+          label={isExceeded ? "Capacity exceeded" : "Available additional shares"}
+          value={isExceeded ? `−${inr(excessShares)}` : inr(availableShares)}
+          unit="shares"
+          sub={isExceeded
+            ? `The proposed ${inr(proposedShares)} shares exceed available capacity of ${inr(availableShares)} by ${inr(excessShares)} — a nominal shortfall of ${rupees(excessNominalCapital)}.`
+            : `${rupees(availableNominalCapital)} of nominal capital remains unused within the authorised capital, at a face value of ₹${faceValue}.`}
+          actions={
+            <>
+              <HeroButton href="/assess">Continue to legal assessment</HeroButton>
+              {issuePrice > 0 && (
+                <HeroButton variant="light">
+                  Raises {rupees(potentialConsideration)} at ₹{issuePrice}
+                </HeroButton>
+              )}
+            </>
+          }
+        />
 
-        {/* Face Value Selector */}
-        <div className="mt-4 space-y-2">
-          <label className="text-xs font-semibold uppercase tracking-wider text-muted">
-            Face Value per Share (₹)
-          </label>
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="w-36">
-              <Input
-                type="number"
-                step="0.01"
-                min="0.01"
-                value={faceValueStr}
-                onChange={(v) => applyFaceValue(Number(v))}
-              />
-            </div>
-            <div className="flex items-center gap-1.5">
-              {[1, 2, 5, 10, 100].map((preset) => (
-                <button
-                  key={preset}
-                  type="button"
-                  onClick={() => applyFaceValue(preset)}
-                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                    faceValue === preset
-                      ? "bg-accent text-white"
-                      : "border border-border bg-surface-1 text-ink-2 hover:bg-surface-2"
-                  }`}
-                >
-                  ₹{preset}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Capital Inputs Grid */}
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {/* Authorised Capital */}
-          <div className="space-y-3 rounded-lg border border-border/80 bg-surface-1/40 p-4">
-            <div className="text-xs font-semibold uppercase tracking-wider text-accent">
-              1. Authorised Capital
-            </div>
-            <Field label="Authorised Share Capital (₹)">
-              <Input
-                type="number"
-                step="1"
-                value={authCapitalStr}
-                onChange={handleAuthCapitalChange}
-                placeholder="e.g. 50,00,000"
-              />
-            </Field>
-            <Field label="Total Authorised Shares">
-              <Input
-                type="number"
-                step="1"
-                value={authSharesStr}
-                onChange={handleAuthSharesChange}
-                placeholder="e.g. 5,00,000"
-              />
-            </Field>
-            <div className="text-[11px] text-faint">
-              {faceValue > 0
-                ? `${rupees(authCapital)} ÷ ₹${faceValue} = ${inr(authShares)} authorised shares`
-                : "Enter face value to derive shares"}
-            </div>
-          </div>
-
-          {/* Existing Issued Capital */}
-          <div className="space-y-3 rounded-lg border border-border/80 bg-surface-1/40 p-4">
-            <div className="text-xs font-semibold uppercase tracking-wider text-accent">
-              2. Existing Issued Capital
-            </div>
-            <Field label="Existing Issued Share Capital (₹)">
-              <Input
-                type="number"
-                step="1"
-                value={issuedCapitalStr}
-                onChange={handleIssuedCapitalChange}
-                placeholder="e.g. 20,00,000"
-              />
-            </Field>
-            <Field label="Already Issued Shares">
-              <Input
-                type="number"
-                step="1"
-                value={issuedSharesStr}
-                onChange={handleIssuedSharesChange}
-                placeholder="e.g. 2,00,000"
-              />
-            </Field>
-            <div className="text-[11px] text-faint">
-              {faceValue > 0
-                ? `${rupees(issuedCapital)} ÷ ₹${faceValue} = ${inr(issuedShares)} shares already issued`
-                : "Enter face value to derive shares"}
-            </div>
-          </div>
-        </div>
-
-        {/* Proposed Issue Inputs Grid */}
-        <div className="mt-6 space-y-3 rounded-lg border border-border/80 bg-surface-1/40 p-4">
-          <div className="text-xs font-semibold uppercase tracking-wider text-accent">
-            3. Proposed New Issue
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="How many new shares do you want to issue? (Proposed Shares)" required>
-              <Input
-                type="number"
-                step="1"
-                min="0"
-                value={proposedSharesStr}
-                onChange={setProposedSharesStr}
-                placeholder="e.g. 1,00,000"
-              />
-            </Field>
-            <Field label="Issue Price per Share (₹)" required>
-              <Input
-                type="number"
-                step="0.01"
-                min="0"
-                value={issuePriceStr}
-                onChange={setIssuePriceStr}
-                placeholder="e.g. 125"
-              />
-            </Field>
-          </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <Card className="p-5">
+            <Stat label="Total amount raised" value={rupees(totalConsideration)}
+                  delta={totalPremium > 0 ? `+${rupees(totalPremium)} premium` : "at par"}
+                  deltaTone={totalPremium > 0 ? "up" : "flat"}
+                  sub={`${inr(proposedShares)} shares × ₹${issuePrice}`} />
+          </Card>
+          <Card className="p-5">
+            <Stat label="Nominal capital increase" value={rupees(nominalIncrease)}
+                  delta={isExceeded ? "exceeds authorised" : "within authorised"}
+                  deltaTone={isExceeded ? "down" : "up"}
+                  sub={`${inr(proposedShares)} shares × ₹${faceValue} face value`} />
+          </Card>
         </div>
       </div>
 
-      {/* Takeaway Headline Banner (Requirement 6) */}
-      <Banner tone="info" title="Current Capital Capacity Takeaway">
-        At a <strong>₹{faceValue}</strong> face value, the company currently has capacity for{" "}
-        <strong className="text-accent">{inr(availableShares)} additional shares</strong> (₹
-        {inr(availableNominalCapital)} nominal capital) within its existing authorised capital.
-      </Banner>
-
-      {/* Validation Banners */}
-      {isExceeded && (
-        <Banner tone="warn" title="⚠ Proposed issue exceeds current authorised share capacity">
-          <div className="mt-1 space-y-2 text-sm">
-            <p>
-              The proposed issue of <strong>{inr(proposedShares)} shares</strong> exceeds the available authorised capacity of <strong>{inr(availableShares)} shares</strong> by <strong>{inr(excessShares)} shares</strong> (Nominal Shortfall: {rupees(excessNominalCapital)}).
-            </p>
-            <div className="rounded border border-warn/30 bg-warn-bg/50 p-3 text-xs leading-relaxed text-ink-1">
-              <strong>Legal Note:</strong> This does not mean the transaction is legally impossible. Additional authorised capital may be required before allotment, subject to shareholder approval (Special Resolution in EGM) and filing Form SH-7 with the Registrar of Companies (ROC).
-            </div>
-          </div>
-        </Banner>
-      )}
-
+      {/* Section 53 is a prohibition, not a capacity matter, so it stays a banner. */}
       {isDiscount && (
-        <Banner tone="warn" title="⚠ Prohibition on Issue of Shares at a Discount">
-          Under Section 53 of the Companies Act, 2013, any share issued by a company at a discounted price (below face value of ₹{faceValue}) shall be void, except in the case of sweat equity shares issued under Section 54.
+        <Banner tone="warn" title="Prohibition on issue of shares at a discount">
+          Under section 53 of the Companies Act, 2013, a share issued below its face value of
+          ₹{faceValue} is void, except for sweat equity shares issued under section 54.
         </Banner>
       )}
 
-      {/* Summary Dashboard (Requirement 13) */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* CURRENT CAPITAL POSITION Card */}
-        <div className="flex flex-col justify-between rounded-xl border border-border bg-ground p-6 shadow-sm">
-          <div>
-            <div className="flex items-center justify-between border-b border-border pb-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-accent">
-                Current Capital Position
-              </h3>
-              <span className="rounded bg-accent-dim/40 px-2 py-0.5 font-mono text-[11px] text-accent">
-                Cap Engine §15
-              </span>
+      {isExceeded && (
+        <Banner tone="warn" title="Increasing authorised capital">
+          This does not mean the transaction is legally impossible. Additional authorised capital
+          may be required before allotment, subject to shareholder approval by special resolution
+          and filing Form SH-7 with the Registrar of Companies.
+        </Banner>
+      )}
+
+      <div className="grid gap-4 xl:grid-cols-[1.1fr_1fr]">
+        {/* ---------------------------------------------------------- inputs */}
+        <Card className="p-6">
+          <SectionTitle hint="every figure derives live">Capital and issue inputs</SectionTitle>
+
+          <div className="mt-4 space-y-2">
+            <label className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">
+              Face value per share (₹)
+            </label>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="w-32">
+                <Input type="number" step="0.01" min="0.01" value={faceValueStr}
+                       onChange={(v) => applyFaceValue(Number(v))} />
+              </div>
+              <div className="flex flex-wrap items-center gap-1.5">
+                {[1, 2, 5, 10, 100].map((preset) => (
+                  <button key={preset} type="button" onClick={() => applyFaceValue(preset)}
+                          aria-pressed={faceValue === preset}
+                          className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                            faceValue === preset
+                              ? "bg-ink text-ground"
+                              : "border border-border bg-surface-2 text-ink-2 hover:border-border-lit"}`}>
+                    ₹{preset}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="space-y-3 rounded-2xl border border-border bg-surface-2/40 p-4">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.09em] text-accent-hi">
+                1 · Authorised capital
+              </div>
+              <Field label="Authorised share capital (₹)">
+                <Input type="number" step="1" value={authCapitalStr}
+                       onChange={handleAuthCapitalChange} placeholder="e.g. 50,00,000" />
+              </Field>
+              <Field label="Total authorised shares">
+                <Input type="number" step="1" value={authSharesStr}
+                       onChange={handleAuthSharesChange} placeholder="e.g. 5,00,000" />
+              </Field>
+              <div className="text-[11px] leading-relaxed text-faint">
+                {faceValue > 0
+                  ? `${rupees(authCapital)} ÷ ₹${faceValue} = ${inr(authShares)} authorised shares`
+                  : "Enter a face value to derive shares"}
+              </div>
             </div>
 
-            <dl className="mt-4 divide-y divide-border/60">
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Authorised Capital</dt>
-                <dd className="font-semibold text-ink-1">{rupees(authCapital)}</dd>
+            <div className="space-y-3 rounded-2xl border border-border bg-surface-2/40 p-4">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.09em] text-accent-hi">
+                2 · Existing issued capital
               </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Face Value per Share</dt>
-                <dd className="font-medium text-ink-1">₹{faceValue}</dd>
+              <Field label="Existing issued share capital (₹)">
+                <Input type="number" step="1" value={issuedCapitalStr}
+                       onChange={handleIssuedCapitalChange} placeholder="e.g. 20,00,000" />
+              </Field>
+              <Field label="Already issued shares">
+                <Input type="number" step="1" value={issuedSharesStr}
+                       onChange={handleIssuedSharesChange} placeholder="e.g. 2,00,000" />
+              </Field>
+              <div className="text-[11px] leading-relaxed text-faint">
+                {faceValue > 0
+                  ? `${rupees(issuedCapital)} ÷ ₹${faceValue} = ${inr(issuedShares)} shares already issued`
+                  : "Enter a face value to derive shares"}
               </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Total Authorised Shares</dt>
-                <dd className="font-semibold text-ink-1">{inr(authShares)} shares</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Already Issued Shares</dt>
-                <dd className="font-medium text-ink-1">{inr(issuedShares)} shares</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm bg-accent-dim/20 px-2 rounded">
-                <dt className="font-semibold text-accent">Available Additional Shares</dt>
-                <dd className="font-bold text-accent">{inr(availableShares)} shares</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm bg-accent-dim/20 px-2 rounded">
-                <dt className="font-semibold text-accent">Available Nominal Capital</dt>
-                <dd className="font-bold text-accent">{rupees(availableNominalCapital)}</dd>
-              </div>
-              {issuePrice > 0 && (
-                <div className="flex justify-between py-2 text-sm">
-                  <dt className="text-muted">Potential Issue Consideration (at ₹{issuePrice})</dt>
-                  <dd className="font-semibold text-ink-1">{rupees(potentialConsideration)}</dd>
-                </div>
-              )}
-            </dl>
+            </div>
           </div>
 
-          <div className="mt-6 rounded-lg bg-surface-1 p-3 text-xs text-muted">
-            <strong>Capacity Definition:</strong> Unused authorised capital is arithmetic (Authorised − Issued). Legal issue capacity is evaluated separately under applicable statutory provisions.
+          <div className="mt-4 space-y-3 rounded-2xl border border-border bg-surface-2/40 p-4">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.09em] text-accent-hi">
+              3 · Proposed new issue
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field label="New shares to issue" required>
+                <Input type="number" step="1" min="0" value={proposedSharesStr}
+                       onChange={setProposedSharesStr} placeholder="e.g. 1,00,000" />
+              </Field>
+              <Field label="Issue price per share (₹)" required>
+                <Input type="number" step="0.01" min="0" value={issuePriceStr}
+                       onChange={setIssuePriceStr} placeholder="e.g. 125" />
+              </Field>
+            </div>
           </div>
+        </Card>
+
+        {/* ------------------------------------------------- capital position */}
+        <div className="space-y-4">
+          <Card className="p-6">
+            <div className="flex items-center justify-between gap-3">
+              <SectionTitle>Authorised capital, post-issue</SectionTitle>
+              <Badge tone={isExceeded ? "block" : "accent"}>
+                {isExceeded ? "exceeds capacity" : "within capacity"}
+              </Badge>
+            </div>
+            <div className="mt-2">
+              <Donut segments={stack} total={inr(authShares)}
+                     caption="How the authorised shares are accounted for after the proposed issue" />
+            </div>
+            <p className="mt-5 rounded-2xl bg-surface-2 p-3.5 text-xs leading-relaxed text-muted">
+              <strong className="text-ink-2">Capacity is arithmetic.</strong> Unused authorised
+              capital is authorised minus issued. Whether the company may lawfully issue against
+              it is a separate question, evaluated under the applicable statutory provisions.
+            </p>
+          </Card>
+
+          <Card className="p-6">
+            <SectionTitle hint="shares">Capital ladder</SectionTitle>
+            <MiniBars
+              highlight="Proposed"
+              bars={[
+                { label: "Authorised", value: authShares, caption: inr(authShares) },
+                { label: "Issued", value: issuedShares, caption: inr(issuedShares) },
+                { label: "Proposed", value: proposedShares, caption: inr(proposedShares) },
+                { label: "Remaining",
+                  value: Math.max(0, remainingAuthorisedShares),
+                  caption: isExceeded ? `−${inr(excessShares)}` : inr(remainingAuthorisedShares) },
+              ]}
+            />
+          </Card>
         </div>
+      </div>
 
-        {/* PROPOSED ISSUE Card */}
-        <div className="flex flex-col justify-between rounded-xl border border-border bg-ground p-6 shadow-sm">
-          <div>
-            <div className="flex items-center justify-between border-b border-border pb-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-accent">
-                Proposed Issue Impact
-              </h3>
-              <span className={`rounded px-2 py-0.5 font-mono text-[11px] ${isExceeded ? "bg-warn-bg text-warn font-semibold" : "bg-surface-2 text-muted"}`}>
-                {isExceeded ? "Exceeds Capacity" : "Within Capacity"}
-              </span>
-            </div>
-
-            <dl className="mt-4 divide-y divide-border/60">
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">New Shares Proposed</dt>
-                <dd className="font-semibold text-ink-1">{inr(proposedShares)} shares</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Issue Price per Share</dt>
-                <dd className="font-medium text-ink-1">₹{issuePrice}</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Face Value Component</dt>
-                <dd className="font-medium text-ink-1">₹{faceValue} / share</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Premium Component</dt>
-                <dd className="font-medium text-ink-1">
-                  ₹{premiumPerShare} / share ({rupees(totalPremium)} total)
-                </dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Nominal Capital Increase</dt>
-                <dd className="font-semibold text-ink-1">{rupees(nominalIncrease)}</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm bg-accent-dim/30 px-2 rounded">
-                <dt className="font-semibold text-ink-1">Total Amount Raised (Consideration)</dt>
-                <dd className="font-bold text-ink-1">{rupees(totalConsideration)}</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Post-Issue Shares</dt>
-                <dd className="font-medium text-ink-1">{inr(postIssueShares)} shares</dd>
-              </div>
-              <div className="flex justify-between py-2 text-sm">
-                <dt className="text-muted">Shares Remaining After Issue</dt>
-                <dd className={`font-semibold ${isExceeded ? "text-warn" : "text-ink-1"}`}>
-                  {isExceeded ? `-${inr(excessShares)} (Deficit)` : `${inr(remainingAuthorisedShares)} shares`}
-                </dd>
-              </div>
-            </dl>
+      {/* ------------------------------------------------------------ detail */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card className="p-6">
+          <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.09em] text-muted">
+              Current capital position
+            </h3>
+            <Badge tone="accent">Cap engine §15</Badge>
           </div>
+          <dl className="mt-2 divide-y divide-border/70">
+            {[
+              ["Authorised capital", rupees(authCapital)],
+              ["Face value per share", `₹${faceValue}`],
+              ["Total authorised shares", `${inr(authShares)} shares`],
+              ["Already issued shares", `${inr(issuedShares)} shares`],
+            ].map(([k, v]) => (
+              <div key={k} className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                <dt className="text-muted">{k}</dt>
+                <dd className="tnum font-medium text-ink">{v}</dd>
+              </div>
+            ))}
+            <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+              <dt className="font-medium text-accent-hi">Available additional shares</dt>
+              <dd className="tnum font-semibold text-accent-hi">{inr(availableShares)} shares</dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+              <dt className="font-medium text-accent-hi">Available nominal capital</dt>
+              <dd className="tnum font-semibold text-accent-hi">{rupees(availableNominalCapital)}</dd>
+            </div>
+            {issuePrice > 0 && (
+              <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                <dt className="text-muted">Potential consideration at ₹{issuePrice}</dt>
+                <dd className="tnum font-medium text-ink">{rupees(potentialConsideration)}</dd>
+              </div>
+            )}
+          </dl>
+        </Card>
 
+        <Card className="flex flex-col p-6">
+          <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.09em] text-muted">
+              Proposed issue impact
+            </h3>
+            <Badge tone={isExceeded ? "block" : "neutral"}>
+              {isExceeded ? "exceeds capacity" : "within capacity"}
+            </Badge>
+          </div>
+          <dl className="mt-2 divide-y divide-border/70">
+            {[
+              ["New shares proposed", `${inr(proposedShares)} shares`],
+              ["Issue price per share", `₹${issuePrice}`],
+              ["Face value component", `₹${faceValue} / share`],
+              ["Premium component", `₹${premiumPerShare} / share · ${rupees(totalPremium)} total`],
+              ["Nominal capital increase", rupees(nominalIncrease)],
+            ].map(([k, v]) => (
+              <div key={k} className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                <dt className="text-muted">{k}</dt>
+                <dd className="tnum font-medium text-ink">{v}</dd>
+              </div>
+            ))}
+            <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+              <dt className="font-medium text-ink">Total amount raised</dt>
+              <dd className="tnum font-semibold text-ink">{rupees(totalConsideration)}</dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+              <dt className="text-muted">Post-issue shares</dt>
+              <dd className="tnum font-medium text-ink">{inr(postIssueShares)} shares</dd>
+            </div>
+            <div className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+              <dt className="text-muted">Shares remaining after issue</dt>
+              <dd className={`tnum font-semibold ${isExceeded ? "text-block" : "text-ink"}`}>
+                {isExceeded ? `−${inr(excessShares)} deficit`
+                            : `${inr(remainingAuthorisedShares)} shares`}
+              </dd>
+            </div>
+          </dl>
           <div className="mt-6">
-            <Link
-              href={`/assess`}
-            >
-              <Button className="w-full">
-                Continue to Legal Assessment →
-              </Button>
-            </Link>
+            <Button href="/assess" className="w-full">Continue to legal assessment →</Button>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   );

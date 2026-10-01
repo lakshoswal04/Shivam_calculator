@@ -155,7 +155,7 @@ export function CompanyForm({ onCreated, onCancel, submitLabel = "Create company
         )}
 
         {lookupStatus === "existing" && existingCompany && (
-          <div className="mt-2 rounded-md border border-accent/30 bg-accent-dim/20 p-2.5 text-xs text-ink-1">
+          <div className="mt-2 rounded-xl border border-accent/30 bg-accent-dim/20 p-2.5 text-xs text-ink-2">
             <p className="font-semibold text-accent">✓ Company already exists on file</p>
             <p className="mt-0.5 text-muted">{existingCompany.name} (CIN: {cin})</p>
           </div>
@@ -186,7 +186,7 @@ export function CompanyForm({ onCreated, onCancel, submitLabel = "Create company
         </Field>
       </div>
 
-      <div className="rounded-md border border-border bg-surface-2/40 p-4">
+      <div className="rounded-xl border border-border bg-surface-2/40 p-4">
         <p className="mb-3 text-sm text-ink-2">Is the company listed?</p>
         <div className="flex gap-2">
           <Button variant={listed ? "primary" : "ghost"} onClick={() => setListed(true)}>Yes</Button>
