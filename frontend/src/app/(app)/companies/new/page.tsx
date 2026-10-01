@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
-import { Banner, Card } from "@/components/ui";
+import { Banner, Card, PageHeader } from "@/components/ui";
 import { CompanyForm } from "@/components/CompanyForm";
 
 function NewCompany() {
@@ -12,17 +12,15 @@ function NewCompany() {
   const [warnings, setWarnings] = useState<string[]>([]);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <div>
-        <Link href="/companies" className="text-sm text-muted hover:text-accent-hi">
-          ← Companies
-        </Link>
-        <h1 className="mt-2 text-xl font-semibold tracking-tight">Add a company</h1>
-        <p className="mt-1 text-sm text-muted">
-          Any company you advise, including one that is not registered yet. Capital and
-          shareholders are recorded next.
-        </p>
-      </div>
+    <div className="mx-auto max-w-4xl space-y-6">
+      <PageHeader
+        eyebrow={
+          <Link href="/companies" className="hover:text-accent-hi">← Companies</Link>
+        }
+        title="Add a company"
+        lead="Any company you advise, including one that is not registered yet. Capital and
+              shareholders are recorded next."
+      />
 
       {warnings.length > 0 && (
         <Banner tone="warn" title="Check this is not a duplicate">

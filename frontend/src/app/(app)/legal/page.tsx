@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { api, type LegalSource, type ProvisionHit, type SourceGap } from "@/lib/api";
-import { Banner, Card, Empty } from "@/components/ui";
+import { Banner, Card, Empty, PageHeader, thCls, tdCls } from "@/components/ui";
 
 /** A source amended this long ago or more is shown as possibly superseded. */
 const STALE_AFTER_YEARS = 3;
@@ -93,7 +93,7 @@ function FamilyRows({ family }: { family: Family }) {
       <SourceRow source={current} />
       {earlier.length > 0 && (
         <tr className="bg-surface-2/40">
-          <td colSpan={6} className="px-4 py-1.5">
+          <td colSpan={6} className="px-5 py-2">
             <button type="button" onClick={() => setOpen((v) => !v)}
                     aria-expanded={open}
                     className="text-[11px] text-muted hover:text-accent-hi">
@@ -111,7 +111,7 @@ function FamilyRows({ family }: { family: Family }) {
 function SourceRow({ source: s, nested = false }: { source: LegalSource; nested?: boolean }) {
   return (
     <tr className={nested ? "bg-surface-2/20" : "hover:bg-surface-2"}>
-      <td className={`py-2.5 pr-4 ${nested ? "pl-10" : "px-4"}`}>
+      <td className={`py-3.5 pr-5 ${nested ? "pl-12" : "px-5"}`}>
         <span className="text-ink-2">{s.display_name}</span>
         <span className="ml-2 font-mono text-[10px] text-faint">{s.source_priority}</span>
         {s.publication_date && (
@@ -124,22 +124,22 @@ function SourceRow({ source: s, nested = false }: { source: LegalSource; nested?
             : s.file_name}
         </div>
       </td>
-      <td className="px-4 py-2.5 font-mono text-[11px] text-muted">
+      <td className={`${tdCls} font-mono text-[11px] text-muted`}>
         {s.document_type.toLowerCase().replace(/_/g, " ")}
       </td>
-      <td className="px-4 py-2.5">
+      <td className={tdCls}>
         <div className="flex flex-wrap items-center gap-1">
           <SupersessionBadge source={s} />
           <CurrencyBadge source={s} />
         </div>
       </td>
-      <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
+      <td className={`${tdCls} text-right font-mono text-[11px] text-muted`}>
         {s.page_count ?? "—"}
       </td>
-      <td className="px-4 py-2.5 text-right font-mono text-[11px] text-muted">
+      <td className={`${tdCls} text-right font-mono text-[11px] text-muted`}>
         {s.provision_count > 0 ? s.provision_count.toLocaleString() : "—"}
       </td>
-      <td className="px-4 py-2.5 font-mono text-[10px] text-faint">{s.file_hash_short}…</td>
+      <td className={`${tdCls} font-mono text-[10px] text-faint`}>{s.file_hash_short}…</td>
     </tr>
   );
 }
@@ -210,13 +210,11 @@ export default function LegalLibraryPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight">Legal library</h1>
-        <p className="mt-1 text-sm text-muted">
-          Every document the platform reasons from, and how current each one is. Nothing here
-          is legal advice; a citation locates text, it does not interpret it.
-        </p>
-      </div>
+      <PageHeader
+        title="Legal library"
+        lead="Every document the platform reasons from, and how current each one is. Nothing here
+              is legal advice; a citation locates text, it does not interpret it."
+      />
 
       {error && <Banner tone="block" title="Could not load the library">{error}</Banner>}
 
@@ -289,18 +287,18 @@ export default function LegalLibraryPage() {
             </div>
             {byAuthority.map(([authority, list]) => (
               <Card key={authority} className="overflow-x-auto">
-                <div className="border-b border-border px-4 py-2.5">
-                  <h2 className="text-sm font-medium">{authority}</h2>
+                <div className="border-b border-border px-5 py-3.5">
+                  <h2 className="text-sm font-semibold tracking-tight">{authority}</h2>
                 </div>
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-border text-left text-[11px] uppercase tracking-wider text-muted">
-                      <th className="px-4 py-2 font-medium">Document</th>
-                      <th className="px-4 py-2 font-medium">Type</th>
-                      <th className="px-4 py-2 font-medium">Currency</th>
-                      <th className="px-4 py-2 text-right font-medium">Pages</th>
-                      <th className="px-4 py-2 text-right font-medium">Provisions</th>
-                      <th className="px-4 py-2 font-medium">SHA-256</th>
+                    <tr className="border-b border-border">
+                      <th className={thCls}>Document</th>
+                      <th className={thCls}>Type</th>
+                      <th className={thCls}>Currency</th>
+                      <th className={`${thCls} text-right`}>Pages</th>
+                      <th className={`${thCls} text-right`}>Provisions</th>
+                      <th className={thCls}>SHA-256</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border">

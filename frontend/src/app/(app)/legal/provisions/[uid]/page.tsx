@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { use, useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { Banner, Card } from "@/components/ui";
+import { Badge, Banner, Card, PageHeader } from "@/components/ui";
 
 interface Provision {
   citation: string; citation_uid: string; provision_type: string; number: string;
@@ -36,13 +36,27 @@ export default function ProvisionPage({ params }: { params: Promise<{ uid: strin
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link href="/legal" className="text-sm text-muted hover:text-accent-hi">← Legal library</Link>
-        <h1 className="mt-2 font-mono text-lg text-accent-hi">{prov.citation}</h1>
-        {prov.ancestry.length > 0 && (
-          <p className="mt-1 font-mono text-[11px] text-faint">{prov.ancestry.join(" › ")}</p>
-        )}
-      </div>
+      <PageHeader
+        eyebrow={<Link href="/legal" className="hover:text-accent-hi">← Legal library</Link>}
+        title={
+          // A citation is a reference string, so it stays monospaced even at
+          // display size; it is set smaller than a prose title for the same reason.
+          <span className="font-mono text-[22px] leading-snug text-accent-hi sm:text-[26px]">
+            {prov.citation}
+          </span>
+        }
+        lead={prov.ancestry.length > 0
+          ? <span className="font-mono text-[11px] text-faint">{prov.ancestry.join(" › ")}</span>
+          : undefined}
+        actions={
+          <div className="flex flex-wrap items-center gap-1.5">
+            <Badge tone="accent">{prov.authority}</Badge>
+            <Badge>{prov.source_priority}</Badge>
+            <Badge>{prov.provision_type.toLowerCase().replace(/_/g, " ")}</Badge>
+            {prov.page_from && <Badge>p.{prov.page_from}</Badge>}
+          </div>
+        }
+      />
 
       {prov.citation_ambiguous && (
         <Banner tone="warn" title="This citation is not unique in its document">
@@ -58,14 +72,14 @@ export default function ProvisionPage({ params }: { params: Promise<{ uid: strin
         </Banner>
       )}
 
-      <Card className="p-5">
-        <p className="whitespace-pre-wrap text-[14px] leading-relaxed text-ink-2">
+      <Card className="p-6 sm:p-8">
+        <p className="max-w-[72ch] whitespace-pre-wrap text-[15px] leading-[1.75] text-ink-2">
           {prov.full_text || prov.display_text || "No text was extracted for this provision."}
         </p>
       </Card>
 
-      <Card className="p-5">
-        <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1.5 font-mono text-[11px] text-muted">
+      <Card className="p-6">
+        <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2.5 font-mono text-[11px] text-muted">
           <dt>Instrument</dt><dd className="text-ink-2">{prov.instrument_label ?? "—"}</dd>
           <dt>Type</dt><dd className="text-ink-2">{prov.provision_type.toLowerCase().replace(/_/g, " ")}</dd>
           <dt>Page</dt><dd className="text-ink-2">
