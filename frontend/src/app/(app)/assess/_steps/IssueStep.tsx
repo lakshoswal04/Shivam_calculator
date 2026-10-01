@@ -50,14 +50,14 @@ export function IssueStep({ company, draft, onChange, txnDate, onTxnDate }: {
         <Input type="date" value={txnDate} onChange={onTxnDate} />
       </Field>
 
-      <div className="tnum grid gap-3 rounded-md border border-border bg-ground p-4 sm:grid-cols-4 text-xs">
+      <div className="tnum grid gap-3 rounded-xl border border-border bg-ground p-4 sm:grid-cols-4 text-xs">
         <div>
           <div className="uppercase tracking-wider text-muted font-semibold">Nominal Increase</div>
-          <div className="mt-1 text-sm font-semibold text-ink-1">{rupees(nominalIncrease)}</div>
+          <div className="mt-1 text-sm font-semibold text-ink-2">{rupees(nominalIncrease)}</div>
         </div>
         <div>
           <div className="uppercase tracking-wider text-muted font-semibold">Premium / Share</div>
-          <div className="mt-1 text-sm font-medium text-ink-1">{rupees(premiumPerShare)}</div>
+          <div className="mt-1 text-sm font-medium text-ink-2">{rupees(premiumPerShare)}</div>
           <div className="text-[10px] text-faint">Total: {rupees(totalPremium)}</div>
         </div>
         <div>
@@ -66,7 +66,7 @@ export function IssueStep({ company, draft, onChange, txnDate, onTxnDate }: {
         </div>
         <div>
           <div className="uppercase tracking-wider text-muted font-semibold">Available Capacity</div>
-          <div className={`mt-1 text-sm font-bold ${exceeds ? "text-warn" : "text-ink-1"}`}>
+          <div className={`mt-1 text-sm font-bold ${exceeds ? "text-warn" : "text-ink-2"}`}>
             {available !== null ? `${inr(available)} shares` : "—"}
           </div>
         </div>

@@ -48,7 +48,7 @@ export function ReviewStep({ company, route, draft, extra, txnDate, busy, onRun 
         </Banner>
       )}
 
-      <dl className="divide-y divide-border rounded-md border border-border">
+      <dl className="divide-y divide-border rounded-xl border border-border">
         {rows.map(([k, v]) => (
           <div key={k} className="flex justify-between gap-4 px-4 py-2.5 text-sm">
             <dt className="text-muted">{k}</dt>
