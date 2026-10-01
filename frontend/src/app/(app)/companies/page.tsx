@@ -2,7 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api, inr, rupees, type Company, type SourceGap } from "@/lib/api";
-import { Badge, Banner, Button, Card, Empty, SectionTitle } from "@/components/ui";
+import {
+  Badge, Banner, Button, Card, Empty, PageHeader, SectionTitle, Stat,
+} from "@/components/ui";
 
 export default function CompaniesPage() {
   const [companies, setCompanies] = useState<Company[] | null>(null);
@@ -16,20 +18,44 @@ export default function CompaniesPage() {
 
   const blocker = gaps.find((g) => g.severity === "BLOCKER");
 
+  // Portfolio totals, so the landing page opens on figures rather than a bare
+  // list. Headroom is summed only where a capital structure is on file.
+  const list = companies ?? [];
+  const ready = list.filter((c) => c.face_value !== null).length;
+  const headroom = list.reduce((n, c) => {
+    if (!c.authorised_capital || !c.face_value || c.shares_issued == null) return n;
+    return n + Math.max(0, Math.floor(c.authorised_capital / c.face_value) - c.shares_issued);
+  }, 0);
+
   return (
-    <div className="space-y-8">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-semibold tracking-tight">Companies</h1>
-          <p className="mt-1 text-sm text-muted">
-            Client companies in your organisation. Select one to assess a proposed issue.
-          </p>
+    <div className="space-y-6">
+      <PageHeader
+        title="Companies"
+        lead="Client companies in your organisation. Select one to assess a proposed issue."
+        actions={
+          <>
+            <Button variant="secondary" href="/companies/new">+ Add company</Button>
+            <Button href="/assess">New assessment</Button>
+          </>
+        }
+      />
+
+      {list.length > 0 && (
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Card className="p-5">
+            <Stat label="Companies on file" value={list.length} />
+          </Card>
+          <Card className="p-5">
+            <Stat label="Ready to assess" value={ready}
+                  delta={ready < list.length ? `${list.length - ready} need setup` : "all ready"}
+                  deltaTone={ready < list.length ? "down" : "up"} />
+          </Card>
+          <Card className="p-5">
+            <Stat label="Combined capital headroom" value={inr(headroom)} unit="shares"
+                  sub="Arithmetic only — not what may lawfully be issued." />
+          </Card>
         </div>
-        <div className="flex gap-2">
-          <Button variant="ghost" href="/companies/new">+ Add company</Button>
-          <Button href="/assess">New assessment</Button>
-        </div>
-      </div>
+      )}
 
       {blocker && (
         <Banner tone="warn" title={blocker.title}>
@@ -60,7 +86,7 @@ export default function CompaniesPage() {
             const available = authShares && c.shares_issued != null
               ? authShares - c.shares_issued : null;
             return (
-              <Card key={c.company_id} className="p-5">
+              <Card key={c.company_id} className="flex flex-col p-5">
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h3 className="font-medium leading-tight text-ink">{c.name}</h3>
@@ -90,24 +116,23 @@ export default function CompaniesPage() {
                     {c.listed_status?.toLowerCase()}
                   </span>
                 </div>
-                <dl className="tnum space-y-1.5 text-[13px]">
-                  <div className="flex justify-between">
-                    <dt className="text-muted">Authorised</dt>
-                    <dd className="text-ink-2">{rupees(c.authorised_capital)}</dd>
-                  </div>
-                  <div className="flex justify-between">
-                    <dt className="text-muted">Issued shares</dt>
-                    <dd className="text-ink-2">{inr(c.shares_issued)}</dd>
-                  </div>
-                  <div className="flex justify-between border-t border-border pt-1.5">
-                    <dt className="text-muted">Capital headroom</dt>
-                    <dd className="font-medium text-accent-hi">{inr(available)} shares</dd>
-                  </div>
-                </dl>
-                <p className="mt-2 text-[11px] leading-relaxed text-faint">
+                <div className="rounded-2xl bg-surface-2/60 p-4">
+                  <Stat label="Capital headroom" value={inr(available)} unit="shares" />
+                  <dl className="tnum mt-3 space-y-1.5 border-t border-border pt-3 text-[13px]">
+                    <div className="flex justify-between gap-3">
+                      <dt className="text-muted">Authorised</dt>
+                      <dd className="text-ink-2">{rupees(c.authorised_capital)}</dd>
+                    </div>
+                    <div className="flex justify-between gap-3">
+                      <dt className="text-muted">Issued shares</dt>
+                      <dd className="text-ink-2">{inr(c.shares_issued)}</dd>
+                    </div>
+                  </dl>
+                </div>
+                <p className="mt-2.5 text-[11px] leading-relaxed text-faint">
                   Headroom is arithmetic only — it is not what the company may lawfully issue.
                 </p>
-                <div className="mt-4 flex gap-2">
+                <div className="mt-auto flex gap-2 pt-4">
                   <Button href={`/assess?company=${c.company_id}`} className="flex-1">
                     {c.face_value === null ? "Finish setup" : "Assess"}
                   </Button>

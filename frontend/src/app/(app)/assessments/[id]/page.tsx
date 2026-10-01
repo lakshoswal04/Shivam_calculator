@@ -2,7 +2,7 @@
 import { use, useEffect, useState } from "react";
 import { api, inr, rupees, type Assessment, type RuleResult } from "@/lib/api";
 import {
-  Banner, Card, Delta, Donut, HeroCard, SectionTitle, SourceChip, Stat, StatusBadge,
+  Banner, Card, Delta, Donut, HeroCard, SectionTitle, SourceChip, Stat, StatusBadge, tdCls, thCls,
 } from "@/components/ui";
 
 const ORDER = ["BLOCK", "REVIEW_REQUIRED", "WARNING", "PASS", "NOT_APPLICABLE"];
@@ -147,18 +147,18 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
         <Card className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border text-left text-[11px] uppercase tracking-wider text-muted">
-                <th className="px-4 py-2.5 font-medium">Calculation</th>
-                <th className="px-4 py-2.5 font-medium">Formula</th>
-                <th className="px-4 py-2.5 text-right font-medium">Result</th>
+              <tr className="border-b border-border">
+                <th className={thCls}>Calculation</th>
+                <th className={thCls}>Formula</th>
+                <th className={`${thCls} text-right`}>Result</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {a.calculations.map((c) => (
                 <tr key={c.calc_code}>
-                  <td className="px-4 py-2.5 text-ink-2">{c.name}</td>
-                  <td className="px-4 py-2.5 font-mono text-[11px] text-faint">{c.formula}</td>
-                  <td className="tnum px-4 py-2.5 text-right font-medium text-ink">
+                  <td className={`${tdCls} text-ink-2`}>{c.name}</td>
+                  <td className={`${tdCls} font-mono text-[11px] text-faint`}>{c.formula}</td>
+                  <td className={`tnum ${tdCls} text-right font-medium text-ink`}>
                     {c.unit === "INR" ? rupees(c.result) : inr(c.result)}
                     <span className="ml-1.5 text-[11px] text-faint">
                       {c.unit === "INR" ? "" : c.unit}
@@ -193,26 +193,26 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
           <Card className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border text-left text-[11px] uppercase tracking-wider text-muted">
-                  <th className="px-4 py-2.5 font-medium">Holder</th>
-                  <th className="px-4 py-2.5 text-right font-medium">Pre</th>
-                  <th className="px-4 py-2.5 text-right font-medium">Post</th>
-                  <th className="px-4 py-2.5 text-right font-medium">Change</th>
+                <tr className="border-b border-border">
+                  <th className={thCls}>Holder</th>
+                  <th className={`${thCls} text-right`}>Pre</th>
+                  <th className={`${thCls} text-right`}>Post</th>
+                  <th className={`${thCls} text-right`}>Change</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {a.dilution.map((d, i) => (
                   <tr key={i}>
-                    <td className="px-4 py-2.5 text-ink-2">
+                    <td className={`${tdCls} text-ink-2`}>
                       {d.holder}
                       {d.is_promoter && (
                         <span className="ml-2 rounded-full border border-border-lit px-2 py-0.5
                                          text-[10px] text-muted">promoter</span>
                       )}
                     </td>
-                    <td className="tnum px-4 py-2.5 text-right text-muted">{d.pct_pre ?? "—"}%</td>
-                    <td className="tnum px-4 py-2.5 text-right text-ink">{d.pct_post}%</td>
-                    <td className={`tnum px-4 py-2.5 text-right ${
+                    <td className={`tnum ${tdCls} text-right text-muted`}>{d.pct_pre ?? "—"}%</td>
+                    <td className={`tnum ${tdCls} text-right text-ink`}>{d.pct_post}%</td>
+                    <td className={`tnum ${tdCls} text-right ${
                       Number(d.change_pp) < 0 ? "text-block" : "text-pass"}`}>
                       {d.change_pp ? `${Number(d.change_pp) > 0 ? "+" : ""}${d.change_pp} pp` : "—"}
                     </td>

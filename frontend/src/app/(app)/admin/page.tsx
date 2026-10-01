@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { api, session, type ReviewItem } from "@/lib/api";
-import { Banner, Button, Card, Empty, SectionTitle, Stat } from "@/components/ui";
+import { Banner, Button, Card, Empty, PageHeader, SectionTitle, Stat } from "@/components/ui";
 
 export default function AdminPage() {
   const [items, setItems] = useState<ReviewItem[] | null>(null);
@@ -29,14 +29,12 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight">Legal review</h1>
-        <p className="mt-1 text-sm text-muted">
-          A rule reaches production only when a named reviewer approves it. The database
-          refuses an approved rule without a reviewer, so this cannot be bypassed.
-        </p>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        title="Legal review"
+        lead="A rule reaches production only when a named reviewer approves it. The database
+              refuses an approved rule without a reviewer, so this cannot be bypassed."
+      />
 
       {error && <Banner tone="block" title="Error">{error}</Banner>}
 

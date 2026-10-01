@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { api, ApiError, type CapitalBody, type Company, type HoldingBody,
          type IssueHistoryBody, type RouteCandidate, type RouteInfo } from "@/lib/api";
-import { Banner, Button, Card } from "@/components/ui";
+import { Banner, Button, Card, PageHeader } from "@/components/ui";
 import { canJumpTo, nextStep, plan, previousStep, type StepId } from "./_wizard/machine";
 import { CompanyStep } from "./_steps/CompanyStep";
 import { CapitalStep } from "./_steps/CapitalStep";
@@ -159,30 +159,38 @@ function Wizard() {
   const back = previousStep(steps, step);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight">New assessment</h1>
-        <p className="mt-1 text-sm text-muted">
-          The result reports capital capacity and legal issue capacity separately.
-        </p>
-      </div>
+    <div className="mx-auto max-w-4xl space-y-6">
+      <PageHeader
+        title="New assessment"
+        lead="The result reports capital capacity and legal issue capacity separately."
+      />
 
-      <ol className="flex flex-wrap items-center gap-1 text-xs">
+      {/* Same pill group as the main nav, so the wizard reads as part of the
+          app rather than a form bolted onto it. The active step is a white
+          pill: the accent is a light mint, so white-on-accent would be
+          unreadable. */}
+      <ol className="flex flex-wrap items-center gap-1 rounded-full bg-surface-2/60 p-1
+                     ring-1 ring-border">
         {steps.map((s, i) => {
           const jumpable = canJumpTo(steps, step, s.id);
+          const done = s.state === "satisfied" && s.id !== step;
           return (
-            <li key={s.id} className="flex items-center gap-1">
+            <li key={s.id}>
               <button onClick={() => jumpable && setStep(s.id)} disabled={!jumpable}
                       title={s.note}
-                      className={`rounded px-2.5 py-1 ${
-                        s.id === step ? "bg-accent text-white"
-                        : jumpable ? "bg-surface-2 text-ink-2 hover:text-accent-hi"
-                        : "text-faint"}`}>
-                <span className="tnum mr-1.5 opacity-60">
-                  {s.state === "satisfied" && s.id !== step ? "✓" : i + 1}
-                </span>{s.label}
+                      aria-current={s.id === step ? "step" : undefined}
+                      className={`flex items-center gap-1.5 whitespace-nowrap rounded-full
+                                  px-3 py-1.5 text-[12px] transition-colors ${
+                        s.id === step ? "bg-ink font-medium text-ground"
+                        : jumpable ? "text-ink-2 hover:text-ink"
+                        : "cursor-not-allowed text-faint"}`}>
+                <span className={`tnum grid h-4 w-4 place-items-center rounded-full text-[10px] ${
+                  s.id === step ? "bg-ground/15 text-ground"
+                  : done ? "bg-pass/20 text-pass" : "bg-surface-2 text-faint"}`}>
+                  {done ? "✓" : i + 1}
+                </span>
+                {s.label}
               </button>
-              {i < steps.length - 1 && <span className="text-faint">›</span>}
             </li>
           );
         })}

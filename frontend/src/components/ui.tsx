@@ -32,6 +32,75 @@ export function Card({ children, className = "" }: { children: ReactNode; classN
   );
 }
 
+/** Every page opens the same way: one large light heading, a line of context,
+ *  and an action cluster. Before this each page set its own size, which is why
+ *  the restyle only looked applied to some of them. */
+export function PageHeader({ title, lead, actions, eyebrow }: {
+  title: ReactNode; lead?: ReactNode; actions?: ReactNode; eyebrow?: ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="min-w-0">
+        {eyebrow && (
+          <div className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+            {eyebrow}
+          </div>
+        )}
+        <h1 className="text-[32px] font-semibold leading-tight tracking-tight sm:text-[40px]">
+          {title}
+        </h1>
+        {lead && <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{lead}</p>}
+      </div>
+      {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+    </div>
+  );
+}
+
+/** The reference's list row: leading mark, label over sub-label, trailing value.
+ *  Rows are separate rounded surfaces rather than cells divided by rules. */
+export function ListRow({ lead, title, sub, value, trailing, href, className = "" }: {
+  lead?: ReactNode; title: ReactNode; sub?: ReactNode;
+  value?: ReactNode; trailing?: ReactNode; href?: string; className?: string;
+}) {
+  const inner = (
+    <div className={`flex items-center gap-3.5 rounded-2xl border border-border bg-surface-2/40
+                     px-4 py-3.5 transition-colors ${href ? "hover:border-border-lit hover:bg-surface-2" : ""}
+                     ${className}`}>
+      {lead && <div className="shrink-0">{lead}</div>}
+      <div className="min-w-0 flex-1">
+        <div className="truncate text-sm text-ink">{title}</div>
+        {sub && <div className="mt-0.5 truncate text-[12px] text-muted">{sub}</div>}
+      </div>
+      {value && <div className="tnum shrink-0 text-right text-sm font-medium text-ink">{value}</div>}
+      {trailing && <div className="shrink-0">{trailing}</div>}
+    </div>
+  );
+  return href ? <Link href={href} className="block">{inner}</Link> : inner;
+}
+
+/** A circular mark carrying initials, as the reference uses for its list rows. */
+export function RowMark({ children, tone = "neutral" }: {
+  children: ReactNode; tone?: "neutral" | "accent" | "review";
+}) {
+  const map = {
+    neutral: "bg-surface-2 text-muted ring-border",
+    accent: "bg-accent-dim text-accent-hi ring-accent/30",
+    review: "bg-review-bg text-review ring-review/30",
+  }[tone];
+  return (
+    <span aria-hidden className={`grid h-10 w-10 place-items-center rounded-full text-[12px]
+                                  font-semibold ring-1 ${map}`}>
+      {children}
+    </span>
+  );
+}
+
+/* Tables stay tables where the data is genuinely columnar, but get the
+   reference's breathing room rather than the old dense rows. */
+export const thCls =
+  "px-5 py-3 text-left text-[11px] font-medium uppercase tracking-[0.09em] text-muted";
+export const tdCls = "px-5 py-3.5 align-middle";
+
 export function SectionTitle({ children, hint }: { children: ReactNode; hint?: string }) {
   return (
     <div className="mb-3 flex items-baseline justify-between gap-4">
