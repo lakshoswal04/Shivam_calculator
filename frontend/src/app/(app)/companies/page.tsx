@@ -83,7 +83,7 @@ export default function CompaniesPage() {
                       )}
                     </div>
                   </div>
-                  <span className={`shrink-0 rounded border px-2 py-0.5 text-[10px] font-medium
+                  <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium
                     ${c.listed_status === "LISTED"
                       ? "border-accent/30 bg-accent-dim/40 text-accent-hi"
                       : "border-border-lit bg-surface-2 text-muted"}`}>
@@ -112,7 +112,7 @@ export default function CompaniesPage() {
                     {c.face_value === null ? "Finish setup" : "Assess"}
                   </Button>
                   <Link href={`/assessments?company=${c.company_id}`}
-                        className="grid place-items-center rounded-md border border-border-lit
+                        className="grid place-items-center rounded-xl border border-border-lit
                                    px-3 text-xs text-muted hover:text-ink-2">History</Link>
                 </div>
               </Card>
@@ -128,7 +128,7 @@ export default function CompaniesPage() {
             {gaps.map((g) => (
               <Card key={g.code} className="p-4">
                 <div className="flex items-start gap-3">
-                  <span className={`mt-0.5 shrink-0 rounded border px-1.5 py-0.5 font-mono text-[10px]
+                  <span className={`mt-0.5 shrink-0 rounded-full border px-1.5 py-0.5 font-mono text-[10px]
                     ${g.severity === "BLOCKER" ? "border-block/30 bg-block-bg text-block"
                                                : "border-warn/30 bg-warn-bg text-warn"}`}>
                     {g.severity}

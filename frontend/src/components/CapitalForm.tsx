@@ -118,7 +118,7 @@ export function CapitalForm({ value, onChange }: {
       )}
 
       {availableShares !== null && availableNominalCap !== null && v.faceValue ? (
-        <div className="rounded-md border border-accent/20 bg-accent-dim/10 p-3 text-xs leading-relaxed text-ink-1">
+        <div className="rounded-xl border border-accent/20 bg-accent-dim/10 p-3 text-xs leading-relaxed text-ink-2">
           <div className="font-semibold text-accent uppercase tracking-wider text-[11px]">Current Authorised Capital Capacity</div>
           <div className="mt-1 flex flex-wrap justify-between gap-2 text-sm">
             <span>Additional Shares Capacity: <strong>{availableShares.toLocaleString("en-IN")} shares</strong></span>

@@ -29,14 +29,14 @@ function CurrencyBadge({ source }: { source: LegalSource }) {
   if (status === "REFERENCE_ONLY") {
     return (
       <span title="Guidance, not law. Cannot source an approved rule."
-            className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-muted">
+            className="rounded-full bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-muted">
         reference only
       </span>
     );
   }
   return (
     <span title="Nobody has recorded how far this text has been amended."
-          className="rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-faint">
+          className="rounded-full bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-faint">
       currency unrecorded
     </span>
   );
@@ -53,7 +53,7 @@ function SupersessionBadge({ source }: { source: LegalSource }) {
     : "Inferred from the title and date by the ingestion pipeline, not confirmed by a reviewer.";
   return (
     <span title={`Replaced by ${replacedBy}. ${basis}`}
-          className="rounded bg-warn/10 px-1.5 py-0.5 font-mono text-[10px] text-warn">
+          className="rounded-full bg-warn/10 px-1.5 py-0.5 font-mono text-[10px] text-warn">
       superseded
     </span>
   );
@@ -242,10 +242,10 @@ export default function LegalLibraryPage() {
             value={query} onChange={(e) => setQuery(e.target.value)}
             placeholder="Search provisions — a citation like s.62(1)(a), or words in the text"
             aria-label="Search provisions"
-            className="min-w-0 flex-1 rounded border border-border bg-ground px-3 py-2 text-sm
+            className="min-w-0 flex-1 rounded-xl border border-border bg-surface-2 px-3.5 py-2.5 text-sm
                        placeholder:text-faint focus:border-accent/60 focus:outline-none" />
           <button type="submit" disabled={searching}
-                  className="rounded border border-border-lit bg-surface-2 px-4 py-2 text-sm
+                  className="rounded-full border border-border-lit bg-surface-2 px-4 py-2 text-sm
                              hover:border-accent/50 hover:text-accent-hi disabled:opacity-50">
             {searching ? "Searching…" : "Search"}
           </button>

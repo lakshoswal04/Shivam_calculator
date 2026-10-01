@@ -1,9 +1,17 @@
 "use client";
 import { use, useEffect, useState } from "react";
 import { api, inr, rupees, type Assessment, type RuleResult } from "@/lib/api";
-import { Banner, Card, SectionTitle, SourceChip, Stat, StatusBadge } from "@/components/ui";
+import {
+  Banner, Card, Delta, Donut, HeroCard, SectionTitle, SourceChip, Stat, StatusBadge,
+} from "@/components/ui";
 
 const ORDER = ["BLOCK", "REVIEW_REQUIRED", "WARNING", "PASS", "NOT_APPLICABLE"];
+
+/* The reference's donut palette. Deliberately NOT the status colours: these
+   identify shareholders, and a holder must not appear to carry an outcome. */
+const DILUTION_COLORS = [
+  "#5EEAD4", "#C4B5FD", "#FACC15", "#F472B6", "#60A5FA", "#FB923C",
+];
 
 export default function AssessmentPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -24,15 +32,26 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
     (x, y) => ORDER.indexOf(x.status) - ORDER.indexOf(y.status));
   const visible = rules.filter((r) => showNA || r.status !== "NOT_APPLICABLE");
 
+  // The headline of an assessment is its outcome, not a capacity figure. Putting
+  // a capacity on the bright gradient would read as approval, which is exactly
+  // the inference this product exists to prevent.
+  const settled = a.overall_status === "PASS";
+  const outcomeLabel = {
+    PASS: "Pass", WARNING: "Warning", BLOCK: "Blocked",
+    REVIEW_REQUIRED: "Review required", NOT_APPLICABLE: "Not applicable",
+  }[a.overall_status] ?? String(a.overall_status);
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <div className="mb-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+          <div className="mb-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
             {a.issue_label} · {a.transaction_date}
           </div>
-          <h1 className="text-xl font-semibold tracking-tight">{a.company?.name}</h1>
-          <p className="mt-1 text-sm text-muted">
+          <h1 className="text-[32px] font-semibold leading-tight tracking-tight sm:text-[40px]">
+            {a.company?.name}
+          </h1>
+          <p className="mt-2 text-sm text-muted">
             {a.company?.company_type?.toLowerCase()} · {a.company?.listed_status?.toLowerCase()}
             {a.company?.exchanges?.length ? ` · ${a.company.exchanges.join(", ")}` : ""}
           </p>
@@ -40,7 +59,21 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
         <StatusBadge status={a.overall_status} size="lg" />
       </div>
 
-      {/* The product's central discipline: two numbers, never merged. */}
+      <HeroCard
+        tone={settled ? "default" : "alert"}
+        label="Assessment outcome"
+        value={outcomeLabel}
+        sub={`${a.counts.block} blocked · ${a.counts.review_required} review required · ${a.counts.pass} passed · ${a.counts.not_applicable} did not apply`}
+      />
+
+      <div className="flex flex-wrap items-center gap-2">
+        <Delta tone={a.counts.block > 0 ? "down" : "flat"}>{a.counts.block} blocked</Delta>
+        <Delta tone="review">{a.counts.review_required} review required</Delta>
+        <Delta tone={a.counts.pass > 0 ? "up" : "flat"}>{a.counts.pass} passed</Delta>
+      </div>
+
+      {/* The product's central discipline: two numbers, never merged, and given
+          equal visual weight so neither reads as the answer to the other. */}
       <div className="grid gap-4 lg:grid-cols-2">
         <Card className="p-6">
           <Stat label="Capital capacity"
@@ -57,7 +90,7 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
           {legal.indeterminate_causes.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1.5">
               {legal.indeterminate_causes.map((c) => (
-                <span key={c} className="rounded border border-review/30 bg-review-bg px-2 py-0.5
+                <span key={c} className="rounded-full border border-review/30 bg-review-bg px-2.5 py-0.5
                                          font-mono text-[10px] text-review">{c}</span>
               ))}
             </div>
@@ -70,7 +103,7 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
           <span className="text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">
             Binding constraint
           </span>
-          <span className="rounded border border-border-lit bg-surface-2 px-2 py-0.5
+          <span className="rounded-full border border-border-lit bg-surface-2 px-2.5 py-0.5
                            font-mono text-[11px] text-ink-2">
             {cap.binding_constraint.type}
           </span>
@@ -144,8 +177,19 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
       </section>
 
       {a.dilution.length > 0 && (
-        <section>
-          <SectionTitle>Dilution</SectionTitle>
+        <section className="space-y-4">
+          <SectionTitle hint="post-issue shareholding">Dilution</SectionTitle>
+          <Card className="p-6">
+            <Donut
+              total={`${a.dilution.length} holders`}
+              caption="Shareholding after the proposed issue"
+              segments={a.dilution.slice(0, 6).map((d, i) => ({
+                label: d.holder,
+                value: Number(d.pct_post) || 0,
+                color: DILUTION_COLORS[i % DILUTION_COLORS.length],
+              }))}
+            />
+          </Card>
           <Card className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -162,7 +206,7 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
                     <td className="px-4 py-2.5 text-ink-2">
                       {d.holder}
                       {d.is_promoter && (
-                        <span className="ml-2 rounded border border-border-lit px-1.5 py-0.5
+                        <span className="ml-2 rounded-full border border-border-lit px-2 py-0.5
                                          text-[10px] text-muted">promoter</span>
                       )}
                     </td>
@@ -194,8 +238,8 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
                         {ap.stage.toLowerCase().replace("_", " ")} · caused by {ap.caused_by_rule}
                       </p>
                     </div>
-                    <span className="shrink-0 rounded border border-border-lit bg-surface-2
-                                     px-2 py-0.5 text-[10px] text-muted">{ap.authority}</span>
+                    <span className="shrink-0 rounded-full border border-border-lit bg-surface-2
+                                     px-2.5 py-0.5 text-[10px] text-muted">{ap.authority}</span>
                   </div>
                 </Card>
               ))}</div>}
@@ -266,7 +310,7 @@ function RuleCard({ r }: { r: RuleResult }) {
         <span className="text-sm font-medium text-ink">{r.title}</span>
         <span className="ml-auto flex items-center gap-2">
           {r.demo_approved && (
-            <span className="rounded border border-warn/30 bg-warn-bg px-1.5 py-0.5
+            <span className="rounded-full border border-warn/30 bg-warn-bg px-1.5 py-0.5
                              font-mono text-[10px] text-warn">demo approval</span>
           )}
           <StatusBadge status={r.status} />
@@ -275,12 +319,12 @@ function RuleCard({ r }: { r: RuleResult }) {
       <p className="text-sm leading-relaxed text-ink-2">{r.message}</p>
       <p className="mt-2 text-[13px] leading-relaxed text-muted">{r.explanation}</p>
       {r.missing_field && (
-        <p className="mt-2 rounded border border-review/25 bg-review-bg px-3 py-2 font-mono text-[11px] text-review">
+        <p className="mt-2 rounded-full border border-review/25 bg-review-bg px-3 py-2 font-mono text-[11px] text-review">
           missing fact: {r.missing_field}
         </p>
       )}
       {r.exception_applied && (
-        <p className="mt-2 rounded border border-border-lit bg-surface-2 px-3 py-2 text-[12px] text-ink-2">
+        <p className="mt-2 rounded-full border border-border-lit bg-surface-2 px-3 py-2 text-[12px] text-ink-2">
           <span className="font-mono text-[11px] text-muted">
             {r.exception_applied.exception_code}
           </span>{" — "}{r.exception_applied.condition}
