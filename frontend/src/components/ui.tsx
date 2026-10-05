@@ -117,15 +117,13 @@ export function Button({
   variant?: "primary" | "secondary" | "ghost" | "danger"; disabled?: boolean; className?: string; href?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium " +
+    "inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium " +
     "transition-colors disabled:cursor-not-allowed disabled:opacity-50";
-  // The reference's primary action is a white pill with near-black text, which
-  // also keeps the accent free to mean "link" rather than "button".
   const styles = {
-    primary: "bg-ink text-ground hover:bg-ink-2",
-    secondary: "border border-border-lit bg-surface-2 text-ink-2 hover:border-accent/60 hover:text-ink",
+    primary: "bg-accent text-white hover:bg-accent-hi",
+    secondary: "border border-border-lit bg-surface text-ink-2 hover:border-accent/50 hover:text-accent",
     ghost: "border border-transparent bg-transparent text-muted hover:bg-surface-2 hover:text-ink-2",
-    danger: "border border-block/40 bg-block-bg text-block hover:border-block/70",
+    danger: "border border-block/30 bg-block-bg text-block hover:border-block/60",
   }[variant];
   if (href) {
     return <Link href={href} className={`${base} ${styles} ${className}`}>{children}</Link>;
@@ -372,22 +370,22 @@ export function HeroCard({ label, value, unit, sub, actions, tone = "default" }:
   label: string; value: ReactNode; unit?: string; sub?: ReactNode;
   actions?: ReactNode; tone?: "default" | "alert";
 }) {
+  // A headline figure earns weight from size and a coloured rule, not from a
+  // large field of colour — which on a light compliance UI would read as a
+  // marketing banner rather than a result.
+  const rule = tone === "alert" ? "bg-block" : "bg-accent";
   return (
-    <div className={`relative overflow-hidden rounded-[var(--radius-card)] p-6
-                     ${tone === "alert" ? "bg-alert" : "bg-hero"}`}>
-      {/* The soft diagonal sheen the reference folds across its hero card. */}
-      <div aria-hidden className="pointer-events-none absolute -right-16 -top-10 h-72 w-72
-                                  rotate-12 rounded-[40%] bg-white/10" />
-      <div className="relative">
-        <p className="text-[15px] font-medium text-black/70">{label}</p>
-        <p className="tnum mt-3 text-[40px] font-bold leading-none tracking-tight text-black
-                      sm:text-[52px]">
-          {value}
-          {unit && <sup className="ml-1 text-[18px] font-semibold text-black/60">{unit}</sup>}
-        </p>
-        {sub && <p className="mt-3 text-[13px] leading-relaxed text-black/70">{sub}</p>}
-        {actions && <div className="mt-6 flex flex-wrap items-center gap-2.5">{actions}</div>}
-      </div>
+    <div className="rim relative overflow-hidden rounded-[var(--radius-card)] border border-border
+                    bg-surface p-6 sm:p-7">
+      <span aria-hidden className={`absolute inset-y-0 left-0 w-1 ${rule}`} />
+      <p className="text-[13px] font-medium uppercase tracking-[0.07em] text-muted">{label}</p>
+      <p className={`tnum mt-2.5 text-[38px] font-semibold leading-none tracking-tight sm:text-[46px]
+                     ${tone === "alert" ? "text-block" : "text-ink"}`}>
+        {value}
+        {unit && <span className="ml-1.5 text-[16px] font-medium text-muted">{unit}</span>}
+      </p>
+      {sub && <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-muted">{sub}</p>}
+      {actions && <div className="mt-5 flex flex-wrap items-center gap-2.5">{actions}</div>}
     </div>
   );
 }
@@ -396,10 +394,10 @@ export function HeroCard({ label, value, unit, sub, actions, tone = "default" }:
 export function HeroButton({ children, href, onClick, variant = "dark" }: {
   children: ReactNode; href?: string; onClick?: () => void; variant?: "dark" | "light";
 }) {
-  const cls = `inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium
+  const cls = `inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium
     transition-colors ${variant === "dark"
-      ? "bg-black text-white hover:bg-black/80"
-      : "bg-white text-black hover:bg-white/85"}`;
+      ? "bg-accent text-white hover:bg-accent-hi"
+      : "border border-border-lit bg-surface text-ink-2 hover:border-accent/50 hover:text-accent"}`;
   return href
     ? <Link href={href} className={cls}>{children}</Link>
     : <button type="button" onClick={onClick} className={cls}>{children}</button>;

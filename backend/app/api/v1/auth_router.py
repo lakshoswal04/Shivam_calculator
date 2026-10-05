@@ -1,14 +1,16 @@
 """Authentication endpoints."""
+import re
 from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from psycopg.errors import UniqueViolation
 
 from ...config import settings
 from ...db import fetch_one, tx
 from ...deps import Principal, current_principal
-from ...schemas import LoginRequest, RefreshRequest, TokenResponse
-from ...security import (create_access_token, hash_refresh_token, new_refresh_token,
-                         verify_password)
+from ...schemas import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse
+from ...security import (create_access_token, hash_password, hash_refresh_token,
+                         new_refresh_token, verify_password)
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -49,6 +51,102 @@ def login(body: LoginRequest):
               "full_name": row["full_name"], "role": row["role"],
               "org_id": str(row["org_id"]), "org_name": row["org_name"],
               "is_demo_org": row["is_demo"]})
+
+
+# auth.organisations.slug carries CHECK (slug ~ '^[a-z0-9][a-z0-9-]{1,48}$'), so
+# an organisation name has to be reduced to that shape before it is inserted.
+MIN_PASSWORD = 8
+
+
+def _slugify(name: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")[:48]
+    # The CHECK also requires at least two characters and a leading alphanumeric,
+    # so a name of only punctuation still has to produce something valid.
+    return slug if re.fullmatch(r"[a-z0-9][a-z0-9-]{1,48}", slug) else "org"
+
+
+def _claim_slug(conn, base: str) -> str:
+    """Find a free slug. The suffix is appended, not substituted, so two firms
+    with the same name stay individually recognisable."""
+    for n in range(0, 200):
+        candidate = base if n == 0 else f"{base[:44]}-{n}"
+        taken = fetch_one(conn, "SELECT 1 AS x FROM auth.organisations WHERE slug = %s",
+                          (candidate,))
+        if taken is None:
+            return candidate
+    raise HTTPException(status.HTTP_409_CONFLICT,
+                        "Too many organisations share that name. Please add a distinguishing word.")
+
+
+@router.post("/register", response_model=TokenResponse,
+             status_code=status.HTTP_201_CREATED)
+def register(body: RegisterRequest):
+    """Create an organisation and its first user, then sign them straight in.
+
+    The first user owns the organisation, which is why the role is
+    ADMINISTRATOR — it matches how owner@demo.test is seeded. is_demo stays
+    false, so a real tenant never inherits the demo reviewer's approvals.
+    """
+    email = body.email.strip()
+    full_name = body.full_name.strip()
+    org_name = body.org_name.strip()
+
+    if len(body.password) < MIN_PASSWORD:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+                            f"Password must be at least {MIN_PASSWORD} characters.")
+    if not full_name:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Your name is required.")
+    if not org_name:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+                            "An organisation name is required.")
+    # The users table has its own email CHECK; failing here names the field
+    # rather than surfacing a constraint violation.
+    if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+                            "That does not look like an email address.")
+
+    with tx() as conn:
+        # users_email_lower_key is a case-insensitive unique index. Checking
+        # first turns the race into a clean 409 in the common case; the
+        # IntegrityError below still covers two simultaneous signups.
+        if fetch_one(conn, "SELECT 1 AS x FROM auth.users WHERE lower(email) = lower(%s)",
+                     (email,)):
+            raise HTTPException(status.HTTP_409_CONFLICT,
+                                "An account already exists for that email address.")
+
+        slug = _claim_slug(conn, _slugify(org_name))
+        try:
+            org = fetch_one(conn, """
+                INSERT INTO auth.organisations (name, slug, is_demo)
+                VALUES (%s, %s, false) RETURNING org_id, name, is_demo""",
+                (org_name[:200], slug))
+            user = fetch_one(conn, """
+                INSERT INTO auth.users (email, password_hash, full_name)
+                VALUES (%s, %s, %s) RETURNING user_id, email, full_name""",
+                (email, hash_password(body.password), full_name[:200]))
+            conn.execute("""
+                INSERT INTO auth.memberships (org_id, user_id, role)
+                VALUES (%s, %s, 'ADMINISTRATOR')""", (org["org_id"], user["user_id"]))
+        except UniqueViolation:
+            raise HTTPException(status.HTTP_409_CONFLICT,
+                                "An account already exists for that email address.")
+
+        raw, digest = new_refresh_token()
+        conn.execute("""
+            INSERT INTO auth.refresh_tokens (user_id, org_id, token_hash, expires_at)
+            VALUES (%s,%s,%s,%s)""",
+            (user["user_id"], org["org_id"], digest,
+             datetime.now(timezone.utc) + timedelta(days=settings().refresh_token_days)))
+
+    return TokenResponse(
+        access_token=create_access_token(str(user["user_id"]), str(org["org_id"]),
+                                         "ADMINISTRATOR"),
+        refresh_token=raw,
+        expires_in=settings().access_token_minutes * 60,
+        user={"user_id": str(user["user_id"]), "email": user["email"],
+              "full_name": user["full_name"], "role": "ADMINISTRATOR",
+              "org_id": str(org["org_id"]), "org_name": org["name"],
+              "is_demo_org": org["is_demo"]})
 
 
 @router.post("/refresh", response_model=TokenResponse)

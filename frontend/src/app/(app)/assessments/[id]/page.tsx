@@ -18,6 +18,7 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
   const [a, setA] = useState<Assessment | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showNA, setShowNA] = useState(false);
+  const [tab, setTab] = useState<"result" | "legal">("result");
 
   useEffect(() => {
     api.assessment(id).then(setA).catch((e) => setError(e.message));
@@ -127,6 +128,47 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
         </section>
       )}
 
+      {/* The spec's Result / Detailed legal analysis boundary. A user should
+          not meet rule-by-rule citations before they have the answer. Nothing
+          is removed — this changes when the detail is shown, not whether it is
+          available, and the tab is client-side so permalinks still work. */}
+      <div className="flex items-center gap-1 rounded-lg bg-surface-2 p-1">
+        {([["result", "Result"], ["legal", "Detailed legal analysis"]] as const).map(([id, label]) => (
+          <button key={id} type="button" onClick={() => setTab(id)}
+                  aria-current={tab === id ? "page" : undefined}
+                  className={`rounded-md px-4 py-2 text-[13px] transition-colors ${
+                    tab === id ? "bg-surface font-medium text-accent shadow-sm"
+                               : "text-muted hover:text-ink-2"}`}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {tab === "result" && (
+        <Card className="p-6">
+          <SectionTitle>What this means</SectionTitle>
+          <p className="text-sm leading-relaxed text-ink-2">
+            {a.counts.block > 0
+              ? `${a.counts.block} requirement${a.counts.block > 1 ? "s" : ""} would block this issue as proposed.`
+              : a.counts.review_required > 0
+              ? `Nothing blocks this issue, but ${a.counts.review_required} requirement${a.counts.review_required > 1 ? "s" : ""} cannot be decided from the facts supplied.`
+              : "No requirement in the approved rule set blocks this issue as proposed."}
+            {" "}
+            {a.approvals.length > 0 && `${a.approvals.length} approval${a.approvals.length > 1 ? "s are" : " is"} required. `}
+            {a.document_requirements.length > 0 && `${a.document_requirements.length} document${a.document_requirements.length > 1 ? "s" : ""} must be filed or kept.`}
+          </p>
+          <p className="mt-4 text-[13px] text-muted">
+            Every conclusion above traces to an exact provision.{" "}
+            <button type="button" onClick={() => setTab("legal")}
+                    className="text-accent hover:underline">
+              See the detailed legal analysis →
+            </button>
+          </p>
+        </Card>
+      )}
+
+      {tab === "legal" && (
+        <>
       <section>
         <SectionTitle hint={`${a.counts.block} blocked · ${a.counts.review_required} review · ${a.counts.pass} pass`}>
           Legal assessment
@@ -294,6 +336,8 @@ export default function AssessmentPage({ params }: { params: Promise<{ id: strin
           </p>
         </Card>
       </section>
+        </>
+      )}
     </div>
   );
 }

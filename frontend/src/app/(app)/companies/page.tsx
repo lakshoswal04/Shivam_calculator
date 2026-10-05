@@ -133,12 +133,16 @@ export default function CompaniesPage() {
                   Headroom is arithmetic only — it is not what the company may lawfully issue.
                 </p>
                 <div className="mt-auto flex gap-2 pt-4">
-                  <Button href={`/assess?company=${c.company_id}`} className="flex-1">
-                    {c.face_value === null ? "Finish setup" : "Assess"}
+                  {/* The profile is the step between picking a company and
+                      choosing a transaction: it is where you check what is on
+                      file before committing to an assessment. */}
+                  <Button href={`/companies/${c.company_id}`} className="flex-1">
+                    {c.face_value === null ? "Finish setup" : "Open"}
                   </Button>
-                  <Link href={`/assessments?company=${c.company_id}`}
-                        className="grid place-items-center rounded-xl border border-border-lit
-                                   px-3 text-xs text-muted hover:text-ink-2">History</Link>
+                  <Link href={`/assess?company=${c.company_id}`}
+                        className="grid place-items-center rounded-lg border border-border-lit
+                                   px-3 text-xs text-muted hover:border-accent/50
+                                   hover:text-accent">Assess</Link>
                 </div>
               </Card>
             );

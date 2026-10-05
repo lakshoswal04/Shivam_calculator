@@ -254,10 +254,10 @@ export default function CalculatorPage() {
                 {[1, 2, 5, 10, 100].map((preset) => (
                   <button key={preset} type="button" onClick={() => applyFaceValue(preset)}
                           aria-pressed={faceValue === preset}
-                          className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                          className={`rounded-lg px-3.5 py-1.5 text-xs font-medium transition-colors ${
                             faceValue === preset
-                              ? "bg-ink text-ground"
-                              : "border border-border bg-surface-2 text-ink-2 hover:border-border-lit"}`}>
+                              ? "bg-accent text-white"
+                              : "border border-border bg-surface text-ink-2 hover:border-accent/50"}`}>
                     ₹{preset}
                   </button>
                 ))}
