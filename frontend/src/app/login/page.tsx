@@ -25,7 +25,7 @@ export default function LoginPage() {
     try {
       const r = await api.login(email, password);
       session.save(r.access_token, r.refresh_token, r.user);
-      router.push("/companies");
+      router.push("/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign in failed.");
     } finally { setBusy(false); }
