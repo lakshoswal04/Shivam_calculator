@@ -1,52 +1,50 @@
 @import "tailwindcss";
 
-/* "Ethereal" — a near-black panel floating on a soft light gradient, with a
-   mint→lime signature and heavily rounded geometry.
+/* A light, sober palette for a compliance tool. The audience is company
+   secretaries, chartered accountants and lawyers, so the interface stays out of
+   the way: white surfaces, a deep blue for interaction, and colour reserved for
+   meaning rather than decoration.
 
    Semantic status colours remain deliberately separate from the accent: a rule
-   outcome must never be mistaken for a piece of interface chrome. The reference
-   design uses lime for both its accent and its positive indicator; collapsing
-   the two here would make a PASS outcome look like a button. So the accent
-   takes the mint end of the signature gradient and PASS takes the lime, which
-   keeps roughly 70 degrees of hue between them. */
+   outcome must never be mistaken for a piece of interface chrome. The accent is
+   blue precisely because no status uses blue.
+
+   Every value below clears WCAG AA (4.5:1) against all three light surfaces —
+   #FFFFFF, #F6F7F9 and #EFF1F4. The weakest is --color-faint at 4.64:1. */
 @theme {
-  --color-ground:      #0B0C10;
-  --color-surface:     #15171E;
-  --color-surface-2:   #1E212A;
-  --color-border:      #262A34;
-  --color-border-lit:  #343945;
-  --color-ink:         #FFFFFF;
-  --color-ink-2:       #C3C7D1;
-  --color-muted:       #8E94A3;
-  /* Lifted from the reference's dimmest grey so small print clears WCAG AA
-     (4.5:1) on every surface it sits on, while staying recessive under
-     --color-muted. The previous palette's equivalent sat at 2.6:1. */
-  --color-faint:       #80889C;
+  --color-ground:      #F6F7F9;
+  --color-surface:     #FFFFFF;
+  --color-surface-2:   #EFF1F4;
+  --color-border:      #E2E5EA;
+  --color-border-lit:  #CBD1DA;
+  --color-ink:         #0F172A;
+  --color-ink-2:       #334155;
+  --color-muted:       #566070;
+  --color-faint:       #636D7B;
 
-  --color-accent:      #5EEAD4;
-  --color-accent-hi:   #99F6E4;
-  --color-accent-dim:  #0D3B35;
+  --color-accent:      #1D4ED8;
+  --color-accent-hi:   #1E40AF;
+  --color-accent-dim:  #E8EEFC;
 
-  /* Lime, coral and lavender are the reference's own delta and card colours,
-     which happen to map exactly onto pass / blocked / review. */
-  --color-pass:        #A3E635;
-  --color-pass-bg:     #1A2510;
-  --color-warn:        #FBBF24;
-  --color-warn-bg:     #2B2210;
-  --color-block:       #FB7185;
-  --color-block-bg:    #2E1419;
-  --color-review:      #C4B5FD;
-  --color-review-bg:   #201B33;
-  --color-na:          #6B7280;
-  --color-na-bg:       #17191F;
+  --color-pass:        #136B34;
+  --color-pass-bg:     #ECF7EF;
+  --color-warn:        #8F4100;
+  --color-warn-bg:     #FDF3E7;
+  --color-block:       #B91C1C;
+  --color-block-bg:    #FDF0F0;
+  --color-review:      #6D28D9;
+  --color-review-bg:   #F3EFFD;
+  --color-na:          #556070;
+  --color-na-bg:       #F1F3F5;
 
-  /* The signature gradient. Only ever a data surface — never interactive
-     chrome, or it would compete with the status colours. */
-  --gradient-hero:  linear-gradient(135deg, #6FE7C8 0%, #A8EE93 48%, #CDF564 100%);
-  --gradient-alert: linear-gradient(135deg, #FB7185 0%, #F0A071 55%, #FBBF24 100%);
+  /* Reserved for the landing hero, which is the one place a large coloured
+     field is appropriate. Deep navy rather than a bright gradient: this sits
+     above the words "legal" and "compliance". */
+  --gradient-hero:  linear-gradient(135deg, #111C3A 0%, #1B2F5E 55%, #1D4ED8 100%);
+  --gradient-alert: linear-gradient(135deg, #7F1D1D 0%, #B91C1C 100%);
 
-  --radius-card:  20px;
-  --radius-panel: 28px;
+  --radius-card:  14px;
+  --radius-panel: 18px;
 
   /* next/font hashes the real family name and exposes it via --font-inter /
      --font-jetbrains. Naming the family literally here would silently fall
@@ -55,11 +53,8 @@
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-html { color-scheme: dark; }
+html { color-scheme: light; }
 
-/* The panel floats on this. It is fixed rather than scrolled: the reference is
-   a single viewport, and letting a light backdrop scroll out from under a long
-   page leaves the panel sitting on nothing. */
 body {
   background: var(--color-ground);
   color: var(--color-ink);
@@ -67,29 +62,67 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(1100px 620px at 12% 4%,  #CFC6E8 0%, transparent 62%),
-    radial-gradient(1000px 680px at 88% 12%, #C2D3E6 0%, transparent 58%),
-    radial-gradient(900px 700px at 70% 96%,  #D9CFE4 0%, transparent 60%),
-    linear-gradient(160deg, #C9C2DC 0%, #BEC6D8 50%, #CDC5DA 100%);
-}
 
 /* Figures that line up in columns read as columns. */
 .tnum { font-variant-numeric: tabular-nums; }
 
-/* The signature surfaces, as utilities so no component hard-codes the stops. */
 .bg-hero  { background-image: var(--gradient-hero); }
 .bg-alert { background-image: var(--gradient-alert); }
 
-/* A hairline rim catching light along a card's top edge, as in the reference. */
+/* On a dark theme a card was lifted by an inset white highlight. On white that
+   does nothing, so elevation comes from a hairline and a soft shadow instead. */
 .rim {
-  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.055);
+  box-shadow: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.03);
 }
+.rim-lg {
+  box-shadow: 0 4px 6px -1px rgb(15 23 42 / 0.05), 0 10px 24px -6px rgb(15 23 42 / 0.08);
+}
+
+
+/* ---------------------------------------------------------------- motion --
+   Transform and opacity only, so nothing here triggers layout. Every rule is
+   switched off wholesale by the prefers-reduced-motion block at the end of
+   this file. */
+
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes gradient-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(2%, -2%, 0) scale(1.08); }
+}
+@keyframes sheen {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(220%); }
+}
+
+/* Revealed on scroll by the useReveal hook. The hidden state is applied ONLY
+   once the observer is attached (it adds .reveal-armed), so the content is
+   fully visible to a crawler, to a failed script, and before hydration. */
+.reveal-armed .reveal { opacity: 0; transform: translateY(14px); }
+.reveal-armed .reveal.is-visible {
+  animation: fade-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-d1 { animation-delay: 0.08s; }
+.reveal-d2 { animation-delay: 0.16s; }
+.reveal-d3 { animation-delay: 0.24s; }
+.reveal-d4 { animation-delay: 0.32s; }
+
+.drift { animation: gradient-drift 22s ease-in-out infinite; }
+.drift-slow { animation: gradient-drift 32s ease-in-out infinite reverse; }
+
+/* A hairline of light travelling along the pipeline connector. */
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(29 78 216 / 0.55), transparent);
+  animation: sheen 3.2s ease-in-out infinite;
+}
+
+.lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.lift:hover { transform: translateY(-3px); }
 
 ::selection { background: var(--color-accent-dim); color: var(--color-ink); }
 
@@ -98,8 +131,13 @@ body::before {
 ::-webkit-scrollbar-thumb { background: var(--color-border-lit); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
 
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 8px; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 6px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
+  /* Killing the animation alone would leave .reveal stuck at opacity 0, so the
+     hidden state is lifted too — reduced motion must never mean reduced
+     content. */
+  .reveal-armed .reveal { opacity: 1 !important; transform: none !important; }
+  .lift:hover { transform: none; }
 }

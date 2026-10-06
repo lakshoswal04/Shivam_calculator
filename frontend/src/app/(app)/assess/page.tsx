@@ -169,8 +169,7 @@ function Wizard() {
           app rather than a form bolted onto it. The active step is a white
           pill: the accent is a light mint, so white-on-accent would be
           unreadable. */}
-      <ol className="flex flex-wrap items-center gap-1 rounded-full bg-surface-2/60 p-1
-                     ring-1 ring-border">
+      <ol className="flex flex-wrap items-center gap-1 rounded-lg bg-surface-2 p-1">
         {steps.map((s, i) => {
           const jumpable = canJumpTo(steps, step, s.id);
           const done = s.state === "satisfied" && s.id !== step;
@@ -179,14 +178,14 @@ function Wizard() {
               <button onClick={() => jumpable && setStep(s.id)} disabled={!jumpable}
                       title={s.note}
                       aria-current={s.id === step ? "step" : undefined}
-                      className={`flex items-center gap-1.5 whitespace-nowrap rounded-full
+                      className={`flex items-center gap-1.5 whitespace-nowrap rounded-md
                                   px-3 py-1.5 text-[12px] transition-colors ${
-                        s.id === step ? "bg-ink font-medium text-ground"
+                        s.id === step ? "bg-surface font-medium text-accent shadow-sm"
                         : jumpable ? "text-ink-2 hover:text-ink"
                         : "cursor-not-allowed text-faint"}`}>
                 <span className={`tnum grid h-4 w-4 place-items-center rounded-full text-[10px] ${
-                  s.id === step ? "bg-ground/15 text-ground"
-                  : done ? "bg-pass/20 text-pass" : "bg-surface-2 text-faint"}`}>
+                  s.id === step ? "bg-accent-dim text-accent"
+                  : done ? "bg-pass-bg text-pass" : "bg-surface-2 text-faint"}`}>
                   {done ? "✓" : i + 1}
                 </span>
                 {s.label}

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { api, session } from "@/lib/api";
@@ -24,7 +25,7 @@ export default function LoginPage() {
     try {
       const r = await api.login(email, password);
       session.save(r.access_token, r.refresh_token, r.user);
-      router.push("/companies");
+      router.push("/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Sign in failed.");
     } finally { setBusy(false); }
@@ -34,11 +35,11 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center px-4 py-10">
       {/* Same floating panel as the app shell, so signing in does not look like
           a different product from the thing behind it. */}
-      <div className="rim w-full max-w-md rounded-[var(--radius-panel)] border border-white/10
-                      bg-ground p-7 shadow-[0_30px_80px_-20px_rgb(0_0_0/0.55)] sm:p-9">
+      <div className="rim-lg w-full max-w-md rounded-[var(--radius-panel)] border border-border
+                      bg-surface p-7 sm:p-9">
         <div className="mb-8">
           <div className="mb-3 flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-hero text-sm font-bold text-black">S</span>
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-sm font-bold text-white">S</span>
             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
               Securities Issue Platform
             </span>
@@ -68,7 +69,12 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <div className="mt-8 rim rounded-[var(--radius-card)] border border-border bg-surface p-4">
+        <p className="mt-6 text-center text-sm text-muted">
+          No account yet?{" "}
+          <Link href="/signup" className="text-accent hover:underline">Create one</Link>
+        </p>
+
+        <div className="mt-8 rim rounded-[var(--radius-card)] border border-border bg-surface-2 p-4">
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.09em] text-muted">
             Demonstration accounts
           </p>

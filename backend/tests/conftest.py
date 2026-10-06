@@ -20,6 +20,38 @@ def client():
         yield c
 
 
+# The company-flow tests create companies through the API and the suite has no
+# delete endpoint to undo it, so without this every run left its fixtures behind
+# — the demo org had accumulated 36 of them, which is also what
+# db/snapshot/create.sh warns about shipping to a deployment. Autouse so it
+# applies whether or not a test thought about cleaning up.
+FIXTURE_NAME_PATTERNS = ("Test Co %", "Searchable %")
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _purge_fixture_companies():
+    """Remove companies created by this run once the session ends.
+
+    Matching is on the fixture naming convention rather than on "everything
+    created since the run started": a developer running the suite against a
+    database holding real work must not lose it to a timestamp comparison.
+
+    The delete MUST be tenant-scoped. company.companies has FORCEd row-level
+    security with an ALL-command policy, and the API connects as calcapp, an
+    ordinary role — so a DELETE with no app.current_org set matches zero rows
+    and silently cleans nothing.
+    """
+    yield
+    with tx() as conn:
+        org = fetch_one(conn,
+                        "SELECT org_id FROM auth.organisations WHERE slug = 'demo-advisory'")
+    if org is None:
+        return
+    with tx(str(org["org_id"])) as conn:
+        for pattern in FIXTURE_NAME_PATTERNS:
+            conn.execute("DELETE FROM company.companies WHERE name LIKE %s", (pattern,))
+
+
 def _token(client, email):
     r = client.post("/api/v1/auth/login", json={"email": email, "password": "demo1234"})
     assert r.status_code == 200, r.text

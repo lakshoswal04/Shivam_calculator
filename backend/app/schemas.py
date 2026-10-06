@@ -21,6 +21,14 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class RegisterRequest(BaseModel):
+    """Self-serve sign-up. The first user of an organisation owns it."""
+    email: str
+    password: str
+    full_name: str
+    org_name: str
+
+
 class TokenResponse(BaseModel):
     access_token: str
     refresh_token: str

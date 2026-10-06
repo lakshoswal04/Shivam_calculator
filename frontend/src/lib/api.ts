@@ -127,6 +127,10 @@ export const api = {
   login: (email: string, password: string) =>
     request<{ access_token: string; refresh_token: string; user: SessionUser }>(
       "/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
+  /** Creates the organisation and its first user, and signs them straight in. */
+  register: (body: { email: string; password: string; full_name: string; org_name: string }) =>
+    request<{ access_token: string; refresh_token: string; user: SessionUser }>(
+      "/auth/register", { method: "POST", body: JSON.stringify(body) }),
   health: () => request<{ status: string; active_rules: number }>("/health"),
   companies: () => request<CompanyPage>("/companies?limit=100"),
   searchCompanies: (q: string, opts: { limit?: number; offset?: number;
