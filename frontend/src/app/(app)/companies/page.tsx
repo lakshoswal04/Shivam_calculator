@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { useReveal } from "@/lib/useReveal";
 import { api, inr, rupees, type SourceGap } from "@/lib/api";
 import { useCompanySearch } from "@/lib/useCompanySearch";
 import {
@@ -31,8 +32,10 @@ export default function CompaniesPage() {
   const incompleteLoaded = rows.filter((c) => c.face_value === null).length;
   const blocker = gaps.find((g) => g.severity === "BLOCKER");
 
+  const reveal = useReveal<HTMLDivElement>();
+
   return (
-    <div className="space-y-6">
+    <div ref={reveal} className="space-y-6">
       <PageHeader
         title="Companies"
         lead="Client companies in your organisation. Open one to see what is on file, or start an assessment."
@@ -99,7 +102,7 @@ export default function CompaniesPage() {
         </Empty>
       ) : (
         <>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="reveal grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {shown.map((c) => {
               const authShares = c.authorised_capital && c.face_value
                 ? Math.floor(c.authorised_capital / c.face_value) : null;

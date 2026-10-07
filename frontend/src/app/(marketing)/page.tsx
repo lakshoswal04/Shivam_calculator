@@ -102,6 +102,29 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ------------------------------------------------------- authorities */}
+      <div className="overflow-hidden border-b border-border bg-surface py-5">
+        <div className="flex w-max gap-14 marquee" aria-hidden>
+          {/* Duplicated so the -50% translate loops seamlessly. The list is
+              announced once to assistive tech by the sr-only line below. */}
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0 gap-14">
+              {["SEBI ICDR", "SEBI LODR", "SEBI SAST", "Companies Act 2013",
+                "MCA Rules", "NSE", "BSE", "SEBI Master Circulars"].map((a) => (
+                <span key={a} className="whitespace-nowrap font-mono text-[12px]
+                                         uppercase tracking-[0.14em] text-faint">
+                  {a}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+        <p className="sr-only">
+          Sources covered: SEBI ICDR, LODR and SAST Regulations, the Companies Act 2013,
+          MCA Rules, NSE, BSE and the SEBI master circulars.
+        </p>
+      </div>
+
       {/* -------------------------------------------- what the platform does */}
       <section className="mx-auto max-w-[1180px] px-5 py-20 sm:px-7 sm:py-24">
         <div className="reveal">
@@ -165,27 +188,31 @@ export default function LandingPage() {
       </section>
 
       {/* -------------------------------------------------------------- cta */}
-      <section className="mx-auto max-w-[1180px] px-5 py-24 text-center sm:px-7">
+      <section className="relative overflow-hidden bg-hero">
+        <span aria-hidden className="drift pointer-events-none absolute -left-24 top-0 h-[22rem] w-[22rem]
+                                     rounded-full bg-[#4F7DF3]/25 blur-3xl" />
+        <div className="relative mx-auto max-w-[1180px] px-5 py-24 text-center sm:px-7">
         <div className="reveal">
-          <h2 className="text-[28px] font-semibold tracking-tight sm:text-[34px]">
+          <h2 className="text-[28px] font-semibold tracking-tight text-white sm:text-[34px]">
             Start with your own company
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/70">
             Creating an account sets up a workspace for your organisation. Nothing you enter is
             shared with any other organisation.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link href="/signup"
-                  className="lift rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white
-                             shadow-lg shadow-accent/20 hover:bg-accent-hi">
+                  className="lift rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#111C3A]
+                             shadow-lg shadow-black/20 hover:bg-white/90">
               Create an account
             </Link>
             <Link href="/calculator"
-                  className="lift rounded-lg border border-border-lit bg-surface px-6 py-3 text-sm
-                             font-medium text-ink-2 hover:border-accent/50 hover:text-accent">
+                  className="lift rounded-lg border border-white/25 px-6 py-3 text-sm
+                             font-medium text-white hover:border-white/55 hover:bg-white/5">
               Try the calculator first
             </Link>
           </div>
+        </div>
         </div>
       </section>
     </main>

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { inr, rupees } from "@/lib/api";
 import {
-  Badge, Banner, Button, Card, Donut, Field, HeroButton, HeroCard,
-  Input, MiniBars, SectionTitle, Stat,
+  Badge, Banner, Button, Card, Delta, Donut, Field, HeroButton, HeroCard,
+  Input, inputCls, MiniBars, SectionTitle, StackedBar, Stat, ThresholdFlag,
 } from "@/components/ui";
 
 type Detail = "summary" | "detailed";
@@ -20,6 +20,12 @@ export default function CalculatorPage() {
   const [issuedSharesStr, setIssuedSharesStr] = useState("200000");
   const [proposedSharesStr, setProposedSharesStr] = useState("100000");
   const [issuePriceStr, setIssuePriceStr] = useState("125");
+
+  // Investment side. Promoter holding is left blank rather than defaulting to
+  // zero: a silent zero would report promoters diluted from 0%, which looks
+  // like a bug rather than like missing input.
+  const [promoterSharesStr, setPromoterSharesStr] = useState("120000");
+  const [investorLabel, setInvestorLabel] = useState("New investor");
 
   // Summary by default: most visitors want one number. The preference is
   // remembered per browser, and every access is guarded because a private
@@ -87,6 +93,47 @@ export default function CalculatorPage() {
   const remainingAuthorisedShares = authShares - postIssueShares;
   const remainingNominalCapital = remainingAuthorisedShares * faceValue;
 
+  // ------------------------------------------------------------ investment
+  // Pure arithmetic, mirroring the shape of compute_dilution() in
+  // backend/app/domain/calc_engine.py without calling it — this page runs with
+  // no account and therefore no API.
+  const promoterShares = Math.max(0, Number(promoterSharesStr) || 0);
+  const hasPromoterInput = promoterSharesStr.trim() !== "" && promoterShares > 0;
+
+  // Every ratio below guards its denominator: an empty field makes issuedShares
+  // zero, and 0/0 would render as NaN across the whole panel.
+  const pct = (part: number, whole: number) => (whole > 0 ? (part / whole) * 100 : 0);
+
+  const otherPreShares = Math.max(0, issuedShares - promoterShares);
+  const promoterPctPre = pct(promoterShares, issuedShares);
+  const otherPctPre = pct(otherPreShares, issuedShares);
+
+  // The new shares are assumed to go wholly to the incoming investor, which is
+  // what "investment side" means here; a rights issue would differ and is
+  // handled by an assessment, not by this page.
+  const promoterPctPost = pct(promoterShares, postIssueShares);
+  const otherPctPost = pct(otherPreShares, postIssueShares);
+  const investorPctPost = pct(proposedShares, postIssueShares);
+
+  const preMoney = issuedShares * issuePrice;
+  const postMoney = postIssueShares * issuePrice;
+  const dilutionPct = pct(proposedShares, postIssueShares);
+  const priceToFace = faceValue > 0 ? issuePrice / faceValue : 0;
+
+  // A threshold is reported only when the issue actually moves promoter holding
+  // across it. Each names its provision and stops there.
+  const THRESHOLDS = [
+    { at: 75, title: "75% — special resolution majority",
+      detail: "Companies Act, 2013, s.114(2). A special resolution needs votes in favour of at least three times the votes against." },
+    { at: 50, title: "50% — simple majority",
+      detail: "Ordinary resolutions carry on a simple majority of votes cast." },
+    { at: 25, title: "25% — SAST open-offer trigger",
+      detail: "SEBI (SAST) Regulations, 2011, reg. 3(1). Acquiring 25% or more of the voting rights of a listed company triggers an open offer." },
+  ];
+  const crossings = hasPromoterInput && proposedShares > 0
+    ? THRESHOLDS.filter((t) => promoterPctPre >= t.at && promoterPctPost < t.at)
+    : [];
+
   const isExceeded = proposedShares > availableShares;
   const excessShares = isExceeded ? proposedShares - availableShares : 0;
   const excessNominalCapital = excessShares * faceValue;
@@ -141,6 +188,38 @@ export default function CalculatorPage() {
     if (faceValue > 0) {
       setIssuedCapitalStr(String(num * faceValue));
     }
+  }
+
+  // --------------------------------------------------------------- solvers
+  // Each solves for a share count and writes it back into the inputs, so the
+  // whole page recomputes around the answer rather than showing it in isolation.
+  type SolveMode = "raise" | "stake" | "floor";
+
+  function solve(mode: SolveMode, target: number):
+      { shares: number } | { error: string } {
+    if (!Number.isFinite(target) || target <= 0) {
+      return { error: "Enter a target above zero." };
+    }
+    if (mode === "raise") {
+      if (issuePrice <= 0) return { error: "Set an issue price first." };
+      return { shares: Math.ceil(target / issuePrice) };
+    }
+    if (mode === "stake") {
+      if (target >= 100) return { error: "A new investor cannot take 100% of the company." };
+      if (issuedShares <= 0) return { error: "Set the issued shares first." };
+      const y = target / 100;
+      return { shares: Math.round((y * issuedShares) / (1 - y)) };
+    }
+    // floor: promoter / (issued + N) >= z
+    if (!hasPromoterInput) return { error: "Enter the promoter holding first." };
+    if (target > 100) return { error: "A holding cannot exceed 100%." };
+    const n = promoterShares / (target / 100) - issuedShares;
+    if (n < 0) {
+      // Clamping to zero here would say "issue nothing and you are fine", which
+      // is false — the floor is already breached before any new issue.
+      return { error: `Promoters already hold ${promoterPctPre.toFixed(2)}%, below ${target}%. No issue preserves that floor.` };
+    }
+    return { shares: Math.floor(n) };
   }
 
   function loadStandardExample() {
@@ -284,8 +363,27 @@ export default function CalculatorPage() {
                        onChange={setIssuePriceStr} placeholder="e.g. 125" />
               </Field>
             </div>
+
+            <div className="space-y-3 rounded-xl border border-border bg-surface-2/60 p-4">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.09em] text-accent">
+                4 · Investment &amp; ownership
+              </div>
+              <Field label="Promoter / existing holder shares"
+                     hint="Used for dilution and the control thresholds. Leave blank to skip.">
+                <Input type="number" step="1" min="0" value={promoterSharesStr}
+                       onChange={setPromoterSharesStr} placeholder="e.g. 1,20,000" />
+              </Field>
+              <Field label="Incoming investor">
+                <Input value={investorLabel} onChange={setInvestorLabel}
+                       placeholder="New investor" />
+              </Field>
+            </div>
           </div>
         </Card>
+
+        <div className="lg:col-start-1">
+          <SolverCard solve={solve} onApply={(n) => setProposedSharesStr(String(n))} />
+        </div>
 
         {/* ------------------------------------------------------ results */}
         <div className="space-y-4 lg:sticky lg:top-24">
@@ -350,6 +448,89 @@ export default function CalculatorPage() {
               resolution and filing Form SH-7 with the Registrar of Companies.
             </Banner>
           )}
+
+          {/* ------------------------------------------------- ownership */}
+          <Card className="p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <SectionTitle>Ownership after the issue</SectionTitle>
+              <Badge tone="accent">{dilutionPct.toFixed(2)}% diluted</Badge>
+            </div>
+
+            {!hasPromoterInput ? (
+              <p className="text-[13px] leading-relaxed text-muted">
+                Enter the promoter or existing-holder shares on the left to see how this issue
+                changes who owns what, and which control thresholds it crosses.
+              </p>
+            ) : (
+              <>
+                <StackedBar
+                  caption="Shareholding immediately after the proposed issue"
+                  ticks={[25, 50, 75]}
+                  segments={[
+                    { label: "Promoters", value: promoterShares, color: "var(--color-accent)" },
+                    { label: "Other existing", value: otherPreShares, color: "var(--color-review)" },
+                    { label: investorLabel || "New investor", value: proposedShares,
+                      color: "var(--color-pass)" },
+                  ]}
+                />
+
+                <dl className="mt-6 divide-y divide-border">
+                  {([
+                    ["Promoters", promoterPctPre, promoterPctPost],
+                    ["Other existing holders", otherPctPre, otherPctPost],
+                    [investorLabel || "New investor", 0, investorPctPost],
+                  ] as const).map(([label, pre, post]) => (
+                    <div key={label}
+                         className="flex items-baseline justify-between gap-4 py-2.5 text-sm">
+                      <dt className="text-muted">{label}</dt>
+                      <dd className="tnum flex items-baseline gap-2">
+                        <span className="text-faint">{pre.toFixed(2)}%</span>
+                        <span className="text-faint" aria-hidden>→</span>
+                        <span className="font-semibold text-ink">{post.toFixed(2)}%</span>
+                        <Delta tone={post - pre < -0.005 ? "down" : post - pre > 0.005 ? "up" : "flat"}>
+                          {post - pre >= 0 ? "+" : ""}{(post - pre).toFixed(2)} pp
+                        </Delta>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+
+                {crossings.length > 0 && (
+                  <div className="mt-5 space-y-2">
+                    {crossings.map((t) => (
+                      <ThresholdFlag key={t.at}
+                                     title={`This issue takes promoters below ${t.at}%`}
+                                     detail={<>
+                                       {t.detail}{" "}
+                                       Whether that matters here is a legal question —{" "}
+                                       <Link href="/signup" className="text-accent hover:underline">
+                                         run an assessment
+                                       </Link>.
+                                     </>} />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+          </Card>
+
+          {/* ------------------------------------------------- valuation */}
+          <Card className="p-6">
+            <SectionTitle hint="implied by the issue price">Valuation</SectionTitle>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <Stat label="Pre-money" value={rupees(preMoney)}
+                    sub={`${inr(issuedShares)} shares × ₹${issuePrice}`} />
+              <Stat label="Post-money" value={rupees(postMoney)}
+                    sub={`${inr(postIssueShares)} shares × ₹${issuePrice}`} />
+              <Stat label="Price to face value"
+                    value={priceToFace > 0 ? `${priceToFace.toFixed(2)}×` : "—"}
+                    sub={`₹${issuePrice} against ₹${faceValue} face value`} />
+            </div>
+            <p className="mt-4 text-[11px] leading-relaxed text-faint">
+              Implied values only. The issue price is an input here; whether it satisfies a
+              statutory pricing floor is determined by an assessment.
+            </p>
+          </Card>
 
           {detail === "detailed" && (
             <>
@@ -461,5 +642,71 @@ export default function CalculatorPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+
+/** "Work backwards": pick a goal, get the share count that reaches it, and
+ *  apply it to the inputs so the rest of the page recomputes. */
+function SolverCard({ solve, onApply }: {
+  solve: (mode: "raise" | "stake" | "floor", target: number) =>
+    { shares: number } | { error: string };
+  onApply: (shares: number) => void;
+}) {
+  const MODES = [
+    { id: "raise" as const, label: "Raise an amount", unit: "₹", placeholder: "1,25,00,000",
+      hint: "How many shares raise this much at the issue price?" },
+    { id: "stake" as const, label: "Investor takes", unit: "%", placeholder: "20",
+      hint: "How many shares give the investor this stake after the issue?" },
+    { id: "floor" as const, label: "Promoters stay at least", unit: "%", placeholder: "51",
+      hint: "The largest issue that keeps promoters at or above this." },
+  ];
+  const [mode, setMode] = useState<"raise" | "stake" | "floor">("raise");
+  const [target, setTarget] = useState("");
+  const active = MODES.find((m) => m.id === mode)!;
+  const result = target.trim() === "" ? null : solve(mode, Number(target));
+
+  return (
+    <Card className="p-6">
+      <SectionTitle hint="solve in reverse">Work backwards</SectionTitle>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        {MODES.map((m) => (
+          <button key={m.id} type="button" onClick={() => setMode(m.id)}
+                  aria-pressed={mode === m.id}
+                  className={`rounded-lg px-3 py-1.5 text-[12px] transition-colors ${
+                    mode === m.id ? "bg-accent text-white"
+                                  : "border border-border bg-surface text-muted hover:border-accent/40"}`}>
+            {m.label}
+          </button>
+        ))}
+      </div>
+
+      <p className="mt-3 text-[12px] leading-relaxed text-muted">{active.hint}</p>
+
+      <div className="mt-3 flex items-center gap-2">
+        <span className="text-sm text-muted">{active.unit}</span>
+        <input type="number" min="0" value={target} placeholder={active.placeholder}
+               onChange={(e) => setTarget(e.target.value)}
+               aria-label={`${active.label} target`}
+               className={inputCls} />
+      </div>
+
+      {result && "error" in result && (
+        <p className="mt-3 rounded-lg border border-warn/30 bg-warn-bg px-3 py-2 text-[12px] text-ink-2">
+          {result.error}
+        </p>
+      )}
+      {result && "shares" in result && (
+        <div className="mt-3 rounded-xl border border-accent/30 bg-accent-dim p-3.5">
+          <p className="text-[11px] uppercase tracking-[0.07em] text-muted">Issue</p>
+          <p className="tnum mt-1 text-[22px] font-semibold text-accent">
+            {inr(result.shares)} <span className="text-[13px] font-medium text-muted">shares</span>
+          </p>
+          <Button className="mt-3 w-full" onClick={() => onApply(result.shares)}>
+            Apply to the calculator
+          </Button>
+        </div>
+      )}
+    </Card>
   );
 }

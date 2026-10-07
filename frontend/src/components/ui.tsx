@@ -405,6 +405,75 @@ export function HeroButton({ children, href, onClick, variant = "dark" }: {
 
 export interface Segment { label: string; value: number; color: string }
 
+/** Proportional bar for ownership splits, with optional tick marks.
+ *
+ * Ticks exist because the thresholds that matter in Indian company law — 25,
+ * 50, 75 — are invisible on a plain bar, and "are we near one" is the whole
+ * question a cap table is being read for. */
+export function StackedBar({ segments, ticks = [], caption }: {
+  segments: Segment[]; ticks?: number[]; caption?: string;
+}) {
+  const sum = segments.reduce((n, s) => n + Math.max(0, s.value), 0);
+  if (sum <= 0) return null;
+  return (
+    <div>
+      <div className="relative">
+        <div className="flex h-9 w-full overflow-hidden rounded-lg bg-surface-2"
+             role="img" aria-label={caption ?? "Ownership split"}>
+          {segments.map((s) => {
+            const pct = (Math.max(0, s.value) / sum) * 100;
+            if (pct <= 0) return null;
+            return (
+              <div key={s.label} title={`${s.label}: ${pct.toFixed(2)}%`}
+                   style={{ width: `${pct}%`, background: s.color }}
+                   className="h-full transition-[width] duration-500 ease-out" />
+            );
+          })}
+        </div>
+        {ticks.map((t) => (
+          <div key={t} className="pointer-events-none absolute inset-y-0"
+               style={{ left: `${t}%` }} aria-hidden>
+            <div className="h-full w-px bg-ink/35" />
+            <span className="absolute -bottom-5 -translate-x-1/2 font-mono text-[10px] text-faint">
+              {t}%
+            </span>
+          </div>
+        ))}
+      </div>
+      <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
+        {segments.map((s) => (
+          <li key={s.label} className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-sm" style={{ background: s.color }} aria-hidden />
+            <span className="text-[12px] text-muted">{s.label}</span>
+            <span className="tnum text-[12px] font-semibold text-ink">
+              {((Math.max(0, s.value) / sum) * 100).toFixed(2)}%
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** A threshold the proposed issue moves across.
+ *
+ * Deliberately phrased as an observation naming its provision, never as a
+ * conclusion: this page has no rule engine behind it, and the product's whole
+ * discipline is that arithmetic is not a legal answer. */
+export function ThresholdFlag({ title, detail, tone = "warn" }: {
+  title: string; detail: ReactNode; tone?: "warn" | "block";
+}) {
+  const cls = tone === "block"
+    ? "border-block/30 bg-block-bg"
+    : "border-warn/30 bg-warn-bg";
+  return (
+    <div className={`rounded-xl border p-3.5 ${cls}`}>
+      <p className="text-[13px] font-semibold text-ink">{title}</p>
+      <p className="mt-1 text-[12px] leading-relaxed text-ink-2">{detail}</p>
+    </div>
+  );
+}
+
 /** Donut built from stroke-dasharray on one circle per segment.
  *
  * Inline SVG rather than a charting dependency: there is exactly one chart
