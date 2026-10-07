@@ -281,8 +281,14 @@ export default function CalculatorPage() {
 
       {/* Inputs on the left, the answer on the right. The results column is
           sticky so the figure stays in view while the inputs are edited. */}
+      {/* Two explicit column wrappers, not three auto-placed children: with the
+          solver pinned to column 1 as a sibling, grid auto-placement put the
+          results in row 2 and left the top-right cell empty, so the answer only
+          appeared after scrolling. */}
       <div className="mt-8 grid items-start gap-6 lg:grid-cols-[minmax(0,400px)_1fr]">
 
+        {/* --------------------------------------------------- left column */}
+        <div className="space-y-6">
         {/* ------------------------------------------------------- inputs */}
         <Card className="p-6">
           <SectionTitle hint="every figure derives live">Your inputs</SectionTitle>
@@ -381,11 +387,10 @@ export default function CalculatorPage() {
           </div>
         </Card>
 
-        <div className="lg:col-start-1">
-          <SolverCard solve={solve} onApply={(n) => setProposedSharesStr(String(n))} />
+        <SolverCard solve={solve} onApply={(n) => setProposedSharesStr(String(n))} />
         </div>
 
-        {/* ------------------------------------------------------ results */}
+        {/* -------------------------------------------------- right column */}
         <div className="space-y-4 lg:sticky lg:top-24">
           <div className="flex items-center justify-between gap-3">
             <SectionTitle>Result</SectionTitle>
