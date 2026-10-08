@@ -13,18 +13,23 @@ const DETAIL_KEY = "calc.detail";
 
 export default function CalculatorPage() {
   // State inputs
+  // The calculator opens empty: these are the user's own figures, not a
+  // worked example dressed up as data. Face value is the one exception —
+  // ₹10 is the overwhelming default for Indian equity and every other field
+  // derives from it, so leaving it blank makes the form look broken. The
+  // example buttons remain, as a deliberate opt-in.
   const [faceValueStr, setFaceValueStr] = useState("10");
-  const [authCapitalStr, setAuthCapitalStr] = useState("5000000");
-  const [authSharesStr, setAuthSharesStr] = useState("500000");
-  const [issuedCapitalStr, setIssuedCapitalStr] = useState("2000000");
-  const [issuedSharesStr, setIssuedSharesStr] = useState("200000");
-  const [proposedSharesStr, setProposedSharesStr] = useState("100000");
-  const [issuePriceStr, setIssuePriceStr] = useState("125");
+  const [authCapitalStr, setAuthCapitalStr] = useState("");
+  const [authSharesStr, setAuthSharesStr] = useState("");
+  const [issuedCapitalStr, setIssuedCapitalStr] = useState("");
+  const [issuedSharesStr, setIssuedSharesStr] = useState("");
+  const [proposedSharesStr, setProposedSharesStr] = useState("");
+  const [issuePriceStr, setIssuePriceStr] = useState("");
 
   // Investment side. Promoter holding is left blank rather than defaulting to
   // zero: a silent zero would report promoters diluted from 0%, which looks
   // like a bug rather than like missing input.
-  const [promoterSharesStr, setPromoterSharesStr] = useState("120000");
+  const [promoterSharesStr, setPromoterSharesStr] = useState("");
   const [investorLabel, setInvestorLabel] = useState("New investor");
 
   // Summary by default: most visitors want one number. The preference is

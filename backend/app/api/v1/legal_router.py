@@ -9,6 +9,25 @@ from ...deps import Principal, current_principal
 router = APIRouter(prefix="/legal", tags=["legal"])
 
 
+@router.get("/public/stats")
+def public_stats():
+    """Corpus size, for the signed-out landing page. No authentication.
+
+    Deliberately aggregate-only and drawn entirely from the `legal` schema,
+    which is not tenant-scoped: these are counts of published law, not of
+    anybody's data. Nothing here varies by organisation, so there is nothing
+    for an anonymous caller to learn about another tenant.
+    """
+    with tx() as conn:
+        row = fetch_one(conn, """
+            SELECT (SELECT count(*) FROM legal.legal_sources
+                     WHERE document_type <> 'CONTAINER' AND status = 'ACTIVE') AS sources,
+                   (SELECT count(*) FROM legal.legal_provisions)               AS provisions,
+                   (SELECT count(DISTINCT authority) FROM legal.legal_sources
+                     WHERE authority <> 'UNKNOWN')                             AS authorities,
+                   (SELECT count(*) FROM legal.v_active_rule_versions)         AS rules""")
+    return row or {"sources": 0, "provisions": 0, "authorities": 0, "rules": 0}
+
 @router.get("/provisions/{citation_uid}")
 def provision(citation_uid: str, p: Principal = Depends(current_principal)):
     """Full provision text with its page anchor and source document identity."""

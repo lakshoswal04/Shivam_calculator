@@ -27,11 +27,12 @@ export default function LandingPage() {
   const [facts, setFacts] = useState<{ sources: number; provisions: number } | null>(null);
 
   useEffect(() => {
-    api.sources()
-      .then((r) => setFacts({
-        sources: r.count,
-        provisions: r.sources.reduce((n, s) => n + s.provision_count, 0),
-      }))
+    // publicStats, not sources: the latter requires a session, so a signed-out
+    // visitor got a 401 — and the client's 401 handler then redirected them
+    // straight to /login, which is why the landing page appeared to be
+    // unreachable.
+    api.publicStats()
+      .then((r) => setFacts({ sources: r.sources, provisions: r.provisions }))
       .catch(() => { /* a marketing page must not depend on an API call */ });
   }, []);
 

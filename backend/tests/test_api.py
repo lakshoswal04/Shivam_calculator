@@ -38,7 +38,13 @@ def test_capital_and_legal_capacity_are_separate_fields(client, cs_headers, list
     assert r.status_code == 200, r.text
     cap = r.json()["capacity"]
     assert "capital_capacity" in cap and "legal_issue_capacity" in cap
-    assert cap["capital_capacity"]["available_shares"] == 8000000
+    # Derived from the fixture rather than a constant: this used to assert
+    # 8,000,000, a figure that existed only because a particular company was in
+    # the demo seed. The behaviour under test is that headroom is authorised
+    # minus issued, not that it equals any specific number.
+    expected = (int(listed_company["authorised_capital"]) // int(listed_company["face_value"])
+                - int(listed_company["shares_issued"]))
+    assert cap["capital_capacity"]["available_shares"] == expected
     # Distinct objects, never one number standing for both.
     assert cap["capital_capacity"] is not cap["legal_issue_capacity"]
     assert cap["binding_constraint"]["type"]
@@ -146,3 +152,26 @@ def test_calculation_preview_returns_no_legal_conclusion(client, cs_headers):
     assert "legal_issue_capacity" not in r
     assert "rule_results" not in r
     assert "overall_status" not in r
+
+
+# ----------------------------------------------------- public landing surface
+def test_public_stats_needs_no_authentication(client):
+    """The landing page is signed-out. It previously read the corpus from an
+    authenticated route, got a 401, and the client's 401 handler redirected the
+    visitor to /login — so the landing page was effectively unreachable."""
+    r = client.get("/api/v1/legal/public/stats")
+    assert r.status_code == 200, r.text
+    d = r.json()
+    assert d["provisions"] > 0 and d["sources"] > 0
+
+
+def test_public_stats_exposes_only_corpus_counts(client):
+    """It is unauthenticated, so it must carry nothing tenant-scoped."""
+    d = client.get("/api/v1/legal/public/stats").json()
+    assert set(d) == {"sources", "provisions", "authorities", "rules"}
+    assert all(isinstance(v, int) for v in d.values())
+
+
+def test_the_corpus_listing_itself_still_requires_a_session(client):
+    """Adding a public summary must not have opened up the full listing."""
+    assert client.get("/api/v1/legal/sources").status_code == 401

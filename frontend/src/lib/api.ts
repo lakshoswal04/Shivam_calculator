@@ -105,7 +105,12 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   // `init.signal` is honoured, so a superseded search can be cancelled and a
   // slow earlier response cannot overwrite a newer one.
   const res = await fetch(`${BASE}${path}`, { ...init, headers });
-  if (res.status === 401 && typeof window !== "undefined"
+  // A 401 is only a *session expiry* if a token was actually sent. Without
+  // that test, any public page calling an authenticated endpoint ejects its
+  // visitor to /login — which is exactly what the landing page did, because
+  // its corpus figures came from an authenticated route. An anonymous 401 is
+  // an ordinary error for the caller to handle.
+  if (res.status === 401 && t && typeof window !== "undefined"
       && !window.location.pathname.startsWith("/login")) {
     session.clear();
     window.location.href = "/login";
@@ -132,6 +137,9 @@ export const api = {
     request<{ access_token: string; refresh_token: string; user: SessionUser }>(
       "/auth/register", { method: "POST", body: JSON.stringify(body) }),
   health: () => request<{ status: string; active_rules: number }>("/health"),
+  /** Corpus size for the signed-out landing page. Needs no session. */
+  publicStats: () => request<{ sources: number; provisions: number;
+                               authorities: number; rules: number }>("/legal/public/stats"),
   companies: () => request<CompanyPage>("/companies?limit=100"),
   searchCompanies: (q: string, opts: { limit?: number; offset?: number;
                                        signal?: AbortSignal } = {}) => {
