@@ -45,19 +45,75 @@ def test_duplicate_cin_warns_rather_than_blocks(client, cs_headers):
     assert second.json()["warnings"], "a duplicate CIN should be reported back"
 
 
-def test_cin_lookup_endpoint(client, cs_headers):
-    """CIN lookup returns company metadata for valid CIN and 422 for invalid CIN format."""
-    r = client.get("/api/v1/companies/lookup?cin=U27100MH2016PLC123456", headers=cs_headers)
-    assert r.status_code == 200, r.text
-    data = r.json()
-    assert data["found"] is True
-    assert data["name"] in ("Aurora Components Limited", "XYZ Technologies Limited")
-    assert data["company_type"] == "PUBLIC"
+def test_an_unknown_cin_invents_nothing(client, cs_headers):
+    """The lookup used to synthesise a name, ticker and ISIN and return found=True.
 
-    # Non-seeded test CIN lookup
-    r2 = client.get("/api/v1/companies/lookup?cin=U72900KA2020PTC098765", headers=cs_headers)
-    assert r2.status_code == 200
-    assert r2.json()["name"] == "Acme Software Solutions Private Limited"
+    Entering Reliance's real CIN produced "Example Industries Limited", which the
+    form then autofilled as though a registry had confirmed it. MCA exposes no
+    public lookup, so the only honest answer for an unknown CIN is "not found".
+    """
+    r = client.get("/api/v1/companies/lookup?cin=L17110MH1973PLC019786", headers=cs_headers)
+    assert r.status_code == 200, r.text
+    d = r.json()
+    assert d["found"] is False
+    for invented in ("name", "ticker_symbol", "isin", "incorporation_date"):
+        assert not d.get(invented), f"{invented} must not be fabricated for an unknown CIN"
+
+
+def test_cin_structure_is_decoded_not_guessed(client, cs_headers):
+    """What the CIN itself encodes is fair to report; nothing beyond it is."""
+    r = client.get("/api/v1/companies/lookup?cin=L17110MH1973PLC019786", headers=cs_headers)
+    d = r.json()["derived"]
+    assert d["incorporation_year"] == 1973
+    assert d["state_code"] == "MH"
+    assert d["company_type"] == "PUBLIC"
+    assert d["company_class_code"] == "PLC"
+    assert d["cin_series"] == "LISTED"
+    # A delisted company keeps its L-series CIN, so this is never asserted.
+    assert d["listed_status_confirmed"] is False
+
+
+def test_a_cin_already_on_file_still_resolves(client, cs_headers):
+    """Real data the organisation entered itself is still a legitimate answer."""
+    cin = "U27100MH2016PLC" + str(uuid.uuid4().int)[:6]
+    created = _new_company(client, cs_headers, cin=cin)
+    assert created.status_code == 201, created.text
+
+    r = client.get(f"/api/v1/companies/lookup?cin={cin}", headers=cs_headers)
+    d = r.json()
+    assert d["found"] is True and d["is_existing"] is True
+    assert d["name"] == created.json()["name"]
+
+
+def test_malformed_cin_is_still_rejected(client, cs_headers):
+    r = client.get("/api/v1/companies/lookup?cin=NOT-A-CIN", headers=cs_headers)
+    assert r.status_code == 422
+
+
+# ------------------------------------------------------------ listed registry
+def test_registry_finds_a_real_company_by_name_symbol_and_isin(client, cs_headers):
+    """The replacement for guessing: real NSE data, reachable without MCA."""
+    for q in ("reliance", "RELIANCE", "INE002A01018"):
+        r = client.get(f"/api/v1/companies/registry?q={q}", headers=cs_headers)
+        assert r.status_code == 200, r.text
+        results = r.json()["results"]
+        assert results, f"no match for {q!r}"
+        assert results[0]["name"] == "Reliance Industries Limited"
+        assert results[0]["symbol"] == "RELIANCE"
+        assert results[0]["isin"] == "INE002A01018"
+
+
+def test_registry_says_where_its_data_came_from(client, cs_headers):
+    r = client.get("/api/v1/companies/registry?q=infosys", headers=cs_headers).json()
+    assert r["source"] and "National Stock Exchange" in r["source"]
+    assert r["fetched_at"]
+    assert "Unlisted companies" in r["coverage"]
+
+
+def test_registry_returns_nothing_rather_than_a_guess(client, cs_headers):
+    r = client.get("/api/v1/companies/registry?q=zzzznotarealcompany", headers=cs_headers)
+    assert r.status_code == 200
+    assert r.json()["results"] == []
 
     bad = client.get("/api/v1/companies/lookup?cin=NOT-A-CIN", headers=cs_headers)
     assert bad.status_code == 422

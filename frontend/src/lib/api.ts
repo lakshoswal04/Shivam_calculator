@@ -155,19 +155,33 @@ export const api = {
       "/companies", { method: "POST", body: JSON.stringify(body) }),
   lookupCin: (cin: string) =>
     request<{
-      cin: string;
-      found: boolean;
-      is_existing?: boolean;
-      company_id?: string | null;
-      name?: string | null;
-      company_type?: string;
-      incorporation_date?: string | null;
-      registered_office?: string | null;
-      listed_status?: string;
-      ticker_symbol?: string | null;
-      isin?: string | null;
-      exchanges?: string[];
+      cin: string; found: boolean; is_existing: boolean; company_id: string | null;
+      /** Present only when the CIN is already on file for this organisation. */
+      name?: string | null; company_type?: string | null;
+      incorporation_date?: string | null; registered_office?: string | null;
+      listed_status?: string | null; ticker_symbol?: string | null;
+      isin?: string | null; exchanges?: string[];
+      /** Read off the CIN's own structure when the company is not on file.
+       *  Never a guessed name — MCA exposes no public lookup. */
+      derived?: {
+        incorporation_year: number | null; state_code: string;
+        registered_office_hint: string | null; company_type: string;
+        company_class_code: string; cin_series: string;
+        listed_status_confirmed: boolean;
+      };
+      note?: string;
     }>(`/companies/lookup?cin=${encodeURIComponent(cin)}`),
+  /** Real listed companies, by name, symbol or ISIN. NSE-listed only. */
+  searchRegistry: (q: string, signal?: AbortSignal) =>
+    request<{
+      query: string; count: number; coverage: string;
+      source: string | null; fetched_at: string | null; rows: number | null;
+      results: Array<{
+        symbol: string; name: string; isin: string;
+        listing_date: string | null; face_value: string | null;
+        listed_status: string; exchanges: string[];
+      }>;
+    }>(`/companies/registry?q=${encodeURIComponent(q)}&limit=8`, { signal }),
   setCapital: (id: string, body: CapitalBody) =>
     request<unknown>(`/companies/${id}/capital`, { method: "PUT", body: JSON.stringify(body) }),
   setHoldings: (id: string, rows: HoldingBody[]) =>

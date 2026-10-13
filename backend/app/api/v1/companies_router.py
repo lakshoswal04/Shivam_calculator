@@ -5,6 +5,7 @@ from datetime import date
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 
 from ...db import fetch_all, fetch_one, tx
+from ...domain import listed_companies
 from ...deps import (ROLE_RANK, Principal, current_principal, require_company_access,
                      require_role)
 from ...domain import route_manifests
@@ -156,39 +157,6 @@ import re
 
 CIN_RE = re.compile(r"^[LUu][0-9]{5}[A-Za-z]{2}[0-9]{4}[A-Za-z]{3}[0-9]{6}$")
 
-KNOWN_CINS = {
-    "U27100MH2016PLC123456": {
-        "name": "XYZ Technologies Limited",
-        "company_type": "PUBLIC",
-        "incorporation_date": "2016-06-15",
-        "registered_office": "Mumbai, Maharashtra",
-        "listed_status": "UNLISTED",
-        "ticker_symbol": None,
-        "isin": None,
-        "exchanges": [],
-    },
-    "U72900KA2020PTC098765": {
-        "name": "Acme Software Solutions Private Limited",
-        "company_type": "PRIVATE",
-        "incorporation_date": "2020-03-10",
-        "registered_office": "Bengaluru, Karnataka",
-        "listed_status": "UNLISTED",
-        "ticker_symbol": None,
-        "isin": None,
-        "exchanges": [],
-    },
-    "L24110DL1995PLC067890": {
-        "name": "Apex Chemicals & Synthetics Limited",
-        "company_type": "PUBLIC",
-        "incorporation_date": "1995-11-20",
-        "registered_office": "New Delhi, Delhi",
-        "listed_status": "LISTED",
-        "ticker_symbol": "APEXCHEM",
-        "isin": "INE123A01024",
-        "exchanges": ["NSE", "BSE"],
-    },
-}
-
 STATE_NAMES = {
     "MH": "Mumbai, Maharashtra",
     "KA": "Bengaluru, Karnataka",
@@ -238,50 +206,76 @@ def lookup_cin(cin: str = Query(..., min_length=5, max_length=30),
                 "exchanges": list(row.get("exchanges") or []),
             }
 
-    if cin_clean in KNOWN_CINS:
-        k = KNOWN_CINS[cin_clean]
-        return {
-            "cin": cin_clean,
-            "found": True,
-            "is_existing": False,
-            "company_id": None,
-            "name": k["name"],
-            "company_type": k["company_type"],
-            "incorporation_date": k["incorporation_date"],
-            "registered_office": k["registered_office"],
-            "listed_status": k["listed_status"],
-            "ticker_symbol": k.get("ticker_symbol"),
-            "isin": k.get("isin"),
-            "exchanges": k.get("exchanges", []),
-        }
-
-    is_listed = cin_clean.startswith("L")
-    state_code = cin_clean[6:8]
-    year_str = cin_clean[8:12]
-    type_code = cin_clean[12:15]
-
-    company_type = "PUBLIC" if type_code == "PLC" else "PRIVATE"
-    inc_date = f"{year_str}-06-15" if year_str.isdigit() and 1950 <= int(year_str) <= 2026 else None
-    reg_office = STATE_NAMES.get(state_code, f"{state_code}, India")
-
-    synth_name = f"Example {'Industries' if type_code == 'PLC' else 'Enterprise'} {'Limited' if type_code == 'PLC' else 'Private Limited'}"
-    synth_ticker = f"EXM{cin_clean[1:5]}" if is_listed else None
-    synth_isin = f"INE{cin_clean[15:21]}01024" if is_listed else None
-    synth_exchanges = ["NSE", "BSE"] if is_listed else []
-
+    # Nothing else is known about this CIN, and that is the answer. The previous
+    # implementation synthesised a name ("Example Industries Limited"), a ticker
+    # and an ISIN and returned found=True, so the form autofilled invented
+    # identity as though a registry had confirmed it.
+    #
+    # MCA, the authoritative source, refuses automated access, so there is no
+    # honest way to resolve an arbitrary CIN to a name. What IS honest is the
+    # structure of the CIN itself, which is defined by the Companies Act
+    # numbering scheme and can be read off directly.
     return {
         "cin": cin_clean,
-        "found": True,
+        "found": False,
         "is_existing": False,
         "company_id": None,
-        "name": synth_name,
-        "company_type": company_type,
-        "incorporation_date": inc_date,
-        "registered_office": reg_office,
-        "listed_status": "LISTED" if is_listed else "UNLISTED",
-        "ticker_symbol": synth_ticker,
-        "isin": synth_isin,
-        "exchanges": synth_exchanges,
+        "derived": _derive_from_cin(cin_clean),
+        "note": ("Company identity is not available for a CIN. MCA does not expose a "
+                 "public lookup, so the details below are read from the structure of "
+                 "the CIN itself — please enter the company name and confirm the rest. "
+                 "For a listed company, searching by name or ISIN gives verified data."),
+    }
+
+
+def _derive_from_cin(cin: str) -> dict:
+    """What the CIN genuinely encodes. Nothing is inferred beyond this.
+
+        L/U  listed or unlisted series        [0]
+        NIC  industry code                    [1:6]
+        ST   state of registration            [6:8]
+        YYYY year of incorporation            [8:12]
+        PLC  ownership / company class        [12:15]
+        NNNN registration number              [15:21]
+    """
+    state_code = cin[6:8].upper()
+    year_str = cin[8:12]
+    class_code = cin[12:15].upper()
+
+    year = int(year_str) if year_str.isdigit() and 1850 <= int(year_str) <= 2100 else None
+    return {
+        # A specific date is NOT derivable: the CIN carries a year and nothing
+        # more. The old code emitted "{year}-06-15", a day that exists nowhere.
+        "incorporation_year": year,
+        "state_code": state_code,
+        "registered_office_hint": STATE_NAMES.get(state_code),
+        "company_type": "PUBLIC" if class_code in ("PLC", "GAP", "GAT", "ULL") else "PRIVATE",
+        "company_class_code": class_code,
+        # A company that later delists keeps its "L" CIN, so this indicates the
+        # series the CIN was issued in; it does not assert current status.
+        "cin_series": "LISTED" if cin[0].upper() == "L" else "UNLISTED",
+        "listed_status_confirmed": False,
+    }
+
+
+@router.get("/registry")
+def search_registry(q: str = Query(..., min_length=2, max_length=120),
+                    limit: int = Query(10, ge=1, le=25),
+                    p: Principal = Depends(current_principal)):
+    """Search real listed companies by name, symbol or ISIN.
+
+    Covers NSE-listed companies only, and says so: this is the data that could
+    be obtained from a source that permits automated access. An unlisted company
+    will not be here, which is a gap to state rather than to fill with a guess.
+    """
+    results = [c.as_dict() for c in listed_companies.search(q, limit=limit)]
+    return {
+        "query": q,
+        "count": len(results),
+        "results": results,
+        "coverage": ("NSE-listed companies only. Unlisted companies are not in any "
+                     "source that permits automated access; enter those by hand."),
+        **listed_companies.provenance(),
     }
 
 
