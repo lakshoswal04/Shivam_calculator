@@ -28,7 +28,7 @@ export default function ProvisionPage({ params }: { params: Promise<{ uid: strin
     return (
       <div className="space-y-4">
         <Banner tone="block" title="Could not load that provision">{error}</Banner>
-        <Link href="/legal" className="text-sm text-accent-hi hover:underline">← Legal library</Link>
+        <Link href="/assessments" className="text-sm text-accent hover:underline">← Assessments</Link>
       </div>
     );
   }
@@ -37,7 +37,7 @@ export default function ProvisionPage({ params }: { params: Promise<{ uid: strin
   return (
     <div className="space-y-6">
       <PageHeader
-        eyebrow={<Link href="/legal" className="hover:text-accent-hi">← Legal library</Link>}
+        eyebrow={<Link href="/assessments" className="hover:text-accent">← Assessments</Link>}
         title={
           // A citation is a reference string, so it stays monospaced even at
           // display size; it is set smaller than a prose title for the same reason.
