@@ -1,0 +1,19 @@
+{
+  "url": "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv",
+  "source": "National Stock Exchange of India \u2014 list of equity securities",
+  "fetched_at": "2026-10-13T11:01:43+00:00",
+  "bytes": 184050,
+  "rows": 2606,
+  "sha256": "bf199940551b6b977afc88f5096b072cdd2663d600bd7abe75433723dc4535a8",
+  "columns": [
+    "SYMBOL",
+    "NAME OF COMPANY",
+    "SERIES",
+    "DATE OF LISTING",
+    "PAID UP VALUE",
+    "MARKET LOT",
+    "ISIN NUMBER",
+    "FACE VALUE"
+  ],
+  "note": "Company identity for listed companies only. Carries no CIN: MCA, the authoritative source for CIN, refuses automated access."
+}

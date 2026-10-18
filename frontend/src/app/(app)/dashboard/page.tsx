@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useReveal } from "@/lib/useReveal";
 import {
   api, inr, session, type AssessmentRow, type Company, type SourceGap,
 } from "@/lib/api";
@@ -30,8 +31,10 @@ export default function DashboardPage() {
   const recent = all.slice(0, 5);
   const blocker = gaps.find((g) => g.severity === "BLOCKER");
 
+  const reveal = useReveal<HTMLDivElement>();
+
   return (
-    <div className="space-y-6">
+    <div ref={reveal} className="space-y-6">
       <PageHeader
         title={name ? `Welcome back, ${name}` : "Dashboard"}
         lead="Start an assessment, or pick up where you left off."
@@ -45,7 +48,7 @@ export default function DashboardPage() {
 
       {error && <Banner tone="block" title="Could not load your workspace">{error}</Banner>}
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="reveal grid gap-4 sm:grid-cols-3">
         <Card className="p-5">
           <Stat label="Companies" value={cos.length}
                 sub={needSetup.length > 0

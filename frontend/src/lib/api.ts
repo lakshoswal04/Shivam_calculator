@@ -105,7 +105,12 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   // `init.signal` is honoured, so a superseded search can be cancelled and a
   // slow earlier response cannot overwrite a newer one.
   const res = await fetch(`${BASE}${path}`, { ...init, headers });
-  if (res.status === 401 && typeof window !== "undefined"
+  // A 401 is only a *session expiry* if a token was actually sent. Without
+  // that test, any public page calling an authenticated endpoint ejects its
+  // visitor to /login — which is exactly what the landing page did, because
+  // its corpus figures came from an authenticated route. An anonymous 401 is
+  // an ordinary error for the caller to handle.
+  if (res.status === 401 && t && typeof window !== "undefined"
       && !window.location.pathname.startsWith("/login")) {
     session.clear();
     window.location.href = "/login";
@@ -132,6 +137,9 @@ export const api = {
     request<{ access_token: string; refresh_token: string; user: SessionUser }>(
       "/auth/register", { method: "POST", body: JSON.stringify(body) }),
   health: () => request<{ status: string; active_rules: number }>("/health"),
+  /** Corpus size for the signed-out landing page. Needs no session. */
+  publicStats: () => request<{ sources: number; provisions: number;
+                               authorities: number; rules: number }>("/legal/public/stats"),
   companies: () => request<CompanyPage>("/companies?limit=100"),
   searchCompanies: (q: string, opts: { limit?: number; offset?: number;
                                        signal?: AbortSignal } = {}) => {
@@ -147,19 +155,33 @@ export const api = {
       "/companies", { method: "POST", body: JSON.stringify(body) }),
   lookupCin: (cin: string) =>
     request<{
-      cin: string;
-      found: boolean;
-      is_existing?: boolean;
-      company_id?: string | null;
-      name?: string | null;
-      company_type?: string;
-      incorporation_date?: string | null;
-      registered_office?: string | null;
-      listed_status?: string;
-      ticker_symbol?: string | null;
-      isin?: string | null;
-      exchanges?: string[];
+      cin: string; found: boolean; is_existing: boolean; company_id: string | null;
+      /** Present only when the CIN is already on file for this organisation. */
+      name?: string | null; company_type?: string | null;
+      incorporation_date?: string | null; registered_office?: string | null;
+      listed_status?: string | null; ticker_symbol?: string | null;
+      isin?: string | null; exchanges?: string[];
+      /** Read off the CIN's own structure when the company is not on file.
+       *  Never a guessed name — MCA exposes no public lookup. */
+      derived?: {
+        incorporation_year: number | null; state_code: string;
+        registered_office_hint: string | null; company_type: string;
+        company_class_code: string; cin_series: string;
+        listed_status_confirmed: boolean;
+      };
+      note?: string;
     }>(`/companies/lookup?cin=${encodeURIComponent(cin)}`),
+  /** Real listed companies, by name, symbol or ISIN. NSE-listed only. */
+  searchRegistry: (q: string, signal?: AbortSignal) =>
+    request<{
+      query: string; count: number; coverage: string;
+      source: string | null; fetched_at: string | null; rows: number | null;
+      results: Array<{
+        symbol: string; name: string; isin: string;
+        listing_date: string | null; face_value: string | null;
+        listed_status: string; exchanges: string[];
+      }>;
+    }>(`/companies/registry?q=${encodeURIComponent(q)}&limit=8`, { signal }),
   setCapital: (id: string, body: CapitalBody) =>
     request<unknown>(`/companies/${id}/capital`, { method: "PUT", body: JSON.stringify(body) }),
   setHoldings: (id: string, rows: HoldingBody[]) =>

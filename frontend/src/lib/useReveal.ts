@@ -64,3 +64,37 @@ export function useCountUp(value: number | null, ms = 1100) {
 
   return value == null ? 0 : n;
 }
+
+/** Tweens between successive values so a figure visibly moves when an input
+ *  changes, rather than snapping.
+ *
+ *  Correctness is not at stake: the final frame is always the exact value, and
+ *  under reduced motion the exact value is returned immediately with no
+ *  animation at all. Non-finite input (a NaN from an empty field, an Infinity
+ *  from a division by zero) is passed straight through so the caller's own
+ *  guard decides what to display. */
+export function useAnimatedNumber(value: number, ms = 450) {
+  const [shown, setShown] = useState(value);
+  const from = useRef(value);
+  const raf = useRef(0);
+
+  useEffect(() => {
+    if (!Number.isFinite(value)) { setShown(value); return; }
+    if (typeof window === "undefined" || window.matchMedia?.(REDUCED).matches) {
+      from.current = value; setShown(value); return;
+    }
+    const start = performance.now();
+    const a = Number.isFinite(from.current) ? from.current : value;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / ms);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setShown(t === 1 ? value : a + (value - a) * eased);
+      if (t < 1) raf.current = requestAnimationFrame(tick);
+      else from.current = value;
+    };
+    raf.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf.current);
+  }, [value, ms]);
+
+  return shown;
+}

@@ -37,36 +37,6 @@ USERS = [
     ("legal@demo.test", "Anjali Rao (Legal Reviewer)", "LEGAL_REVIEWER", "demo1234"),
 ]
 
-COMPANIES = [
-    {
-        "name": "Aurora Components Limited", "cin": "U27100MH2016PLC123456",
-        "company_type": "PUBLIC", "listed_status": "UNLISTED", "exchanges": [],
-        "authorised": 50000000, "issued": 35000000, "face_value": 10,
-        "shares": 3500000,
-        "holders": [("Promoter group", 2100000, True, "PROMOTER"),
-                    ("Kestrel Capital Fund", 1050000, False, "INSTITUTIONAL"),
-                    ("Employees (ESOP exercised)", 350000, False, "EMPLOYEE")],
-    },
-    {
-        "name": "Meridian Textiles Limited", "cin": "L17110MH2009PLC654321",
-        "company_type": "PUBLIC", "listed_status": "LISTED", "exchanges": ["NSE"],
-        "authorised": 200000000, "issued": 120000000, "face_value": 10,
-        "shares": 12000000,
-        "holders": [("Promoter group", 6600000, True, "PROMOTER"),
-                    ("Public shareholders", 4200000, False, "PUBLIC"),
-                    ("Bodies corporate", 1200000, False, "INSTITUTIONAL")],
-    },
-    {
-        "name": "Kalyani Foods Private Limited", "cin": "U15100KA2018PTC998877",
-        "company_type": "PRIVATE", "listed_status": "UNLISTED", "exchanges": [],
-        "authorised": 10000000, "issued": 9500000, "face_value": 10,
-        "shares": 950000,
-        "holders": [("Founders", 700000, True, "PROMOTER"),
-                    ("Angel investors", 250000, False, "OTHER")],
-    },
-]
-
-
 def purge(conn):
     with conn.cursor() as cur:
         cur.execute("SELECT org_id FROM auth.organisations WHERE slug=%s", (DEMO_SLUG,))
@@ -153,6 +123,7 @@ def approve_demo(conn):
 
 
 def seed_org(conn):
+    """The demo organisation and its sign-in accounts. Nothing else."""
     with conn.cursor() as cur:
         cur.execute("""
             INSERT INTO auth.organisations (name, slug, is_demo)
@@ -174,54 +145,10 @@ def seed_org(conn):
                         (org_id, uid, role))
         print(f"  organisation + {len(USERS)} users")
 
-        cur.execute("SELECT set_config('app.current_org', %s, true)", (str(org_id),))
-
-        # Re-seeding replaces the demo companies rather than colliding with
-        # them, so the script can be run repeatedly. Cascades clear the
-        # classifications, capital, cap table and any assessments.
-        cur.execute("DELETE FROM company.companies WHERE org_id = %s", (org_id,))
-        if cur.rowcount:
-            print(f"  replaced {cur.rowcount} existing demo companies")
-
-        for c in COMPANIES:
-            cur.execute("""
-                INSERT INTO company.companies (org_id, name, cin, incorporation_date)
-                VALUES (%s,%s,%s,%s) RETURNING company_id""",
-                (org_id, c["name"], c["cin"], date(2016, 4, 1)))
-            cid = cur.fetchone()["company_id"]
-            cur.execute("""
-                INSERT INTO company.company_classifications
-                  (org_id, company_id, company_type, listed_status, exchanges,
-                   is_sme, effective_from)
-                VALUES (%s,%s,%s,%s,%s::legal.exchange[],false,%s)""",
-                (org_id, cid, c["company_type"], c["listed_status"],
-                 c["exchanges"], date(2016, 4, 1)))
-            cur.execute("""
-                INSERT INTO company.share_classes
-                  (org_id, company_id, name, security_type, face_value)
-                VALUES (%s,%s,'Equity','EQUITY_SHARES',%s) RETURNING share_class_id""",
-                (org_id, cid, c["face_value"]))
-            scid = cur.fetchone()["share_class_id"]
-            cur.execute("""
-                INSERT INTO company.capital_snapshots
-                  (org_id, company_id, share_class_id, as_of_date, authorised_capital,
-                   issued_capital, subscribed_capital, paid_up_capital, face_value, shares_issued)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                (org_id, cid, scid, date.today(), c["authorised"], c["issued"],
-                 c["issued"], c["issued"], c["face_value"], c["shares"]))
-            for hname, held, promoter, cat in c["holders"]:
-                cur.execute("""
-                    INSERT INTO company.shareholders
-                      (org_id, company_id, name, category, is_promoter, demat_holding)
-                    VALUES (%s,%s,%s,%s,%s,true) RETURNING shareholder_id""",
-                    (org_id, cid, hname, cat, promoter))
-                shid = cur.fetchone()["shareholder_id"]
-                cur.execute("""
-                    INSERT INTO company.holdings
-                      (org_id, shareholder_id, share_class_id, as_of_date, shares_held)
-                    VALUES (%s,%s,%s,%s,%s)""", (org_id, shid, scid, date.today(), held))
-            print(f"  company: {c['name']} ({c['listed_status']})")
-    return org_id
+        # Companies are NOT seeded. Every organisation starts empty and the
+        # user creates their own; demo rows were indistinguishable from real
+        # work once a few had accumulated, and a shared fixture company is not
+        # something anybody should be assessing against.
 
 
 def main():

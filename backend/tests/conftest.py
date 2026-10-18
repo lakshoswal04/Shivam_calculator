@@ -1,5 +1,6 @@
 import os
 import sys
+import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -26,6 +27,10 @@ def client():
 # db/snapshot/create.sh warns about shipping to a deployment. Autouse so it
 # applies whether or not a test thought about cleaning up.
 FIXTURE_NAME_PATTERNS = ("Test Co %", "Searchable %")
+# Registration tests necessarily create a real organisation each run, since
+# that is the thing under test. Everything they make uses this email domain.
+FIXTURE_EMAIL_PATTERN = "%@example.test"
+DEMO_SLUG = "demo-advisory"
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -44,12 +49,25 @@ def _purge_fixture_companies():
     yield
     with tx() as conn:
         org = fetch_one(conn,
-                        "SELECT org_id FROM auth.organisations WHERE slug = 'demo-advisory'")
+                        "SELECT org_id FROM auth.organisations WHERE slug = %s", (DEMO_SLUG,))
     if org is None:
         return
     with tx(str(org["org_id"])) as conn:
         for pattern in FIXTURE_NAME_PATTERNS:
             conn.execute("DELETE FROM company.companies WHERE name LIKE %s", (pattern,))
+
+    # The organisations registration tests create, and their users. Deleting
+    # the organisation cascades to memberships and refresh tokens. auth is not
+    # tenant-scoped, so this needs no app.current_org.
+    with tx() as conn:
+        conn.execute("""
+            DELETE FROM auth.organisations o
+             WHERE o.slug <> %s
+               AND EXISTS (SELECT 1 FROM auth.memberships m
+                             JOIN auth.users u ON u.user_id = m.user_id
+                            WHERE m.org_id = o.org_id AND u.email LIKE %s)""",
+                     (DEMO_SLUG, FIXTURE_EMAIL_PATTERN))
+        conn.execute("DELETE FROM auth.users WHERE email LIKE %s", (FIXTURE_EMAIL_PATTERN,))
 
 
 def _token(client, email):
@@ -75,16 +93,56 @@ def org_id():
             conn, "SELECT org_id FROM auth.organisations WHERE slug='demo-advisory'")["org_id"])
 
 
+def _make_company(client, headers, *, listed: bool):
+    """Build a company with a capital structure through the API.
+
+    These used to pick a company out of the demo seed. The seed no longer
+    creates any — every organisation starts empty and users add their own — so
+    the fixtures make what they need, which also makes the tests self-contained
+    rather than coupled to whatever the seeder happened to insert. The naming
+    convention matches FIXTURE_NAME_PATTERNS, so the cleanup above removes them.
+    """
+    tag = uuid.uuid4().hex[:8]
+    r = client.post("/api/v1/companies", headers=headers, json={
+        "name": f"Test Co {tag} Limited",
+        "company_type": "PUBLIC" if listed else "PRIVATE",
+        "listed_status": "LISTED" if listed else "UNLISTED",
+        "exchanges": ["NSE"] if listed else [],
+        "is_sme": False,
+    })
+    assert r.status_code == 201, r.text
+    company = r.json()
+    cid = company["company_id"]
+
+    cap = client.put(f"/api/v1/companies/{cid}/capital", headers=headers, json={
+        "authorised_capital": 50000000, "issued_capital": 35000000,
+        "face_value": 10, "shares_issued": 3500000,
+    })
+    assert cap.status_code in (200, 201, 204), cap.text
+
+    holdings = client.put(f"/api/v1/companies/{cid}/holdings", headers=headers, json=[
+        {"name": "Promoter group", "shares_held": 2000000,
+         "is_promoter": True, "category": "PROMOTER"},
+        {"name": "Public", "shares_held": 1500000,
+         "is_promoter": False, "category": "PUBLIC"},
+    ])
+    assert holdings.status_code in (200, 201, 204), holdings.text
+
+    # Re-read so the fixture carries the derived capital fields the tests use.
+    return client.get(f"/api/v1/companies?limit=100", headers=headers).json()["companies"] \
+        and next(c for c in client.get("/api/v1/companies?limit=100",
+                                       headers=headers).json()["companies"]
+                 if c["company_id"] == cid)
+
+
 @pytest.fixture(scope="session")
 def listed_company(client, cs_headers):
-    r = client.get("/api/v1/companies", headers=cs_headers)
-    return next(c for c in r.json()["companies"] if c["listed_status"] == "LISTED")
+    return _make_company(client, cs_headers, listed=True)
 
 
 @pytest.fixture(scope="session")
 def unlisted_company(client, cs_headers):
-    r = client.get("/api/v1/companies", headers=cs_headers)
-    return next(c for c in r.json()["companies"] if c["listed_status"] == "UNLISTED")
+    return _make_company(client, cs_headers, listed=False)
 
 
 def preferential_issue(**over):

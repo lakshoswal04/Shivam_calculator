@@ -39,7 +39,7 @@ one — the internal URL is only reachable from inside Render), then run locally
 ./db/snapshot/restore.sh "postgresql://…external…/legal_rules"
 ```
 
-This restores the schema, 13,485 provisions, the authored rules and the demo organisation
+This restores the schema, 20,890 provisions, the authored rules and the demo organisation
 in seconds, then applies any migration added after the snapshot was taken, and verifies the
 result. Re-running the extraction pipeline on Render instead would need PyMuPDF and several
 minutes of CPU for no benefit.
@@ -57,11 +57,40 @@ Then confirm:
 
 ```bash
 curl https://<your-service>.onrender.com/api/v1/health
-# {"status":"ok","database":"ok","active_rules":13,...}
+# {"status":"ok","database":"ok","active_rules":24,...}
 ```
 
 > **Free plan:** the service sleeps after 15 minutes idle, so the first request afterwards
 > takes ~30 s. The free Postgres plan expires after 90 days.
+
+---
+
+## Redeploying after the free tier expires
+
+Render's free Postgres expires, and when the database goes the API stops answering —
+TLS still terminates at Render's edge, so the symptom is a request that hangs rather than
+an error page. Recovery:
+
+1. **Delete the old blueprint resources** in Render (`securities-api` and `securities-db`).
+   A suspended service holds its name, and the blueprint cannot recreate one that exists.
+2. **New → Blueprint** on the same repository. Keep the service name `securities-api`:
+   the frontend's `NEXT_PUBLIC_API_URL` is baked into the browser bundle at build time, so
+   a different hostname means rebuilding Netlify too.
+3. **Restore the snapshot** with the new database's *external* URL — the database is empty
+   and every schema-touching endpoint fails until you do:
+
+   ```bash
+   ./db/snapshot/restore.sh "postgresql://…external…/legal_rules"
+   ```
+
+4. **Set `CORS_ORIGINS`** to `https://shivamcal.netlify.app` on the new service. It is
+   `sync: false` in the blueprint, so it is never carried over and is the usual reason
+   sign-in works in `curl` but fails in the browser.
+5. Confirm: `curl https://securities-api.onrender.com/api/v1/health` should report
+   `"database":"ok"`, then sign in on the site.
+
+If the hostname did change, update `NEXT_PUBLIC_API_URL` in Netlify and trigger a redeploy
+there — changing it does not take effect until the frontend is rebuilt.
 
 ---
 
@@ -80,7 +109,7 @@ curl https://<your-service>.onrender.com/api/v1/health
 
    | Key | Value |
    |---|---|
-   | `NEXT_PUBLIC_API_URL` | `https://<your-service>.onrender.com/api/v1` |
+   | `NEXT_PUBLIC_API_URL` | `https://securities-api.onrender.com/api/v1` |
 
    This is read at **build time** by the browser bundle, so changing it later requires a
    redeploy, not just a restart.
@@ -94,7 +123,7 @@ set:
 
 | Key | Value |
 |---|---|
-| `CORS_ORIGINS` | `https://<your-site>.netlify.app` |
+| `CORS_ORIGINS` | `https://shivamcal.netlify.app` |
 
 Comma-separate to allow more than one (for example a preview domain). Save — Render
 redeploys automatically.
@@ -104,7 +133,8 @@ redeploys automatically.
 ## 4. Before anyone else can reach it
 
 **Remove the demo accounts.** The snapshot ships four accounts sharing the password
-`demo1234`, and they will work on the public URL:
+`demo1234`, and they will work on the public URL. It ships **no company data** — every
+organisation starts empty and users add their own:
 
 ```bash
 backend/.venv/bin/python db/seed/demo/seed_demo.py --purge --dsn "<external DATABASE_URL>"
