@@ -14,17 +14,15 @@ const NAV = [
     roles: ["LEGAL_REVIEWER", "ADMINISTRATOR"] },
 ];
 
-const SIDEBAR_KEY = "nav.open";
-
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const path = usePathname();
   const [user, setUser] = useState<SessionUser | null>(null);
 
-  // Open on desktop, closed on a phone. Resolved after mount so the server and
-  // the first client render agree; a stored preference then overrides it.
-  const [open, setOpen] = useState(true);
-  const [ready, setReady] = useState(false);
+  // Always starts closed. The sidebar is a drawer you summon, not furniture:
+  // it floats over the page rather than pushing it, so nothing on the page
+  // moves when it opens, and it gets out of the way as soon as it is used.
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const u = session.user;
@@ -32,26 +30,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     setUser(u);
   }, [router]);
 
-  useEffect(() => {
-    let initial = typeof window !== "undefined" ? window.innerWidth >= 1024 : true;
-    try {
-      const saved = localStorage.getItem(SIDEBAR_KEY);
-      if (saved === "1" || saved === "0") initial = saved === "1";
-    } catch { /* private window; the width default stands */ }
-    setOpen(initial);
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    try { localStorage.setItem(SIDEBAR_KEY, open ? "1" : "0"); } catch { /* not essential */ }
-  }, [open, ready]);
-
-  // On a phone the sidebar is an overlay, so a route change must close it or
-  // the new page is hidden behind the panel the user just used.
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.innerWidth < 1024) setOpen(false);
-  }, [path]);
+  // Closes on every navigation, at every width. Previously this only applied
+  // below 1024px, so on a desktop the drawer stayed open over the page you had
+  // just asked for.
+  useEffect(() => { setOpen(false); }, [path]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
@@ -67,11 +49,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen">
-      {/* Backdrop for the overlay sidebar. Below lg only, so it can never sit
-          over the desktop layout. */}
+      {/* Backdrop at every width now: the drawer overlays the page everywhere,
+          so clicking beside it must dismiss it everywhere. */}
       {open && (
         <button aria-label="Close navigation" onClick={() => setOpen(false)}
-                className="fixed inset-0 z-30 bg-ink/25 backdrop-blur-sm lg:hidden" />
+                className="fixed inset-0 z-30 bg-ink/25 backdrop-blur-sm" />
       )}
 
       {/* ------------------------------------------------------------ sidebar */}
@@ -145,7 +127,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       {/* -------------------------------------------------------- content ----
           The left margin tracks the sidebar so the two never overlap. Below lg
           there is no margin at all, because there the sidebar is an overlay. */}
-      <div className={`transition-[margin] duration-200 ease-out ${open ? "lg:ml-[260px]" : "ml-0"}`}>
+      {/* No margin that tracks the sidebar any more. The drawer floats above
+          the page, so opening it must not reflow anything underneath. */}
+      <div>
         <header className="sticky top-0 z-20 border-b border-border bg-surface/90 backdrop-blur">
           <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
             <button onClick={() => setOpen((v) => !v)}
@@ -166,10 +150,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               </span>
             </button>
 
-            {/* The wordmark appears here only when the sidebar is hidden, so it
-                is never shown twice. */}
-            <Link href="/dashboard"
-                  className={`items-center gap-2 ${open ? "hidden" : "flex lg:flex"}`}>
+            {/* The top bar is now the permanent home for the wordmark: the drawer
+                is closed by default and floats above the page when open, so this
+                must not appear and disappear as it is toggled. */}
+            <Link href="/dashboard" className="flex items-center gap-2">
               <span className="grid h-7 w-7 place-items-center rounded-md bg-accent text-xs
                                font-bold text-white">S</span>
               <span className="hidden text-sm font-semibold tracking-tight sm:block">
