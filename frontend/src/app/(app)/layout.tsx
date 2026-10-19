@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { session, type SessionUser } from "@/lib/api";
 
 const NAV = [
@@ -24,6 +24,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   // moves when it opens, and it gets out of the way as soon as it is used.
   const [open, setOpen] = useState(false);
 
+  // How it was opened decides how it dismisses. A pointer that slid in should
+  // dismiss by sliding away, and must NOT leave a click-blocking sheet over
+  // the page. A tap or keypress has no "away", so that one needs a backdrop.
+  const [byPointer, setByPointer] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
   useEffect(() => {
     const u = session.user;
     if (!u) { router.replace("/login"); return; }
@@ -41,6 +47,55 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // Swipe in from the left edge. "Slide to open" has no pointer equivalent on
+  // a touch screen, and hover does not exist there at all, so the gesture is
+  // what makes this reachable without hunting for the button.
+  useEffect(() => {
+    let startX = 0, startY = 0, tracking = false;
+    const onStart = (e: TouchEvent) => {
+      const t = e.touches[0];
+      tracking = t.clientX <= 24;        // only a drag begun at the very edge
+      startX = t.clientX; startY = t.clientY;
+    };
+    const onMove = (e: TouchEvent) => {
+      if (!tracking) return;
+      const t = e.touches[0];
+      // Mostly-horizontal, or a scroll down the page would open it.
+      if (t.clientX - startX > 48 && Math.abs(t.clientY - startY) < 40) {
+        tracking = false;
+        setByPointer(false);             // a swipe has no "move away" either
+        setOpen(true);
+      }
+    };
+    const onEnd = () => { tracking = false; };
+    window.addEventListener("touchstart", onStart, { passive: true });
+    window.addEventListener("touchmove", onMove, { passive: true });
+    window.addEventListener("touchend", onEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onStart);
+      window.removeEventListener("touchmove", onMove);
+      window.removeEventListener("touchend", onEnd);
+    };
+  }, []);
+
+  const cancelClose = () => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const openByPointer = () => { cancelClose(); setByPointer(true); setOpen(true); };
+
+  // A short grace period, because the pointer crosses a seam between the hot
+  // zone and the drawer; closing instantly makes it flicker and feel broken.
+  const closeSoon = () => {
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => setOpen(false), 180);
+  };
+
+  useEffect(() => cancelClose, []);
+
   if (!user) return <div className="p-10 text-sm text-muted">Loading…</div>;
 
   const nav = NAV.filter((n) => !n.roles || n.roles.includes(user.role));
@@ -49,17 +104,32 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen">
-      {/* Backdrop at every width now: the drawer overlays the page everywhere,
-          so clicking beside it must dismiss it everywhere. */}
-      {open && (
+      {/* The strip you slide into to summon the drawer. Rendered only while it
+          is closed, so it never sits over the open panel, and hidden from
+          touch devices where hover does not exist. */}
+      {!open && (
+        <div aria-hidden onMouseEnter={openByPointer}
+             className="fixed inset-y-0 left-0 z-30 hidden w-4 [@media(hover:hover)]:block" />
+      )}
+
+      {/* Dim behind the drawer. When a pointer opened it, this is decorative
+          only — pointer-events-none — because moving away is how you dismiss
+          it, and a click-blocking sheet would swallow clicks on the page. A
+          tap or a keypress has no "away", so then it becomes the dismiss
+          target. */}
+      {open && (byPointer ? (
+        <div aria-hidden className="pointer-events-none fixed inset-0 z-30 bg-ink/20" />
+      ) : (
         <button aria-label="Close navigation" onClick={() => setOpen(false)}
                 className="fixed inset-0 z-30 bg-ink/25 backdrop-blur-sm" />
-      )}
+      ))}
 
       {/* ------------------------------------------------------------ sidebar */}
       <aside
         id="app-nav"
         aria-hidden={!open}
+        onMouseEnter={cancelClose}
+        onMouseLeave={closeSoon}
         className={`fixed inset-y-0 left-0 z-40 w-[260px] border-r border-border bg-surface
                     transition-transform duration-200 ease-out
                     ${open ? "translate-x-0" : "-translate-x-full"}`}>
@@ -132,7 +202,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <div>
         <header className="sticky top-0 z-20 border-b border-border bg-surface/90 backdrop-blur">
           <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
-            <button onClick={() => setOpen((v) => !v)}
+            {/* Secondary now that sliding in opens it, but it cannot go: it is
+                the only way to reach the navigation by keyboard, and hover
+                does not exist on a touch screen. */}
+            <button onClick={() => { setByPointer(false); setOpen((v) => !v); }}
                     aria-expanded={open} aria-controls="app-nav"
                     aria-label={open ? "Close navigation" : "Open navigation"}
                     className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border
